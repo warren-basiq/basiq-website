@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const plans = [
+  {
+    name: "Starter",
+    price: "$29",
+    description: "For small teams getting started",
+    features: ["Up to 5 users", "10 GB storage", "Email support", "Basic analytics"],
+  },
+  {
+    name: "Pro",
+    price: "$79",
+    description: "For growing teams that need more",
+    features: ["Up to 25 users", "100 GB storage", "Priority support", "Advanced analytics", "API access"],
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    description: "For large organizations",
+    features: ["Unlimited users", "Unlimited storage", "Dedicated support", "Custom integrations", "SSO & SAML", "SLA"],
+  },
+];
+---
+
+<Layout title="Pricing" description="Simple, transparent pricing for teams of all sizes">
+  <section class="mx-auto max-w-6xl px-6 py-24">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold tracking-tight">Simple, transparent pricing</h1>
+      <p class="mt-4 text-lg text-gray-600">No hidden fees. Cancel anytime.</p>
+    </div>
+
+    <div class="mt-16 grid gap-8 sm:grid-cols-3">
+      {plans.map((plan) => (
+        <div
+          class:list={[
+            "rounded-2xl border p-8",
+            plan.highlighted ? "border-blue-600 ring-2 ring-blue-600" : "border-gray-200",
+          ]}
+        >
+          <h3 class="text-lg font-semibold">{plan.name}</h3>
+          <p class="mt-1 text-sm text-gray-500">{plan.description}</p>
+          <p class="mt-6 text-4xl font-bold">
+            {plan.price}
+            {plan.price !== "Custom" && <span class="text-base font-normal text-gray-500">/mo</span>}
+          </p>
+          <ul class="mt-8 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="text-green-500">&#10003;</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#"
+            class:list={[
+              "mt-8 block rounded-lg px-4 py-2.5 text-center text-sm font-medium",
+              plan.highlighted
+                ? "bg-blue-600 text-white hover:bg-blue-700"
+                : "border border-gray-300 text-gray-700 hover:bg-gray-50",
+            ]}
+          >
+            {plan.price === "Custom" ? "Contact Sales" : "Start Free Trial"}
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
