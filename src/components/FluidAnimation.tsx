@@ -32,8 +32,8 @@ const phases = [
 const PHASE_DURATION = 4000;
 const TRANSITION_DURATION = 1500;
 const TOTAL_CYCLE = phases.length * PHASE_DURATION;
-const PARTICLE_COUNT = 60;
-const TRAIL_LENGTH = 12;
+const PARTICLE_COUNT = 35;
+const TRAIL_LENGTH = 8;
 
 /* ─── Helpers ────────────────────────────────────────────────────── */
 
@@ -66,19 +66,33 @@ export default function FluidAnimation({ className = "" }: { className?: string 
     const ctx = canvas.getContext("2d")!;
     let animId: number;
     let lastTime = 0;
+    let isVisible = false;
 
     function resize() {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = container!.getBoundingClientRect();
       canvas!.width = rect.width * dpr;
       canvas!.height = rect.height * dpr;
       canvas!.style.width = `${rect.width}px`;
       canvas!.style.height = `${rect.height}px`;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     resize();
     window.addEventListener("resize", resize);
+
+    // Only animate when visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !animId) {
+          lastTime = 0;
+          animId = requestAnimationFrame(render);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(container);
 
     const w = () => container!.getBoundingClientRect().width;
     const h = () => container!.getBoundingClientRect().height;
@@ -319,6 +333,12 @@ export default function FluidAnimation({ className = "" }: { className?: string 
         ctx.fill();
       }
 
+      if (!isVisible) {
+        cancelAnimationFrame(animId);
+        animId = 0;
+        return;
+      }
+
       animId = requestAnimationFrame(render);
     }
 
@@ -326,10 +346,12 @@ export default function FluidAnimation({ className = "" }: { className?: string 
     ctx.fillStyle = "#0a0a0a";
     ctx.fillRect(0, 0, w(), h());
 
-    animId = requestAnimationFrame(render);
+    // Don't start until visible — the observer will kick it off
+    animId = 0;
 
     return () => {
-      cancelAnimationFrame(animId);
+      if (animId) cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener("resize", resize);
     };
   }, []);

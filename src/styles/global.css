@@ -28,8 +28,10 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {
   font-family: var(--font-body);
+  overscroll-behavior: none;
 }
