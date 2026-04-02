@@ -5,6 +5,7 @@ import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 import { BackgroundBeams } from "./ui/background-beams";
+import FluidAnimation from "./FluidAnimation";
 
 /* ─── Animation helpers ──────────────────────────────────────────── */
 
@@ -351,6 +352,17 @@ export default function Homepage() {
           </motion.div>
         </div>
       </header>
+
+      {/* ─── FLUID ANIMATION ─────────────────────────────────── */}
+      <Section className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+          <FadeUp>
+            <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a]">
+              <FluidAnimation className="h-[400px] w-full md:h-[500px]" />
+            </div>
+          </FadeUp>
+        </div>
+      </Section>
 
       {/* ─── POSITIONING STATEMENT ───────────────────────────── */}
       <Section className="border-t border-white/[0.06]">
