@@ -7,15 +7,23 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "studio": "sanity dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.2",
     "@sanity/client": "^7.20.0",
     "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "astro": "^6.1.3",
+    "framer-motion": "^12.38.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "sanity": "^5.19.0",
+    "styled-components": "^6.3.12",
     "tailwindcss": "^4.2.2"
   }
 }
