@@ -1,0 +1,42 @@
+---
+import { cloudinaryImage, cloudinaryImageSrcSet } from "../lib/cloudinary";
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+  class?: string;
+  loading?: "lazy" | "eager";
+  crop?: string;
+  gravity?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  sizes = "100vw",
+  class: className = "",
+  loading = "lazy",
+  crop,
+  gravity,
+} = Astro.props;
+
+const imgSrc = cloudinaryImage(src, { width, height, crop, gravity });
+const srcSet = cloudinaryImageSrcSet(src, [400, 800, 1200, 1600], { crop, gravity });
+---
+
+<img
+  src={imgSrc}
+  srcset={srcSet}
+  sizes={sizes}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  decoding="async"
+  class={className}
+/>

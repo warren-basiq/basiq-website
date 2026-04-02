@@ -1,0 +1,44 @@
+---
+import { cloudinaryVideo, cloudinaryVideoPoster } from "../lib/cloudinary";
+
+interface Props {
+  src: string;
+  width?: number;
+  class?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  posterTime?: string;
+}
+
+const {
+  src,
+  width,
+  class: className = "",
+  autoplay = false,
+  loop = false,
+  muted = true,
+  controls = true,
+  posterTime = "0",
+} = Astro.props;
+
+const mp4Src = cloudinaryVideo(src, { width, format: "mp4" });
+const webmSrc = cloudinaryVideo(src, { width, format: "webm" });
+const poster = cloudinaryVideoPoster(src, { width, time: posterTime });
+---
+
+<video
+  class={className}
+  poster={poster}
+  controls={controls}
+  autoplay={autoplay}
+  loop={loop}
+  muted={muted}
+  playsinline
+  preload="metadata"
+  width={width}
+>
+  <source src={webmSrc} type="video/webm" />
+  <source src={mp4Src} type="video/mp4" />
+</video>
