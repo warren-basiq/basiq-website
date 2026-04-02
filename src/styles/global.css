@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
@@ -31,5 +31,5 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
 }

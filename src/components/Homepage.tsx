@@ -243,7 +243,7 @@ export default function Homepage() {
       {/* ─── NAV ─────────────────────────────────────────────── */}
       <nav className="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
-          <a href="/" className="font-serif text-2xl font-bold tracking-tight text-white">
+          <a href="/" className="text-2xl font-bold tracking-tight text-white">
             Basiq
           </a>
           <div className="hidden items-center gap-8 md:flex">
@@ -317,7 +317,7 @@ export default function Homepage() {
 
           <TextGenerateEffect
             words="We build AI into your business. Not decks about it."
-            className="max-w-4xl font-serif text-5xl leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
+            className="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
             duration={0.4}
           />
 
@@ -325,7 +325,7 @@ export default function Homepage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
-            className="mt-8 max-w-2xl text-lg leading-relaxed text-[#a09d97] md:text-xl"
+            className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
           >
             Basiq is an AI execution partner for companies that need working systems, not slide decks. We ship.
           </motion.p>
@@ -356,7 +356,7 @@ export default function Homepage() {
       <Section className="border-t border-white/[0.06]">
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
           <FadeUp>
-            <p className="max-w-4xl font-serif text-2xl leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug">
+            <p className="max-w-4xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug">
               Most AI engagements end with a strategy doc and a thank you. Ours
               end with tools your team uses on Monday. We work alongside your
               engineers, sales teams, and ops. And we leave when there's a
@@ -373,7 +373,7 @@ export default function Homepage() {
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
               What we do
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
               Five ways we deploy AI
             </h2>
           </FadeUp>
@@ -402,7 +402,7 @@ export default function Homepage() {
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
               How it works
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
               Three steps. No mystery.
             </h2>
           </FadeUp>
@@ -462,7 +462,7 @@ export default function Homepage() {
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
               Products
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
               We build tools we use ourselves.
             </h2>
             <p className="mt-4 max-w-xl text-base text-[#a09d97]">
@@ -508,7 +508,7 @@ export default function Homepage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
-              <h2 className="font-serif text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
                 Not sure where to start?
                 <br />
                 That's what the assessment is for.
@@ -537,7 +537,7 @@ export default function Homepage() {
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
           <div className="grid gap-12 md:grid-cols-4">
             <div className="md:col-span-1">
-              <a href="/" className="font-serif text-xl font-bold tracking-tight text-white">
+              <a href="/" className="text-xl font-bold tracking-tight text-white">
                 Basiq
               </a>
               <p className="mt-3 text-sm text-[#a09d97]">
