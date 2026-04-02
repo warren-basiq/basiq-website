@@ -289,7 +289,7 @@ export default function Homepage() {
       </nav>
 
       {/* ─── HERO ────────────────────────────────────────────── */}
-      <header className="relative flex min-h-screen items-center overflow-hidden pt-20">
+      <header className="relative flex items-center overflow-hidden pt-32 pb-12">
         {/* Spotlight effect */}
         <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#F59E0B" />
 
@@ -354,15 +354,15 @@ export default function Homepage() {
       </header>
 
       {/* ─── FLUID ANIMATION ─────────────────────────────────── */}
-      <Section className="border-t border-white/[0.06]">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+      <div>
+        <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-12">
           <FadeUp>
             <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a]">
               <FluidAnimation className="h-[400px] w-full md:h-[500px]" />
             </div>
           </FadeUp>
         </div>
-      </Section>
+      </div>
 
       {/* ─── POSITIONING STATEMENT ───────────────────────────── */}
       <Section className="border-t border-white/[0.06]">
