@@ -358,7 +358,7 @@ export default function Homepage() {
         <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-12">
           <FadeUp>
             <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-              Becoming AI First.
+              Start executing with an AI first mindset
             </h2>
             <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a]">
               <FluidAnimation className="h-[400px] w-full md:h-[500px]" />
