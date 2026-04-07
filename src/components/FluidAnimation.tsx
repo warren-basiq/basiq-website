@@ -20,11 +20,11 @@ interface Particle {
 /* ─── Phase labels ───────────────────────────────────────────────── */
 
 const phases = [
-  { label: "Individual", sublabel: "A single point of light" },
-  { label: "Team", sublabel: "Moving in formation" },
-  { label: "Conversation", sublabel: "Exchange and rhythm" },
-  { label: "Project", sublabel: "Flowing into structure" },
-  { label: "Company", sublabel: "One living network" },
+  { label: "Individual", description: "Teach team members when and how to use GenAI" },
+  { label: "Team", description: "Create a shared knowledge base accessible by AI" },
+  { label: "Conversation", description: "Leverage AI in every conversation to make meetings more valuable" },
+  { label: "Project", description: "Orchestrate complex work and solve for the most important problems" },
+  { label: "Company", description: "Move quickly and efficiently as a company, all in one direction" },
 ];
 
 /* ─── Constants ──────────────────────────────────────────────────── */
@@ -395,11 +395,8 @@ export default function FluidAnimation({ className = "" }: { className?: string 
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-amber-400/60">
-              {phases[currentPhase].label}
-            </p>
-            <p className="mt-1 font-body text-sm text-[#a09d97]">
-              {phases[currentPhase].sublabel}
+            <p className="text-sm font-medium text-amber-400/80">
+              {phases[currentPhase].description}
             </p>
           </motion.div>
         </AnimatePresence>
