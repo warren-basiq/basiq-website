@@ -211,9 +211,9 @@ const products = [
     tag: "Live",
   },
   {
-    name: "Product 2",
+    name: "Kalibrate",
     description:
-      "Internal tooling platform for ops teams. Automates the workflows that slip through the cracks.",
+      "A prompt management tool that helps you develop your best prompts, use the best models, and ensure the best AI results.",
     link: "#",
     tag: "Coming soon",
   },
