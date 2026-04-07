@@ -328,7 +328,7 @@ export default function Homepage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
             className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
           >
-            Basiq is an AI execution partner for companies that need working systems, not slide decks. We ship.
+            Basiq is an AI execution partner with proven methodologies to implement from an individual, team, and company level to truly transform how you work.
           </motion.p>
 
           <motion.div
@@ -357,9 +357,6 @@ export default function Homepage() {
       <div>
         <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-12">
           <FadeUp>
-            <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-              Start executing with an AI first mindset
-            </h2>
             <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a]">
               <FluidAnimation className="h-[400px] w-full md:h-[500px]" />
             </div>
