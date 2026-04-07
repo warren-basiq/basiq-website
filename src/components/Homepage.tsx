@@ -67,6 +67,7 @@ const services = [
     icon: <span className="text-2xl text-amber-400/80">⚙</span>,
     title: "Engineering",
     description: "Faster PRs, better code, team-wide AI adoption.",
+    link: "/engineering",
     className: "md:col-span-1",
     header: (
       <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/[0.06] to-transparent">
@@ -399,6 +400,7 @@ export default function Homepage() {
                   description={item.description}
                   header={item.header}
                   icon={item.icon}
+                  link={item.link}
                   className={item.className}
                 />
               ))}
