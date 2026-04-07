@@ -218,9 +218,9 @@ const products = [
     tag: "Coming soon",
   },
   {
-    name: "Product 3",
+    name: "Qenerate",
     description:
-      "AI-native reporting layer. Pulls from your systems and surfaces what matters, without dashboards.",
+      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the only human parts of Pipe Gen — Cold Calling and Video.",
     link: "#",
     tag: "Coming soon",
   },
