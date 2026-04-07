@@ -83,6 +83,7 @@ const services = [
     icon: <span className="text-2xl text-amber-400/80">◧</span>,
     title: "Business Applications",
     description: "Custom AI tools built for your workflows.",
+    link: "/business-applications",
     className: "md:col-span-1",
     header: (
       <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
@@ -98,6 +99,7 @@ const services = [
     icon: <span className="text-2xl text-amber-400/80">◎</span>,
     title: "Go-to-Market",
     description: "AI-assisted outreach, enablement, and pipeline.",
+    link: "/go-to-market",
     className: "md:col-span-1",
     header: (
       <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
@@ -115,6 +117,7 @@ const services = [
     icon: <span className="text-2xl text-amber-400/80">▦</span>,
     title: "Operations",
     description: "Automation that actually runs without babysitting.",
+    link: "/operations",
     className: "md:col-span-2",
     header: (
       <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
@@ -133,6 +136,7 @@ const services = [
     icon: <span className="text-2xl text-amber-400/80">△</span>,
     title: "AI Strategy",
     description: "Where to start, what to build, how to sequence it.",
+    link: "/ai-strategy",
     className: "md:col-span-1",
     header: (
       <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/[0.06] to-transparent">

@@ -1,0 +1,309 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Basiq AI Strategy — Where to start, what to build, how to sequence it. From diagnostic to fully AI-enabled."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>AI Strategy | Basiq</title>
+  </head>
+  <body
+    class="min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200"
+  >
+    <!-- Grain overlay -->
+    <div
+      class="pointer-events-none fixed inset-0 z-50 opacity-[0.03]"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E&quot;); background-repeat: repeat; background-size: 256px 256px;"
+    >
+    </div>
+
+    <!-- Nav -->
+    <nav
+      class="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
+      >
+        <a href="/" class="text-2xl font-bold tracking-tight text-white">
+          Basiq
+        </a>
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="/#services" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Services</a>
+          <a href="/#work" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Work</a>
+          <a href="/#about" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">About</a>
+        </div>
+        <a
+          href="/#book-call"
+          class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+        >
+          Book a Call
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-32 pb-20">
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+      >
+      </div>
+      <div
+        class="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full opacity-[0.07]"
+        style="background: radial-gradient(ellipse, #F59E0B 0%, transparent 70%);"
+      >
+      </div>
+
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+        <a
+          href="/#services"
+          class="mb-8 inline-flex items-center gap-2 text-sm text-[#a09d97] transition-colors hover:text-white"
+        >
+          <span>&larr;</span> All Services
+        </a>
+        <p class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+          AI Strategy
+        </p>
+        <h1
+          class="max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl"
+        >
+          Where to start, what to build,
+          <br />
+          <span class="text-amber-400">how to sequence it.</span>
+        </h1>
+        <p
+          class="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
+        >
+          Most companies dabbling in AI are leaving 80% of the value on the table.
+          They've got engineers using Copilot and a few people prompting ChatGPT.
+          That's not an AI strategy &mdash; that's just expensive experimentation.
+          We help you operationalize AI across your business. Now.
+        </p>
+        <div class="mt-10">
+          <a
+            href="/#book-call"
+            class="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+          >
+            Book a Free Assessment
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- What We Build — 3 Pillars -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+          How we engage
+        </p>
+        <h2 class="mt-4 max-w-2xl text-3xl font-bold text-white md:text-4xl">
+          Three phases from assessment to AI-enabled
+        </h2>
+
+        <div class="mt-16 grid gap-6 md:grid-cols-3">
+          <!-- Pillar 1 -->
+          <div class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+                alt="Strategic planning session"
+                class="h-full w-full object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+              <span class="absolute bottom-4 left-6 font-mono text-sm font-bold text-amber-400/70">01</span>
+            </div>
+            <div class="p-6 pt-4">
+              <h3 class="text-xl font-semibold text-white">Diagnostic</h3>
+              <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+                We map where you are today, identify your highest-leverage AI
+                opportunities, and deliver working prototypes &mdash; not
+                recommendations. The assessment is free and takes a few hours.
+              </p>
+              <p class="mt-5 font-mono text-xs uppercase tracking-wider text-amber-400/50">
+                Assessment &middot; Mapping &middot; Prototypes
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+                alt="Team working together on strategy"
+                class="h-full w-full object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+              <span class="absolute bottom-4 left-6 font-mono text-sm font-bold text-amber-400/70">02</span>
+            </div>
+            <div class="p-6 pt-4">
+              <h3 class="text-xl font-semibold text-white">Sequencing</h3>
+              <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+                We figure out which of our four pillars &mdash; Engineering,
+                Business Apps, GTM, or Operations &mdash; is the right entry
+                point for where you are. Then we sequence the rest.
+              </p>
+              <p class="mt-5 font-mono text-xs uppercase tracking-wider text-amber-400/50">
+                Prioritization &middot; Roadmap &middot; Entry Point
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                alt="Team shipping software"
+                class="h-full w-full object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-80"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+              <span class="absolute bottom-4 left-6 font-mono text-sm font-bold text-amber-400/70">03</span>
+            </div>
+            <div class="p-6 pt-4">
+              <h3 class="text-xl font-semibold text-white">Embedded Execution</h3>
+              <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+                We work in focused sprints &mdash; embedding with your team,
+                building real things, and getting to outcomes fast. We're here to
+                build alongside you until you don't need us anymore.
+              </p>
+              <p class="mt-5 font-mono text-xs uppercase tracking-wider text-amber-400/50">
+                Sprints &middot; Shipping &middot; Handoff
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full-width photo break -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+        <div class="relative overflow-hidden rounded-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80"
+            alt="Strategy session in modern office"
+            class="h-[280px] w-full object-cover opacity-50 md:h-[360px]"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/60">
+              The result
+            </p>
+            <p class="mt-2 max-w-md text-lg font-medium text-white/80 md:text-xl">
+              A clear picture of where AI moves the needle for your business
+              and a working system to prove it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What Changes — 3 Outcomes -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+          The output
+        </p>
+        <h2 class="mt-4 max-w-2xl text-3xl font-bold text-white md:text-4xl">
+          What you walk away with
+        </h2>
+
+        <div class="mt-16 grid gap-0 md:grid-cols-3">
+          <!-- Outcome 1 -->
+          <div class="relative border-l border-white/[0.06] p-8 pl-10 first:border-l-0 md:first:border-l">
+            <div class="absolute left-0 top-8 h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block hidden"></div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">Clarity</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-white">A map, not a mystery</h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              You'll know exactly where AI creates value in your specific
+              business, which areas to tackle first, and what "fully AI-enabled"
+              actually looks like for you.
+            </p>
+          </div>
+
+          <!-- Outcome 2 -->
+          <div class="relative border-l border-white/[0.06] p-8 pl-10">
+            <div class="absolute left-0 top-8 h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block hidden"></div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">Proof</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-white">Working prototypes, not slide decks</h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Every assessment ends with something you can touch and use. Real
+              tools running against your data, demonstrating what's possible
+              &mdash; not a PDF with arrows and boxes.
+            </p>
+          </div>
+
+          <!-- Outcome 3 -->
+          <div class="relative border-l border-white/[0.06] p-8 pl-10">
+            <div class="absolute left-0 top-8 h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block hidden"></div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">Independence</span>
+            </div>
+            <h3 class="mt-2 text-lg font-semibold text-white">You own everything we build</h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              We document, train, and hand off. You keep the tools. No retainers.
+              No dependency. We leave when there's a working system in place, not
+              before.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+            Not sure where to start?
+            <br />
+            That's what the assessment is for.
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
+            It's free. It takes a few hours. You'll walk away with a clear
+            picture of where AI moves the needle for your business and a working
+            prototype to prove it.
+          </p>
+          <a
+            href="/#book-call"
+            class="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+          >
+            Book Your Free Assessment
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+        <div class="flex flex-col items-center justify-between gap-4 text-xs text-[#706d67] md:flex-row">
+          <p>&copy; 2025 Basiq. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="transition-colors hover:text-white">Privacy</a>
+            <a href="#" class="transition-colors hover:text-white">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
