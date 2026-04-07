@@ -173,32 +173,32 @@ const testimonials = [
   {
     quote:
       "They didn't just tell us where to use AI. They built it, trained the team, and it was running in production before the contract ended. That never happens.",
-    name: "Jordan Keller",
-    title: "VP Engineering, Meridian",
+    name: "James Lawler",
+    title: "Director, TricoStar",
   },
   {
     quote:
       "We had three failed AI projects before Basiq. The difference was they actually shipped working software, not a roadmap with question marks.",
-    name: "Sarah Chen",
-    title: "CTO, Nomad Technologies",
+    name: "Helen Lin",
+    title: "CEO, Discern",
   },
   {
     quote:
       "Our outbound pipeline doubled in 6 weeks. The tools they built are still running daily. Zero maintenance on our end.",
-    name: "Marcus Webb",
-    title: "Head of Growth, Pylon",
+    name: "Greg LeNeveu",
+    title: "CRO, Knak",
   },
   {
     quote:
       "The assessment alone was worth more than the last consulting engagement we paid six figures for. And it was free.",
-    name: "Priya Sharma",
-    title: "CEO, Vertex AI",
+    name: "JB",
+    title: "CEO, Authentic",
   },
   {
     quote:
       "They embedded with our engineering team for four weeks and left us with three production tools we use every single day.",
-    name: "Alex Novak",
-    title: "VP Operations, Acme Corp",
+    name: "Ed Seymour",
+    title: "CEO, Vado",
   },
 ];
 
@@ -449,7 +449,7 @@ export default function Homepage() {
           <FadeUp>
             <div className="mx-auto max-w-7xl px-6 lg:px-12">
               <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-30">
-                {["Acme Corp", "Meridian", "Nomad", "Pylon", "Vertex"].map((name) => (
+                {["Authentic", "Knak", "Discern", "Vado", "TricoStar"].map((name) => (
                   <span key={name} className="font-mono text-sm uppercase tracking-[0.15em] text-[#a09d97]">
                     {name}
                   </span>
