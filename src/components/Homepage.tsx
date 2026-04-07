@@ -221,7 +221,7 @@ const products = [
     name: "Qenerate",
     description:
       "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the only human parts of Pipe Gen — Cold Calling and Video.",
-    link: "#",
+    link: "/qenerate",
     tag: "Coming soon",
   },
 ];

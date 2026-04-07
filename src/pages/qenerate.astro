@@ -1,0 +1,256 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Qenerate — The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of Pipe Gen."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Qenerate | Basiq</title>
+  </head>
+  <body
+    class="min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200"
+  >
+    <!-- Nav -->
+    <nav
+      class="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
+      >
+        <a href="/" class="text-2xl font-bold tracking-tight text-white">
+          Basiq
+        </a>
+        <div class="hidden items-center gap-8 md:flex">
+          <a
+            href="/#services"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >Services</a
+          >
+          <a
+            href="/#work"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >Work</a
+          >
+          <a
+            href="/#about"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >About</a
+          >
+        </div>
+        <a
+          href="/#book-call"
+          class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+        >
+          Book a Call
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-32 pb-16">
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+      >
+      </div>
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+        <p
+          class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Product
+        </p>
+        <h1
+          class="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl"
+        >
+          Qenerate
+        </h1>
+        <p
+          class="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
+        >
+          The only prospecting CRM built for Account Executives to focus on
+          account and prospect discovery and the only human parts of Pipe Gen
+          &mdash; Cold Calling and Video.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/#book-call"
+            class="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+          >
+            Get Early Access
+          </a>
+          <span
+            class="inline-flex items-center rounded-full bg-white/[0.06] px-4 py-2 text-sm font-medium text-[#a09d97]"
+          >
+            Coming Soon
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Problem -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="max-w-3xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug"
+        >
+          AEs spend too much time on admin and not enough on the two things that
+          actually generate pipeline &mdash; cold calls and personalized video
+          outreach. Qenerate fixes that.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Built for AEs
+        </p>
+        <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+          Everything you need, nothing you don't
+        </h2>
+
+        <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Feature 1 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x1F50D;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              Account Discovery
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              Surface the right accounts based on your ICP. No more digging
+              through spreadsheets or stale CRM data.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x1F465;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              Prospect Research
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              Automatically enrich contacts with relevant context so you know
+              exactly who to call and what to say.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x1F4DE;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              Cold Call Workflows
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              Purpose-built call lists, one-click dialing, and call tracking.
+              Designed to keep you in flow, not clicking through tabs.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x1F3AC;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              Video Outreach
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              Record and send personalized videos directly from the CRM. The
+              human touch that cuts through inbox noise.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x26A1;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              AI-Powered Automation
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              Everything that isn't a cold call or video gets automated. Email
+              sequences, data entry, follow-ups &mdash; handled.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="text-2xl text-amber-400/80">&#x1F4CA;</span>
+            <h3 class="mt-4 text-lg font-semibold text-white">
+              Pipeline Focus
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">
+              See your pipeline health at a glance. Know exactly where to spend
+              your time for maximum impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2
+            class="text-3xl font-bold text-white md:text-4xl lg:text-5xl"
+          >
+            Built by AEs, for AEs.
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]"
+          >
+            Qenerate strips away the noise and lets you focus on what actually
+            builds pipeline. Get early access and be first in line.
+          </p>
+          <a
+            href="/#book-call"
+            class="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+          >
+            Get Early Access
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+        <div
+          class="flex flex-col items-center justify-between gap-4 text-xs text-[#706d67] md:flex-row"
+        >
+          <p>&copy; 2025 Basiq. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="transition-colors hover:text-white">Privacy</a>
+            <a href="#" class="transition-colors hover:text-white">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
