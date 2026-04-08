@@ -288,7 +288,7 @@ export default function Homepage() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="#book-call"
+              href="https://booking.akiflow.com/basiq-consulting"
               className="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
             >
               Book a Call
@@ -390,7 +390,7 @@ export default function Homepage() {
             className="mt-12 flex flex-wrap gap-4"
           >
             <a
-              href="#book-call"
+              href="https://booking.akiflow.com/basiq-consulting"
               className="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
             >
               Book a Free Assessment
@@ -587,7 +587,7 @@ export default function Homepage() {
             </FadeUp>
             <FadeUp delay={0.2}>
               <a
-                href="#book-call"
+                href="https://booking.akiflow.com/basiq-consulting"
                 className="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
               >
                 Book Your Free Assessment
@@ -634,7 +634,7 @@ export default function Homepage() {
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Connect</h4>
               <ul className="mt-4 space-y-3">
-                <li><a href="#book-call" className="text-sm text-[#706d67] transition-colors hover:text-white">Book a Call</a></li>
+                <li><a href="https://booking.akiflow.com/basiq-consulting" className="text-sm text-[#706d67] transition-colors hover:text-white">Book a Call</a></li>
                 <li><span className="text-sm text-[#706d67]">basiq.work</span></li>
               </ul>
             </div>
