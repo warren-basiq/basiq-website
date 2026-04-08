@@ -322,7 +322,7 @@ export default function Homepage() {
           </motion.div>
 
           <TextGenerateEffect
-            words="We build AI into your business. Not decks about it."
+            words="Your AI pilot worked. Now nothing else has moved."
             className="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
             duration={0.4}
           />
@@ -333,7 +333,7 @@ export default function Homepage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
             className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
           >
-            Basiq is an AI execution partner with proven methodologies to implement from an individual, team, and company level to truly transform how you work.
+            Basiq takes AI from proof of concept to production. We build and deploy the systems, and your team keeps running them after we're done.
           </motion.p>
 
           <motion.div
