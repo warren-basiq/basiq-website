@@ -54,12 +54,35 @@ import "../styles/global.css";
             >About</a
           >
         </div>
-        <a
-          href="/#book-call"
-          class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
-        >
-          Book a Call
-        </a>
+        <div class="flex items-center gap-4">
+          <a
+            href="/#book-call"
+            class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+          >
+            Book a Call
+          </a>
+          <button
+            id="mobile-menu-btn"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] md:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg id="menu-icon-open" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden border-t border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden">
+        <div class="flex flex-col gap-1 px-6 py-4">
+          <a href="/#services" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Services</a>
+          <a href="/#work" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Work</a>
+          <a href="/#about" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">About</a>
+        </div>
       </div>
     </nav>
 
@@ -77,7 +100,7 @@ import "../styles/global.css";
           Product
         </p>
         <h1
-          class="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl"
+          class="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Qenerate
         </h1>
@@ -256,5 +279,16 @@ import "../styles/global.css";
         </div>
       </div>
     </footer>
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+        iconOpen?.classList.toggle('hidden');
+        iconClose?.classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>

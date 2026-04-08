@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Spotlight } from "./ui/spotlight";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
@@ -235,6 +235,7 @@ const products = [
 /* ─── Component ──────────────────────────────────────────────────── */
 
 export default function Homepage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200">
       {/* Grain overlay */}
@@ -285,13 +286,58 @@ export default function Homepage() {
               About
             </a>
           </div>
-          <a
-            href="#book-call"
-            className="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
-          >
-            Book a Call
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href="#book-call"
+              className="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+            >
+              Book a Call
+            </a>
+            <button
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="border-t border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden">
+            <div className="flex flex-col gap-1 px-6 py-4">
+              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
+                Services
+              </a>
+              <a href="#work" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
+                Work
+              </a>
+              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
+                About
+              </a>
+              <div className="my-2 border-t border-white/[0.06]" />
+              <p className="px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]/60">Products</p>
+              <a
+                href="https://gettopiq.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-4 py-3 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+              >
+                Topiq <span className="ml-2 text-xs text-amber-400/70">gettopiq.ai</span>
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ─── HERO ────────────────────────────────────────────── */}
@@ -324,7 +370,7 @@ export default function Homepage() {
 
           <TextGenerateEffect
             words="Your AI pilot worked. Now nothing else has moved."
-            className="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
+            className="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             duration={0.4}
           />
 
@@ -429,7 +475,7 @@ export default function Homepage() {
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {steps.map((step, i) => (
               <FadeUp key={step.num} delay={i * 0.12}>
-                <div className="group relative rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+                <div className="group relative rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8">
                   <span className="font-mono text-6xl font-bold text-white/[0.04] transition-colors duration-300 group-hover:text-amber-400/[0.08]">
                     {step.num}
                   </span>
@@ -496,7 +542,7 @@ export default function Homepage() {
                   href={p.link}
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel={p.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold text-white">{p.name}</h3>
