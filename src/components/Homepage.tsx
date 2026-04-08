@@ -6,6 +6,7 @@ import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 import { BackgroundBeams } from "./ui/background-beams";
 import FluidAnimation from "./FluidAnimation";
+import BasiqLogo from "./BasiqLogo";
 
 /* ─── Animation helpers ──────────────────────────────────────────── */
 
@@ -249,8 +250,8 @@ export default function Homepage() {
       {/* ─── NAV ─────────────────────────────────────────────── */}
       <nav className="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
-          <a href="/" className="text-2xl font-bold tracking-tight text-white">
-            Basiq
+          <a href="/" aria-label="Basiq home">
+            <BasiqLogo />
           </a>
           <div className="hidden items-center gap-8 md:flex">
             <a href="#services" className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
@@ -555,8 +556,8 @@ export default function Homepage() {
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
           <div className="grid gap-12 md:grid-cols-4">
             <div className="md:col-span-1">
-              <a href="/" className="text-xl font-bold tracking-tight text-white">
-                Basiq
+              <a href="/" aria-label="Basiq home">
+                <BasiqLogo size="small" />
               </a>
               <p className="mt-3 text-sm text-[#a09d97]">
                 AI execution partner.
