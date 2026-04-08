@@ -491,12 +491,12 @@ export default function Homepage() {
 
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {products.map((p, i) => (
-              <FadeUp key={p.name} delay={i * 0.1}>
+              <FadeUp key={p.name} delay={i * 0.1} className="h-full">
                 <a
                   href={p.link}
                   target={p.link.startsWith("http") ? "_blank" : undefined}
                   rel={p.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group block rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold text-white">{p.name}</h3>
@@ -510,7 +510,7 @@ export default function Homepage() {
                       {p.tag}
                     </span>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-[#a09d97]">{p.description}</p>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-[#a09d97]">{p.description}</p>
                   <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
                     Learn more →
                   </span>
