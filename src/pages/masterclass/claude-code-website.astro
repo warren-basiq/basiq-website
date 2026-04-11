@@ -1,0 +1,726 @@
+---
+import "../../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn how to build and deploy a professional website using Claude Code. Step-by-step AI masterclass from Basiq Consulting. No coding experience required."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>How to Build a Website with Claude Code | AI Masterclass | Basiq Consulting</title>
+
+    <!-- Course Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Build a Professional Website with Claude Code",
+        "description": "Learn how to build and deploy a professional website using Claude Code. Step-by-step AI masterclass from Basiq Consulting. No coding experience required.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Basiq Consulting",
+          "url": "https://basiqconsulting.com"
+        },
+        "instructor": {
+          "@type": "Person",
+          "name": "Warren Kucker"
+        },
+        "educationalLevel": "Beginner",
+        "isAccessibleForFree": true
+      }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need to know how to code?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This masterclass is designed for non-technical founders and operators. Claude Code writes the code for you — you just need to describe what you want in plain English."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does this cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The masterclass recording and guide are free. Claude Code requires an Anthropic subscription (around $20/month). Vercel hosting is free for personal sites. A custom domain runs about $12/year."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kind of website can I build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A full marketing website with multiple pages, responsive design, contact forms, blog integration, and professional-grade performance. Not a drag-and-drop template — a real codebase you own and control."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can have a live, deployed website in a single afternoon. The masterclass walks you through the entire process from zero to live in about 90 minutes."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body
+    class="min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200"
+  >
+    <!-- Grain overlay -->
+    <div
+      class="pointer-events-none fixed inset-0 z-50 opacity-[0.03]"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E&quot;); background-repeat: repeat; background-size: 256px 256px;"
+    >
+    </div>
+
+    <!-- Nav -->
+    <nav
+      class="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
+      >
+        <a href="/" aria-label="Basiq home" class="inline-flex items-start">
+          <span class="text-2xl font-bold tracking-tight text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">basiq</span>
+          <svg class="ml-[2px] mt-[-3px] h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 6L14 12L8 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14 6L20 12L14 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <div class="hidden items-center gap-8 md:flex">
+          <a
+            href="/#services"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >Services</a
+          >
+          <a
+            href="/#work"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >Work</a
+          >
+          <a
+            href="/#about"
+            class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white"
+            >About</a
+          >
+        </div>
+        <div class="flex items-center gap-4">
+          <a
+            href="https://booking.akiflow.com/basiq-consulting"
+            class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+          >
+            Book a Call
+          </a>
+          <button
+            id="mobile-menu-btn"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] md:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg id="menu-icon-open" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden border-t border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden">
+        <div class="flex flex-col gap-1 px-6 py-4">
+          <a href="/#services" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Services</a>
+          <a href="/#work" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Work</a>
+          <a href="/#about" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative pt-32 pb-20">
+      <div
+        class="absolute inset-0 opacity-[0.04]"
+        style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+      >
+      </div>
+
+      <!-- Ambient glow -->
+      <div
+        class="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[800px] rounded-full opacity-[0.07]"
+        style="background: radial-gradient(ellipse, #F59E0B 0%, transparent 70%);"
+      >
+      </div>
+
+      <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+        <p
+          class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          AI Masterclass
+        </p>
+        <h1
+          class="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+        >
+          Build a Professional Website with AI.
+          <br />
+          <span class="text-amber-400">No Developers Required.</span>
+        </h1>
+        <p
+          class="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
+        >
+          A step-by-step masterclass on using Claude Code to build, customize, and deploy
+          a real website &mdash; from zero to live in an afternoon. No coding experience needed.
+        </p>
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <!-- REGISTER LINK: Replace # with your registration URL -->
+          <a
+            href="#register"
+            class="rounded-lg bg-amber-400 px-7 py-3.5 text-center text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+          >
+            Register for the Masterclass
+          </a>
+          <a
+            href="#download"
+            class="rounded-lg border border-white/[0.1] px-7 py-3.5 text-center text-sm font-semibold text-white transition-all hover:border-white/[0.2] hover:bg-white/[0.04]"
+          >
+            Download the Free Guide
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- What This Masterclass Covers — 6 Modules -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          What you'll learn
+        </p>
+        <h2 class="mt-4 max-w-3xl text-3xl font-bold text-white md:text-4xl">
+          How to Install Claude Code and Build Your First Project
+        </h2>
+
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Module 1 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">01</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              How to Install Claude Code
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Get set up from scratch &mdash; terminal, Node.js, Anthropic account, and your
+              first Claude Code session. Even if you've never opened a terminal before.
+            </p>
+          </div>
+
+          <!-- Module 2 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">02</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Setting Up Your First Project
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Initialize a website project, understand the file structure, and learn how to
+              talk to Claude Code so it builds exactly what you have in mind.
+            </p>
+          </div>
+
+          <!-- Module 3 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">03</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Designing Pages with AI
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Build a homepage, service pages, about page, and contact form using
+              plain-English prompts. No CSS or HTML knowledge required.
+            </p>
+          </div>
+
+          <!-- Module 4 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">04</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Version Control with GitHub
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Set up a GitHub repository so every change is tracked and reversible.
+              Build your own knowledge base that Claude Code learns from over time.
+            </p>
+          </div>
+
+          <!-- Module 5 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">05</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Deploy with Vercel in Minutes
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Push your site live with Vercel &mdash; free hosting, automatic deploys on every
+              change, and a custom domain. Your site goes from local to public in minutes.
+            </p>
+          </div>
+
+          <!-- Module 6 -->
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <span class="font-mono text-sm font-bold text-amber-400/70">06</span>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Maintaining and Updating Your Site
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Learn the repeatable system for making changes, adding pages, and keeping
+              your site current &mdash; all through conversation with Claude Code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Who this is for
+        </p>
+        <h2 class="mt-4 max-w-2xl text-3xl font-bold text-white md:text-4xl">
+          Built for builders, not developers
+        </h2>
+
+        <div class="mt-16 grid gap-0 md:grid-cols-4">
+          <div
+            class="relative border-l border-white/[0.06] p-5 pl-6 sm:p-8 sm:pl-10 first:border-l-0 md:first:border-l"
+          >
+            <div
+              class="absolute left-0 top-8 hidden h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block"
+            >
+            </div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">
+                Founders
+              </span>
+            </div>
+            <p class="mt-2 font-body text-sm leading-relaxed text-[#a09d97]">
+              Launch your company's web presence without waiting on agencies or burning
+              runway on a $5K–$15K build.
+            </p>
+          </div>
+
+          <div
+            class="relative border-l border-white/[0.06] p-5 pl-6 sm:p-8 sm:pl-10"
+          >
+            <div
+              class="absolute left-0 top-8 hidden h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block"
+            >
+            </div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">
+                Consultants
+              </span>
+            </div>
+            <p class="mt-2 font-body text-sm leading-relaxed text-[#a09d97]">
+              Build a credible online presence that matches the quality of your work
+              &mdash; and update it yourself anytime.
+            </p>
+          </div>
+
+          <div
+            class="relative border-l border-white/[0.06] p-5 pl-6 sm:p-8 sm:pl-10"
+          >
+            <div
+              class="absolute left-0 top-8 hidden h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block"
+            >
+            </div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">
+                Coaches
+              </span>
+            </div>
+            <p class="mt-2 font-body text-sm leading-relaxed text-[#a09d97]">
+              Stop paying monthly for cookie-cutter templates. Own a custom site that
+              reflects your brand and converts visitors to clients.
+            </p>
+          </div>
+
+          <div
+            class="relative border-l border-white/[0.06] p-5 pl-6 sm:p-8 sm:pl-10"
+          >
+            <div
+              class="absolute left-0 top-8 hidden h-16 w-px bg-gradient-to-b from-amber-400 to-amber-400/0 md:block"
+            >
+            </div>
+            <div class="mb-3 inline-block rounded-full bg-amber-400/10 px-3 py-1">
+              <span class="font-mono text-xs font-medium text-amber-400">
+                Small Business
+              </span>
+            </div>
+            <p class="mt-2 font-body text-sm leading-relaxed text-[#a09d97]">
+              Get a real website you control &mdash; not a Wix page &mdash; without hiring
+              a developer or learning to code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You'll Walk Away With -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          The outcome
+        </p>
+        <h2 class="mt-4 max-w-2xl text-3xl font-bold text-white md:text-4xl">
+          What you'll walk away with
+        </h2>
+
+        <div class="mt-16 grid gap-6 md:grid-cols-3">
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10">
+              <svg class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-white">
+              A live, deployed website
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Not a mockup or a localhost demo. A real website on a custom domain,
+              live on the internet, ready to share with clients and prospects.
+            </p>
+          </div>
+
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10">
+              <svg class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-white">
+              Your own GitHub knowledge base
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              Every file, every change, every version tracked in GitHub. Claude Code
+              uses this history to make smarter suggestions every time you work on your site.
+            </p>
+          </div>
+
+          <div
+            class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-400/10">
+              <svg class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-white">
+              A repeatable system
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              The workflow for updating your site on your own &mdash; add pages, change
+              copy, swap images, fix bugs &mdash; all by talking to Claude Code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Watch the Walkthrough — Video Embed -->
+    <section id="video" class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Watch the walkthrough
+        </p>
+        <h2 class="mt-4 max-w-2xl text-3xl font-bold text-white md:text-4xl">
+          See the full masterclass
+        </h2>
+        <p class="mt-4 max-w-2xl font-body text-base leading-relaxed text-[#a09d97]">
+          Watch the complete recording or start with the teaser below.
+        </p>
+
+        <!-- VIDEO EMBED: Replace this placeholder with your video embed code -->
+        <div class="mt-12 overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+          <div class="relative aspect-video w-full">
+            <!-- Option 1: YouTube/Vimeo embed — uncomment and add your URL
+            <iframe
+              class="absolute inset-0 h-full w-full"
+              src="YOUR_VIDEO_EMBED_URL"
+              title="Build a Website with Claude Code — AI Masterclass"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            -->
+
+            <!-- Placeholder until video is ready -->
+            <div class="flex h-full w-full flex-col items-center justify-center bg-white/[0.02]">
+              <div class="flex h-20 w-20 items-center justify-center rounded-full border border-white/[0.1] bg-white/[0.04]">
+                <svg class="ml-1 h-8 w-8 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <p class="mt-6 text-sm text-[#a09d97]">Masterclass recording coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download the Free Guide -->
+    <section id="download" class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+          >
+            Free resource
+          </p>
+          <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+            Download the Free Guide
+          </h2>
+          <p class="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-[#a09d97]">
+            Get the step-by-step PDF companion to the masterclass. Everything you need
+            to build your first website with Claude Code &mdash; on your own schedule.
+          </p>
+
+          <!-- PDF DOWNLOAD: Replace # with your PDF link or form action -->
+          <div class="mt-10">
+            <a
+              href="#"
+              class="inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+            >
+              Download the PDF Guide
+            </a>
+            <p class="mt-4 text-xs text-[#706d67]">Free &middot; No email required</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About the Instructor -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <div class="mx-auto max-w-3xl">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+          >
+            Your instructor
+          </p>
+          <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+            Warren Kucker
+          </h2>
+          <p class="mt-6 font-body text-base leading-relaxed text-[#a09d97]">
+            Warren is the founder of Basiq Consulting, where he helps companies go
+            from AI-curious to AI-native across engineering, operations, and go-to-market.
+            He's also the host of the Selling AI Podcast, where he breaks down how
+            businesses are actually using AI to grow &mdash; not just talking about it.
+          </p>
+          <p class="mt-4 font-body text-base leading-relaxed text-[#a09d97]">
+            This masterclass comes from building dozens of production websites with
+            Claude Code &mdash; and teaching non-technical founders how to do the same.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="rounded-full border border-white/[0.08] px-4 py-1.5 text-xs text-[#a09d97]">Basiq Consulting</span>
+            <span class="rounded-full border border-white/[0.08] px-4 py-1.5 text-xs text-[#a09d97]">Selling AI Podcast</span>
+            <span class="rounded-full border border-white/[0.08] px-4 py-1.5 text-xs text-[#a09d97]">AI Strategy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          FAQ
+        </p>
+        <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+          Common questions
+        </h2>
+
+        <div class="mt-16 grid gap-6 md:grid-cols-2">
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6">
+            <h3 class="text-lg font-semibold text-white">
+              Do I need to know how to code?
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              No. This masterclass is designed for non-technical founders and operators.
+              Claude Code writes the code for you &mdash; you just need to describe what
+              you want in plain English.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6">
+            <h3 class="text-lg font-semibold text-white">
+              What does this cost?
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              The masterclass recording and guide are free. Claude Code requires an
+              Anthropic subscription (around $20/month). Vercel hosting is free for
+              personal sites. A custom domain runs about $12/year.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6">
+            <h3 class="text-lg font-semibold text-white">
+              What kind of website can I build?
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              A full marketing website with multiple pages, responsive design, contact
+              forms, blog integration, and professional-grade performance. Not a
+              drag-and-drop template &mdash; a real codebase you own and control.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6">
+            <h3 class="text-lg font-semibold text-white">
+              How long does it take?
+            </h3>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              You can have a live, deployed website in a single afternoon. The masterclass
+              walks you through the entire process from zero to live in about 90 minutes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register CTA -->
+    <section id="register" class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2
+            class="text-3xl font-bold text-white md:text-4xl lg:text-5xl"
+          >
+            Ready to build your website?
+          </h2>
+          <p
+            class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]"
+          >
+            Register for the next live masterclass or watch the recording at your own pace.
+            Either way, you'll have a live website by the end.
+          </p>
+          <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <!-- REGISTER LINK: Replace # with your registration URL -->
+            <a
+              href="#"
+              class="rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+            >
+              Register for the Masterclass
+            </a>
+            <a
+              href="https://booking.akiflow.com/basiq-consulting"
+              class="rounded-lg border border-white/[0.1] px-8 py-4 text-sm font-semibold text-white transition-all hover:border-white/[0.2] hover:bg-white/[0.04]"
+            >
+              Book a Call Instead
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Masterclasses -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Up next
+        </p>
+        <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+          Related Masterclasses
+        </h2>
+        <p class="mt-4 max-w-2xl font-body text-base leading-relaxed text-[#a09d97]">
+          This is the first in a series of hands-on AI masterclasses from Basiq Consulting.
+          More sessions are coming soon.
+        </p>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <div class="rounded-xl border border-dashed border-white/[0.08] bg-white/[0.01] p-8 text-center">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/50">Coming Soon</p>
+            <p class="mt-3 text-lg font-semibold text-white/40">SEO &amp; Content with AI</p>
+          </div>
+          <div class="rounded-xl border border-dashed border-white/[0.08] bg-white/[0.01] p-8 text-center">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/50">Coming Soon</p>
+            <p class="mt-3 text-lg font-semibold text-white/40">Automating Business Ops with Claude</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+        <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div class="flex flex-col items-center gap-4 md:flex-row md:gap-8">
+            <p class="text-xs text-[#706d67]">&copy; 2025 Basiq. All rights reserved.</p>
+            <div class="flex gap-6">
+              <a href="/" class="text-xs text-[#706d67] transition-colors hover:text-white">Home</a>
+              <a href="/#services" class="text-xs text-[#706d67] transition-colors hover:text-white">Services</a>
+              <a href="/engineering" class="text-xs text-[#706d67] transition-colors hover:text-white">Engineering</a>
+              <a href="/ai-strategy" class="text-xs text-[#706d67] transition-colors hover:text-white">AI Strategy</a>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <a href="#" class="text-xs text-[#706d67] transition-colors hover:text-white">Privacy</a>
+            <a href="#" class="text-xs text-[#706d67] transition-colors hover:text-white">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+        iconOpen?.classList.toggle('hidden');
+        iconClose?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
