@@ -67,7 +67,7 @@ const services = [
   {
     icon: <span className="text-2xl text-amber-400/80">⚙</span>,
     title: "Engineering",
-    description: "Faster PRs, better code, team-wide AI adoption.",
+    description: "AI-native workflows, agents that ship, production infrastructure.",
     link: "/engineering",
     className: "md:col-span-1",
     header: (
@@ -83,7 +83,7 @@ const services = [
   {
     icon: <span className="text-2xl text-amber-400/80">◧</span>,
     title: "Business Applications",
-    description: "Custom AI tools built for your workflows.",
+    description: "Process experts build their own tools. Engineers supervise.",
     link: "/business-applications",
     className: "md:col-span-1",
     header: (
@@ -99,7 +99,7 @@ const services = [
   {
     icon: <span className="text-2xl text-amber-400/80">◎</span>,
     title: "Go-to-Market",
-    description: "AI-assisted outreach, enablement, and pipeline.",
+    description: "Automated prospecting, signal-based forecasting, call intelligence.",
     link: "/go-to-market",
     className: "md:col-span-1",
     header: (
@@ -117,7 +117,7 @@ const services = [
   {
     icon: <span className="text-2xl text-amber-400/80">▦</span>,
     title: "Operations",
-    description: "Automation that actually runs without babysitting.",
+    description: "AI as default: writing, research, and intelligence for every employee.",
     link: "/operations",
     className: "md:col-span-2",
     header: (
@@ -136,7 +136,7 @@ const services = [
   {
     icon: <span className="text-2xl text-amber-400/80">△</span>,
     title: "AI Strategy",
-    description: "Where to start, what to build, how to sequence it.",
+    description: "Map your highest-leverage entry points. Prove it with working prototypes.",
     link: "/ai-strategy",
     className: "md:col-span-1",
     header: (
@@ -157,21 +157,21 @@ const steps = [
     title: "Free Assessment",
     time: "5 - 15 hours",
     description:
-      "We map your highest-leverage AI opportunities and deliver working prototypes, not recommendations.",
+      "We identify where AI moves the needle in your specific business and deliver working prototypes to prove it. Not a deck. Not a recommendation.",
   },
   {
     num: "02",
     title: "Build Together",
     time: "Weeks, not months",
     description:
-      "We embed in your team and build the actual systems. Side by side with your engineers and operators.",
+      "We embed with your team and build production systems. Engineering workflows, sales automation, process tools, operational infrastructure. Whatever your highest-leverage entry point is.",
   },
   {
     num: "03",
     title: "You Own It",
     time: "Permanent handoff",
     description:
-      "We document, train, and hand off. You keep the tools. No retainers. No dependency.",
+      "We document, train, and hand off the keys. Your team owns everything we build. No retainer. No dependency. No phone call six months later asking for help.",
   },
 ];
 
@@ -369,7 +369,7 @@ export default function Homepage() {
           </motion.div>
 
           <TextGenerateEffect
-            words="Your AI pilot worked. Now nothing else has moved."
+            words="AI everywhere. Nothing shipping."
             className="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             duration={0.4}
           />
@@ -380,7 +380,7 @@ export default function Homepage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
             className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
           >
-            Basiq takes AI from proof of concept to production. We build and deploy the systems, and your team keeps running them after we're done.
+            Experiments that never become systems. Tools that never become workflows. Pilots that never reach production. We build the infrastructure that turns AI from a side project into how your company operates.
           </motion.p>
 
           <motion.div
@@ -421,10 +421,7 @@ export default function Homepage() {
         <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
           <FadeUp>
             <p className="max-w-4xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug">
-              Most AI engagements end with a strategy doc and a thank you. Ours
-              end with tools your team uses on Monday. We work alongside your
-              engineers, sales teams, and ops. And we leave when there's a
-              working system in place, not before.
+              Most AI consultants leave you with a strategy deck and a list of recommendations. We leave you with production systems your team uses on Monday. We embed with your engineers, sales teams, and operators. We ship real things. And we hand off ownership when it works, not before.
             </p>
           </FadeUp>
         </div>
@@ -574,15 +571,14 @@ export default function Homepage() {
           <div className="mx-auto max-w-3xl text-center">
             <FadeUp>
               <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                Not sure where to start?
+                Not sure where AI moves the needle?
                 <br />
-                That's what the assessment is for.
+                We'll show you in a week.
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
-                It's free. It takes a few hours. You'll walk away with a clear picture of where AI
-                moves the needle for your business and a working prototype to prove it.
+                The assessment is free. You'll walk away with a clear picture of your highest-leverage AI opportunities and a working prototype to prove it.
               </p>
             </FadeUp>
             <FadeUp delay={0.2}>
