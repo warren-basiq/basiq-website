@@ -196,8 +196,8 @@ const testimonials = [
   },
   {
     quote:
-      "The assessment alone was worth more than the last consulting engagement we paid six figures for. And it was free.",
-    name: "JB",
+      "We saw measurable impact in weeks, not months. What stood out was how quickly they turned ideas into a meaningful business outcome.",
+    name: "Jonathan Barnes",
     title: "CEO, Authentic",
   },
   {
