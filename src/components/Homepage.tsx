@@ -121,11 +121,11 @@ const services = [
     link: "/operations",
     className: "md:col-span-2",
     header: (
-      <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
-        <div className="flex items-center gap-3 opacity-40">
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent px-2">
+        <div className="flex items-center gap-1.5 opacity-40 sm:gap-3">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="h-6 w-16 rounded bg-amber-400/20" />
+            <div key={i} className="flex items-center gap-1.5 sm:gap-3">
+              <div className="h-6 w-8 rounded bg-amber-400/20 sm:w-16" />
               {i < 3 && <span className="text-amber-400/40">→</span>}
             </div>
           ))}

@@ -361,7 +361,7 @@ export default function FluidAnimation({ className = "" }: { className?: string 
       <canvas ref={canvasRef} className="absolute inset-0" />
 
       {/* Phase indicator */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+      <div className="absolute bottom-6 left-0 right-0 flex flex-wrap justify-center gap-1 px-2 sm:gap-3">
         {phases.map((phase, i) => (
           <button
             key={phase.label}
@@ -369,7 +369,7 @@ export default function FluidAnimation({ className = "" }: { className?: string 
               timeRef.current = i * PHASE_DURATION;
               setCurrentPhase(i);
             }}
-            className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-500 ${
+            className={`flex items-center gap-1.5 rounded-full px-2 py-1 text-[10px] font-medium transition-all duration-500 sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs ${
               currentPhase === i
                 ? "bg-amber-400/15 text-amber-400"
                 : "text-[#706d67] hover:text-[#a09d97]"
