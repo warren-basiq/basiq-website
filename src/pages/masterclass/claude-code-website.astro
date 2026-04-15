@@ -208,6 +208,54 @@ import "../../styles/global.css";
       </div>
     </header>
 
+    <!-- Webinar Registration Form -->
+    <section class="border-t border-white/[0.06]">
+      <div class="mx-auto max-w-3xl px-6 py-24 lg:px-12 lg:py-32">
+        <p
+          class="text-center text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
+        >
+          Register
+        </p>
+        <h2 class="mt-4 text-center text-3xl font-bold text-white md:text-4xl">
+          Save your seat
+        </h2>
+        <p class="mt-4 text-center text-base text-white/70">
+          Reserve your spot for the live masterclass.
+        </p>
+        <div class="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-10">
+          <div id="riverside-webinar-form">Loading...</div>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://assets.riverside.fm/rs-webinar-form/loader.js"
+      async
+      data-api-base="https://riverside.com"
+      data-event-id="69de96081cb0951f72550bfb"
+      data-target="#riverside-webinar-form"
+      crossorigin="anonymous"
+      is:inline
+    ></script>
+    <script is:inline>
+      document.addEventListener('riverside:registrationSuccess', function (e) {
+        const webinarLink = e.detail && e.detail.webinarLink;
+        const formContainer = document.getElementById('riverside-webinar-form');
+        if (formContainer && webinarLink) {
+          formContainer.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <p style="margin-bottom: 16px;">You are registered to a webinar</p>
+                <a href="${webinarLink}" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Join webinar</a>
+            </div>
+          `;
+        }
+      });
+
+      document.addEventListener('riverside:registrationFailure', function (e) {
+        const errorMessage = e.detail && e.detail.message;
+        console.error('Registration failed:', errorMessage || 'Unknown error');
+      });
+    </script>
+
     <!-- What This Masterclass Covers — 6 Modules -->
     <section class="border-t border-white/[0.06]">
       <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
