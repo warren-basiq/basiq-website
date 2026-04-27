@@ -1,0 +1,433 @@
+{
+  "_id": "post-three-layers-ai",
+  "_type": "post",
+  "title": "Agents, Skills, and Markdown Files: What They Actually Are",
+  "slug": {
+    "_type": "slug",
+    "current": "agents-skills-markdown-what-they-actually-are"
+  },
+  "publishedAt": "2026-04-27T12:00:00.000Z",
+  "excerpt": "An agent isn't AGI. It's a markdown doc with instructions running on a timer. Here's the simplest way to think about the three layers — markdown, skills, agents — and where to start.",
+  "body": [
+    {
+      "_type": "block",
+      "_key": "b001",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s001",
+          "text": "I keep ending up in the same conversation. Someone asks me how to \"do AI\" at their company, I start talking about skills and markdown files, and they stop me to ask what an agent is. Or I say something about a knowledge base, and they assume I mean Notion. Or I say \"skill,\" and they assume I mean prompt.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b002",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s002",
+          "text": "The words are running together. People use the same three terms (agent, skill, markdown) for three completely different things, and the confusion is making it harder to figure out what they should actually do this week.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b003",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s003",
+          "text": "So here's the simplest version I've landed on after enough of these conversations.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b004",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s004",
+          "text": "A markdown file is plain text. A skill is a markdown file with instructions on how to do a specific job. An agent is a skill on a schedule. That's it.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b005",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s005",
+          "text": "The reason this matters is the assumption most people walk in with. They think an agent is some autonomous AI system that's getting close to AGI. It's not. It's a markdown doc with instructions running on a timer. Once you see it that way, the whole stack stops feeling intimidating.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b010",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s010",
+          "text": "Markdown is the substrate",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b011",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s011",
+          "text": "Markdown is the simplest file format on the internet. A .md file with normal text and a few characters that make headers and bullets. No code. No special software. You can open one in any text editor.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b012",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s012",
+          "text": "LLMs read markdown perfectly. When you give Claude or ChatGPT a markdown file, the model knows how to read it without you explaining anything. Headers signal sections. Bullets signal lists. The model uses the structure the way a human would.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b013",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s013",
+          "text": "This is why every serious AI workflow eventually ends up in markdown. Notion exports to it. Cursor and Claude Code use it natively. When you want to give an LLM persistent context about your business, the answer is almost always: write it down in a markdown file.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b014",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s014",
+          "text": "If your team has personas, sales playbooks, brand guidelines, or onboarding docs sitting in Google Docs and PDFs, you don't have a knowledge base for AI yet. You have documents. Converting them to markdown is the first move.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b020",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s020",
+          "text": "A skill is a markdown file with a job",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b021",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s021",
+          "text": "A skill is a markdown file with a specific structure: a short header that tells the model when to use the skill, followed by the instructions for how to do the work.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b022",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s022",
+          "text": "The header is the part most people get wrong. It's a few lines describing what the skill does and when to apply it. Claude reads that header on every conversation and decides whether the rest of the file is relevant. If the header is vague, Claude never loads the skill, and the work you put into the instructions just sits there.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b023",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s023",
+          "text": "The body is where the real work lives. \"When writing in Warren's voice, don't use em dashes. Write peer-to-peer. Replace punchy phrases with specific details from real experience.\" That kind of thing. Five lines or five hundred, depending on the job.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b024",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s024",
+          "text": "I have skills for every recurring thing I do in Claude. Writing in my voice. Drafting newsletter sections. Auditing the Topiq website against our personas. Building cold call scripts. I don't re-explain any of it anymore. Claude reads the right skill at the right moment and goes.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b025",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s025",
+          "text": "If you find yourself typing the same instructions into Claude over and over, that's a skill waiting to be written.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b030",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s030",
+          "text": "An agent is a skill on a schedule",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b031",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s031",
+          "text": "This is the one people overcomplicate.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b032",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s032",
+          "text": "The clearest definition comes from Anthropic: an agent is an LLM that directs its own work. It picks the tool, executes the task, checks the result, adjusts. But that definition is more intimidating than the thing actually is.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b033",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s033",
+          "text": "In practice, an agent is a skill running on a schedule, with permission to use tools. Same markdown file. Same instructions. The only difference is nobody has to open a chat window for the work to happen.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b034",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s034",
+          "text": "The SEO agent I run on Topiq's site is a good example. Every month it pulls SEMrush data, looks at what's ranking on Google and in AI search, identifies which pages have slipped, rewrites them, and updates the site. The instructions live in a markdown file. The schedule is a cron job. The tools are SEMrush, the codebase, and the deploy pipeline. There's no AGI. It's a skill plus a clock plus a few connected tools.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b035",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s035",
+          "text": "The reason agents feel like a different category is that the output looks autonomous. Work shows up that nobody asked for. But the work showing up is just the same work the skill would have done in chat, triggered by time instead of by a person.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b036",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s036",
+          "text": "Once you see it that way, the question stops being \"how do I build an agent\" and starts being \"what work do I want to happen automatically, and what skill needs to exist for that work to be any good?\"",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b040",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s040",
+          "text": "Where most people get stuck",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b041",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s041",
+          "text": "Most people I talk to want to start with agents. They've read about them, they want to build one, they want the autonomous-work feeling. So they stand up an agent with no skill and no markdown underneath, and the output is generic and wandering. Then they decide AI doesn't really work for their business.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b042",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s042",
+          "text": "The order is backwards. The teams that get real value start by writing things down (markdown), then codifying their process (skills), then turning the schedule on (agents). Each layer makes the next one work.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b043",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s043",
+          "text": "If you're not doing anything yet: open a markdown file and write down your personas, your value prop, and the way you talk about your product. Drop it in a Claude Project. You'll feel the difference within a week, before you build a single skill.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b044",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s044",
+          "text": "If you're already using markdown: notice what you re-explain to AI all the time. Voice, formatting, process steps. Each one is a skill waiting to be written.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b045",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s045",
+          "text": "If you're already running skills: pick one that you'd want running on a schedule and turn it into an agent. Start with something boring. SEO updates. Weekly competitive intel. Pipeline list refreshes. The agent will earn its keep on the work that consumes hours, not on the work that requires judgment.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b046",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s046",
+          "text": "The whole thing is less mysterious than it sounds. AI gets to know your business through the documents you've written, the procedures you've codified, and the work you've trusted it to do. If your AI feels generic, it's because nothing underneath is yours yet. Fix that and the rest takes care of itself.",
+          "marks": []
+        }
+      ]
+    }
+  ]
+}
