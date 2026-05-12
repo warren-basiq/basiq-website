@@ -193,18 +193,17 @@ import "../../styles/global.css";
         <div
           class="mt-8 inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-300"
         >
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
           </svg>
-          <span>Wednesday, May 6 &middot; 9:00 AM PT &middot; Live Online</span>
+          <span>Free recording &middot; Watch anytime</span>
         </div>
         <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <!-- REGISTER LINK: Replace # with your registration URL -->
           <a
-            href="#register"
+            href="#video"
             class="rounded-lg bg-amber-400 px-7 py-3.5 text-center text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
           >
-            Register for the Masterclass
+            Watch the Masterclass
           </a>
           <a
             href="#download"
@@ -625,7 +624,7 @@ import "../../styles/global.css";
       </div>
     </section>
 
-    <!-- Related Masterclasses -->
+    <!-- Related Webinars -->
     <section class="border-t border-white/[0.06]">
       <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
         <p
@@ -634,83 +633,69 @@ import "../../styles/global.css";
           Up next
         </p>
         <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
-          Related Masterclasses
+          Related Webinars
         </h2>
         <p class="mt-4 max-w-2xl font-body text-base leading-relaxed text-[#a09d97]">
-          This is the first in a series of hands-on AI masterclasses from Basiq Consulting.
-          More sessions are coming soon.
+          Part of a series of hands-on AI webinars from Basiq Consulting. More sessions are coming soon.
         </p>
 
         <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <a
+            href="/masterclass/claude-code-101"
+            class="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]"
+          >
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/70">Webinar</p>
+            <p class="mt-3 text-lg font-semibold text-white">Claude Code 101</p>
+            <p class="mt-3 font-body text-sm leading-relaxed text-[#a09d97]">
+              A hands-on introduction for non-technical teams &mdash; get Claude Code installed,
+              demystify the command line, and build your first apps and automations in plain English.
+            </p>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400">
+              View the webinar
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
           <div class="rounded-xl border border-dashed border-white/[0.08] bg-white/[0.01] p-8 text-center">
             <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/50">Coming Soon</p>
             <p class="mt-3 text-lg font-semibold text-white/40">SEO &amp; Content with AI</p>
           </div>
-          <div class="rounded-xl border border-dashed border-white/[0.08] bg-white/[0.01] p-8 text-center">
-            <p class="font-mono text-xs uppercase tracking-[0.2em] text-amber-400/50">Coming Soon</p>
-            <p class="mt-3 text-lg font-semibold text-white/40">Automating Business Ops with Claude</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Webinar Registration Form -->
-    <section id="register" class="border-t border-white/[0.06]">
-      <div class="mx-auto max-w-3xl px-6 py-24 lg:px-12 lg:py-32">
-        <p
-          class="text-center text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
-        >
-          Register
-        </p>
-        <h2 class="mt-4 text-center text-3xl font-bold text-white md:text-4xl">
-          Save your seat
-        </h2>
-        <p class="mt-4 text-center text-base text-white/70">
-          Reserve your spot for the live masterclass.
-        </p>
-        <div class="mt-6 flex justify-center">
-          <div
-            class="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-300"
+    {/* Webinar Registration Form — hidden; this page now hosts the recording */}
+    {false && (
+      <section id="register" class="border-t border-white/[0.06]">
+        <div class="mx-auto max-w-3xl px-6 py-24 lg:px-12 lg:py-32">
+          <p
+            class="text-center text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80"
           >
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span>Wednesday, May 6 &middot; 9:00 AM PT &middot; Live Online</span>
+            Register
+          </p>
+          <h2 class="mt-4 text-center text-3xl font-bold text-white md:text-4xl">
+            Save your seat
+          </h2>
+          <p class="mt-4 text-center text-base text-white/70">
+            Reserve your spot for the live masterclass.
+          </p>
+          <div class="mt-6 flex justify-center">
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm font-semibold text-amber-300"
+            >
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>Wednesday, May 6 &middot; 9:00 AM PT &middot; Live Online</span>
+            </div>
+          </div>
+          <div class="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-10">
+            <div id="riverside-webinar-form">Loading...</div>
           </div>
         </div>
-        <div class="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-10">
-          <div id="riverside-webinar-form">Loading...</div>
-        </div>
-      </div>
-    </section>
-    <script
-      src="https://assets.riverside.fm/rs-webinar-form/loader.js"
-      async
-      data-api-base="https://riverside.com"
-      data-event-id="69de96081cb0951f72550bfb"
-      data-target="#riverside-webinar-form"
-      crossorigin="anonymous"
-      is:inline
-    ></script>
-    <script is:inline>
-      document.addEventListener('riverside:registrationSuccess', function (e) {
-        const webinarLink = e.detail && e.detail.webinarLink;
-        const formContainer = document.getElementById('riverside-webinar-form');
-        if (formContainer && webinarLink) {
-          formContainer.innerHTML = `
-            <div style="text-align: center; padding: 20px;">
-                <p style="margin-bottom: 16px;">You are registered to a webinar</p>
-                <a href="${webinarLink}" target="_blank" rel="noopener" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Join webinar</a>
-            </div>
-          `;
-        }
-      });
-
-      document.addEventListener('riverside:registrationFailure', function (e) {
-        const errorMessage = e.detail && e.detail.message;
-        console.error('Registration failed:', errorMessage || 'Unknown error');
-      });
-    </script>
+      </section>
+    )}
 
     <!-- Footer -->
     <footer class="border-t border-white/[0.06]">
