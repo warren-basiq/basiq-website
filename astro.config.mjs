@@ -19,5 +19,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react(), sitemap()]
+  integrations: [
+    react(),
+    // Exclude the llms.txt endpoints — they are not HTML pages.
+    sitemap({ filter: (page) => !page.includes('/llms') })
+  ]
 });
