@@ -1,0 +1,169 @@
+{
+  "_id": "post-the-30-second-employee",
+  "_type": "post",
+  "title": "The 30-Second Employee",
+  "slug": {
+    "_type": "slug",
+    "current": "the-30-second-employee"
+  },
+  "publishedAt": "2026-05-25T12:00:00.000Z",
+  "excerpt": "Working with AI right now feels like managing a team of new employees — except the feedback loop is 30 to 120 seconds, and that gap is where focus, judgment, and the day itself fall apart.",
+  "coverImage": "/images/the-30-second-employee.png",
+  "coverImageAlt": "Neon signs on a dark wall spelling 'waiting, waiting, waiting, waiting' in different colors.",
+  "body": [
+    {
+      "_type": "block",
+      "_key": "b001",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s001",
+          "text": "Working with AI right now feels like managing a team of new employees. You ask them to do something, and they go do it. That part isn't new. What's new is the feedback loop.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b002",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s002",
+          "text": "The old way, you'd hand a new hire a task and they'd come back with the work hours later, at your next meeting. You moved on to your own work in the meantime. Now you hand the task off and the employee thinks for 30 seconds, 60, 90, sometimes 120 seconds, while you sit there waiting.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b003",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s003",
+          "text": "Nobody is going to wait two minutes and just watch Claude think in order to continue the task. So you get distracted. In the best case, you're running two tasks at once and switching back and forth between them. That takes a lot of context switching, but it's a skill you can train. In the worst case, and this is the one I keep catching myself in, it starts thinking, and then I start thinking. I start to pace. I start to walk around. Then I get distracted and lose the thread. I've lost 30 minutes to a 90-second wait more than once.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b004",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s004",
+          "text": "The wait isn't the only problem. When Claude comes back, it usually comes back with a wall of text. I waited two minutes, and now I have a lot to read through, figure out what to do with, and turn into my next instruction. The work stacks up faster than I can actually process it.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b005",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s005",
+          "text": "Put those together and three things happen. First, I'm getting pulled away from work too often, and the gap is where it happens. Second, I'm filling up my own context window way too fast. My brain is fried six or seven hours into the day when I'm used to working ten or twelve. Third, and this is the one that bothers me, because of that gap I start to just accept whatever Claude hands back. The work isn't reviewed so much as approved.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b010",
+      "style": "h2",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s010",
+          "text": "What's starting to help",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b011",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s011",
+          "text": "I don't think the answer is to use AI less. I think it's to change how I work with it. A few things are starting to help.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b012",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s012",
+          "text": "Run two tasks side by side. Give Claude one task, and while it's thinking, move to the second one. Switch back when it's done. The context switching is real, but it beats pacing around waiting on a single answer.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b013",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s013",
+          "text": "Make it return work in snippets, not walls of text. I've started running skills so that when Claude comes back, it hands me one idea at a time that I can react to quickly, then the next idea, then the next. I work through the response fast, keep my own context manageable, and stay in the driver's seat instead of reading a report after the fact.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b014",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s014",
+          "text": "Chunk the work into blocks. For the next 30 minutes, I'm doing Claude work, two tasks specifically, and nothing else. Then I switch to something that isn't Claude work at all. Later, if I've got more to run, I come back for another 30-minute block. Being deliberate about when I'm in the tool and when I'm not is the thing that keeps the day from turning to mush.",
+          "marks": []
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b020",
+      "style": "normal",
+      "markDefs": [],
+      "children": [
+        {
+          "_type": "span",
+          "_key": "s020",
+          "text": "The instant paradigm is new, and most of us haven't built the habits for it yet. The employees are fast. Staying engaged enough to actually judge their work is the part we have to get good at.",
+          "marks": []
+        }
+      ]
+    }
+  ]
+}

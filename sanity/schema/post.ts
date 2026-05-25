@@ -30,6 +30,18 @@ export const post = defineType({
       rows: 3,
     }),
     defineField({
+      name: "coverImage",
+      title: "Cover Image URL",
+      description:
+        "Absolute path or full URL to the post's cover image (e.g. /images/foo.png).",
+      type: "string",
+    }),
+    defineField({
+      name: "coverImageAlt",
+      title: "Cover Image Alt Text",
+      type: "string",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "array",

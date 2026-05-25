@@ -8,6 +8,8 @@ interface Post {
   slug: { current: string };
   publishedAt: string;
   excerpt: string;
+  coverImage?: string;
+  coverImageAlt?: string;
   body: Array<{
     _type: string;
     children?: Array<{ text: string }>;
@@ -45,6 +47,8 @@ const post = await sanityClient.fetch<Post>(
     slug,
     publishedAt,
     excerpt,
+    coverImage,
+    coverImageAlt,
     body
   }`,
   { slug }
@@ -89,6 +93,15 @@ function renderBody(body: Post["body"]): string {
           day: "numeric",
         })}
       </time>
+    )}
+
+    {post.coverImage && (
+      <img
+        src={post.coverImage}
+        alt={post.coverImageAlt ?? post.title}
+        class="mt-10 w-full rounded-lg"
+        loading="eager"
+      />
     )}
 
     <div class="prose mt-10 max-w-none text-gray-700" set:html={renderBody(post.body)} />
