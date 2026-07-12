@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/topiq", "destination": "https://gettopiq.ai", "permanent": true },
+    { "source": "/musal", "destination": "https://www.musal.ai", "permanent": true },
+    { "source": "/epiq", "destination": "/", "permanent": true },
+
+    { "source": "/qenerate", "destination": "/products/qindle", "permanent": true },
+
+    { "source": "/fabriq", "destination": "/products/fabriq", "permanent": true },
+    { "source": "/qindle", "destination": "/products/qindle", "permanent": true },
+    { "source": "/lanescout", "destination": "/products/lanescout", "permanent": true }
+  ]
+}

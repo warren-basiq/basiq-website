@@ -7,6 +7,7 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 import { BackgroundBeams } from "./ui/background-beams";
 import FluidAnimation from "./FluidAnimation";
 import BasiqLogo from "./BasiqLogo";
+import { products, statusLabel, ctaLabel, PRODUCTS_HREF } from "../lib/products";
 
 /* ─── Animation helpers ──────────────────────────────────────────── */
 
@@ -208,30 +209,6 @@ const testimonials = [
   },
 ];
 
-const products = [
-  {
-    name: "Topiq",
-    description:
-      "AI sales inbox for outbound teams. Manages replies, books meetings, and keeps your pipeline moving.",
-    link: "https://gettopiq.ai",
-    tag: "Live",
-  },
-  {
-    name: "Kalibrate",
-    description:
-      "A prompt management tool that helps you develop your best prompts, use the best models, and ensure the best AI results.",
-    link: "#",
-    tag: "Coming soon",
-  },
-  {
-    name: "Qenerate",
-    description:
-      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the only human parts of Pipe Gen — Cold Calling and Video.",
-    link: "/qenerate",
-    tag: "Coming soon",
-  },
-];
-
 /* ─── Component ──────────────────────────────────────────────────── */
 
 export default function Homepage() {
@@ -262,29 +239,40 @@ export default function Homepage() {
               Work
             </a>
             <div className="group relative">
-              <button className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
+              <a href={PRODUCTS_HREF} className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
                 Products
-              </button>
-              <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+              </a>
+              <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 <div className="rounded-lg border border-white/[0.08] bg-[#141414] p-2 shadow-2xl">
+                  {products.map((p) => (
+                    <a
+                      key={p.slug}
+                      href={p.href}
+                      target={p.external ? "_blank" : undefined}
+                      rel={p.external ? "noopener noreferrer" : undefined}
+                      className="block rounded-md px-3 py-2.5 transition-colors hover:bg-white/[0.04]"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-[#e8e5e0]">{p.name}</span>
+                        {p.external && <span className="text-xs text-amber-400/70">{p.host} ↗</span>}
+                        {p.status === "coming-soon" && (
+                          <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
+                            Soon
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-[#706d67]">{p.tagline}</span>
+                    </a>
+                  ))}
                   <a
-                    href="https://gettopiq.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block rounded-md px-3 py-2.5 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+                    href={PRODUCTS_HREF}
+                    className="mt-1 block rounded-md border-t border-white/[0.06] px-3 pb-2 pt-3 text-sm text-amber-400/70 transition-colors hover:text-amber-400"
                   >
-                    Topiq
-                    <span className="ml-2 text-xs text-amber-400/70">gettopiq.ai</span>
-                  </a>
-                  <a href="#" className="block rounded-md px-3 py-2.5 text-sm text-[#a09d97]/50">
-                    More coming soon
+                    All products →
                   </a>
                 </div>
               </div>
             </div>
-            <a href="#about" className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
-              About
-            </a>
           </div>
           <div className="flex items-center gap-4">
             <a
@@ -321,20 +309,32 @@ export default function Homepage() {
               <a href="#work" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
                 Work
               </a>
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
-                About
-              </a>
               <div className="my-2 border-t border-white/[0.06]" />
-              <p className="px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]/60">Products</p>
               <a
-                href="https://gettopiq.ai"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={PRODUCTS_HREF}
                 onClick={() => setMobileMenuOpen(false)}
-                className="rounded-lg px-4 py-3 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+                className="px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]/60"
               >
-                Topiq <span className="ml-2 text-xs text-amber-400/70">gettopiq.ai</span>
+                Products
               </a>
+              {products.map((p) => (
+                <a
+                  key={p.slug}
+                  href={p.href}
+                  target={p.external ? "_blank" : undefined}
+                  rel={p.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+                >
+                  {p.name}
+                  {p.external && <span className="text-xs text-amber-400/70">{p.host} ↗</span>}
+                  {p.status === "coming-soon" && (
+                    <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
+                      Soon
+                    </span>
+                  )}
+                </a>
+              ))}
             </div>
           </div>
         )}
@@ -492,6 +492,72 @@ export default function Homepage() {
         </div>
       </Section>
 
+      {/* ─── PRODUCT SUITE ───────────────────────────────────── */}
+      <Section className="border-t border-white/[0.06]" id="products">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <FadeUp>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+              Products
+            </p>
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+              Five products. Four already in production.
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-[#a09d97]">
+              We build tools we use ourselves. The products we've shipped are the same systems we bring to clients.
+            </p>
+          </FadeUp>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {products.map((p, i) => (
+              <FadeUp key={p.slug} delay={i * 0.1} className="h-full">
+                <a
+                  href={p.href}
+                  target={p.external ? "_blank" : undefined}
+                  rel={p.external ? "noopener noreferrer" : undefined}
+                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="font-mono text-xs font-medium uppercase tracking-wider text-amber-400/60">
+                      {p.category}
+                    </p>
+                    <span
+                      className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        p.status === "live"
+                          ? "bg-emerald-400/10 text-emerald-400"
+                          : "bg-white/[0.06] text-[#a09d97]"
+                      }`}
+                    >
+                      {statusLabel(p.status)}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold text-white">{p.name}</h3>
+                  <p className="mt-1 text-sm text-[#c8c5bf]">{p.tagline}</p>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-[#a09d97]">{p.description}</p>
+                  <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
+                    {ctaLabel(p)}
+                  </span>
+                </a>
+              </FadeUp>
+            ))}
+
+            <FadeUp delay={products.length * 0.1} className="h-full">
+              <a
+                href={PRODUCTS_HREF}
+                className="group flex h-full flex-col justify-center rounded-xl border border-dashed border-white/[0.08] bg-transparent p-5 transition-all duration-300 hover:border-amber-400/25 hover:bg-white/[0.02] sm:p-8"
+              >
+                <h3 className="text-lg font-semibold text-white">The full suite</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#a09d97]">
+                  Sales, customer success, prompt ops, CRM, and freight. See how the five fit together.
+                </p>
+                <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
+                  View all products →
+                </span>
+              </a>
+            </FadeUp>
+          </div>
+        </div>
+      </Section>
+
       {/* ─── SOCIAL PROOF (Infinite Moving Cards) ────────────── */}
       <Section className="border-t border-white/[0.06]" id="work">
         <div className="py-28 lg:py-36">
@@ -514,53 +580,6 @@ export default function Homepage() {
               <InfiniteMovingCards items={testimonials} direction="left" speed="slow" />
             </div>
           </FadeUp>
-        </div>
-      </Section>
-
-      {/* ─── PRODUCTS AS PROOF ───────────────────────────────── */}
-      <Section className="border-t border-white/[0.06]">
-        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
-          <FadeUp>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
-              Products
-            </p>
-            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
-              We build tools we use ourselves.
-            </h2>
-            <p className="mt-4 max-w-xl text-base text-[#a09d97]">
-              The products we've shipped are the same systems we bring to clients.
-            </p>
-          </FadeUp>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {products.map((p, i) => (
-              <FadeUp key={p.name} delay={i * 0.1} className="h-full">
-                <a
-                  href={p.link}
-                  target={p.link.startsWith("http") ? "_blank" : undefined}
-                  rel={p.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8"
-                >
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-white">{p.name}</h3>
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                        p.tag === "Live"
-                          ? "bg-emerald-400/10 text-emerald-400"
-                          : "bg-white/[0.06] text-[#a09d97]"
-                      }`}
-                    >
-                      {p.tag}
-                    </span>
-                  </div>
-                  <p className="mt-4 flex-1 text-sm leading-relaxed text-[#a09d97]">{p.description}</p>
-                  <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
-                    Learn more →
-                  </span>
-                </a>
-              </FadeUp>
-            ))}
-          </div>
         </div>
       </Section>
 
@@ -612,19 +631,27 @@ export default function Homepage() {
               <ul className="mt-4 space-y-3">
                 <li><a href="#services" className="text-sm text-[#706d67] transition-colors hover:text-white">Services</a></li>
                 <li><a href="#work" className="text-sm text-[#706d67] transition-colors hover:text-white">Work</a></li>
-                <li><a href="#about" className="text-sm text-[#706d67] transition-colors hover:text-white">About</a></li>
                 <li><a href="/blog" className="text-sm text-[#706d67] transition-colors hover:text-white">Blog</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Products</h4>
               <ul className="mt-4 space-y-3">
-                <li>
-                  <a href="https://gettopiq.ai" target="_blank" rel="noopener noreferrer" className="text-sm text-[#706d67] transition-colors hover:text-white">
-                    Topiq
-                  </a>
-                </li>
-                <li><span className="text-sm text-[#706d67]/50">More coming soon</span></li>
+                {products.map((p) => (
+                  <li key={p.slug}>
+                    <a
+                      href={p.href}
+                      target={p.external ? "_blank" : undefined}
+                      rel={p.external ? "noopener noreferrer" : undefined}
+                      className="text-sm text-[#706d67] transition-colors hover:text-white"
+                    >
+                      {p.name}
+                      {p.status === "coming-soon" && (
+                        <span className="ml-2 text-xs text-[#706d67]/70">{statusLabel(p.status)}</span>
+                      )}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>

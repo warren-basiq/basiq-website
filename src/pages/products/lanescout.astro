@@ -1,0 +1,307 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { SITE_URL } from "../../lib/site-pages";
+
+const title = "LaneScout — Negotiation Coaching for Freight Brokers";
+const description =
+  "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers. Coming soon from Basiq.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${title} | Basiq`,
+  description,
+  url: `${SITE_URL}/products/lanescout`,
+  publisher: {
+    "@type": "Organization",
+    name: "Basiq",
+    url: SITE_URL,
+  },
+  mainEntity: {
+    "@type": "SoftwareApplication",
+    name: "LaneScout",
+    description,
+    applicationCategory: "BusinessApplication",
+    url: `${SITE_URL}/products/lanescout`,
+  },
+};
+
+const steps = [
+  {
+    num: "01",
+    title: "Connects to your phone system",
+    body: "LaneScout integrates with your existing call recording infrastructure. No new hardware, no workflow changes. Every carrier call is captured and analyzed automatically.",
+  },
+  {
+    num: "02",
+    title: "AI analyzes every call",
+    body: "The AI listens for negotiation behavior — how your CSRs open, how they anchor, how they respond to pushback, and whether they're caving before they need to. Every call gets scored.",
+  },
+  {
+    num: "03",
+    title: "One skill per week",
+    body: "Instead of overwhelming CSRs with everything they're doing wrong, LaneScout works with managers to pick a single high-impact skill to focus on. Focused improvement beats scattered feedback.",
+  },
+  {
+    num: "04",
+    title: "Real-time nudges after every call",
+    body: "After each call, the CSR gets a short, specific nudge on how they performed against that week's target skill. Immediate feedback creates faster learning loops.",
+  },
+  {
+    num: "05",
+    title: "Scoring and manager visibility",
+    body: "Managers get an overall negotiation score per rep, trend data over time, and team-wide visibility into where the coaching is — and isn't — working.",
+  },
+];
+
+const audiences = [
+  {
+    title: "CSR Managers",
+    lead: "Stop guessing which reps need coaching, and on what.",
+    points: [
+      "Objective performance data across every rep",
+      "Scalable coaching — no manual call review",
+      "Structured, measurable skill development programs",
+      "A direct line from coaching activity to margin impact",
+    ],
+  },
+  {
+    title: "Carrier Sales Reps",
+    lead: "Get better, faster — with feedback that's specific and immediate.",
+    points: [
+      "Instant post-call feedback on the skill that matters right now",
+      "A clear, focused improvement path — not a fire hose of notes",
+      "Visible progress that builds confidence on the phone",
+      "Higher performance means higher earning potential",
+    ],
+  },
+];
+
+const comparison = [
+  ["Flags keywords and talk time", "Scores negotiation behavior specifically"],
+  ["Gives managers a report to act on", "Gives CSRs immediate post-call feedback"],
+  ["Broad sales coaching", "Freight carrier negotiation — purpose-built"],
+  ["Static dashboards", "Dynamic, skill-focused weekly programs"],
+  ["Requires manual review", "Fully automated — 100% call coverage"],
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Hero -->
+  <header class="relative pt-24 pb-16">
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="flex items-center gap-3">
+        <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+          Logistics
+        </p>
+        <span class="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-xs font-medium text-[#a09d97]">
+          Coming soon
+        </span>
+      </div>
+      <h1 class="mt-4 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+        Turn your carrier desk into a margin engine.
+      </h1>
+      <p class="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl">
+        LaneScout is AI-powered negotiation coaching built specifically for US
+        trucking brokers. It connects to your phone system, analyzes every carrier
+        call, and turns those calls into a structured coaching program for your
+        carrier sales team.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href="https://booking.akiflow.com/basiq-consulting"
+          class="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+        >
+          Get Early Access
+        </a>
+        <a
+          href="/products"
+          class="rounded-lg border border-white/[0.12] px-7 py-3.5 text-sm font-medium text-[#e8e5e0] transition-all hover:border-white/[0.25] hover:bg-white/[0.04]"
+        >
+          All products
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        The problem
+      </p>
+      <h2 class="mt-4 max-w-3xl text-3xl font-bold text-white md:text-4xl">
+        Your carrier desk is leaving money on the table.
+      </h2>
+      <p class="mt-8 max-w-3xl font-body text-lg leading-relaxed text-[#a09d97]">
+        Every day, your CSRs call carriers to cover posted loads. And every day,
+        most of them do the same thing: they come in with a number, the carrier
+        pushes back, and they split the difference. It feels like negotiating. It
+        isn't.
+      </p>
+
+      <blockquote class="mt-10 max-w-3xl border-l-2 border-amber-400/40 pl-6">
+        <p class="font-body text-xl leading-relaxed text-[#c8c5bf] md:text-2xl">
+          For a mid-size freight broker, the gap between what your CSRs pay carriers
+          and benchmark market rates can exceed <span class="font-semibold text-white">$200,000 per month</span>.
+          That's not revenue — that's margin walking out the door on every load.
+        </p>
+      </blockquote>
+
+      <p class="mt-10 max-w-3xl font-body text-lg leading-relaxed text-[#a09d97]">
+        The root cause isn't effort. Your CSRs are working hard. The problem is
+        skill: negotiation is a craft, and most CSRs were never trained for it. So
+        they default to the path of least resistance — meet in the middle and move
+        on.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        How it works
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+        LaneScout doesn't replace your CSRs. It makes them better, one skill at a time.
+      </h2>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          steps.map((s) => (
+            <div class="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+              <span class="font-mono text-5xl font-bold text-white/[0.06] transition-colors duration-300 group-hover:text-amber-400/[0.10]">
+                {s.num}
+              </span>
+              <h3 class="mt-4 text-lg font-semibold text-white">{s.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-16 max-w-3xl font-body text-lg leading-relaxed text-[#a09d97]">
+        Most sales coaching fails because it tries to change too many things at once.
+        LaneScout runs on a single behavioral principle: <span class="font-semibold text-[#e8e5e0]">one skill,
+        practiced repeatedly, with immediate feedback, creates lasting change.</span> And
+        because the feedback is automated, it works whether you have 5 CSRs or 50.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who benefits -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        Who benefits
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+        Built for the desk, not the boardroom
+      </h2>
+
+      <div class="mt-16 grid gap-8 md:grid-cols-2">
+        {
+          audiences.map((a) => (
+            <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8">
+              <h3 class="text-xl font-semibold text-white">{a.title}</h3>
+              <p class="mt-2 text-base text-[#c8c5bf]">{a.lead}</p>
+              <ul class="mt-6 space-y-3">
+                {a.points.map((point) => (
+                  <li class="flex gap-3 text-sm leading-relaxed text-[#a09d97]">
+                    <span class="text-amber-400/60">—</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        What makes it different
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+        Not another call analytics tool
+      </h2>
+
+      <div class="mt-16 overflow-x-auto">
+        <table class="w-full min-w-[36rem] border-collapse text-left">
+          <thead>
+            <tr class="border-b border-white/[0.08]">
+              <th class="pb-4 pr-6 text-sm font-semibold text-[#706d67]">
+                Generic call analytics
+              </th>
+              <th class="pb-4 text-sm font-semibold text-amber-400/80">LaneScout</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comparison.map(([generic, lanescout]) => (
+                <tr class="border-b border-white/[0.06]">
+                  <td class="py-5 pr-6 text-sm leading-relaxed text-[#706d67]">{generic}</td>
+                  <td class="py-5 text-sm leading-relaxed text-[#e8e5e0]">{lanescout}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business case -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        The business case
+      </p>
+      <blockquote class="mt-8 max-w-4xl border-l-2 border-amber-400/40 pl-6">
+        <p class="font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:leading-snug">
+          If your carrier desk covers 500 loads per day at an average load value of
+          $2,000, a 1% improvement in carrier cost negotiation is
+          <span class="font-semibold text-white">$10,000 per day</span> — roughly
+          <span class="font-semibold text-white">$3.6M per year</span>.
+        </p>
+      </blockquote>
+      <p class="mt-10 max-w-3xl font-body text-lg leading-relaxed text-[#a09d97]">
+        Beyond the margin, LaneScout lowers the cost of turnover. When a CSR leaves,
+        their negotiation instincts leave with them. LaneScout turns that instinct
+        into a documented, repeatable coaching system — so new reps ramp faster and
+        the knowledge stays in the building.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          Every call is a chance to protect your margin — or give it away.
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
+          LaneScout makes sure your CSRs know the difference. We're onboarding design
+          partners now.
+        </p>
+        <a
+          href="https://booking.akiflow.com/basiq-consulting"
+          class="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+        >
+          Get Early Access
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

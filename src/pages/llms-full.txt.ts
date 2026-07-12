@@ -1,8 +1,18 @@
 import type { APIRoute } from "astro";
 import { SITE_URL } from "../lib/site-pages";
+import { products, statusLabel } from "../lib/products";
 import { getBlogPosts } from "../lib/site-dynamic";
 
 export const prerender = true;
+
+/** Product bullets, generated from the product registry so they can't drift. */
+const PRODUCT_LINES = products
+  .map((p) => {
+    const url = p.external ? p.href : `${SITE_URL}${p.href}`;
+    const status = p.status === "live" ? "" : ` (${statusLabel(p.status)})`;
+    return `- **${p.name}**${status} — ${p.description} ${url}`;
+  })
+  .join("\n");
 
 /**
  * Long-form, hand-curated overview of Basiq for LLMs. All copy below is drawn
@@ -38,7 +48,9 @@ When the work is done we document, train, and hand off the keys. Your team owns 
 
 ## Products
 
-- **Qenerate** — The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of Pipe Gen (cold calling and video). ${SITE_URL}/qenerate
+Basiq ships its own products. Overview: ${SITE_URL}/products
+
+${PRODUCT_LINES}
 
 ## Masterclass
 

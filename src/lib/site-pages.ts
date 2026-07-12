@@ -93,11 +93,40 @@ export const sitePages: SitePage[] = [
   },
 
   // ── Products ──────────────────────────────────────────────────────────
+  // Topiq (gettopiq.ai) and Musal (musal.ai) live on their own domains and have
+  // no page here — they're covered by the /products hub. Copy lives in src/lib/products.ts.
   {
-    path: "/qenerate",
-    title: "Qenerate",
+    path: "/products",
+    title: "Products",
     description:
-      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of Pipe Gen — cold calling and video.",
+      "The Basiq product suite — Topiq, Fabriq, Musal, Qindle, and LaneScout. AI systems for sales, customer success, prompt operations, prospecting, and freight.",
+    section: "Products",
+    sitemap: true,
+    llms: true,
+  },
+  {
+    path: "/products/fabriq",
+    title: "Fabriq",
+    description:
+      "AI-powered customer intelligence for CS leaders managing net retention at scale. Stakeholder sentiment, expansion signal, and evidence-based renewal forecasts.",
+    section: "Products",
+    sitemap: true,
+    llms: true,
+  },
+  {
+    path: "/products/qindle",
+    title: "Qindle",
+    description:
+      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of pipe gen: cold calling and video.",
+    section: "Products",
+    sitemap: true,
+    llms: true,
+  },
+  {
+    path: "/products/lanescout",
+    title: "LaneScout",
+    description:
+      "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers. Coming soon from Basiq.",
     section: "Products",
     sitemap: true,
     llms: true,

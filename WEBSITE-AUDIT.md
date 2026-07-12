@@ -14,8 +14,12 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 | Go-to-Market | `/go-to-market` | `src/pages/go-to-market.astro` | 2026-04-11 | Reviewed — 6 changes drafted |
 | Operations | `/operations` | `src/pages/operations.astro` | 2026-04-11 | Reviewed — 5 changes drafted |
 | AI Strategy | `/ai-strategy` | `src/pages/ai-strategy.astro` | 2026-04-11 | Reviewed — 4 changes drafted |
-| Pricing | `/pricing` | `src/pages/pricing.astro` | 2026-04-11 | Flagged — needs full rewrite |
-| Qenerate | `/qenerate` | `src/pages/qenerate.astro` | 2026-04-11 | Flagged — different audience, skip this pass |
+| Pricing | `/pricing` | ~~`src/pages/pricing.astro`~~ | 2026-04-23 | **Removed** — page deleted, nav link removed |
+| Qenerate | `/qenerate` | ~~`src/pages/qenerate.astro`~~ | 2026-07-12 | **Renamed** — now Qindle at `/products/qindle`, 301 in place |
+| Products (hub) | `/products` | `src/pages/products/index.astro` | 2026-07-12 | New — full product suite |
+| Fabriq | `/products/fabriq` | `src/pages/products/fabriq.astro` | 2026-07-12 | New — copy from Topiq VP-CS persona page |
+| Qindle | `/products/qindle` | `src/pages/products/qindle.astro` | 2026-07-12 | New — ported from Qenerate, now badged Live |
+| LaneScout | `/products/lanescout` | `src/pages/products/lanescout.astro` | 2026-07-12 | New — Coming soon |
 | Blog Index | `/blog` | `src/pages/blog/index.astro` | 2026-04-11 | CMS-managed, no static copy changes |
 
 ---
@@ -49,10 +53,15 @@ This file tracks the audit status of every page on the Basiq Consulting website.
   - Greg LeNeveu, CRO, Knak
   - JB, CEO, Authentic
   - Ed Seymour, CEO, Vado
-- **Products section ("We build tools we use ourselves."):**
-  - Topiq — AI sales inbox for outbound teams (Live)
-  - Kalibrate — Prompt management tool (Coming soon)
-  - Qenerate — Prospecting CRM for AEs (Coming soon)
+- **Products section ("Five products. Four already in production."), updated 2026-07-12:**
+  - Topiq — AI sales inbox for outbound teams (Live, → gettopiq.ai)
+  - Fabriq — Customer intelligence for CS leaders (Live, → /products/fabriq)
+  - Musal — The prompt workshop for AI teams (Live, → musal.ai). Was Kalibrate.
+  - Qindle — The prospecting CRM built for AEs (Live, → /products/qindle). Was Qenerate.
+  - LaneScout — Negotiation coaching for carrier desks (Coming soon, → /products/lanescout)
+  - All five now render from the `src/lib/products.ts` registry, which also drives the
+    nav dropdown, the footer column, the `/products` hub, and llms-full.txt. The old dead
+    `#` link on Kalibrate and the "More coming soon" placeholders are gone.
 - **Footer CTA:** Not sure where to start? That's what the assessment is for.
 
 **Last Reviewed:** 2026-04-10
@@ -217,28 +226,80 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 ---
 
-### Qenerate (`/qenerate`)
+### Products hub (`/products`)
 
-**Source:** `src/pages/qenerate.astro`
+**Source:** `src/pages/products/index.astro` (copy from `src/lib/products.ts`)
 
 **Extracted Copy:**
 
-- **Label:** Product
-- **Hero H1:** Qenerate
-- **Hero subhead:** The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the only human parts of Pipe Gen — Cold Calling and Video.
-- **CTAs:** Get Early Access / Coming Soon
-- **Problem statement:** AEs spend too much time on admin and not enough on the two things that actually generate pipeline — cold calls and personalized video outreach. Qenerate fixes that.
-- **Features ("Built for AEs — Everything you need, nothing you don't"):**
-  - Account Discovery
-  - Prospect Research
-  - Cold Call Workflows
-  - Video Outreach
-  - AI-Powered Automation
-  - Pipeline Focus
-- **CTA section:** Built by AEs, for AEs. / Get Early Access
+- **Label:** Products
+- **Hero H1:** The Basiq product suite
+- **Hero subhead:** We don't just build AI systems for clients — we ship them as products. Four in production, one on the way.
+- **Body:** Five product rows (category, name, status badge, tagline, description, CTA), a positioning statement tying the products back to the consulting practice, and the standard Book-a-Free-Assessment CTA.
+- **SEO:** title/description/canonical + OG + Twitter via `Layout.astro`. JSON-LD: `CollectionPage` with an `ItemList` of five `SoftwareApplication`s. No `offers` block — no rating source exists, and `offers` without `aggregateRating` gets flagged as invalid structured data.
 
-**Last Reviewed:** _Not yet reviewed_
-**Review Notes:** —
+**Last Reviewed:** 2026-07-12
+**Review Notes:** New page. Single source of truth for all product surfaces is `src/lib/products.ts` — the homepage grid, nav dropdown, footer column, this hub, and llms-full.txt all read from it, so the drift that had the site advertising Kalibrate and Qenerate can't recur.
+
+---
+
+### Fabriq (`/products/fabriq`)
+
+**Source:** `src/pages/products/fabriq.astro`
+
+**Extracted Copy:**
+
+- **Label:** Customer Success · Live
+- **Hero H1:** You can't protect what you can't see.
+- **Hero subhead:** AI-powered customer intelligence for CS leaders managing net retention at scale.
+- **CTAs:** Get a Demo / All products
+- **Problem ("Retention is decided in conversations you never hear"):** the visibility gap; coaching doesn't scale (10–30 CSMs × 20–30 conversations/week); forecasts built on optimism (off by 10–15%).
+- **Features ("Every conversation, working for you"):** Customer Snapshot · Stakeholder Sentiment Tracking · Expansion Intelligence · Evidence-Based Renewal Forecasting (60–90 day early warning) · CSM Capacity at Scale · Sales-to-CS Handoff
+- **CTA section:** Stop forecasting renewals on gut feel. / Get a Demo
+
+**Last Reviewed:** 2026-07-12
+**Review Notes:** Copy adapted from the Topiq VP-of-Customer-Success persona page (gettopiq.ai/vice-president-of-customer-success). **Open item:** that source page carries two stats rendered without denominators ("Of CS teams say they can't predict churn before it happens"). Omitted here until the real figures are confirmed — a stat with no number is worse than no stat.
+
+---
+
+### Qindle (`/products/qindle`)
+
+**Source:** `src/pages/products/qindle.astro` (was `src/pages/qenerate.astro`)
+
+**Extracted Copy:**
+
+- **Label:** CRM · Live
+- **Hero H1:** Qindle
+- **Hero subhead:** The only prospecting CRM built for Account Executives to focus on account and prospect discovery — and the only human parts of pipe gen: cold calling and video.
+- **CTAs:** Book a Demo / All products
+- **Problem statement:** AEs spend too much time on admin and not enough on the two things that actually generate pipeline — cold calls and personalized video outreach. Qindle fixes that.
+- **Features ("Built for AEs — Everything you need, nothing you don't"):** Account Discovery · Prospect Research · Cold Call Workflows · Video Outreach · AI-Powered Automation · Pipeline Focus
+- **CTA section:** Built by AEs, for AEs. / Book a Demo
+
+**Last Reviewed:** 2026-07-12
+**Review Notes:** Renamed from Qenerate; body copy carried over. Status changed from "Coming soon" to **Live**, so the CTA moved from "Get Early Access" to "Book a Demo" pointing at the standard booking link. **Open item:** if Qindle has its own signup or app URL, the CTA should point there instead. `/qenerate` 301s here.
+
+---
+
+### LaneScout (`/products/lanescout`)
+
+**Source:** `src/pages/products/lanescout.astro`
+
+**Extracted Copy:**
+
+- **Label:** Logistics · Coming soon
+- **Hero H1:** Turn your carrier desk into a margin engine.
+- **Hero subhead:** AI-powered negotiation coaching built specifically for US trucking brokers.
+- **CTAs:** Get Early Access / All products
+- **Problem:** CSRs come in with a number, the carrier pushes back, they split the difference. For a mid-size broker the gap vs. benchmark rates can exceed $200k/month.
+- **How it works:** 01 Connects to your phone system · 02 AI analyzes every call · 03 One skill per week · 04 Real-time nudges after every call · 05 Scoring and manager visibility
+- **Who benefits:** CSR Managers · Carrier Sales Reps
+- **Comparison table:** Generic call analytics vs. LaneScout (5 rows)
+- **Business case:** 500 loads/day × $2,000 → a 1% negotiation improvement is $10k/day (~$3.6M/yr)
+- **CTA section:** Every call is a chance to protect your margin — or give it away. / Get Early Access
+
+**Last Reviewed:** 2026-07-12
+**Review Notes:** Built from `~/Documents1/knowledge_base/LaneScout/value-proposition.md`. The dollar figures are illustrative models from that doc, not customer results — keep them framed as scenarios, not claims. Six persona docs sit alongside the value prop in the knowledge base and haven't been mined yet; a persona-alignment pass is worth doing before launch.
 
 ---
 

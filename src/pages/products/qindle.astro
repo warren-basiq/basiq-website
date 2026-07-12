@@ -1,0 +1,160 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { SITE_URL } from "../../lib/site-pages";
+
+const title = "Qindle — The Prospecting CRM Built for AEs";
+const description =
+  "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of pipe gen: cold calling and video.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${title} | Basiq`,
+  description,
+  url: `${SITE_URL}/products/qindle`,
+  publisher: {
+    "@type": "Organization",
+    name: "Basiq",
+    url: SITE_URL,
+  },
+  mainEntity: {
+    "@type": "SoftwareApplication",
+    name: "Qindle",
+    description,
+    applicationCategory: "BusinessApplication",
+    url: `${SITE_URL}/products/qindle`,
+  },
+};
+
+const features = [
+  {
+    icon: "🔍",
+    title: "Account Discovery",
+    body: "Surface the right accounts based on your ICP. No more digging through spreadsheets or stale CRM data.",
+  },
+  {
+    icon: "👥",
+    title: "Prospect Research",
+    body: "Automatically enrich contacts with relevant context so you know exactly who to call and what to say.",
+  },
+  {
+    icon: "📞",
+    title: "Cold Call Workflows",
+    body: "Purpose-built call lists, one-click dialing, and call tracking. Designed to keep you in flow, not clicking through tabs.",
+  },
+  {
+    icon: "🎬",
+    title: "Video Outreach",
+    body: "Record and send personalized videos directly from the CRM. The human touch that cuts through inbox noise.",
+  },
+  {
+    icon: "⚡",
+    title: "AI-Powered Automation",
+    body: "Everything that isn't a cold call or a video gets automated. Email sequences, data entry, follow-ups — handled.",
+  },
+  {
+    icon: "📊",
+    title: "Pipeline Focus",
+    body: "See your pipeline health at a glance. Know exactly where to spend your time for maximum impact.",
+  },
+];
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Hero -->
+  <header class="relative pt-24 pb-16">
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+      <div class="flex items-center gap-3">
+        <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+          CRM
+        </p>
+        <span class="rounded-full bg-emerald-400/10 px-2.5 py-0.5 text-xs font-medium text-emerald-400">
+          Live
+        </span>
+      </div>
+      <h1 class="mt-4 max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        Qindle
+      </h1>
+      <p class="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl">
+        The only prospecting CRM built for Account Executives to focus on account
+        and prospect discovery — and the only human parts of pipe gen: cold calling
+        and video.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href="https://booking.akiflow.com/basiq-consulting"
+          class="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+        >
+          Book a Demo
+        </a>
+        <a
+          href="/products"
+          class="rounded-lg border border-white/[0.12] px-7 py-3.5 text-sm font-medium text-[#e8e5e0] transition-all hover:border-white/[0.25] hover:bg-white/[0.04]"
+        >
+          All products
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="max-w-3xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug">
+        AEs spend too much time on admin and not enough on the two things that
+        actually generate pipeline — cold calls and personalized video outreach.
+        Qindle fixes that.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        Built for AEs
+      </p>
+      <h2 class="mt-4 text-3xl font-bold text-white md:text-4xl">
+        Everything you need, nothing you don't
+      </h2>
+
+      <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          features.map((f) => (
+            <div class="rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04]">
+              <span class="text-2xl text-amber-400/80">{f.icon}</span>
+              <h3 class="mt-4 text-lg font-semibold text-white">{f.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-[#a09d97]">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          Built by AEs, for AEs.
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
+          Qindle strips away the noise and lets you focus on what actually builds
+          pipeline. Book a walkthrough and see it on your own accounts.
+        </p>
+        <a
+          href="https://booking.akiflow.com/basiq-consulting"
+          class="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+        >
+          Book a Demo
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
