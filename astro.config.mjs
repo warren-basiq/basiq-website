@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -32,8 +31,7 @@ export default defineConfig({
   },
 
   integrations: [
-    react(),
-    // Exclude the llms.txt endpoints — they are not HTML pages.
+    // Exclude the llms.txt endpoints, which are not HTML pages.
     sitemap({ filter: (page) => !page.includes('/llms') })
   ]
 });

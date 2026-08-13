@@ -17,6 +17,9 @@
 
 export const SITE_URL = "https://www.basiq.work";
 
+/** Every "Book a call" CTA on the site points here. */
+export const BOOKING_URL = "https://booking.akiflow.com/basiq-consulting";
+
 export type Section = "Core" | "What we do" | "Products" | "Masterclass" | "Resources";
 
 export interface SitePage {

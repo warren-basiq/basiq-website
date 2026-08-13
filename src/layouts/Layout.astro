@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
-import { products, statusLabel, PRODUCTS_HREF } from "../lib/products";
-import { SITE_URL } from "../lib/site-pages";
+import { products, PRODUCTS_HREF, statusLabel } from "../lib/products";
+import { personas } from "../lib/personas";
+import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
 
 interface Props {
   title: string;
@@ -11,19 +12,28 @@ interface Props {
   ogImage?: string;
   /** JSON-LD object injected as application/ld+json. */
   jsonLd?: Record<string, unknown>;
+  robots?: string;
 }
 
 const {
   title,
-  description = "Basiq — AI execution partner. Working systems, not slide decks.",
+  description = "Basiq is an AI execution partner. We embed with your team, build production systems, and hand off ownership. Working systems, not slide decks.",
   canonical,
   ogImage = `${SITE_URL}/og-default.png`,
   jsonLd,
+  robots,
 } = Astro.props;
 
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, SITE_URL).href;
-const fullTitle = `${title} | Basiq`;
+const fullTitle = title.includes("Basiq") ? title : `${title} | Basiq`;
 const year = new Date().getFullYear();
+
+const navLink =
+  "font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-body transition-colors hover:text-forest";
+const dropdownItem =
+  "block px-4 py-2.5 text-sm text-body transition-colors hover:bg-stone hover:text-forest";
+const footerLink =
+  "text-sm text-on-dark-muted underline decoration-line-dark underline-offset-4 transition-colors hover:text-on-dark hover:decoration-gold";
 ---
 
 <!doctype html>
@@ -32,15 +42,16 @@ const year = new Date().getFullYear();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Basiq" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:site_name" content="Basiq" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
@@ -50,168 +61,161 @@ const year = new Date().getFullYear();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>{fullTitle}</title>
-    {
-      jsonLd && (
-        <script
-          type="application/ld+json"
-          set:html={JSON.stringify(jsonLd)}
-        />
-      )
-    }
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
-  <body
-    class="min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200"
-  >
-    <!-- Grain overlay -->
-    <div
-      class="pointer-events-none fixed inset-0 z-50 opacity-[0.03]"
-      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E&quot;); background-repeat: repeat; background-size: 256px 256px;"
-    >
-    </div>
 
-    <!-- Nav -->
-    <nav
-      class="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl"
-    >
-      <div
-        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12"
-      >
-        <a href="/" aria-label="Basiq home" class="inline-flex items-start">
-          <span class="text-2xl font-bold tracking-tight text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">basiq</span>
-          <svg class="ml-[2px] mt-[-3px] h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 6L14 12L8 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M14 6L20 12L14 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <body class="min-h-screen bg-ivory text-charcoal antialiased">
+    <nav class="sticky top-0 z-40 w-full border-b border-line bg-ivory/90 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+        <a href="/" class="flex items-center" aria-label="Basiq home">
+          <span class="font-display text-2xl leading-none tracking-tight text-forest">basiq</span>
+          <svg class="ml-0.5 h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 6L14 12L8 18" stroke="#D4A83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14 6L20 12L14 18" stroke="#D4A83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
+
         <div class="hidden items-center gap-8 md:flex">
-          <a href="/#services" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Services</a>
-          <a href="/#work" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Work</a>
+          <div class="group relative">
+            <button class={`flex items-center gap-1 ${navLink}`}>
+              Solutions
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="pointer-events-none absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div class="rounded-xl border border-line bg-paper py-2 shadow-lift">
+                <p class="px-4 pb-1 pt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">By role</p>
+                {personas.map((p) => <a href={p.href} class={dropdownItem}>{p.navLabel}</a>)}
+              </div>
+            </div>
+          </div>
 
           <div class="group relative">
-            <a href={PRODUCTS_HREF} class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Products</a>
-            <div class="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-              <div class="rounded-lg border border-white/[0.08] bg-[#141414] p-2 shadow-2xl">
+            <a href={PRODUCTS_HREF} class={`flex items-center gap-1 ${navLink}`}>
+              Products
+              <svg class="h-3.5 w-3.5 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <div class="pointer-events-none absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div class="rounded-xl border border-line bg-paper py-2 shadow-lift">
                 {
                   products.map((p) => (
                     <a
                       href={p.href}
                       target={p.external ? "_blank" : undefined}
                       rel={p.external ? "noopener noreferrer" : undefined}
-                      class="block rounded-md px-3 py-2.5 transition-colors hover:bg-white/[0.04]"
+                      class="block px-4 py-2.5 transition-colors hover:bg-stone"
                     >
                       <span class="flex items-center gap-2">
-                        <span class="text-sm font-medium text-[#e8e5e0]">{p.name}</span>
-                        {p.external && (
-                          <span class="text-xs text-amber-400/70">{p.host} ↗</span>
-                        )}
+                        <span class="text-sm font-semibold text-heading">{p.name}</span>
+                        {p.external && <span class="font-mono text-[10px] text-sage">{p.host} &#8599;</span>}
                         {p.status === "coming-soon" && (
-                          <span class="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
+                          <span class="rounded-full border border-control px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted">
                             Soon
                           </span>
                         )}
                       </span>
-                      <span class="mt-0.5 block text-xs text-[#706d67]">{p.tagline}</span>
+                      <span class="mt-0.5 block text-xs text-muted">{p.tagline}</span>
                     </a>
                   ))
                 }
-                <a
-                  href={PRODUCTS_HREF}
-                  class="mt-1 block rounded-md border-t border-white/[0.06] px-3 pb-2 pt-3 text-sm text-amber-400/70 transition-colors hover:text-amber-400"
-                >
-                  All products →
+                <a href={PRODUCTS_HREF} class="mt-1 block border-t border-line px-4 pb-2 pt-3 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+                  All products &#8594;
                 </a>
               </div>
             </div>
           </div>
 
-          <a href="/blog" class="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">Blog</a>
+          <a href="/podcast" class={navLink}>Podcast</a>
+          <a href="/blog" class={navLink}>Blog</a>
         </div>
-        <div class="flex items-center gap-4">
+
+        <div class="flex items-center gap-3">
           <a
-            href="https://booking.akiflow.com/basiq-consulting"
-            class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+            href={BOOKING_URL}
+            class="hidden rounded-full bg-forest px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover sm:inline-block"
           >
-            Book a Call
+            Book a call
           </a>
           <button
             id="mobile-menu-btn"
-            class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] md:hidden"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-control md:hidden"
             aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
           >
-            <svg id="menu-icon-open" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="menu-icon-close" class="hidden h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <svg id="menu-icon-open" class="h-5 w-5 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            <svg id="menu-icon-close" class="hidden h-5 w-5 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
       </div>
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden border-t border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden">
-        <div class="flex flex-col gap-1 px-6 py-4">
-          <a href="/#services" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Services</a>
-          <a href="/#work" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Work</a>
-          <a href="/blog" class="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">Blog</a>
+      <div id="mobile-menu" class="hidden border-t border-line bg-ivory md:hidden">
+        <div class="flex flex-col px-6 py-4">
+          <p class="px-1 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">Solutions</p>
+          {personas.map((p) => <a href={p.href} class="rounded-lg px-1 py-2.5 text-sm text-body hover:text-forest">{p.navLabel}</a>)}
 
-          <div class="my-2 border-t border-white/[0.06]"></div>
-          <a href={PRODUCTS_HREF} class="px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]/60">Products</a>
+          <p class="mt-3 border-t border-line px-1 pb-2 pt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-forest">Products</p>
           {
             products.map((p) => (
               <a
                 href={p.href}
                 target={p.external ? "_blank" : undefined}
                 rel={p.external ? "noopener noreferrer" : undefined}
-                class="flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+                class="flex items-center gap-2 rounded-lg px-1 py-2.5 text-sm text-body hover:text-forest"
               >
                 {p.name}
-                {p.external && <span class="text-xs text-amber-400/70">{p.host} ↗</span>}
+                {p.external && <span class="font-mono text-[10px] text-sage">{p.host} &#8599;</span>}
                 {p.status === "coming-soon" && (
-                  <span class="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
-                    Soon
-                  </span>
+                  <span class="rounded-full border border-control px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted">Soon</span>
                 )}
               </a>
             ))
           }
+
+          <div class="mt-3 flex flex-col border-t border-line pt-2">
+            <a href="/podcast" class="rounded-lg px-1 py-2.5 text-sm text-body hover:text-forest">Podcast</a>
+            <a href="/blog" class="rounded-lg px-1 py-2.5 text-sm text-body hover:text-forest">Blog</a>
+          </div>
+
+          <a href={BOOKING_URL} class="mt-4 rounded-full bg-forest px-5 py-3 text-center font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
+            Book a call
+          </a>
         </div>
       </div>
     </nav>
 
-    <main class="pt-16">
+    <main>
       <slot />
     </main>
 
-    <footer class="border-t border-white/[0.06]">
+    <footer class="on-forest bg-forest">
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-12">
         <div class="grid gap-12 md:grid-cols-4">
-          <div class="md:col-span-1">
-            <a href="/" aria-label="Basiq home" class="inline-flex items-start">
-              <span class="text-xl font-bold tracking-tight text-white" style="font-family: 'Plus Jakarta Sans', sans-serif;">basiq</span>
-              <svg class="ml-[2px] mt-[-2px] h-[15px] w-[15px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 6L14 12L8 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M14 6L20 12L14 18" stroke="#4ADE80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <div>
+            <a href="/" class="flex items-center" aria-label="Basiq home">
+              <span class="font-display text-xl leading-none tracking-tight text-on-dark">basiq</span>
+              <svg class="ml-0.5 h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 6L14 12L8 18" stroke="#D4A83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 6L20 12L14 18" stroke="#D4A83F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
-            <p class="mt-3 text-sm text-[#a09d97]">
-              AI execution partner.<br />Working systems, not slide decks.
+            <p class="mt-4 text-sm leading-relaxed text-on-dark-muted">
+              An AI execution partner.<br />Working systems, not slide decks.
             </p>
           </div>
+
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Company</h4>
+            <h4 class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-on-dark">Solutions</h4>
             <ul class="mt-4 space-y-3">
-              <li><a href="/#services" class="text-sm text-[#706d67] transition-colors hover:text-white">Services</a></li>
-              <li><a href="/#work" class="text-sm text-[#706d67] transition-colors hover:text-white">Work</a></li>
-              <li><a href="/blog" class="text-sm text-[#706d67] transition-colors hover:text-white">Blog</a></li>
+              {personas.map((p) => <li><a href={p.href} class={footerLink}>{p.footerLabel}</a></li>)}
             </ul>
           </div>
+
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Products</h4>
+            <h4 class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-on-dark">Products</h4>
             <ul class="mt-4 space-y-3">
               {
                 products.map((p) => (
@@ -220,11 +224,11 @@ const year = new Date().getFullYear();
                       href={p.href}
                       target={p.external ? "_blank" : undefined}
                       rel={p.external ? "noopener noreferrer" : undefined}
-                      class="text-sm text-[#706d67] transition-colors hover:text-white"
+                      class={footerLink}
                     >
                       {p.name}
                       {p.status === "coming-soon" && (
-                        <span class="ml-2 text-xs text-[#706d67]/70">{statusLabel(p.status)}</span>
+                        <span class="ml-2 font-mono text-[10px] uppercase tracking-[0.12em] no-underline">{statusLabel(p.status)}</span>
                       )}
                     </a>
                   </li>
@@ -232,33 +236,34 @@ const year = new Date().getFullYear();
               }
             </ul>
           </div>
+
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Connect</h4>
+            <h4 class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-on-dark">Resources</h4>
             <ul class="mt-4 space-y-3">
-              <li><a href="https://booking.akiflow.com/basiq-consulting" class="text-sm text-[#706d67] transition-colors hover:text-white">Book a Call</a></li>
-              <li><span class="text-sm text-[#706d67]">basiq.work</span></li>
+              <li><a href="/podcast" class={footerLink}>Selling AI podcast</a></li>
+              <li><a href="/blog" class={footerLink}>Blog</a></li>
+              <li><a href="/masterclass/claude-code-101" class={footerLink}>Masterclass</a></li>
+              <li><a href={BOOKING_URL} class={footerLink}>Book a call</a></li>
             </ul>
           </div>
         </div>
-        <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-[#706d67] md:flex-row">
+
+        <div class="mt-16 border-t border-line-dark pt-8 text-xs text-on-dark-muted">
           <p>&copy; {year} Basiq. All rights reserved.</p>
-          <div class="flex gap-6">
-            <a href="#" class="transition-colors hover:text-white">Privacy</a>
-            <a href="#" class="transition-colors hover:text-white">Terms</a>
-          </div>
         </div>
       </div>
     </footer>
 
     <script>
-      const btn = document.getElementById('mobile-menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('menu-icon-open');
-      const iconClose = document.getElementById('menu-icon-close');
-      btn?.addEventListener('click', () => {
-        menu?.classList.toggle('hidden');
-        iconOpen?.classList.toggle('hidden');
-        iconClose?.classList.toggle('hidden');
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const iconOpen = document.getElementById("menu-icon-open");
+      const iconClose = document.getElementById("menu-icon-close");
+      btn?.addEventListener("click", () => {
+        const open = menu?.classList.toggle("hidden") === false;
+        btn.setAttribute("aria-expanded", String(open));
+        iconOpen?.classList.toggle("hidden");
+        iconClose?.classList.toggle("hidden");
       });
     </script>
   </body>
