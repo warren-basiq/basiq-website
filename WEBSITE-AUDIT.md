@@ -8,18 +8,21 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 | Page | Route | Source File(s) | Last Reviewed | Status |
 |------|-------|---------------|---------------|--------|
-| Homepage | `/` | `src/pages/index.astro`, `src/components/Homepage.tsx` | 2026-04-11 | Reviewed — 13 changes drafted |
-| Engineering | `/engineering` | `src/pages/engineering.astro` | 2026-04-11 | Reviewed — 5 changes drafted |
-| Business Applications | `/business-applications` | `src/pages/business-applications.astro` | 2026-04-11 | Reviewed — 4 changes drafted |
-| Go-to-Market | `/go-to-market` | `src/pages/go-to-market.astro` | 2026-04-11 | Reviewed — 6 changes drafted |
-| Operations | `/operations` | `src/pages/operations.astro` | 2026-04-11 | Reviewed — 5 changes drafted |
-| AI Strategy | `/ai-strategy` | `src/pages/ai-strategy.astro` | 2026-04-11 | Reviewed — 4 changes drafted |
+| Homepage | `/` | `src/pages/index.astro` | 2026-08-12 | Rebuilt in Deep Forest, React island removed |
+| Engineering | `/engineering` | ~~src/pages/engineering.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
+| Business Applications | `/business-applications` | ~~src/pages/business-applications.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
+| Go-to-Market | `/go-to-market` | ~~src/pages/go-to-market.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
+| Operations | `/operations` | ~~src/pages/operations.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
+| AI Strategy | `/ai-strategy` | ~~src/pages/ai-strategy.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
 | Pricing | `/pricing` | ~~`src/pages/pricing.astro`~~ | 2026-04-23 | **Removed** — page deleted, nav link removed |
 | Qenerate | `/qenerate` | ~~`src/pages/qenerate.astro`~~ | 2026-07-12 | **Renamed** — now Qindle at `/products/qindle`, 301 in place |
 | Products (hub) | `/products` | `src/pages/products/index.astro` | 2026-07-12 | New — full product suite |
 | Fabriq | `/products/fabriq` | `src/pages/products/fabriq.astro` | 2026-07-12 | New — copy from Topiq VP-CS persona page |
 | Qindle | `/products/qindle` | `src/pages/products/qindle.astro` | 2026-07-12 | New — ported from Qenerate, now badged Live |
 | LaneScout | `/products/lanescout` | `src/pages/products/lanescout.astro` | 2026-07-12 | New — Coming soon |
+| Founders and CEOs | `/founders` | `src/pages/founders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
+| CROs and VPs of Sales | `/revenue-leaders` | `src/pages/revenue-leaders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
+| Selling AI Podcast | `/podcast` | `src/pages/podcast.astro`, `src/pages/episode/[slug].astro` | 2026-08-12 | New, canonicals to gettopiq.ai |
 | Blog Index | `/blog` | `src/pages/blog/index.astro` | 2026-04-11 | CMS-managed, no static copy changes |
 
 ---
@@ -311,6 +314,82 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 **Last Reviewed:** _Not yet reviewed_
 **Review Notes:** —
+
+---
+
+## 2026-08-12 — Deep Forest redesign
+
+The site moved from the dark amber theme onto the **Deep Forest** design system shared with
+musal.ai (Fraunces + DM Serif Display + JetBrains Mono on warm ivory). Full token reference
+is in `CLAUDE.md`.
+
+**Information architecture changed.** Solutions is now a persona menu rather than a service
+menu:
+
+- Removed `/ai-strategy`, `/engineering`, `/go-to-market`, `/operations`, and
+  `/business-applications`. All five 301 to `/` in both `astro.config.mjs` and `vercel.json`.
+  Nothing in the new IA mapped to them one-to-one, so a nearest-match redirect would have
+  been worse than the root.
+- Added `/founders` and `/revenue-leaders`, both rendering through `RolePage.astro`.
+- Added `/podcast` and `/episode/[slug]` for Selling AI.
+- `/products`, `/blog`, and both `/masterclass` pages were restyled with no content change.
+
+**Other fixes made along the way:**
+
+- The homepage had no canonical, Open Graph, Twitter, or JSON-LD tags at all. It renders
+  through `Layout` now, so it has all four.
+- The two masterclass pages were hand-rolled documents with their own head, nav, and footer.
+  They now use `Layout`. Their Course schema still pointed at `basiqconsulting.com`.
+- Blog posts gained `BlogPosting` structured data.
+- `llms-full.txt` had the retired service pages hardcoded. It derives its sections from the
+  page registry now.
+- The `font-body` utility referenced a token that no longer exists; 43 dead uses removed.
+- Adopted the no-em-dash copy rule from musal.ai as `npm run check:copy`, and cleared the 36
+  existing occurrences by rewriting sentences.
+
+### Founders and CEOs (`/founders`)
+
+**Source:** `src/pages/founders.astro` via `src/components/RolePage.astro`
+
+- **Eyebrow:** For founders and CEOs
+- **H1:** You do not need an AI team. You need the thing to work.
+- **SEO title:** AI for Founders and CEOs | Basiq
+- **Structure:** hero, four problems, forest stats band (5 products / 6 wks / 100%), four
+  "what you actually get" cards, cross-link to the other persona, closing CTA
+- **JSON-LD:** `WebPage`
+
+**Last Reviewed:** 2026-08-12
+**Review Notes:** Copy written fresh for the redesign. Stats are directional and should be
+confirmed before any paid traffic points here.
+
+### CROs and VPs of Sales (`/revenue-leaders`)
+
+**Source:** `src/pages/revenue-leaders.astro` via `src/components/RolePage.astro`
+
+- **Eyebrow:** For CROs and VPs of Sales
+- **H1:** Your reps do not need another tool. They need the work to already be done.
+- **SEO title:** AI for CROs and VPs of Sales | Basiq
+- **Structure:** same as `/founders`; features reference Topiq and Fabriq by name
+- **JSON-LD:** `WebPage`
+
+**Last Reviewed:** 2026-08-12
+**Review Notes:** The "2x outbound pipeline in 6 weeks" stat comes from the Knak
+testimonial on the homepage. Keep the two consistent if either changes.
+
+### Selling AI Podcast (`/podcast`, `/episode/[slug]`)
+
+**Source:** `src/pages/podcast.astro`, `src/pages/episode/[slug].astro`, `src/lib/podcast.ts`
+
+- **Content:** Sanity `podcast` and `episode` documents; the page ships with real Selling AI
+  defaults so it is complete before anything is entered in the studio
+- **JSON-LD:** `PodcastSeries` on the index, `PodcastEpisode` on each episode
+- **Canonical:** points at `gettopiq.ai`, which published the show first. Excluded from the
+  sitemap for the same reason. See the Podcast section of `CLAUDE.md` to flip it.
+
+**Last Reviewed:** 2026-08-12
+**Review Notes:** No episodes exist in Basiq's Sanity dataset yet, so the index renders its
+empty state and no episode pages are generated. Needs episodes entered, or a migration from
+the Topiq dataset.
 
 ---
 
