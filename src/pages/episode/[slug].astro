@@ -1,0 +1,191 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  getEpisodes,
+  getEpisode,
+  getShow,
+  episodeMeta,
+  PODCAST_CANONICAL_ORIGIN,
+} from "../../lib/podcast";
+
+export async function getStaticPaths() {
+  const episodes = await getEpisodes();
+  return episodes.map((ep) => ({ params: { slug: ep.slug } }));
+}
+
+const { slug } = Astro.params;
+const episode = await getEpisode(slug!);
+
+if (!episode) {
+  return Astro.redirect("/podcast");
+}
+
+const show = await getShow();
+const showTitle = show?.title || "Selling AI";
+const hostName = show?.hostName || "Warren Kucker";
+
+const seoTitle = `${episode.title} | ${showTitle}`;
+const seoDescription =
+  episode.summary || `Episode ${episode.episodeNumber} of ${showTitle} with ${hostName}.`;
+
+const platforms = [
+  { label: "Apple Podcasts", href: episode.applePodcastsUrl || show?.applePodcastsUrl },
+  { label: "Spotify", href: episode.spotifyUrl || show?.spotifyUrl },
+  {
+    label: "YouTube",
+    href: episode.youtubeId ? `https://www.youtube.com/watch?v=${episode.youtubeId}` : show?.youtubeUrl,
+  },
+].filter((p): p is { label: string; href: string } => Boolean(p.href));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "PodcastEpisode",
+  name: episode.title,
+  episodeNumber: episode.episodeNumber,
+  description: seoDescription,
+  datePublished: episode.publishedAt ?? undefined,
+  partOfSeries: {
+    "@type": "PodcastSeries",
+    name: showTitle,
+    url: `${PODCAST_CANONICAL_ORIGIN}/selling-ai-podcast`,
+  },
+};
+
+const eyebrow = "font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest";
+const heading = "font-display text-2xl text-heading";
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonical={`${PODCAST_CANONICAL_ORIGIN}/episode/${episode.slug}`}
+  jsonLd={jsonLd}
+>
+  <article class="mx-auto max-w-3xl px-6 pb-20 pt-16">
+    <a href="/podcast" class="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+      &#8592; All episodes
+    </a>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <span class="rounded-full bg-forest px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-on-dark">
+        Ep. {episode.episodeNumber}
+      </span>
+      {episodeMeta(episode).map((meta) => (
+        <span class="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">{meta}</span>
+      ))}
+    </div>
+
+    <h1 class="mt-5 font-display text-4xl leading-[1.1] tracking-tight text-heading sm:text-5xl">
+      {episode.title}
+    </h1>
+
+    {
+      episode.guestName && (
+        <p class="mt-4 text-lg italic text-forest">
+          with {episode.guestName}
+          {episode.guestTitle && `, ${episode.guestTitle}`}
+        </p>
+      )
+    }
+
+    {
+      episode.keyQuote && (
+        <blockquote class="mt-10 border-l-2 border-gold pl-6 font-display text-2xl leading-snug text-heading">
+          {episode.keyQuote}
+        </blockquote>
+      )
+    }
+
+    {
+      episode.youtubeId && (
+        <div class="mt-10 overflow-hidden rounded-2xl border border-line shadow-soft">
+          <iframe
+            class="aspect-video w-full"
+            src={`https://www.youtube-nocookie.com/embed/${episode.youtubeId}`}
+            title={episode.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          />
+        </div>
+      )
+    }
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      {
+        platforms.map((p) => (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-control px-5 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-forest transition-colors hover:bg-stone"
+          >
+            {p.label}
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      episode.summary && (
+        <section class="mt-14 border-t border-line pt-10">
+          <p class={eyebrow}>About this episode</p>
+          <p class="mt-4 leading-relaxed text-body">{episode.summary}</p>
+        </section>
+      )
+    }
+
+    {
+      episode.takeaways?.length > 0 && (
+        <section class="mt-12">
+          <h2 class={heading}>Key takeaways</h2>
+          <ul class="mt-5 flex flex-col gap-4">
+            {episode.takeaways.map((t) => (
+              <li class="flex gap-4">
+                <span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+                <span class="leading-relaxed text-body">{t}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      episode.chapters?.length > 0 && (
+        <section class="mt-12">
+          <h2 class={heading}>Chapters</h2>
+          <ul class="mt-5 divide-y divide-line border-y border-line">
+            {episode.chapters.map((c) => (
+              <li class="flex gap-6 py-3">
+                <span class="font-mono text-sm tabular-nums text-forest">{c.timestamp}</span>
+                <span class="text-body">{c.title}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      episode.guestBio && (
+        <section class="mt-12">
+          <h2 class={heading}>About the guest</h2>
+          <div class="mt-5 rounded-2xl border border-line bg-stone p-8">
+            <h3 class="font-display text-xl text-heading">{episode.guestName}</h3>
+            {episode.guestTitle && (
+              <p class="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-muted">{episode.guestTitle}</p>
+            )}
+            <p class="mt-3 leading-relaxed text-body">{episode.guestBio}</p>
+          </div>
+        </section>
+      )
+    }
+
+    <div class="mt-14 border-t border-line pt-10">
+      <a href="/podcast" class="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+        &#8592; Back to all episodes
+      </a>
+    </div>
+  </article>
+</Layout>

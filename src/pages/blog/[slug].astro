@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { sanityClient } from "../../lib/sanity";
+import { SITE_URL } from "../../lib/site-pages";
 
 interface Post {
   _id: string;
@@ -72,19 +73,34 @@ function renderBody(body: Post["body"]): string {
         case "blockquote":
           return `<blockquote class="mt-6 border-l-2 border-gold pl-5 italic text-body">${text}</blockquote>`;
         default:
-          return `<p class="mt-5 font-body text-base leading-relaxed text-body md:text-lg md:leading-relaxed">${text}</p>`;
+          return `<p class="mt-5 text-base leading-relaxed text-body md:text-lg md:leading-relaxed">${text}</p>`;
       }
     })
     .join("\n");
 }
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.publishedAt,
+  url: new URL(`/blog/${post.slug.current}`, SITE_URL).href,
+  image: post.coverImage ? new URL(post.coverImage, SITE_URL).href : undefined,
+  publisher: {
+    "@type": "Organization",
+    name: "Basiq",
+    url: SITE_URL,
+  },
+};
 ---
 
-<Layout title={post.title} description={post.excerpt}>
+<Layout title={post.title} description={post.excerpt} jsonLd={jsonLd}>
   <!-- Hero -->
   <header class="relative pt-20 pb-8">
 <div
       class="absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[700px] rounded-full opacity-[0.06]"
-      style="background: radial-gradient(ellipse, #F59E0B 0%, transparent 70%);"
+      style="background: radial-gradient(ellipse, #234136 0%, transparent 70%);"
     >
     </div>
 
@@ -100,7 +116,7 @@ function renderBody(body: Post["body"]): string {
         Blog
       </p>
 
-      <h1 class="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-heading sm:text-4xl md:text-5xl">
+      <h1 class="mt-4 font-display text-4xl leading-[1.1] tracking-tight text-heading sm:text-5xl">
         {post.title}
       </h1>
 

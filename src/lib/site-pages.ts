@@ -139,6 +139,17 @@ export const sitePages: SitePage[] = [
     sitemap: true,
     llms: true,
   },
+  {
+    // Canonicals to gettopiq.ai, which published the show first, so it is kept
+    // out of the sitemap. See PODCAST_CANONICAL_ORIGIN in src/lib/podcast.ts.
+    path: "/podcast",
+    title: "Selling AI Podcast",
+    description:
+      "The podcast for revenue teams selling and using AI. Conversations with founders, CROs, and AEs on selling AI products and using AI to sell smarter.",
+    section: "Resources",
+    sitemap: false,
+    llms: true,
+  },
 ];
 
 /** Absolute URL for a registry path. */

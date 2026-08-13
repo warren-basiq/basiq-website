@@ -39,7 +39,12 @@ export default defineConfig({
   },
 
   integrations: [
-    // Exclude the llms.txt endpoints, which are not HTML pages.
-    sitemap({ filter: (page) => !page.includes('/llms') })
+    // Exclude the llms.txt endpoints, which are not HTML pages, and the podcast
+    // pages, which canonical to gettopiq.ai (see src/lib/podcast.ts). Listing a
+    // page that points its canonical elsewhere is what Search Console flags.
+    sitemap({
+      filter: (page) =>
+        !page.includes('/llms') && !page.includes('/podcast') && !page.includes('/episode/')
+    })
   ]
 });
