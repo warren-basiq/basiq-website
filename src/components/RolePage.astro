@@ -1,0 +1,172 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { personas } from "../lib/personas";
+import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
+
+interface Problem {
+  title: string;
+  description: string;
+}
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  /** Registry slug, used to exclude this page from the "other roles" links. */
+  slug: string;
+  /** Eyebrow above the headline, e.g. "For founders and CEOs". */
+  audience: string;
+  headline: string;
+  subheadline: string;
+  seoTitle: string;
+  seoDescription: string;
+  problemsHeadline: string;
+  problems: Problem[];
+  stats: Stat[];
+  featuresHeadline: string;
+  features: Feature[];
+  ctaHeadline: string;
+  ctaDescription: string;
+}
+
+const {
+  slug,
+  audience,
+  headline,
+  subheadline,
+  seoTitle,
+  seoDescription,
+  problemsHeadline,
+  problems,
+  stats,
+  featuresHeadline,
+  features,
+  ctaHeadline,
+  ctaDescription,
+} = Astro.props;
+
+const otherRoles = personas.filter((p) => p.slug !== slug);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: seoTitle,
+  description: seoDescription,
+  url: new URL(Astro.url.pathname, SITE_URL).href,
+  publisher: {
+    "@type": "Organization",
+    name: "Basiq",
+    url: SITE_URL,
+  },
+};
+
+const eyebrow = "font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest";
+const sectionTitle = "font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl lg:text-5xl";
+const primaryBtn =
+  "inline-block rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover";
+const secondaryBtn =
+  "inline-block rounded-full border border-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone";
+---
+
+<Layout title={seoTitle} description={seoDescription} jsonLd={jsonLd}>
+  <!-- Hero: narrative, so left-aligned. -->
+  <section class="mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-12 lg:pt-28">
+    <p class={eyebrow}>{audience}</p>
+    <h1 class="mt-6 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight text-heading sm:text-5xl lg:text-6xl">
+      {headline}
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-body">{subheadline}</p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
+      <a href="/products" class={secondaryBtn}>See the products</a>
+    </div>
+  </section>
+
+  <!-- The problem -->
+  <section class="border-t border-line bg-stone">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class={eyebrow}>The problem</p>
+      <h2 class={`mt-4 max-w-3xl ${sectionTitle}`}>{problemsHeadline}</h2>
+
+      <div class="mt-14 border-t border-line">
+        {
+          problems.map((problem, i) => (
+            <div class="grid gap-6 border-b border-line py-8 sm:grid-cols-[64px_1fr]">
+              <span class="font-display text-2xl leading-none text-sage">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 class="font-display text-2xl text-heading">{problem.title}</h3>
+                <p class="mt-3 max-w-2xl leading-relaxed text-body">{problem.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The one full-width Deep Forest reset band on this page. -->
+  <section class="on-forest bg-forest">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+      <div class="grid gap-12 text-center sm:grid-cols-3">
+        {
+          stats.map((stat) => (
+            <div>
+              <p class="font-display text-5xl leading-none text-gold">{stat.value}</p>
+              <p class="mt-4 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-on-dark-muted">
+                {stat.label}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How Basiq helps -->
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class={eyebrow}>How Basiq helps</p>
+      <h2 class={`mt-4 max-w-3xl ${sectionTitle}`}>{featuresHeadline}</h2>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {
+          features.map((feature) => (
+            <div class="rounded-2xl border border-line bg-paper p-8 shadow-soft">
+              <h3 class="font-display text-2xl text-heading">{feature.title}</h3>
+              <p class="mt-3 leading-relaxed text-body">{feature.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Index section, so centered. -->
+  <section class="border-t border-line bg-stone">
+    <div class="mx-auto max-w-7xl px-6 py-24 text-center lg:px-12">
+      <p class={eyebrow}>Built for your role</p>
+      <h2 class={`mt-4 ${sectionTitle}`}>Not your seat?</h2>
+      <div class="mx-auto mt-10 flex flex-wrap justify-center gap-4">
+        {otherRoles.map((p) => <a href={p.href} class={secondaryBtn}>{p.navLabel}</a>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
+      <h2 class={sectionTitle}>{ctaHeadline}</h2>
+      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-body">{ctaDescription}</p>
+      <a href={BOOKING_URL} class={`mt-10 ${primaryBtn}`}>Book a free assessment</a>
+    </div>
+  </section>
+</Layout>

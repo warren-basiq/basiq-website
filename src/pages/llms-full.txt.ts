@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { SITE_URL } from "../lib/site-pages";
+import { SITE_URL, sitePages, absUrl, type Section } from "../lib/site-pages";
 import { products, statusLabel } from "../lib/products";
 import { getBlogPosts } from "../lib/site-dynamic";
 
@@ -10,16 +10,24 @@ const PRODUCT_LINES = products
   .map((p) => {
     const url = p.external ? p.href : `${SITE_URL}${p.href}`;
     const status = p.status === "live" ? "" : ` (${statusLabel(p.status)})`;
-    return `- **${p.name}**${status} — ${p.description} ${url}`;
+    return `- **${p.name}**${status}: ${p.description} ${url}`;
   })
   .join("\n");
 
+/** Page bullets for one registry section, so a new page shows up here for free. */
+function sectionLines(section: Section): string {
+  return sitePages
+    .filter((p) => p.llms && p.section === section)
+    .map((p) => `- **${p.title}**: ${p.description} ${absUrl(p.path)}`)
+    .join("\n");
+}
+
 /**
- * Long-form, hand-curated overview of Basiq for LLMs. All copy below is drawn
- * from the live site. Update this prose when the positioning or offerings
- * change. Dynamic content (blog posts) is appended from Sanity at the bottom.
+ * Long-form overview of Basiq for LLMs. The narrative prose is hand-written and
+ * should be updated when positioning changes; the page and product lists below
+ * are generated from the registries, and blog posts come from Sanity at build.
  */
-const BODY = `# Basiq — Full Overview for LLMs
+const BODY = `# Basiq, full overview for LLMs
 
 > Basiq is an AI execution partner for companies that need working systems, not slide decks. We embed with your team, build production systems, then document, train, and hand off ownership.
 
@@ -27,7 +35,7 @@ Live site: ${SITE_URL}
 
 ## What Basiq is
 
-Most AI efforts stall: experiments that never become systems, tools that never become workflows, pilots that never reach production — "AI everywhere, nothing shipping." Basiq exists to fix that. We identify where AI moves the needle in your specific business and deliver working prototypes to prove it — not a deck, not a recommendation. Then we embed with your team and build the production systems: engineering workflows, sales automation, process tools, operational infrastructure.
+Most AI efforts stall. Experiments never become systems, tools never become workflows, and pilots never reach production: AI everywhere, nothing shipping. Basiq exists to fix that. We identify where AI moves the needle in your specific business and deliver working prototypes to prove it, rather than a deck or a recommendation. Then we embed with your team and build the production systems: engineering workflows, sales automation, process tools, operational infrastructure.
 
 When the work is done we document, train, and hand off the keys. Your team owns everything we build. No retainer, no dependency, no phone call six months later asking for help.
 
@@ -36,15 +44,13 @@ When the work is done we document, train, and hand off the keys. Your team owns 
 1. **Map** your highest-leverage entry points.
 2. **Prove** it with working prototypes.
 3. **Build** the production systems, embedded with your team.
-4. **Hand off** — document, train, and transfer ownership.
+4. **Hand off** by documenting, training, and transferring ownership.
 
-## What we do
+## Solutions
 
-- **AI Strategy** — Where to start, what to build, how to sequence it. From diagnostic to fully AI-enabled. ${SITE_URL}/ai-strategy
-- **Engineering** — Go from AI-curious to AI-native; build an engineering org that runs AI end-to-end. ${SITE_URL}/engineering
-- **Go-to-Market** — AI-powered sales, CS, and marketing: automated prospecting, signal-based forecasting, call intelligence. A GTM motion that runs on signal, not instinct. ${SITE_URL}/go-to-market
-- **Operations** — AI as a default for every employee, not just the tech team: writing, research, and intelligence across the org. ${SITE_URL}/operations
-- **Business Applications** — Turn process experts into builders. Internal apps built by the people who need them, with engineers supervising. ${SITE_URL}/business-applications
+Basiq organizes its case by who is buying.
+
+${sectionLines("Solutions")}
 
 ## Products
 
@@ -54,12 +60,11 @@ ${PRODUCT_LINES}
 
 ## Masterclass
 
-- **Claude Code 101** — A hands-on introduction for non-technical teams: install Claude Code, learn command-line basics, and start building real apps and automations in plain English. ${SITE_URL}/masterclass/claude-code-101
-- **Build a Website with Claude Code** — Step-by-step: build and deploy a professional website using Claude Code, no coding experience required. ${SITE_URL}/masterclass/claude-code-website
+${sectionLines("Masterclass")}
 
 ## Resources
 
-- **Blog** — Insights and updates from the Basiq team. ${SITE_URL}/blog
+${sectionLines("Resources")}
 `;
 
 export const GET: APIRoute = async () => {
@@ -69,7 +74,7 @@ export const GET: APIRoute = async () => {
   if (posts.length > 0) {
     out += `\n## Latest blog posts\n\n`;
     out += posts
-      .map((p) => `- ${p.title} — ${SITE_URL}/blog/${p.slug}${p.excerpt ? `\n    ${p.excerpt}` : ""}`)
+      .map((p) => `- ${p.title}: ${SITE_URL}/blog/${p.slug}${p.excerpt ? `\n    ${p.excerpt}` : ""}`)
       .join("\n");
     out += "\n";
   }

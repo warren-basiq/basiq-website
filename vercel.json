@@ -9,6 +9,12 @@
 
     { "source": "/fabriq", "destination": "/products/fabriq", "permanent": true },
     { "source": "/qindle", "destination": "/products/qindle", "permanent": true },
-    { "source": "/lanescout", "destination": "/products/lanescout", "permanent": true }
+    { "source": "/lanescout", "destination": "/products/lanescout", "permanent": true },
+
+    { "source": "/ai-strategy", "destination": "/", "permanent": true },
+    { "source": "/engineering", "destination": "/", "permanent": true },
+    { "source": "/go-to-market", "destination": "/", "permanent": true },
+    { "source": "/operations", "destination": "/", "permanent": true },
+    { "source": "/business-applications", "destination": "/", "permanent": true }
   ]
 }

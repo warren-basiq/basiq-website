@@ -6,7 +6,7 @@
  * Add a product here once and every surface picks it up.
  *
  * Products with `external: true` live on their own domain and have no page on
- * basiq.work — they link out. The rest have a detail page under /products/<slug>.
+ * basiq.work and link out. The rest have a detail page under /products/<slug>.
  */
 
 export type ProductStatus = "live" | "coming-soon";
@@ -16,9 +16,9 @@ export interface Product {
   name: string;
   /** Short market category, shown as a label on cards. */
   category: string;
-  /** One line — used in the nav dropdown and as a card kicker. */
+  /** One line, used in the nav dropdown and as a card kicker. */
   tagline: string;
-  /** One to two sentences — used on the homepage grid and the /products hub. */
+  /** One to two sentences, used on the homepage grid and the /products hub. */
   description: string;
   href: string;
   external: boolean;
@@ -69,7 +69,7 @@ export const products: Product[] = [
     category: "CRM",
     tagline: "The prospecting CRM built for AEs",
     description:
-      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery — and the human parts of pipe gen: cold calling and video.",
+      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery, and the human parts of pipe gen: cold calling and video.",
     href: "/products/qindle",
     external: false,
     status: "live",

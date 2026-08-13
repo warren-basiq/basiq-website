@@ -23,7 +23,15 @@ export default defineConfig({
     // Vanity paths, so a bare product name in a deck or an email resolves.
     '/fabriq': { status: 301, destination: '/products/fabriq' },
     '/qindle': { status: 301, destination: '/products/qindle' },
-    '/lanescout': { status: 301, destination: '/products/lanescout' }
+    '/lanescout': { status: 301, destination: '/products/lanescout' },
+
+    // The five "What we do" pages were retired when Solutions became a set of
+    // persona pages. Nothing in the new IA maps to them one-to-one.
+    '/ai-strategy': { status: 301, destination: '/' },
+    '/engineering': { status: 301, destination: '/' },
+    '/go-to-market': { status: 301, destination: '/' },
+    '/operations': { status: 301, destination: '/' },
+    '/business-applications': { status: 301, destination: '/' }
   },
 
   vite: {
