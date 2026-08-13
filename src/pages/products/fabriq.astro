@@ -1,182 +1,74 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { SITE_URL } from "../../lib/site-pages";
-
-const title = "Fabriq: Customer Intelligence for CS Leaders";
-const description =
-  "AI-powered customer intelligence for CS leaders managing net retention at scale. Stakeholder sentiment, expansion signal, and evidence-based renewal forecasts.";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: `${title} | Basiq`,
-  description,
-  url: `${SITE_URL}/products/fabriq`,
-  publisher: {
-    "@type": "Organization",
-    name: "Basiq",
-    url: SITE_URL,
-  },
-  mainEntity: {
-    "@type": "SoftwareApplication",
-    name: "Fabriq",
-    description,
-    applicationCategory: "BusinessApplication",
-    url: `${SITE_URL}/products/fabriq`,
-  },
-};
-
-const problems = [
-  {
-    title: "The visibility gap",
-    body: "You have health scores and dashboards. What you don't have is any read on champion engagement, whether QBR follow-ups actually happened, or which executives have gone quiet. The signals that predict churn aren't in your CRM.",
-  },
-  {
-    title: "Coaching doesn't scale",
-    body: "With 10–30 CSMs having 20–30 customer conversations each per week, you can realistically review a handful. The rest of your team's calls are a black box.",
-  },
-  {
-    title: "Forecasts built on optimism",
-    body: "Renewal forecasts run on CSM gut feel instead of what the account is actually saying. That's how they end up off by 10–15%, and why the surprises always land late.",
-  },
-];
-
-const features = [
-  {
-    icon: "🗂",
-    title: "Customer Snapshot",
-    body: "Stakeholder sentiment, open commitments, product status, and relationship health. The whole account in one view, updated from real conversations.",
-  },
-  {
-    icon: "📡",
-    title: "Stakeholder Sentiment Tracking",
-    body: "Sentiment updates continuously from every conversation, so a cooling champion shows up as a signal instead of a surprise.",
-  },
-  {
-    icon: "📈",
-    title: "Expansion Intelligence",
-    body: "Pitch history, AI recommendations, and messaging tailored by product line. Know which accounts are ready and what to lead with.",
-  },
-  {
-    icon: "🎯",
-    title: "Evidence-Based Renewal Forecasting",
-    body: "Objective stakeholder signals replace CSM self-assessment, with early warnings 60–90 days before the renewal date.",
-  },
-  {
-    icon: "⚡",
-    title: "CSM Capacity at Scale",
-    body: "Tasks, bugs, and feature requests are aggregated automatically, so CSMs spend their week on customers instead of on admin.",
-  },
-  {
-    icon: "🤝",
-    title: "Sales-to-CS Handoff",
-    body: "Structured transfer of the champion, the objections, and the commitments made during the sale, so CS doesn't start from zero.",
-  },
-];
+import ProductPage from "../../components/ProductPage.astro";
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd}>
-  <!-- Hero -->
-  <header class="relative pt-24 pb-16">
-<div class="relative mx-auto max-w-7xl px-6 lg:px-12">
-      <div class="flex items-center gap-3">
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-          Customer Success
-        </p>
-        <span class="rounded-full border border-line bg-stone px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-forest">
-          Live
-        </span>
-      </div>
-      <h1 class="mt-4 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight text-heading sm:text-5xl md:text-6xl lg:text-7xl">
-        You can't protect what you can't see.
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-body">
-        Fabriq is AI-powered customer intelligence for CS leaders managing net
-        retention at scale. It reads every customer conversation your team has, and
-        turns them into the signal your dashboards never gave you.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a
-          href="https://booking.akiflow.com/basiq-consulting"
-          class="rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-heading transition-all hover:bg-forest-hover"
-        >
-          Get a Demo
-        </a>
-        <a
-          href="/products"
-          class="rounded-full border border-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone"
-        >
-          All products
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Problem -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        The problem
-      </p>
-      <h2 class="mt-4 max-w-3xl font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
-        Retention is decided in conversations you never hear.
-      </h2>
-
-      <div class="mt-16 grid gap-8 md:grid-cols-3">
-        {
-          problems.map((p) => (
-            <div class="rounded-2xl border border-line bg-paper p-8 shadow-soft">
-              <h3 class="font-display text-xl text-heading">{p.title}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-body">{p.body}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        What Fabriq does
-      </p>
-      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
-        Every conversation, working for you
-      </h2>
-
-      <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          features.map((f) => (
-            <div class="rounded-2xl border border-line bg-paper p-8 shadow-soft transition-shadow hover:shadow-lift">
-              <span class="text-2xl text-forest">{f.icon}</span>
-              <h3 class="mt-4 font-display text-xl text-heading">{f.title}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-body">{f.body}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl lg:text-5xl">
-          Stop forecasting renewals on gut feel.
-        </h2>
-        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">
-          See what your customers have already been telling you. We'll walk you
-          through Fabriq on your own accounts.
-        </p>
-        <a
-          href="https://booking.akiflow.com/basiq-consulting"
-          class="mt-10 inline-block rounded-full bg-forest px-8 py-4 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-heading transition-all hover:bg-forest-hover"
-        >
-          Get a Demo
-        </a>
-      </div>
-    </div>
-  </section>
-</Layout>
+<ProductPage
+  slug="fabriq"
+  headline="You can't protect what you can't see."
+  subtitle="Customer intelligence for CS leaders."
+  subheadline="Fabriq is AI-powered customer intelligence for CS leaders managing net retention at scale. It reads every customer conversation your team has and turns them into the signal your dashboards never gave you."
+  seoTitle="Fabriq: Customer Intelligence for CS Leaders"
+  seoDescription="AI-powered customer intelligence for CS leaders managing net retention at scale. Stakeholder sentiment, expansion signal, and evidence-based renewal forecasts."
+  problemsHeadline="Retention is decided in conversations you never hear."
+  problems={[
+    {
+      num: "01",
+      title: "The visibility gap",
+      description:
+        "You have health scores and dashboards. What you don't have is any read on champion engagement, whether QBR follow-ups actually happened, or which executives have gone quiet. The signals that predict churn aren't in your CRM.",
+    },
+    {
+      num: "02",
+      title: "Coaching doesn't scale",
+      description:
+        "With 10–30 CSMs having 20–30 customer conversations each per week, you can realistically review a handful. The rest of your team's calls are a black box.",
+    },
+    {
+      num: "03",
+      title: "Forecasts built on optimism",
+      description:
+        "Renewal forecasts run on CSM gut feel instead of what the account is actually saying. That's how they end up off by 10–15%, and why the surprises always land late.",
+    },
+  ]}
+  featuresHeadline="Every conversation, working for you."
+  features={[
+    {
+      title: "Customer snapshot",
+      description:
+        "Stakeholder sentiment, open commitments, product status, and relationship health. The whole account in one view, updated from real conversations.",
+    },
+    {
+      title: "Stakeholder sentiment tracking",
+      description:
+        "Sentiment updates continuously from every conversation, so a cooling champion shows up as a signal instead of a surprise.",
+    },
+    {
+      title: "Expansion intelligence",
+      description:
+        "Pitch history, AI recommendations, and messaging tailored by product line. Know which accounts are ready and what to lead with.",
+    },
+    {
+      title: "Evidence-based renewal forecasting",
+      description:
+        "Objective stakeholder signals replace CSM self-assessment, with early warnings 60–90 days before the renewal date.",
+    },
+    {
+      title: "CSM capacity at scale",
+      description:
+        "Tasks, bugs, and feature requests are aggregated automatically, so CSMs spend their week on customers instead of on admin.",
+    },
+    {
+      title: "Sales-to-CS handoff",
+      description:
+        "Structured transfer of the champion, the objections, and the commitments made during the sale, so CS doesn't start from zero.",
+    },
+  ]}
+  stats={[
+    { value: "60–90", label: "Days of early warning before renewal" },
+    { value: "10–15%", label: "Forecast error Fabriq closes" },
+    { value: "100%", label: "Of customer conversations read" },
+    { value: "1", label: "View of the whole account" },
+  ]}
+  ctaHeadline="Stop forecasting renewals on gut feel."
+  ctaDescription="See what your customers have already been telling you. We'll walk you through Fabriq on your own accounts."
+/>

@@ -1,58 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { SITE_URL } from "../../lib/site-pages";
-
-const title = "LaneScout: Negotiation Coaching for Freight Brokers";
-const description =
-  "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers. Coming soon from Basiq.";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: `${title} | Basiq`,
-  description,
-  url: `${SITE_URL}/products/lanescout`,
-  publisher: {
-    "@type": "Organization",
-    name: "Basiq",
-    url: SITE_URL,
-  },
-  mainEntity: {
-    "@type": "SoftwareApplication",
-    name: "LaneScout",
-    description,
-    applicationCategory: "BusinessApplication",
-    url: `${SITE_URL}/products/lanescout`,
-  },
-};
-
-const steps = [
-  {
-    num: "01",
-    title: "Connects to your phone system",
-    body: "LaneScout integrates with your existing call recording infrastructure. No new hardware, no workflow changes. Every carrier call is captured and analyzed automatically.",
-  },
-  {
-    num: "02",
-    title: "AI analyzes every call",
-    body: "The AI listens for negotiation behavior: how your CSRs open, how they anchor, how they respond to pushback, and whether they're caving before they need to. Every call gets scored.",
-  },
-  {
-    num: "03",
-    title: "One skill per week",
-    body: "Instead of overwhelming CSRs with everything they're doing wrong, LaneScout works with managers to pick a single high-impact skill to focus on. Focused improvement beats scattered feedback.",
-  },
-  {
-    num: "04",
-    title: "Real-time nudges after every call",
-    body: "After each call, the CSR gets a short, specific nudge on how they performed against that week's target skill. Immediate feedback creates faster learning loops.",
-  },
-  {
-    num: "05",
-    title: "Scoring and manager visibility",
-    body: "Managers get an overall negotiation score per rep, trend data over time, and team-wide visibility into where the coaching is working, and where it isn't.",
-  },
-];
+import ProductPage from "../../components/ProductPage.astro";
 
 const audiences = [
   {
@@ -86,117 +33,84 @@ const comparison = [
 ];
 ---
 
-<Layout title={title} description={description} jsonLd={jsonLd}>
-  <!-- Hero -->
-  <header class="relative pt-24 pb-16">
-<div class="relative mx-auto max-w-7xl px-6 lg:px-12">
-      <div class="flex items-center gap-3">
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-          Logistics
-        </p>
-        <span class="rounded-full border border-control px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-muted">
-          Coming soon
-        </span>
-      </div>
-      <h1 class="mt-4 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight text-heading sm:text-5xl md:text-6xl">
-        Turn your carrier desk into a margin engine.
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-body">
-        LaneScout is AI-powered negotiation coaching built specifically for US
-        trucking brokers. It connects to your phone system, analyzes every carrier
-        call, and turns those calls into a structured coaching program for your
-        carrier sales team.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a
-          href="https://booking.akiflow.com/basiq-consulting"
-          class="rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-heading transition-all hover:bg-forest-hover"
-        >
-          Get Early Access
-        </a>
-        <a
-          href="/products"
-          class="rounded-full border border-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone"
-        >
-          All products
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Problem -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        The problem
-      </p>
-      <h2 class="mt-4 max-w-3xl font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
-        Your carrier desk is leaving money on the table.
-      </h2>
-      <p class="mt-8 max-w-3xl text-lg leading-relaxed text-body">
-        Every day, your CSRs call carriers to cover posted loads. And every day,
-        most of them do the same thing: they come in with a number, the carrier
-        pushes back, and they split the difference. It feels like negotiating. It
-        isn't.
-      </p>
-
-      <blockquote class="mt-10 max-w-3xl border-l-2 border-gold pl-6">
-        <p class="text-xl leading-relaxed text-body md:text-2xl">
-          For a mid-size freight broker, the gap between what your CSRs pay carriers
-          and benchmark market rates can exceed <span class="font-semibold text-heading">$200,000 per month</span>.
-          That's not revenue. That's margin walking out the door on every load.
-        </p>
-      </blockquote>
-
-      <p class="mt-10 max-w-3xl text-lg leading-relaxed text-body">
-        The root cause isn't effort. Your CSRs are working hard. The problem is
-        skill: negotiation is a craft, and most CSRs were never trained for it. So
-        they default to the path of least resistance: meet in the middle and move
-        on.
-      </p>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        How it works
-      </p>
-      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
-        LaneScout doesn't replace your CSRs. It makes them better, one skill at a time.
-      </h2>
-
-      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {
-          steps.map((s) => (
-            <div class="group rounded-2xl border border-line bg-paper p-8 shadow-soft transition-shadow hover:shadow-lift">
-              <span class="font-mono text-5xl font-bold text-heading/[0.06] transition-colors duration-300 group-hover:text-forest/[0.10]">
-                {s.num}
-              </span>
-              <h3 class="mt-4 font-display text-xl text-heading">{s.title}</h3>
-              <p class="mt-3 text-sm leading-relaxed text-body">{s.body}</p>
-            </div>
-          ))
-        }
-      </div>
-
-      <p class="mt-16 max-w-3xl text-lg leading-relaxed text-body">
-        Most sales coaching fails because it tries to change too many things at once.
-        LaneScout runs on a single behavioral principle: <span class="font-semibold text-charcoal">one skill,
-        practiced repeatedly, with immediate feedback, creates lasting change.</span> And
-        because the feedback is automated, it works whether you have 5 CSRs or 50.
-      </p>
-    </div>
-  </section>
-
+<ProductPage
+  slug="lanescout"
+  headline="Your carrier desk is leaving money on the table."
+  subtitle="Negotiation coaching for carrier desks."
+  subheadline="Every day your CSRs call carriers to cover posted loads, and most of them do the same thing: come in with a number, take the pushback, split the difference. It feels like negotiating. It isn't."
+  seoTitle="LaneScout: Negotiation Coaching for Freight Brokers"
+  seoDescription="AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers. Coming soon from Basiq."
+  ctaLabel="Get early access"
+  problemsHeadline="The gap is skill, not effort."
+  problems={[
+    {
+      num: "01",
+      title: "Margin walks out on every load",
+      description:
+        "For a mid-size broker, the gap between what your CSRs pay carriers and benchmark market rates can exceed $200,000 per month. That is not revenue you missed. That is margin you already had.",
+    },
+    {
+      num: "02",
+      title: "Nobody hears the calls that matter",
+      description:
+        "A manager can review a handful of calls a week. The rest of the desk is invisible, so the habit that costs you the most is also the one nobody has ever named out loud.",
+    },
+    {
+      num: "03",
+      title: "Negotiation was never trained",
+      description:
+        "It is a craft, and most CSRs were never taught it. Without a rep for it, they default to the path of least resistance: meet in the middle and move on to the next load.",
+    },
+  ]}
+  featuresHeadline="LaneScout doesn't replace your CSRs. It makes them better, one skill at a time."
+  features={[
+    {
+      title: "Connects to your phone system",
+      description:
+        "LaneScout integrates with your existing call recording infrastructure. No new hardware, no workflow changes. Every carrier call is captured and analyzed automatically.",
+    },
+    {
+      title: "AI analyzes every call",
+      description:
+        "The AI listens for negotiation behavior: how your CSRs open, how they anchor, how they respond to pushback, and whether they're caving before they need to. Every call gets scored.",
+    },
+    {
+      title: "One skill per week",
+      description:
+        "Instead of overwhelming CSRs with everything they're doing wrong, LaneScout works with managers to pick a single high-impact skill to focus on. Focused improvement beats scattered feedback.",
+    },
+    {
+      title: "Real-time nudges after every call",
+      description:
+        "After each call, the CSR gets a short, specific nudge on how they performed against that week's target skill. Immediate feedback creates faster learning loops.",
+    },
+    {
+      title: "Scoring and manager visibility",
+      description:
+        "Managers get an overall negotiation score per rep, trend data over time, and team-wide visibility into where the coaching is working, and where it isn't.",
+    },
+    {
+      title: "Knowledge that stays in the building",
+      description:
+        "When a CSR leaves, their negotiation instincts leave with them. LaneScout turns that instinct into a documented, repeatable system, so new reps ramp faster.",
+    },
+  ]}
+  stats={[
+    { value: "$10,000", label: "Per day from a 1% negotiation gain" },
+    { value: "$3.6M", label: "Per year at 500 loads per day" },
+    { value: "100%", label: "Call coverage, fully automated" },
+    { value: "1", label: "Skill in focus per week" },
+  ]}
+  ctaHeadline="Every call is a chance to protect your margin, or give it away."
+  ctaDescription="LaneScout makes sure your CSRs know the difference. We're onboarding design partners now."
+>
   <!-- Who benefits -->
   <section class="border-t border-line">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        Who benefits
+        <span class="mr-2">&#9679;</span>Who benefits
       </p>
-      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
+      <h2 class="mt-4 font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl">
         Built for the desk, not the boardroom
       </h2>
 
@@ -205,11 +119,11 @@ const comparison = [
           audiences.map((a) => (
             <div class="rounded-2xl border border-line bg-paper p-8 shadow-soft">
               <h3 class="font-display text-2xl text-heading">{a.title}</h3>
-              <p class="mt-2 text-base text-body">{a.lead}</p>
+              <p class="mt-2 text-base italic text-forest">{a.lead}</p>
               <ul class="mt-6 space-y-3">
                 {a.points.map((point) => (
                   <li class="flex gap-3 text-sm leading-relaxed text-body">
-                    <span class="text-sage">&ndash;</span>
+                    <span class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -222,23 +136,25 @@ const comparison = [
   </section>
 
   <!-- Comparison -->
-  <section class="border-t border-line">
+  <section class="border-t border-line bg-stone">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        What makes it different
+        <span class="mr-2">&#9679;</span>What makes it different
       </p>
-      <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl">
+      <h2 class="mt-4 font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl">
         Not another call analytics tool
       </h2>
 
       <div class="mt-16 overflow-x-auto">
         <table class="w-full min-w-[36rem] border-collapse text-left">
           <thead>
-            <tr class="border-b border-line">
-              <th class="pb-4 pr-6 text-sm font-semibold text-muted">
+            <tr class="border-b border-control">
+              <th class="pb-4 pr-6 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
                 Generic call analytics
               </th>
-              <th class="pb-4 text-sm font-semibold text-forest">LaneScout</th>
+              <th class="pb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-forest">
+                LaneScout
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -255,48 +171,4 @@ const comparison = [
       </div>
     </div>
   </section>
-
-  <!-- Business case -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        The business case
-      </p>
-      <blockquote class="mt-8 max-w-4xl border-l-2 border-gold pl-6">
-        <p class="font-display text-2xl leading-snug text-heading md:text-3xl lg:text-4xl">
-          If your carrier desk covers 500 loads per day at an average load value of
-          $2,000, a 1% improvement in carrier cost negotiation is
-          <span class="font-semibold text-heading">$10,000 per day</span>, roughly
-          <span class="font-semibold text-heading">$3.6M per year</span>.
-        </p>
-      </blockquote>
-      <p class="mt-10 max-w-3xl text-lg leading-relaxed text-body">
-        Beyond the margin, LaneScout lowers the cost of turnover. When a CSR leaves,
-        their negotiation instincts leave with them. LaneScout turns that instinct
-        into a documented, repeatable coaching system, so new reps ramp faster and
-        the knowledge stays in the building.
-      </p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="border-t border-line">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl lg:text-5xl">
-          Every call is a chance to protect your margin, or give it away.
-        </h2>
-        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">
-          LaneScout makes sure your CSRs know the difference. We're onboarding design
-          partners now.
-        </p>
-        <a
-          href="https://booking.akiflow.com/basiq-consulting"
-          class="mt-10 inline-block rounded-full bg-forest px-8 py-4 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-heading transition-all hover:bg-forest-hover"
-        >
-          Get Early Access
-        </a>
-      </div>
-    </div>
-  </section>
-</Layout>
+</ProductPage>

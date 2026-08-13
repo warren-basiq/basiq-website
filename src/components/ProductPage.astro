@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProblemIllustration from "./ProblemIllustration.astro";
-import { personas } from "../lib/personas";
+import { products } from "../lib/products";
 import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
 
 interface Problem {
@@ -21,42 +21,47 @@ interface Stat {
 }
 
 interface Props {
-  /** Registry slug, used to drop this page from the other-roles links. */
+  /** Must match a slug in src/lib/products.ts; supplies category, status, and the cross-links. */
   slug: string;
-  /** Fills the hero badge ("For ...") and the features headline. */
-  role: string;
   headline: string;
-  /** Optional line between the headline and the subheadline. */
+  /** Sits between the headline and the subheadline. Usually the product tagline. */
   subtitle?: string;
   subheadline: string;
   seoTitle: string;
   seoDescription: string;
-  problemsHeadline: string;
   /** Exactly three; the section is a three-up grid with one illustration each. */
   problems: Problem[];
+  problemsHeadline: string;
   features: Feature[];
-  stats: Stat[];
+  featuresHeadline: string;
+  /** Omit to drop the forest stats band, for products with no numbers to stand behind. */
+  stats?: Stat[];
   ctaHeadline: string;
   ctaDescription: string;
+  ctaLabel?: string;
 }
 
 const {
   slug,
-  role,
   headline,
   subtitle,
   subheadline,
   seoTitle,
   seoDescription,
-  problemsHeadline,
   problems,
+  problemsHeadline,
   features,
+  featuresHeadline,
   stats,
   ctaHeadline,
   ctaDescription,
+  ctaLabel = "Get a demo",
 } = Astro.props;
 
-const otherRoles = personas.filter((p) => p.slug !== slug);
+const product = products.find((p) => p.slug === slug);
+if (!product) throw new Error(`ProductPage: no product registered with slug "${slug}"`);
+
+const otherProducts = products.filter((p) => p.slug !== slug);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -65,16 +70,38 @@ const jsonLd = {
   description: seoDescription,
   url: new URL(Astro.url.pathname, SITE_URL).href,
   publisher: { "@type": "Organization", name: "Basiq", url: SITE_URL },
+  mainEntity: {
+    "@type": "SoftwareApplication",
+    name: product.name,
+    description: seoDescription,
+    applicationCategory: "BusinessApplication",
+    url: new URL(Astro.url.pathname, SITE_URL).href,
+  },
 };
+
+const displayH2 =
+  "font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl";
 ---
 
 <Layout title={seoTitle} description={seoDescription} jsonLd={jsonLd}>
   <!-- HERO: narrative, so left-aligned -->
   <header class="pb-20 pt-20 lg:pt-28">
     <div class="mx-auto max-w-7xl px-6 lg:px-12">
-      <span class="inline-block rounded-full bg-forest px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
-        For {role}
-      </span>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-block rounded-full bg-forest px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
+          {product.category}
+        </span>
+        <span
+          class={
+            product.status === "live"
+              ? "rounded-full border border-line bg-stone px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-forest"
+              : "rounded-full border border-control px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted"
+          }
+        >
+          {product.status === "live" ? "Live" : "Coming soon"}
+        </span>
+      </div>
+
       <h1 class="mt-8 max-w-4xl font-display text-4xl font-normal leading-[1.08] tracking-[-0.025em] text-heading md:text-5xl lg:text-6xl">
         {headline}
       </h1>
@@ -85,13 +112,13 @@ const jsonLd = {
           href={BOOKING_URL}
           class="rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover"
         >
-          Book a free assessment
+          {ctaLabel}
         </a>
         <a
           href="/products"
           class="rounded-full border border-forest bg-transparent px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone"
         >
-          See the products
+          All products
         </a>
       </div>
     </div>
@@ -106,9 +133,7 @@ const jsonLd = {
       <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
         <span class="mr-2">&#9679;</span>The problem
       </p>
-      <h2 class="mt-4 max-w-3xl font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl">
-        {problemsHeadline}
-      </h2>
+      <h2 class={`mt-4 max-w-3xl ${displayH2}`}>{problemsHeadline}</h2>
 
       <div class="mt-16 grid gap-6 md:grid-cols-3">
         {
@@ -131,11 +156,9 @@ const jsonLd = {
   <section class="border-t border-line">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
-        <span class="mr-2">&#9679;</span>How Basiq helps
+        <span class="mr-2">&#9679;</span>What {product.name} does
       </p>
-      <h2 class="mt-4 font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl">
-        What Basiq does for {role}
-      </h2>
+      <h2 class={`mt-4 max-w-3xl ${displayH2}`}>{featuresHeadline}</h2>
       <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           features.map((feature) => (
@@ -149,57 +172,55 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- STATS: the one full-width Deep Forest reset band on this page -->
-  <section class="on-forest bg-forest">
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
-      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4" id="stats-grid">
-        {
-          stats.map((stat, i) => (
-            <div class="text-center" data-stat={stat.value} data-delay={i * 120}>
-              <p class="stat-value font-display text-5xl leading-none text-gold md:text-6xl" aria-label={stat.value}>
-                {stat.value}
-              </p>
-              <p class="mt-4 text-sm leading-relaxed text-on-dark-muted">{stat.label}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  {
+    stats && stats.length > 0 && (
+      <section class="on-forest bg-forest">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
+          <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4" id="stats-grid">
+            {stats.map((stat, i) => (
+              <div class="text-center" data-stat={stat.value} data-delay={i * 120}>
+                <p class="stat-value font-display text-5xl leading-none text-gold md:text-6xl" aria-label={stat.value}>
+                  {stat.value}
+                </p>
+                <p class="mt-4 text-sm leading-relaxed text-on-dark-muted">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Page-specific sections (comparison tables, business cases) go here. -->
+  <slot />
 
   <!-- CTA -->
   <section class="border-t border-line">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl">
-          {ctaHeadline}
-        </h2>
+        <h2 class={displayH2}>{ctaHeadline}</h2>
         <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">{ctaDescription}</p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={BOOKING_URL}
             class="rounded-full bg-forest px-8 py-4 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover"
           >
-            Book a free assessment
+            {ctaLabel}
           </a>
         </div>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
           {
-            otherRoles.map((p) => (
+            otherProducts.map((p) => (
               <a
                 href={p.href}
+                target={p.external ? "_blank" : undefined}
+                rel={p.external ? "noopener noreferrer" : undefined}
                 class="rounded-full border border-control px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-body transition-colors hover:bg-stone hover:text-forest"
               >
-                {p.navLabel}
+                {p.name}
               </a>
             ))
           }
-          <a
-            href="/products"
-            class="rounded-full border border-control px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-body transition-colors hover:bg-stone hover:text-forest"
-          >
-            All products
-          </a>
         </div>
       </div>
     </div>
@@ -219,7 +240,7 @@ const jsonLd = {
       const chars = "0123456789";
       const duration = 1200;
 
-      /** Split "6 wks" into digit runs and literal runs, so only digits scramble. */
+      /** Split "$3.6M" into digit runs and literal runs, so only digits scramble. */
       function extractParts(value: string) {
         const parts: { type: "num" | "text"; value: string }[] = [];
         let current = "";

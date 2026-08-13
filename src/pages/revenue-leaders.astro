@@ -4,29 +4,28 @@ import RolePage from "../components/RolePage.astro";
 
 <RolePage
   slug="revenue-leaders"
-  audience="For CROs and VPs of Sales"
+  role="CROs and VPs of Sales"
   headline="Your reps do not need another tool. They need the work to already be done."
+  subtitle="Remove steps, don't add tabs."
   subheadline="Most AI in the sales stack adds a tab. Basiq builds the systems that remove steps: research written before the call, replies handled without a rep, forecasts built on signal instead of a Friday guess."
   seoTitle="AI for CROs and VPs of Sales | Basiq"
   seoDescription="Basiq builds AI systems for revenue teams: automated prospecting, reply handling, call intelligence, and signal-based forecasting. Production systems your team owns."
   problemsHeadline="Why the AI in your sales stack is not moving the number."
   problems={[
     {
+      num: "01",
       title: "Adoption dies in week three",
       description:
         "Reps try the tool, it saves them four minutes, and they go back to the old way. Anything that adds a step loses to the thing that removes one.",
     },
     {
+      num: "02",
       title: "The pipeline data was never good enough",
       description:
         "AI forecasting on top of a CRM nobody updates produces a confident wrong answer. The fix is upstream of the model, in how the data gets captured.",
     },
     {
-      title: "Outbound volume went up, replies did not",
-      description:
-        "Generated sequences at scale trained buyers to ignore you. Volume is no longer the constraint, and treating it like one costs you the domain.",
-    },
-    {
+      num: "03",
       title: "Every vendor sells a point solution",
       description:
         "Six tools, six logins, six per-seat contracts, and none of them talk to each other. The integration work is the actual job, and nobody sells that.",
@@ -35,9 +34,9 @@ import RolePage from "../components/RolePage.astro";
   stats={[
     { value: "2x", label: "Outbound pipeline in 6 weeks" },
     { value: "6 wks", label: "Typical time to production" },
+    { value: "5", label: "Products shipped, 2 for revenue teams" },
     { value: "0", label: "Ongoing maintenance on your team" },
   ]}
-  featuresHeadline="What we build for revenue teams."
   features={[
     {
       title: "Prospecting that runs itself",
@@ -58,6 +57,16 @@ import RolePage from "../components/RolePage.astro";
       title: "Retention you can see coming",
       description:
         "Fabriq surfaces stakeholder sentiment and expansion signal for CS leaders, so renewal risk shows up in month two, not month eleven.",
+    },
+    {
+      title: "Volume that does not burn the domain",
+      description:
+        "Generated sequences at scale trained buyers to ignore you. We build for reply rate and deliverability, not send count.",
+    },
+    {
+      title: "One system, not six subscriptions",
+      description:
+        "The integration work between your tools is the part that actually moves the number, and it is the part no vendor will do for you.",
     },
   ]}
   ctaHeadline="See where AI takes work off your team, not adds to it."

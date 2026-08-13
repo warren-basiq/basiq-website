@@ -94,6 +94,36 @@ the same care by hand in the studio.
 - **Products** come from `src/lib/products.ts`, which drives the nav dropdown, footer,
   homepage grid, and `/products` hub.
 
+## Page structure
+
+The homepage follows musal.ai's section order: centered hero with a large visual, a
+left-aligned problem section whose visual alternates sides, a stone-inset "how it works"
+band of numbered cards each with a visual, the Deep Forest products band, a persona tab
+panel, social proof, and a centered CTA.
+
+Persona and product pages both follow the **Topiq solutions-page shape**, via
+`RolePage.astro` and `ProductPage.astro`: a left-aligned hero with a pill badge, a three-up
+grid of illustrated problem cards, a feature grid, a Deep Forest stats band, and a CTA with
+pill links across to the sibling pages. The two components deliberately mirror each other;
+change one and consider the other. Their problem illustrations come from the shared
+`ProblemIllustration.astro`, whose three indexes carry fixed meanings.
+
+`ProductPage` takes `stats` as optional. Omit it rather than inventing numbers: Qindle
+currently ships without the stats band for exactly that reason. Both components expose an
+`after-hero` slot for a video or screenshots, and `ProductPage` has a default slot before
+the CTA for page-specific sections (LaneScout uses it for its audiences and comparison
+table).
+
+## Homepage visuals
+
+Every visual on the homepage is a same-origin static HTML file in `public/mocks/`, rendered
+in an `<iframe>` and sized by two scripts in `index.astro`: `.mock-frame` scales a
+fixed-width mock into its column, and `iframe.fluid-frame` measures the mock's `.stage`
+element and grows the frame to fit.
+
+**They are currently Musal's product mocks, used as placeholders, and show the wrong
+product.** `public/mocks/README.md` lists what each slot should eventually show.
+
 ## Podcast
 
 Selling AI lives at `/podcast` with episode pages at `/episode/[slug]`, both fed by the

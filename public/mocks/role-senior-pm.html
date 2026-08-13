@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musal: Senior PM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --warm-50:#FCFBF8;--warm-100:#F5F1EA;--warm-150:#EFEBE3;--warm-200:#E3DED5;
+  --warm-300:#D3CEC4;--warm-400:#B7B2A8;--warm-500:#6F6C65;--warm-600:#6F6C65;
+  --warm-700:#57554F;--warm-800:#3A3934;--warm-900:#252525;
+  --coral:#234136;--coral-600:#1C352D;--coral-700:#16291F;
+  --coral-soft:#EDF1EF;--coral-200:#C8D4CE;--coral-300:#A3B6AC;
+  --green:#1F7A4C;--green-600:#1F7A4C;--green-soft:#E6F4EC;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Fraunces',Georgia,serif;
+  --font-mono:'JetBrains Mono','Cascadia Code',monospace;
+  --radius:16px;--radius-sm:10px;
+  --shadow:0 1px 2px hsl(30 10% 20%/.04),0 6px 16px hsl(30 10% 20%/.07),0 18px 40px hsl(30 10% 20%/.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font-mono);
+  background:
+    radial-gradient(110% 80% at 50% -5%, #EDF1EF 0%, rgba(255,244,236,0) 55%),
+    radial-gradient(90% 80% at 50% 105%, #F5F1EA 0%, rgba(243,239,232,0) 50%),
+    var(--warm-50);
+  display:grid;place-items:center;padding:44px 30px;overflow:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:radial-gradient(var(--warm-300) 1px, transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(75% 75% at 50% 45%, #000 0%, transparent 75%);
+  mask-image:radial-gradient(75% 75% at 50% 45%, #000 0%, transparent 75%);
+  opacity:.5;
+}
+.stage{position:relative;width:100%;max-width:440px}
+.panel{
+  background:var(--warm-50);border:1px solid var(--warm-200);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;opacity:0;
+  animation:rise .8s cubic-bezier(.22,1,.36,1) .05s forwards;
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.bar{display:flex;align-items:center;gap:9px;padding:13px 16px;background:var(--warm-100);border-bottom:1px solid var(--warm-200)}
+.bar .tt{font-size:11.5px;color:var(--warm-800);font-weight:600}
+.bar .badge{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--warm-500)}
+.pill{margin-left:auto;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-700);background:var(--coral-soft);border:1px solid var(--coral-200);padding:4px 9px;border-radius:999px}
+/* rollup */
+.rollup{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--warm-200);border-bottom:1px solid var(--warm-200)}
+.metric{background:var(--warm-50);padding:14px 14px}
+.metric .ml{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-500);margin-bottom:6px}
+.metric .mv{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--warm-800);line-height:1}
+.metric .mv.coral{color:var(--coral-600)}
+.metric .mv.green{color:var(--green-600)}
+.metric .ms{font-size:9px;color:var(--warm-500);margin-top:4px}
+/* rows */
+.rows{padding:7px 8px 9px}
+.rhead{display:grid;grid-template-columns:1fr 64px 60px;gap:8px;padding:6px 10px 8px;font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--warm-600)}
+.row{
+  display:grid;grid-template-columns:1fr 64px 60px;gap:8px;align-items:center;
+  padding:9px 10px;border-radius:10px;opacity:0;animation:rise .55s cubic-bezier(.22,1,.36,1) forwards;
+}
+.row:hover{background:var(--warm-100)}
+.row:nth-child(2){animation-delay:.3s}.row:nth-child(3){animation-delay:.4s}
+.row:nth-child(4){animation-delay:.5s}.row:nth-child(5){animation-delay:.6s}
+.who{display:flex;align-items:center;gap:9px;min-width:0}
+.av{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:10px;color:#252525;font-weight:600}
+.who .meta{min-width:0}
+.who .pn{font-size:11.5px;color:var(--warm-800);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who .nm{font-size:9.5px;color:var(--warm-500)}
+.q{font-size:11.5px;color:var(--warm-700);text-align:right}
+.q.g{color:var(--green-600)}
+.st{justify-self:end;font-size:9px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.st.live{color:var(--green-600);background:var(--green-soft)}
+.st.test{color:var(--coral-700);background:var(--coral-soft)}
+.cost{font-size:11px;color:var(--warm-600);text-align:right}
+@keyframes riseX{from{opacity:0;transform:translate(-50%,18px) scale(.985)}to{opacity:1;transform:translateX(-50%)}}
+.float{
+  position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;color:var(--warm-700);background:var(--warm-50);border:1px solid var(--warm-200);
+  padding:8px 13px;border-radius:999px;box-shadow:var(--shadow);white-space:nowrap;
+  opacity:0;animation:riseX .7s cubic-bezier(.22,1,.36,1) 1.05s forwards;
+}
+.float .pulse{width:8px;height:8px;border-radius:50%;background:var(--coral)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="panel">
+    <div class="bar">
+      <span class="tt">AI Quality</span><span class="badge">· team workspace</span>
+      <span class="pill">you · group pm</span>
+    </div>
+    <div class="rollup">
+      <div class="metric"><div class="ml">avg quality</div><div class="mv green">95.4%</div><div class="ms">across 5 PMs</div></div>
+      <div class="metric"><div class="ml">monthly cost</div><div class="mv coral">$412</div><div class="ms">−18% vs Q2</div></div>
+      <div class="metric"><div class="ml">prompts live</div><div class="mv">12</div><div class="ms">one canonical home</div></div>
+    </div>
+    <div class="rows">
+      <div class="rhead"><span>pm · prompt</span><span style="text-align:right">quality</span><span style="text-align:right">cost</span></div>
+      <div class="row">
+        <div class="who"><span class="av" style="background:#E0C3B2">MC</span><div class="meta"><div class="pn">checkout-assistant</div><div class="nm">Mira C. · <span style="color:var(--green-600)">live</span></div></div></div>
+        <div class="q g">96.2%</div><div class="cost">$120</div>
+      </div>
+      <div class="row">
+        <div class="who"><span class="av" style="background:#C8D4CE">JL</span><div class="meta"><div class="pn">onboarding-bot</div><div class="nm">James L. · <span style="color:var(--green-600)">live</span></div></div></div>
+        <div class="q g">94.0%</div><div class="cost">$88</div>
+      </div>
+      <div class="row">
+        <div class="who"><span class="av" style="background:#E4C275">PS</span><div class="meta"><div class="pn">search-rerank</div><div class="nm">Priya S. · <span style="color:var(--coral-700)">testing</span></div></div></div>
+        <div class="q" style="color:var(--warm-600)">n/a</div><div class="cost" style="color:var(--warm-600)">n/a</div>
+      </div>
+      <div class="row">
+        <div class="who"><span class="av" style="background:#D8D3C9">DT</span><div class="meta"><div class="pn">refund-triage</div><div class="nm">Dev T. · <span style="color:var(--green-600)">live</span></div></div></div>
+        <div class="q g">97.1%</div><div class="cost">$64</div>
+      </div>
+    </div>
+  </div>
+  <span class="float"><span class="pulse"></span>one workflow, not five tabs</span>
+</div>
+</body>
+</html>

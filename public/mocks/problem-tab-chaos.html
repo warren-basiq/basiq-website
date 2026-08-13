@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musal: Tab chaos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --warm-50:#FCFBF8;--warm-100:#F5F1EA;--warm-150:#EFEBE3;--warm-200:#E3DED5;
+  --warm-300:#D3CEC4;--warm-400:#B7B2A8;--warm-500:#6F6C65;--warm-600:#6F6C65;
+  --warm-700:#57554F;--warm-800:#3A3934;--warm-900:#252525;
+  --coral:#234136;--coral-600:#1C352D;--coral-700:#16291F;
+  --coral-soft:#EDF1EF;--coral-200:#C8D4CE;--coral-300:#A3B6AC;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Fraunces',Georgia,serif;
+  --font-mono:'JetBrains Mono','Cascadia Code',monospace;
+  --radius:14px;--radius-sm:9px;
+  --shadow:0 1px 2px hsl(30 10% 20%/.04),0 6px 16px hsl(30 10% 20%/.07),0 18px 40px hsl(30 10% 20%/.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font-mono);
+  background:
+    radial-gradient(120% 90% at 85% 5%, #EDF1EF 0%, rgba(255,244,236,0) 55%),
+    radial-gradient(90% 80% at 5% 100%, #F5F1EA 0%, rgba(243,239,232,0) 50%),
+    var(--warm-50);
+  display:grid;place-items:center;padding:46px 30px;overflow:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:radial-gradient(var(--warm-300) 1px, transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+  mask-image:radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+  opacity:.5;
+}
+.stage{position:relative;width:100%;max-width:640px;height:430px}
+.win{
+  position:absolute;background:var(--warm-50);border:1px solid var(--warm-200);
+  border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+  opacity:0;animation:rise .75s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes rise{from{opacity:0;transform:translateY(20px) scale(.97) var(--rot,)}to{opacity:1}}
+/* back doc */
+.doc{width:300px;right:0;top:34px;transform:rotate(3deg);animation-delay:.25s}
+.doc .dbar{display:flex;gap:6px;padding:11px 13px;background:var(--warm-100);border-bottom:1px solid var(--warm-200)}
+.doc .dot{width:9px;height:9px;border-radius:50%}
+.dot.r{background:#E8A598}.dot.y{background:#E8C98A}.dot.g{background:#A7CBA0}
+.doc .body{padding:15px 16px 18px}
+.doc h4{font-family:var(--font-display);font-size:16px;color:var(--warm-800);font-weight:600;margin-bottom:11px}
+.vblock{border-left:2px solid var(--warm-300);padding:5px 0 5px 10px;margin-bottom:9px}
+.vblock .vt{font-size:10px;color:var(--warm-500);margin-bottom:3px}
+.vblock .vc{font-size:10.5px;color:var(--warm-700);line-height:1.5}
+.vblock.dupe{border-left-color:var(--coral-300)}
+.vblock.dupe .vt{color:var(--coral-700)}
+/* front browser */
+.browser{width:430px;left:0;bottom:6px;transform:rotate(-2deg);animation-delay:.05s}
+.tabs{display:flex;align-items:flex-end;gap:0;padding:9px 10px 0;background:var(--warm-100);border-bottom:1px solid var(--warm-200)}
+.tab{
+  display:flex;align-items:center;gap:6px;max-width:118px;font-size:10.5px;color:var(--warm-700);
+  background:var(--warm-150);border:1px solid var(--warm-200);border-bottom:none;
+  padding:7px 9px;border-radius:8px 8px 0 0;white-space:nowrap;overflow:hidden;
+}
+.tab .fav{width:7px;height:7px;border-radius:2px;flex:none}
+.tab.active{background:var(--warm-50);color:var(--warm-800)}
+.tab .txt{overflow:hidden;text-overflow:ellipsis}
+.tab .x{margin-left:2px;color:var(--warm-700)}
+.addr{display:flex;align-items:center;gap:9px;padding:10px 13px;background:var(--warm-50);border-bottom:1px solid var(--warm-150)}
+.addr .url{flex:1;font-size:10.5px;color:var(--warm-500);background:var(--warm-100);border-radius:999px;padding:6px 12px}
+.pane{padding:15px 16px 17px;background:var(--warm-50)}
+.bubble{background:var(--warm-100);border:1px solid var(--warm-200);border-radius:10px;padding:10px 12px;font-size:11px;color:var(--warm-700);line-height:1.55;margin-bottom:9px}
+.bubble.me{background:var(--coral-soft);border-color:var(--coral-200);color:var(--warm-800)}
+.bubble .tag{display:block;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-500);margin-bottom:4px}
+.diff{color:var(--coral-700)}
+.sticky{
+  position:absolute;right:8px;top:-14px;z-index:5;transform:rotate(5deg);
+  font-family:var(--font-body);font-size:12.5px;font-weight:500;color:var(--warm-800);
+  background:#FFE9A8;padding:11px 14px;border-radius:3px;max-width:165px;line-height:1.35;
+  box-shadow:0 8px 20px hsl(40 40% 30%/.18);
+  opacity:0;animation:rise .7s cubic-bezier(.22,1,.36,1) .9s forwards;
+}
+.sticky b{color:var(--coral-700)}
+.float{
+  position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--warm-700);
+  background:var(--warm-50);border:1px solid var(--warm-200);padding:8px 14px;border-radius:999px;
+  box-shadow:var(--shadow);white-space:nowrap;opacity:0;animation:rise .7s cubic-bezier(.22,1,.36,1) 1.05s forwards;
+}
+.float .pulse{width:8px;height:8px;border-radius:50%;background:var(--coral)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <!-- back: notion-ish doc -->
+  <div class="win doc">
+    <div class="dbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+    <div class="body">
+      <h4>Prompt iterations 📝</h4>
+      <div class="vblock"><div class="vt">v3 · works ok</div><div class="vc">"You are a senior support engineer. Classify…"</div></div>
+      <div class="vblock dupe"><div class="vt">v3 FINAL · tone fix</div><div class="vc">"You are a senior support engineer. Be warm. Classify…"</div></div>
+      <div class="vblock dupe"><div class="vt">v3 final (real) ←use this?</div><div class="vc">"You're a support engineer. Always confirm intent…"</div></div>
+    </div>
+  </div>
+  <!-- front: browser with duplicate tabs -->
+  <div class="win browser">
+    <div class="tabs">
+      <span class="tab"><span class="fav" style="background:#D97757"></span><span class="txt">Claude</span><span class="x">×</span></span>
+      <span class="tab"><span class="fav" style="background:#10A37F"></span><span class="txt">ChatGPT</span><span class="x">×</span></span>
+      <span class="tab active"><span class="fav" style="background:var(--coral)"></span><span class="txt">prompt v3 final</span><span class="x">×</span></span>
+      <span class="tab"><span class="fav" style="background:var(--warm-400)"></span><span class="txt">v3 final REAL</span><span class="x">×</span></span>
+    </div>
+    <div class="addr"><span class="url">claude.ai/chat/8f2a…tweaking the system prompt again</span></div>
+    <div class="pane">
+      <div class="bubble"><span class="tag">pasted prompt + a test ticket</span>"My order #4471 never arrived" → classify, extract product, draft reply…</div>
+      <div class="bubble me"><span class="tag">tweak #7 this session</span>Changed <span class="diff">"be concise"</span> → <span class="diff">"be warm but concise"</span>. Reads better? Maybe. No idea vs. last time.</div>
+    </div>
+  </div>
+  <div class="sticky">which version is actually <b>live??</b> 😵‍💫</div>
+  <span class="float"><span class="pulse"></span>every session starts from scratch</span>
+</div>
+</body>
+</html>

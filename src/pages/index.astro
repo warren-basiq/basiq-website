@@ -4,27 +4,97 @@ import { products, statusLabel, ctaLabel, PRODUCTS_HREF } from "../lib/products"
 import { personas } from "../lib/personas";
 import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
 
+/*
+  Every `visual` below points at public/mocks/, which currently holds Musal's
+  product mocks as placeholders. See public/mocks/README.md for what each slot
+  should eventually show.
+*/
+const problems = [
+  {
+    title: "The pilot worked. Then it sat there.",
+    description:
+      "The demo impressed the room and the proof of concept did what it promised. Then it needed the last twenty percent: error handling, access, someone to own it on a Tuesday. Nobody had room for that, so it never shipped. Six months later it is a Slack channel with three people in it.",
+    visual: "/mocks/problem-load-bearing.html",
+    visualTitle: "A pilot that never reached production",
+  },
+  {
+    title: "You paid for a roadmap. You needed the thing running.",
+    description:
+      "Most AI consulting ends at the recommendation. You get a prioritized list, a maturity model, and a set of slides that are genuinely well argued. None of it is running in your stack, on your data, and the gap between the deck and a working system is the entire job.",
+    visual: "/mocks/problem-tab-chaos.html",
+    visualTitle: "A strategy deck with no working system behind it",
+  },
+  {
+    title: "Your engineers are already full.",
+    description:
+      "The roadmap has no room for an AI side quest. Pulling two engineers onto one costs a quarter of product velocity you do not get back, and hiring people who have actually shipped AI in production is a nine month bet you cannot evaluate if nobody on your team has done it before.",
+    visual: "/mocks/problem-tea-leaves.html",
+    visualTitle: "An engineering roadmap with no capacity for AI work",
+  },
+];
+
 const steps = [
   {
     num: "01",
     title: "Free assessment",
     time: "5 to 15 hours",
     description:
-      "We identify where AI moves the needle in your specific business and deliver working prototypes to prove it. Not a deck. Not a recommendation.",
+      "We identify where AI moves the needle in your specific business and deliver working prototypes to prove it. Not a deck, not a recommendation. You keep whatever we build in this phase whether or not we work together after it.",
+    visual: "/mocks/prompty-wizard-results.html",
+    visualTitle: "Assessment output: ranked opportunities with working prototypes",
+    mockHeight: 880,
   },
   {
     num: "02",
     title: "Build together",
     time: "Weeks, not months",
     description:
-      "We embed with your team and build production systems: engineering workflows, sales automation, process tools, operational infrastructure. Whatever your highest-leverage entry point is.",
+      "We embed with your team and build the production systems: engineering workflows, sales automation, process tools, operational infrastructure. Your engineers review every line and own the repo from the first commit, so the knowledge transfers while the work happens rather than in a handover meeting at the end.",
+    visual: "/mocks/prompty-workbench-hero.html",
+    visualTitle: "Building alongside the client's engineering team",
+    mockHeight: 760,
   },
   {
     num: "03",
     title: "You own it",
     time: "Permanent handoff",
     description:
-      "We document, train, and hand off the keys. Your team owns everything we build. No retainer, no dependency, no phone call six months later asking for help.",
+      "We document, train, and hand off the keys. Your team owns everything we build, in infrastructure you control. No retainer, no dependency, no phone call six months later asking for help.",
+    visual: "/mocks/version-history.html",
+    visualTitle: "Handoff: repository, documentation, and access transferred",
+    mockWidth: 1140,
+    mockHeight: 765,
+  },
+];
+
+/*
+  Persona tab order is load-bearing: the first tab is the default-active panel,
+  so it is what a visitor sees before clicking anything. Headlines duplicate each
+  persona page's H1; there is no shared source, so changing one means changing
+  both or the site desyncs silently.
+*/
+const personaTabs = [
+  {
+    ...personas[0],
+    label: "Founders and CEOs",
+    mobileLabel: "Founders",
+    cta: "See the founder's case",
+    headline: "You do not need an AI team. You need the thing to work.",
+    description:
+      "Hiring for AI takes nine months and a budget you would rather spend on the product. Basiq gives you working systems in weeks, built by a team that has shipped five of its own, in a repo your engineers own from the first commit.",
+    visual: "/mocks/role-founder.html",
+    visualTitle: "A working system handed to the founder's own team",
+  },
+  {
+    ...personas[1],
+    label: "CROs and VPs of Sales",
+    mobileLabel: "Revenue",
+    cta: "See the revenue case",
+    headline: "Your reps do not need another tool. They need the work to already be done.",
+    description:
+      "Most AI in the sales stack adds a tab, and adoption dies in week three because anything that adds a step loses to the thing that removes one. We build the systems that remove steps: research written before the call, replies handled without a rep, forecasts built on signal.",
+    visual: "/mocks/role-revops.html",
+    visualTitle: "Pipeline and reply signal tracked per play",
   },
 ];
 
@@ -77,62 +147,137 @@ const jsonLd = {
 };
 
 const eyebrow = "font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest";
-const sectionTitle = "font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl lg:text-5xl";
+const displayH2 =
+  "font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-heading md:text-5xl";
 const primaryBtn =
-  "inline-block rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover";
+  "rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover";
 const secondaryBtn =
-  "inline-block rounded-full border border-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone";
+  "rounded-full border border-forest bg-transparent px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone";
 ---
 
-<Layout
-  title="Basiq | AI Execution Partner"
-  description={description}
-  jsonLd={jsonLd}
->
-  <!-- Hero -->
-  <section class="mx-auto max-w-7xl px-6 pb-20 pt-24 text-center lg:px-12 lg:pt-32">
-    <p class={eyebrow}>AI execution partner</p>
-    <h1 class="mx-auto mt-6 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight text-heading sm:text-5xl md:text-6xl lg:text-7xl">
-      AI everywhere.<br />Nothing shipping.
-    </h1>
-    <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-body">
-      Experiments that never become systems. Tools that never become workflows. Pilots that never reach production. We build the infrastructure that turns AI from a side project into how your company operates.
-    </p>
-    <div class="mt-10 flex flex-wrap justify-center gap-4">
-      <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
-      <a href="#work" class={secondaryBtn}>See our work</a>
-    </div>
-    <p class="mt-12 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-      Five products shipped &middot; Sales &middot; Customer success &middot; Prompt ops &middot; Prospecting &middot; Freight
-    </p>
-  </section>
+<Layout title="Basiq | AI Execution Partner" description={description} jsonLd={jsonLd}>
+  <style>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease-out forwards; }
+    .fade-up-2 { animation-delay: 0.12s; opacity: 0; }
+    .fade-up-3 { animation-delay: 0.24s; opacity: 0; }
+    .fade-up-4 { animation-delay: 0.36s; opacity: 0; }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .sol-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .sol-reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { animation: none; opacity: 1; }
+      [style*="heroFloat"] { animation: none !important; }
+      .sol-reveal { opacity: 1; transform: none; transition: none; }
+    }
+    /* Scales a fixed-width mock down to whatever column it lands in. */
+    .mock-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: var(--mock-w, 1180) / var(--mock-h, 720);
+      overflow: hidden;
+      border-radius: 0.5rem;
+      background: #192F27;
+    }
+    .mock-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(var(--mock-w, 1180) * 1px);
+      height: calc(var(--mock-h, 720) * 1px);
+      border: 0;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+  </style>
 
-  <!-- Positioning -->
-  <section class="border-t border-line bg-stone">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="max-w-4xl font-display text-2xl leading-snug text-heading md:text-3xl lg:text-4xl">
-        Most AI consultants leave you with a strategy deck and a list of recommendations. We leave you with production systems your team uses on Monday. We embed with your engineers, sales teams, and operators. We ship real things, and we hand off ownership when it works, not before.
+  <!--
+    SECTION ALIGNMENT RULE (keep consistent):
+    - Narrative / explanatory sections are LEFT-aligned (The problem, How it works).
+    - Index / transition sections are CENTER-aligned (Products, Built for your role, CTA).
+    Hero is centered by design. Pick the bucket a section falls into; don't mix ad hoc.
+  -->
+
+  <!-- HERO -->
+  <header class="pb-20 pt-24 lg:pt-32">
+    <div class="mx-auto max-w-7xl px-6 text-center lg:px-12">
+      <span class="fade-up inline-block rounded-full bg-forest px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
+        AI execution partner
+      </span>
+      <h1 class="fade-up fade-up-2 mx-auto mt-8 max-w-5xl font-display text-4xl font-normal leading-[1.1] tracking-[-0.025em] text-heading md:text-5xl lg:text-[4rem]">
+        AI everywhere. Nothing shipping.
+      </h1>
+      <p class="fade-up fade-up-3 mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-body md:text-xl">
+        Experiments that never become systems. Tools that never become workflows. Pilots that never reach production. Basiq embeds with your team, builds the infrastructure that turns AI into how your company operates, then hands you the keys.
+      </p>
+      <div class="fade-up fade-up-4 mt-12 flex flex-wrap justify-center gap-4">
+        <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
+        <a href="#how-it-works" class={secondaryBtn}>See how it works</a>
+      </div>
+      <p class="fade-up fade-up-4 mt-5 font-mono text-[11px] uppercase tracking-[0.15em] text-body">
+        The assessment is free. You keep what we build in it.
       </p>
     </div>
-  </section>
 
-  <!-- The one full-width Deep Forest reset band on this page. -->
-  <section class="on-forest bg-forest">
-    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <div class="text-center">
-        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">How it works</p>
-        <h2 class="mt-4 font-display text-3xl leading-tight tracking-tight text-on-dark md:text-4xl lg:text-5xl">
-          Three steps. No mystery.
-        </h2>
+    <div class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
+      <div
+        class="relative overflow-hidden rounded-2xl"
+        style="animation: heroFloat 6s ease-in-out infinite; box-shadow: 0 0 0 0.5px rgba(26,22,19,0.08), 0 4px 8px -2px rgba(26,22,19,0.08), 0 16px 32px -8px rgba(26,22,19,0.12), 0 32px 64px -16px rgba(26,22,19,0.08);"
+      >
+        <div class="mock-frame" style="--mock-w: 1180; --mock-h: 810; border-radius: 1rem;">
+          <iframe
+            src="/mocks/prompt-editor.html"
+            loading="lazy"
+            scrolling="no"
+            title="A Basiq-built system running in production"
+            tabindex="-1"></iframe>
+        </div>
       </div>
-      <div class="mt-16 grid gap-6 md:grid-cols-3">
+    </div>
+  </header>
+
+  <!-- PROBLEM: narrative, so left-aligned, with the visual alternating sides -->
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class={eyebrow}><span class="mr-2">&#9679;</span>The problem</p>
+      <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>AI projects don't fail. They stall.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
+        Getting AI to work stopped being the hard part. The hard part is everything after the demo: the distance between something that runs on a laptop and something your company depends on.
+      </p>
+      <p class="mt-5 max-w-3xl text-lg leading-relaxed text-body">
+        There is <strong class="font-semibold text-heading">no failure event</strong> for a pilot that quietly stops. It just never gets the last twenty percent, and the budget shows up next year as
+        <strong class="font-semibold text-heading">a line nobody wants to defend</strong>.
+      </p>
+
+      <div class="mt-16 flex flex-col gap-12 lg:gap-20">
         {
-          steps.map((step) => (
-            <div class="rounded-2xl border border-line-dark bg-forest-raised p-8">
-              <span class="font-display text-4xl leading-none text-gold">{step.num}</span>
-              <h3 class="mt-5 font-display text-2xl text-on-dark">{step.title}</h3>
-              <p class="mt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-gold">{step.time}</p>
-              <p class="mt-4 text-sm leading-relaxed text-on-dark-muted">{step.description}</p>
+          problems.map((problem, i) => (
+            <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+              <div class={`overflow-hidden rounded-2xl border border-line shadow-soft ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                <iframe
+                  src={problem.visual}
+                  title={problem.visualTitle}
+                  loading="lazy"
+                  scrolling="no"
+                  tabindex="-1"
+                  class="fluid-frame block h-[660px] w-full sm:h-[420px] lg:h-[580px] xl:h-[420px]"
+                  style="border: 0; pointer-events: none;"
+                />
+              </div>
+              <div class={i % 2 === 1 ? "lg:order-1" : ""}>
+                <h3 class="font-display text-2xl leading-tight text-heading md:text-3xl">{problem.title}</h3>
+                <p class="mt-5 text-base leading-relaxed text-body md:text-lg">{problem.description}</p>
+              </div>
             </div>
           ))
         }
@@ -140,40 +285,83 @@ const secondaryBtn =
     </div>
   </section>
 
-  <!-- Products -->
-  <section id="products" class="border-t border-line">
+  <!-- HOW IT WORKS: Warm Stone inset, so the white cards lift off it -->
+  <section id="how-it-works" class="bg-stone">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class={eyebrow}>Products</p>
-      <h2 class={`mt-4 ${sectionTitle}`}>Five products, four already in production.</h2>
-      <p class="mt-5 max-w-xl text-lg leading-relaxed text-body">
-        We build tools we use ourselves. The products we have shipped are the same systems we bring to clients.
+      <p class={eyebrow}><span class="mr-2">&#9679;</span>How it works</p>
+      <h2 class={`mt-4 max-w-4xl ${displayH2}`}>Three steps. No mystery.</h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
+        We prove the opportunity before you commit a quarter to it, build the system alongside the people who will run it, and leave when it works rather than when the contract ends.
       </p>
 
-      <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <div class="mt-16 flex flex-col gap-8 lg:gap-12">
         {
-          products.map((p) => (
+          steps.map((step) => (
+            <div class="sol-reveal rounded-2xl border border-line bg-paper p-8 shadow-lift md:p-12">
+              <div class="flex flex-col gap-10">
+                <div class="max-w-3xl">
+                  <span class="font-display text-5xl leading-none text-forest">{step.num}</span>
+                  <h3 class="mt-4 font-display text-2xl text-heading md:text-3xl">{step.title}</h3>
+                  <p class="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-sage">{step.time}</p>
+                  <p class="mt-5 text-base leading-relaxed text-body">{step.description}</p>
+                </div>
+                <div
+                  class="mock-frame"
+                  style={`--mock-h: ${step.mockHeight};${step.mockWidth ? ` --mock-w: ${step.mockWidth};` : ""}`}
+                >
+                  <iframe src={step.visual} loading="lazy" scrolling="no" title={step.visualTitle} tabindex="-1" />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!--
+    PRODUCTS: the single Deep Forest reset section. The brand's authority moment
+    mid-page, and it makes the light sections either side of it read brighter.
+  -->
+  <section id="products" class="on-forest bg-forest">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="text-center">
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-on-dark-muted">
+          <span class="mr-2 text-gold">&#9679;</span>Products
+        </p>
+        <h2 class="mx-auto mt-4 max-w-3xl font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-on-dark md:text-5xl">
+          We build for ourselves before we build for you
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-on-dark-muted">
+          Every product here came out of a real engagement. Four are in production today.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          products.map((p, i) => (
             <a
               href={p.href}
               target={p.external ? "_blank" : undefined}
               rel={p.external ? "noopener noreferrer" : undefined}
-              class="flex h-full flex-col rounded-2xl border border-line bg-paper p-8 shadow-soft transition-shadow hover:shadow-lift"
+              class="flex flex-col rounded-2xl border border-line-dark bg-forest-raised p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50"
             >
               <div class="flex items-center justify-between gap-3">
-                <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-sage">{p.category}</span>
+                <span class="font-display text-5xl leading-none text-gold">{String(i + 1).padStart(2, "0")}</span>
                 <span
                   class={
                     p.status === "live"
-                      ? "rounded-full border border-line bg-stone px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-forest"
-                      : "rounded-full border border-control px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-muted"
+                      ? "rounded-full border border-line-dark px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-on-dark"
+                      : "rounded-full border border-line-dark px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-on-dark-muted"
                   }
                 >
                   {statusLabel(p.status)}
                 </span>
               </div>
-              <h3 class="mt-4 font-display text-2xl text-heading">{p.name}</h3>
-              <p class="mt-1 text-sm italic text-forest">{p.tagline}</p>
-              <p class="mt-4 flex-1 text-sm leading-relaxed text-body">{p.description}</p>
-              <span class="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+              <h3 class="mt-4 font-display text-2xl text-on-dark">{p.name}</h3>
+              <p class="mt-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">{p.category}</p>
+              <p class="mt-4 flex-1 text-sm leading-relaxed text-on-dark-muted">{p.description}</p>
+              <span class="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-on-dark">
                 {ctaLabel(p)}
               </span>
             </a>
@@ -182,13 +370,13 @@ const secondaryBtn =
 
         <a
           href={PRODUCTS_HREF}
-          class="flex h-full flex-col justify-center rounded-2xl border border-dashed border-control bg-stone p-8 transition-colors hover:bg-paper"
+          class="flex flex-col justify-center rounded-2xl border border-dashed border-line-dark p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50"
         >
-          <h3 class="font-display text-2xl text-heading">The full suite</h3>
-          <p class="mt-3 text-sm leading-relaxed text-body">
-            Sales, customer success, prompt ops, CRM, and freight. See how the five fit together.
+          <h3 class="font-display text-2xl text-on-dark">Yours next</h3>
+          <p class="mt-3 text-sm leading-relaxed text-on-dark-muted">
+            The next product on this grid is the one we build inside your company.
           </p>
-          <span class="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+          <span class="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-gold">
             View all products &#8594;
           </span>
         </a>
@@ -196,35 +384,95 @@ const secondaryBtn =
     </div>
   </section>
 
-  <!-- Built for your role -->
-  <section class="border-t border-line bg-stone">
-    <div class="mx-auto max-w-7xl px-6 py-24 text-center lg:px-12 lg:py-32">
-      <p class={eyebrow}>Built for your role</p>
-      <h2 class={`mt-4 ${sectionTitle}`}>Where you sit changes what you need.</h2>
-      <div class="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
-        {
-          personas.map((p) => (
-            <a href={p.href} class="rounded-2xl border border-line bg-paper p-8 text-left shadow-soft transition-shadow hover:shadow-lift">
-              <h3 class="font-display text-2xl text-heading">{p.navLabel}</h3>
-              <span class="mt-4 block font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
-                See the case &#8594;
-              </span>
-            </a>
-          ))
-        }
+  <!-- BUILT FOR YOUR ROLE: back to the light canvas after the forest reset -->
+  <section>
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class={eyebrow}><span class="mr-2">&#9679;</span>Built for your role</p>
+        <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>Two seats. The same stalled project.</h2>
+        <p class="mt-6 text-base leading-relaxed text-body">
+          The founder watches a pilot the board was excited about go quiet, and cannot free the engineers to finish it. The revenue leader buys the tool, watches adoption die in week three, and still has the number to hit.
+        </p>
+      </div>
+
+      <div class="mt-16">
+        <div class="overflow-hidden rounded-t-2xl border border-b-0 border-line bg-paper">
+          {
+            personaTabs.map((tab, i) => (
+              <div
+                class="persona-panel grid gap-6 p-6 md:p-12 lg:grid-cols-2 lg:gap-8 lg:p-16"
+                data-persona-index={i}
+                id={`persona-panel-${i}`}
+                role="tabpanel"
+                aria-labelledby={`persona-tab-${i}`}
+                tabindex="0"
+                style={i === 0 ? "" : "display: none;"}
+              >
+                <div class="overflow-hidden rounded-xl border border-line">
+                  <iframe
+                    src={tab.visual}
+                    title={tab.visualTitle}
+                    loading="lazy"
+                    scrolling="no"
+                    tabindex="-1"
+                    class="fluid-frame block h-[670px] w-full sm:h-[480px] lg:h-[610px] xl:h-[490px]"
+                    style="border: 0; pointer-events: none;"
+                  />
+                </div>
+
+                <div class="flex flex-col justify-center">
+                  <span class="inline-block w-fit rounded-full bg-forest px-4 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                    {tab.label}
+                  </span>
+                  <h3 class="mt-5 font-display text-2xl leading-tight text-heading md:text-3xl">{tab.headline}</h3>
+                  <p class="mt-4 text-base leading-relaxed text-body">{tab.description}</p>
+                  <a
+                    href={tab.href}
+                    class="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-forest bg-transparent px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone"
+                  >
+                    {tab.cta}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="grid grid-cols-2" role="tablist" aria-label="Choose your role">
+          {
+            personaTabs.map((tab, i) => (
+              <button
+                class={`persona-tab relative cursor-pointer border border-line px-2 py-3 text-xs font-semibold transition-all duration-300 md:px-6 md:py-5 md:text-sm ${i === 0 ? "md:rounded-bl-2xl" : ""} ${i === personaTabs.length - 1 ? "md:rounded-br-2xl" : ""}`}
+                style={i === 0 ? "background:#FFFFFF;color:#252525;" : "background:#F5F1EA;color:#57554F;"}
+                data-tab-index={i}
+                id={`persona-tab-${i}`}
+                role="tab"
+                type="button"
+                aria-controls={`persona-panel-${i}`}
+                aria-selected={i === 0 ? "true" : "false"}
+                tabindex={i === 0 ? 0 : -1}
+              >
+                {/* Selection is carried by the surface, the label colour, and the indicator's width, never by colour alone. */}
+                <span
+                  class="persona-tab-indicator absolute left-1/2 top-0 -translate-x-1/2 rounded-full transition-all duration-300"
+                  style={`background-color:#D4A83F;height:2px;width:${i === 0 ? "40%" : "0%"};`}
+                />
+                <span class="md:hidden">{tab.mobileLabel}</span>
+                <span class="hidden md:inline">{tab.label}</span>
+              </button>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Social proof -->
-  <section id="work" class="border-t border-line">
+  <!-- SOCIAL PROOF -->
+  <section id="work" class="border-t border-line bg-stone">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-6">
-        {
-          clients.map((name) => (
-            <span class="font-mono text-sm uppercase tracking-[0.15em] text-sage">{name}</span>
-          ))
-        }
+        {clients.map((name) => <span class="font-mono text-sm uppercase tracking-[0.15em] text-sage">{name}</span>)}
       </div>
 
       <div class="mt-16 grid gap-6 md:grid-cols-3">
@@ -243,16 +491,182 @@ const secondaryBtn =
     </div>
   </section>
 
-  <!-- Closing CTA -->
-  <section class="border-t border-line bg-stone">
-    <div class="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
-      <h2 class={sectionTitle}>
-        Not sure where AI moves the needle? We will show you in a week.
-      </h2>
-      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-body">
-        The assessment is free. You will walk away with a clear picture of your highest-leverage AI opportunities and a working prototype to prove it.
-      </p>
-      <a href={BOOKING_URL} class={`mt-10 ${primaryBtn}`}>Book your free assessment</a>
+  <!-- CTA -->
+  <section id="get-started" class="border-t border-line">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class={`${displayH2} lg:text-6xl`}>Not sure where AI moves the needle?</h2>
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">
+          We will show you in a week. The assessment is free, and you walk away with a clear picture of your highest-leverage opportunities and a working prototype to prove one of them.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
+          <a href={PRODUCTS_HREF} class={secondaryBtn}>See the products</a>
+        </div>
+        <p class="mt-5 font-mono text-[11px] uppercase tracking-[0.15em] text-body">
+          You keep whatever we build in the assessment.
+        </p>
+      </div>
     </div>
   </section>
+
+  <!-- Scales each fixed-width mock down to the width of its column. -->
+  <script is:inline>
+    (function () {
+      function rescaleFrame(frame) {
+        var iframe = frame.querySelector("iframe");
+        if (!iframe) return;
+        var width = frame.clientWidth;
+        if (!width) return;
+        var nativeW = parseFloat(getComputedStyle(frame).getPropertyValue("--mock-w")) || 1180;
+        iframe.style.transform = "scale(" + width / nativeW + ")";
+      }
+      function rescaleAll() {
+        document.querySelectorAll(".mock-frame").forEach(rescaleFrame);
+      }
+      function init() {
+        rescaleAll();
+        if (typeof ResizeObserver !== "undefined") {
+          var observer = new ResizeObserver(function (entries) {
+            entries.forEach(function (entry) { rescaleFrame(entry.target); });
+          });
+          document.querySelectorAll(".mock-frame").forEach(function (frame) { observer.observe(frame); });
+        }
+        window.addEventListener("resize", rescaleAll);
+        window.addEventListener("load", rescaleAll);
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+      else init();
+    })();
+  </script>
+
+  <!-- Reveals each How it works card as it scrolls in. -->
+  <script is:inline>
+    (function () {
+      var reveals = document.querySelectorAll(".sol-reveal");
+      if (!reveals.length) return;
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach(function (el) { el.classList.add("is-visible"); });
+        return;
+      }
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -12% 0px" }
+      );
+      reveals.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+
+  <!--
+    The problem and persona visuals are same-origin and reflow (taller on narrow
+    widths), so a fixed pixel height clips them. Measure each one's real height
+    and size its iframe to fit at every width.
+  -->
+  <script is:inline>
+    (function () {
+      function measure(doc) {
+        try {
+          var body = doc && doc.body;
+          if (!body) return 0;
+          var cs = doc.defaultView.getComputedStyle(body);
+          var padT = parseFloat(cs.paddingTop) || 0;
+          var padB = parseFloat(cs.paddingBottom) || 0;
+          var stage = doc.querySelector(".stage");
+          if (stage) return Math.ceil(stage.getBoundingClientRect().height + padT + padB + 8);
+          return Math.ceil(body.scrollHeight + 8);
+        } catch (e) { return 0; }
+      }
+      function fit(iframe) {
+        if (!iframe || !iframe.clientWidth) return; // skip hidden (inactive tab) frames
+        var doc;
+        try { doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document); }
+        catch (e) { return; }
+        if (!doc || !doc.body) return;
+        var h = measure(doc);
+        if (h > 0) iframe.style.height = h + "px";
+      }
+      function fitAll() {
+        document.querySelectorAll("iframe.fluid-frame").forEach(fit);
+      }
+      window.refitFluidFrames = fitAll;
+
+      function hook(iframe) {
+        function onReady() {
+          fit(iframe);
+          try {
+            var doc = iframe.contentDocument;
+            if (doc && doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function () { fit(iframe); });
+          } catch (e) {}
+          setTimeout(function () { fit(iframe); }, 300);
+          setTimeout(function () { fit(iframe); }, 1200);
+        }
+        if (iframe.contentDocument && iframe.contentDocument.readyState === "complete") onReady();
+        iframe.addEventListener("load", onReady);
+      }
+
+      var debounce;
+      window.addEventListener("resize", function () {
+        clearTimeout(debounce);
+        debounce = setTimeout(fitAll, 150);
+      });
+
+      function init() { document.querySelectorAll("iframe.fluid-frame").forEach(hook); }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+      else init();
+    })();
+  </script>
+
+  <!--
+    Persona tabs follow the ARIA tabs pattern: roving tabindex, so the tablist is
+    a single tab stop, and Left/Right/Home/End move between roles. Without this,
+    every persona pitch but the first is unreachable by keyboard.
+  -->
+  <script is:inline>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".persona-tab"));
+      var panels = document.querySelectorAll(".persona-panel");
+      if (!tabs.length) return;
+
+      function select(index, moveFocus) {
+        panels.forEach(function (panel) {
+          panel.style.display = Number(panel.getAttribute("data-persona-index")) === index ? "" : "none";
+        });
+        if (window.refitFluidFrames) {
+          requestAnimationFrame(window.refitFluidFrames);
+          setTimeout(window.refitFluidFrames, 200);
+        }
+        tabs.forEach(function (t, i) {
+          var active = i === index;
+          t.style.background = active ? "#FFFFFF" : "#F5F1EA";
+          t.style.color = active ? "#252525" : "#57554F";
+          t.setAttribute("aria-selected", active ? "true" : "false");
+          t.setAttribute("tabindex", active ? "0" : "-1");
+          var indicator = t.querySelector(".persona-tab-indicator");
+          if (indicator) indicator.style.width = active ? "40%" : "0%";
+        });
+        if (moveFocus) tabs[index].focus();
+      }
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener("click", function () { select(i, false); });
+        tab.addEventListener("keydown", function (event) {
+          var next = null;
+          if (event.key === "ArrowRight") next = (i + 1) % tabs.length;
+          else if (event.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
+          else if (event.key === "Home") next = 0;
+          else if (event.key === "End") next = tabs.length - 1;
+          if (next === null) return;
+          event.preventDefault();
+          select(next, true);
+        });
+      });
+    })();
+  </script>
 </Layout>
