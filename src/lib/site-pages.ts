@@ -150,6 +150,15 @@ export const sitePages: SitePage[] = [
     sitemap: true,
     llms: true,
   },
+  {
+    path: "/best-ai-sales-assistant-software-2026",
+    title: "8 Best AI Sales Assistant Tools for 2026",
+    description:
+      "Buyer's guide comparing 8 AI sales assistants across opportunity management, data enrichment, cold calling, CRM, and forecasting, with features, pricing, and use cases.",
+    section: "Resources",
+    sitemap: true,
+    llms: true,
+  },
 ];
 
 /** Absolute URL for a registry path. */

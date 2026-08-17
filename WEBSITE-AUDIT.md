@@ -390,13 +390,62 @@ testimonial on the homepage. Keep the two consistent if either changes.
 exclusion removed. Episode meta descriptions are now truncated to 155 characters by
 `metaDescription()` rather than emitting the full summary paragraph.
 
-**Open item:** episodes 1 to 28 are still live on `gettopiq.ai/selling-ai-podcast` with
-their own canonical tags. Any of those republished here will duplicate against Topiq until
-the canonical is dropped on that side. Ep. 29 (Dr. Chris Gray) is Basiq-only, so it is not
-affected.
+**Resolved 2026-08-17:** the duplication against Topiq is closed. `gettopiq.ai` now 301s
+`/selling-ai-podcast` and every `/episode/:slug` to the matching URL here, and the episodes
+are out of Topiq's sitemap and both llms endpoints. Slugs were preserved through the
+migration, so the redirects map one to one.
 
-**Open item:** ep. 29 ships with `publishedAt`, `youtubeId`, and the platform URLs null
-because the episode has not aired. Fill them in when it drops.
+**Open item:** ep. 30 (Dr. Chris Gray) ships with `publishedAt`, `youtubeId`, and the
+platform URLs null because the episode has not aired. Fill them in when it drops.
+
+**Open item, `youtubeId`:** filled for eps 1 to 18, which carried a `youtubeUrl` on Topiq
+that the migration reduced to the bare video id. Eps 19, 20 and 29 are still null and fall
+back to the show-level playlist link instead of the embedded player.
+
+**Open item, eps 1 to 20:** these documents predate the ep. 21 to 30 batch and are
+noticeably thinner. Specifically:
+
+- `guestTitle` is empty on all twenty, so the "with {guest}" byline shows a bare name and
+  the guest card has no role line.
+- `takeaways` run far over the ~70 character budget: up to 298 characters on eps 15 to 20.
+  They render as small pills on `/podcast`, so these wrap badly and break that layout.
+- Eps 1, 2, 3 and 8 have no `chapters`.
+- Eps 15 to 20 have no `publishedAt`, so no date renders on the index or the episode page.
+- Ep 17's `title` is the guest's name ("Jack Siney") rather than an episode title.
+
+Eps 21 to 30 were built to the field rules in the Publishing an episode section of
+CLAUDE.md and do not have these problems. Bringing 1 to 20 up to the same standard is a
+separate pass.
+
+### 8 Best AI Sales Assistant Tools for 2026 (`/best-ai-sales-assistant-software-2026`)
+
+**Source:** `src/pages/best-ai-sales-assistant-software-2026.astro`
+
+- **Content:** buyer's guide ranking 8 AI sales assistants (Topiq, Clay, Trellus, Claude,
+  Heyreach, Attio, Instantly, Discern.io). Ported from `gettopiq.ai` on 2026-08-17.
+- **Structure:** the 8 entries are a `products[]` array rendered through one loop rather
+  than the 8 hand-repeated blocks the original used. Topiq is the featured entry and is the
+  only one with the "Why Choose" and "Who Benefits" sections, both optional fields.
+- **Images:** 9 Cloudinary assets under `topiq/best-ai-sales-assistants-2026`. Basiq and
+  Topiq share the `drelly3f1` cloud, so the paths carried over unchanged and all 9 verify 200.
+- **JSON-LD:** `WebPage` with a nested `ItemList` of the 8 products, publisher Basiq
+- **Canonical:** `https://www.basiq.work/best-ai-sales-assistant-software-2026/`
+
+**Last Reviewed:** 2026-08-17
+**Review Notes:** Restyled from Topiq's palette into Deep Forest: hardcoded hex values
+(`#363726`, `#e1e2da`, `#f2f3eb`, `#fff781`) replaced with semantic tokens, `font-bold`
+headings replaced with `font-display`, cards moved to `rounded-2xl border-line bg-paper`,
+and the closing CTA moved onto a forest band. The old page's 5 persona pills pointed at
+Topiq routes that do not exist here and now link to `/founders`, `/revenue-leaders`, and
+`/podcast`. The final CTA points at `BOOKING_URL`; the Topiq section CTA still points at
+Topiq's own booking link, which is not on the `gettopiq.ai` domain.
+
+**Copy:** every em dash was rewritten, including the 8 product headings, which now use a
+colon between name and role. The same change was applied to the JSON-LD `ItemList` names
+and the image alt text.
+
+**Old URL:** `gettopiq.ai/best-ai-sales-assistant-software-2026` 301s here, and the page is
+out of Topiq's sitemap and llms endpoints.
 
 ---
 

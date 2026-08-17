@@ -1,0 +1,725 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
+
+const pageTitle = "8 Best AI Sales Assistant Tools for 2026: Complete Buyer's Guide";
+const pageDescription =
+  "Compare the 8 best AI sales assistant tools for 2026 across opportunity management, data enrichment, cold calling, CRM, and sales forecasting. Real features, pricing, and use cases.";
+const canonicalUrl = `${SITE_URL}/best-ai-sales-assistant-software-2026/`;
+
+const CLD = "https://res.cloudinary.com/drelly3f1/image/upload";
+const FOLDER = "topiq/best-ai-sales-assistants-2026";
+const img = (slug: string, w = 1600) => `${CLD}/w_${w},q_auto,f_auto/${FOLDER}/${slug}.png`;
+
+interface Feature {
+  label: string;
+  text: string;
+}
+
+interface Product {
+  n: number;
+  id: string;
+  name: string;
+  role: string;
+  featured?: boolean;
+  image: { slug: string; alt: string; w: number; h: number };
+  overview: string[];
+  howHeading: string;
+  how: string[];
+  features: Feature[];
+  /** Extra sections the featured entry carries that the others do not. */
+  whyChoose?: { heading: string; items: Feature[] };
+  whoBenefits?: { heading: string; paragraphs: string[] };
+  pros?: string[];
+  cons?: string[];
+  bestFor: string;
+  pricing: string;
+  cta?: { label: string; href: string };
+}
+
+const products: Product[] = [
+  {
+    n: 1,
+    id: "topiq",
+    name: "Topiq",
+    role: "AI Assistant for Opportunity Management",
+    featured: true,
+    image: {
+      slug: "topiq-deal-inbox",
+      alt: "Topiq AI sales inbox: Deal Inbox showing deal metrics, deal analysis, and decision criteria",
+      w: 1800,
+      h: 1013,
+    },
+    overview: [
+      "Topiq is an AI sales assistant that replaces Gmail or Outlook with a purpose-built inbox designed specifically for account executives managing complex B2B deals. This comprehensive sales assistant platform unifies email communication and sales meeting transcripts into one intelligent workspace, eliminating the need to switch between multiple tools while managing active opportunities.",
+      "Unlike generic email clients, this AI sales assistant understands deal context and automatically prioritizes communication based on opportunity value and urgency. Account executives using this intelligent assistant as their primary inbox save 1–2 hours daily while significantly improving win rates through better deal execution and automated MEDDIC/BANT qualification analysis.",
+    ],
+    howHeading: "How It Works",
+    how: [
+      "The platform functions as both your email client and your sales assistant, automatically pulling in meeting transcripts from Zoom, Teams, and other platforms to treat them as part of your ongoing deal conversations. By analyzing all communication (from emails to complete meeting transcripts), this intelligent assistant identifies qualification gaps and recommends specific next steps to advance opportunities.",
+      "What makes this sales assistant revolutionary is how it transforms meeting recordings into actionable intelligence. After every sales call, the AI assistant analyzes the transcript, provides personalized coaching feedback, and automatically extracts key commitments, objections, and next steps, all visible directly in your deal inbox.",
+    ],
+    features: [
+      {
+        label: "Full Email Inbox Replacement",
+        text: "A complete email client built for sales professionals, replacing Gmail/Outlook with an AI-powered assistant that prioritizes deal communication.",
+      },
+      {
+        label: "Meeting Transcript Integration",
+        text: "Your sales assistant automatically imports and analyzes meeting recordings, treating them as searchable conversations within your deal workflow.",
+      },
+      {
+        label: "Intelligent Deal Prioritization",
+        text: "The AI assistant creates a daily action list from all your emails and meeting commitments, ensuring critical follow-ups never get missed.",
+      },
+      {
+        label: "Automated MEDDIC/BANT Analysis",
+        text: "This sales assistant evaluates deals using actual conversation data from emails and meeting transcripts, not manual CRM entries.",
+      },
+      {
+        label: "Post-Meeting Coaching",
+        text: "Your AI assistant reviews every sales meeting transcript and provides immediate, actionable feedback to improve your performance.",
+      },
+    ],
+    whyChoose: {
+      heading: "Why Choose Topiq as Your Inbox",
+      items: [
+        {
+          label: "One Unified Workspace",
+          text: "Replace your traditional inbox with an AI sales assistant that understands deals, eliminating the need to toggle between Gmail/Outlook and your CRM.",
+        },
+        {
+          label: "Complete Conversation Context",
+          text: "This intelligent assistant treats meeting transcripts as first-class conversations, searchable and actionable alongside emails.",
+        },
+        {
+          label: "Zero Missed Follow-ups",
+          text: "Your sales assistant tracks commitments from both emails and meetings, creating a comprehensive task list.",
+        },
+        {
+          label: "Continuous Skill Development",
+          text: "The AI assistant coaches you based on actual meeting performance, not generic best practices.",
+        },
+      ],
+    },
+    whoBenefits: {
+      heading: "Who Benefits Most from This AI Sales Assistant Inbox",
+      paragraphs: [
+        "This AI sales assistant delivers maximum value for account executives and sales teams tired of juggling Gmail/Outlook alongside multiple sales tools. The platform serves as your primary workspace where all deal communication (emails and meeting transcripts) comes together with intelligent prioritization.",
+        "Sales professionals managing complex B2B deals find this sales assistant invaluable because it treats sales meetings as ongoing conversations, not isolated events. Every meeting transcript becomes part of your deal intelligence, with the AI assistant surfacing insights, tracking commitments, and ensuring perfect follow-through.",
+        "Revenue leaders appreciate how this intelligent assistant provides complete visibility into deal communication, including what was actually discussed in meetings, not just what reps remember to log. The result: better execution, faster ramp times, and deals that never stall due to missed follow-ups or forgotten commitments from sales calls.",
+      ],
+    },
+    bestFor:
+      "Mid-market to enterprise B2B sales teams with complex, multi-stakeholder deals who need intelligent orchestration across their entire opportunity pipeline. Particularly valuable for teams selling high-ticket solutions with sales cycles over 30 days.",
+    pricing: "$50 per user per month.",
+    cta: { label: "Get a Demo of Topiq", href: "https://booking.akiflow.com/topiq" },
+  },
+  {
+    n: 2,
+    id: "clay",
+    name: "Clay",
+    role: "AI Assistant for Data Orchestration and Enrichment",
+    image: {
+      slug: "clay-homepage",
+      alt: "Clay homepage: Go to market with unique data",
+      w: 1601,
+      h: 597,
+    },
+    overview: [
+      "Clay is a phenomenal platform that should be the backbone of most go-to-market motions. As an AI sales assistant focused on prospecting, Clay helps you identify your ICP accounts, find the right personas at those accounts, and enrich them with accurate email and phone data. But what sets this AI sales assistant apart is what happens next: Clay does web research on each account and prospect to generate a point of view you can actually use in outreach. Then it combines everything to write personalized outbound emails, LinkedIn messages, and cold call scripts, and connects to your tools so the data flows out automatically.",
+      "The result? A typical rep can do 3x the prospecting in 80% less time. We're talking 7 hours of cold calling a week to maintain outreach to 500 prospects at any given time.",
+    ],
+    howHeading: "How it Works",
+    how: [
+      "Clay's AI assistant, Claygent, researches prospects the way an SDR would: visiting websites, pulling relevant information, and summarizing what matters. For data enrichment, Clay uses a \"waterfall\" approach: it checks each of its 75+ data sources one at a time until it finds what you need, like a verified work email.",
+    ],
+    features: [
+      {
+        label: "Multi-Provider Data Enrichment",
+        text: "Access to 75+ data sources through a single platform with waterfall enrichment.",
+      },
+      {
+        label: "AI Research Agent (Claygent)",
+        text: "Automated web scraping and research that can answer virtually any question about prospects.",
+      },
+      {
+        label: "Workflow Automation",
+        text: "No-code automation builder for complex GTM workflows.",
+      },
+      {
+        label: "Custom AI Prompts",
+        text: "Build personalized outreach messages using GPT integration.",
+      },
+    ],
+    pros: [
+      "Eliminates the need for multiple data subscriptions with transparent credit-based pricing",
+      "Claygent can find unique data points not available in traditional databases",
+      "Highly flexible platform that adapts to any sales workflow",
+    ],
+    cons: [
+      "Credit-based cost structure can lead to unpredictable monthly costs as volume and feature usage evolve",
+      "Requires more technical skill and time investment to set up and manage workflows",
+    ],
+    bestFor:
+      "Growth companies running heavy outbound motion who need an AI sales assistant that gives them maximum control and flexibility over their prospecting workflows.",
+    pricing:
+      "Credit-based system starting at $149/month for basic plans, with enterprise pricing available up to $800 per month. Expect to pay about $200 per month per rep.",
+  },
+  {
+    n: 3,
+    id: "trellus",
+    name: "Trellus",
+    role: "AI Assistant for Cold Calling Practice and Coaching",
+    image: {
+      slug: "trellus-homepage",
+      alt: "Trellus homepage: Power and Parallel Dial directly inside of your sales tools",
+      w: 1454,
+      h: 604,
+    },
+    overview: [
+      "I've used Trellus, and the live coaching it gives you on calls is excellent. This AI sales assistant replicates what most BDR leaders do: sit on the line and coach reps in real time through Slack messages. Except Trellus does it on every call, automatically.",
+      "In practice, three things stand out: its superior call-to-connect rates mean you don't lose prospects to dead air, you can use it on any table which gives you flexibility on how you create tasks for it, and the coaching itself is genuinely helpful. It's not just tracking talk time. It's guiding reps through objections and pacing in the moment.",
+    ],
+    howHeading: "How it Works",
+    how: [
+      "Trellus delivers simple coaching prompts to reps in real time as they speak to prospects. The AI assistant analyzes speech patterns, conversation flow, and objection handling to provide instant feedback, the same way a manager would coach over Slack, but scaled across every call.",
+    ],
+    features: [
+      {
+        label: "Real-Time Coaching",
+        text: "Live prompts for pacing, objection handling, and conversation flow.",
+      },
+      {
+        label: "Automated Call Summaries",
+        text: "AI-generated notes and action items from every call.",
+      },
+      { label: "Practice Mode", text: "AI voice agents that simulate prospects for training." },
+      {
+        label: "Parallel Dialing",
+        text: "Automate dialing to increase conversation rates up to 5x.",
+      },
+    ],
+    pros: [
+      "Users report significant improvements in cold calling skills and meeting bookings",
+      "Free plan available with robust features for individual reps",
+      "Seamless integration with major sales engagement platforms",
+    ],
+    cons: [
+      "Flexibility requires investment: setup and maintenance, especially with task creation, takes some skill",
+    ],
+    bestFor:
+      "Any team that needs to do cold calling at scale and wants an AI sales assistant that coaches reps in real time on every call.",
+    pricing: "$99 per month.",
+  },
+  {
+    n: 4,
+    id: "claude",
+    name: "Claude",
+    role: "AI Assistant for Sales Email Writing",
+    image: {
+      slug: "claude-homepage",
+      alt: "Claude homepage: Meet your thinking partner",
+      w: 1524,
+      h: 649,
+    },
+    overview: [
+      "I use Claude constantly, and for sales-related work, it's the best AI sales assistant for writing, period. What sets Claude apart is how easy it is to create \"tools\" (custom instructions) that keep your writing consistent across emails, sequences, and content. It's also the best I've found for generating account-based research, and its project structure is the easiest to use for organizing different workstreams.",
+      "If you need to build out messaging frameworks, develop persona profiles, or write outreach that actually sounds like you, Claude handles it better than any other AI writing tool I've used.",
+    ],
+    howHeading: "How it Works",
+    how: [
+      "Claude's massive context window allows it to understand entire email threads, company backgrounds, and prospect research simultaneously. You can load a project with your ICP profiles, messaging frameworks, and voice guidelines, then generate consistent content across everything from cold emails to proposal narratives.",
+    ],
+    features: [
+      {
+        label: "Context-Aware Email Generation",
+        text: "Creates highly personalized emails based on prospect research and previous interactions.",
+      },
+      {
+        label: "Multi-Draft Variations",
+        text: "Generates multiple versions of emails with different angles and tones.",
+      },
+      {
+        label: "Sales Copy Optimization",
+        text: "Refines subject lines, CTAs, and value propositions for maximum impact.",
+      },
+      {
+        label: "Template Customization",
+        text: "Transforms basic templates into personalized messages at scale.",
+      },
+    ],
+    pros: [
+      "Superior understanding of context and nuance compared to other AI writing tools",
+      "Can handle complex, technical sales scenarios across any industry",
+      "Maintains consistent brand voice while personalizing for each prospect",
+    ],
+    cons: [
+      "Requires API integration or manual interface for bulk email generation",
+      "No native CRM integration or email sending capabilities",
+      "Sometimes it's hard to manage what context it gets when creating content",
+    ],
+    bestFor:
+      "B2B sales teams that prioritize quality over quantity in their outreach, especially those selling complex or technical solutions requiring sophisticated messaging.",
+    pricing:
+      "API pricing starts at $15 per million tokens; Claude Pro at $20/month for individual users.",
+  },
+  {
+    n: 5,
+    id: "heyreach",
+    name: "Heyreach",
+    role: "AI Assistant for LinkedIn Messaging and Outreach",
+    image: {
+      slug: "heyreach-homepage",
+      alt: "HeyReach homepage: 10x your LinkedIn outbound. Unlimited senders, one fixed cost",
+      w: 1294,
+      h: 674,
+    },
+    overview: [
+      "I've used HeyReach, and it's an easy-to-use sequencer for pushing personalized messaging to your LinkedIn connections. While it's often positioned for lead-gen agencies, this AI sales assistant should be used by all sales teams running LinkedIn outreach, not just agencies scaling past account limits.",
+      "The platform coordinates outreach across multiple LinkedIn accounts while maintaining personalization, which means your team can run coordinated campaigns without stepping on each other's prospects.",
+    ],
+    howHeading: "How the AI Works",
+    how: [
+      "HeyReach combines LinkedIn outreach capabilities with AI-driven personalization. The AI assistant analyzes prospect profiles and engagement patterns to customize messaging and optimize timing, so each message feels relevant even when you're running sequences at scale.",
+    ],
+    features: [
+      {
+        label: "Multiple Sender Orchestration",
+        text: "Coordinate outreach across unlimited LinkedIn accounts with anti-duplication.",
+      },
+      {
+        label: "Unified Inbox",
+        text: "Manage all LinkedIn conversations from one centralized dashboard.",
+      },
+      {
+        label: "AI Personalization",
+        text: "Dynamic message customization based on prospect data.",
+      },
+      {
+        label: "Native Integrations",
+        text: "Direct connections with Clay and other sales tools.",
+      },
+    ],
+    pros: [
+      "Only platform allowing unlimited LinkedIn accounts for one flat fee",
+      "Built-in safety features respect LinkedIn limits while maximizing reach",
+    ],
+    cons: [
+      "You have to tightly monitor volume: sending too many connection requests or mentions can get your account flagged",
+    ],
+    bestFor:
+      "Any sales team running LinkedIn outreach at scale who needs an AI sales assistant to coordinate personalized messaging across accounts.",
+    pricing: "$79 per month.",
+  },
+  {
+    n: 6,
+    id: "attio",
+    name: "Attio",
+    role: "AI-Powered CRM",
+    image: {
+      slug: "attio-homepage",
+      alt: "Attio homepage: Customer relationship magic. Attio is the AI-native CRM for GTM builders",
+      w: 1800,
+      h: 1013,
+    },
+    overview: [
+      "I've used Attio, and it has a Notion-like experience that's incredibly intuitive and easy to use. This AI sales assistant reduces a lot of the complexity you get with tools like Salesforce and HubSpot: no more wrestling with convoluted admin panels or rigid data structures.",
+      "What makes Attio different is that it uses AI at its core to enrich your data throughout, not as a bolt-on feature you have to configure separately.",
+    ],
+    howHeading: "How it Works",
+    how: [
+      "Attio's AI assistant automatically leverages your existing CRM data while researching the web to classify data, generate summaries, and uncover details about companies. The AI is woven throughout the system rather than sitting as a standalone feature, so enrichment and intelligence happen as you work.",
+    ],
+    features: [
+      {
+        label: "AI Research Agent",
+        text: "Automatically qualifies leads and enriches records with web research.",
+      },
+      {
+        label: "Intelligent Workflows",
+        text: "AI-powered automation that makes dynamic, context-based decisions.",
+      },
+    ],
+    pros: [
+      "AI is seamlessly woven into the platform rather than added as an afterthought",
+      "Highly customizable to fit unique business models",
+      "Blazing fast performance even with millions of records",
+    ],
+    cons: [
+      "Newer platform with smaller ecosystem compared to established CRMs",
+      "Learning curve for teams used to traditional CRM interfaces",
+    ],
+    bestFor:
+      "Fast-growing SaaS companies and AI-native startups that want a CRM that can adapt and scale with their unique go-to-market motions.",
+    pricing: "$89 per month per user.",
+  },
+  {
+    n: 7,
+    id: "instantly",
+    name: "Instantly",
+    role: "AI Assistant for Email Deliverability",
+    image: {
+      slug: "instantly-homepage",
+      alt: "Instantly homepage: Find, Contact and Close Your Ideal Clients",
+      w: 858,
+      h: 478,
+    },
+    overview: [
+      "Instantly.ai is a super easy way to spin up, warm up, and monitor inboxes for sender reputation. As an AI sales assistant for cold email outreach, Instantly handles the infrastructure side of email prospecting that most teams struggle with: getting your emails actually delivered.",
+      "What makes it valuable: a database of 450M+ contacts to find new people in your ICP with verified emails, excellent email verification to reduce bounces, and a great API interface to push in custom messaging at scale. The platform also uses AI to generate cold email campaigns automatically and respond to replies, though the AI-generated content needs heavy tweaking to sound human.",
+    ],
+    howHeading: "How the AI Works",
+    how: [
+      "Instantly lets you connect unlimited email accounts and automatically warms them up to build sender reputation before you start sending campaigns. The AI assistant handles email writing, reply categorization, and web research on prospects. For data, it uses waterfall enrichment across 5+ providers to verify emails before you send.",
+    ],
+    features: [
+      {
+        label: "Unlimited Email Accounts and Warmup",
+        text: "Connect as many sending mailboxes as you need with automated reputation building.",
+      },
+      {
+        label: "450M+ Contact Database",
+        text: "Find prospects in your ICP with verified email addresses.",
+      },
+      {
+        label: "AI Email Writer",
+        text: "Generate cold email campaigns and sequences automatically.",
+      },
+      {
+        label: "AI Reply Agent",
+        text: "Automatically categorize and respond to inbound replies.",
+      },
+      {
+        label: "Email Verification",
+        text: "Waterfall enrichment reduces bounces and protects sender reputation.",
+      },
+    ],
+    pros: [
+      "Excellent email verification reduces bounce rates",
+      "Great API for pushing custom messaging at scale",
+      "Built-in deliverability tools (warmup, placement testing, blacklist monitoring)",
+    ],
+    cons: [
+      "Unibox isn't a great experience for managing mail across accounts",
+      "Iconography and workflows can be confusing to navigate",
+      "AI-generated email copy needs heavy tweaking to sound authentic",
+    ],
+    bestFor:
+      "Sales teams and agencies running high-volume cold email who need an AI sales assistant that handles deliverability infrastructure and contact verification at scale.",
+    pricing:
+      "Growth plan starts at $37/month, Hypergrowth at $97/month, Light Speed at $358/month. All plans include unlimited email accounts and warmup. Lead database and AI features use a credit-based system.",
+  },
+  {
+    n: 8,
+    id: "discern",
+    name: "Discern.io",
+    role: "AI Assistant for Sales Forecasting",
+    image: {
+      slug: "discern-homepage",
+      alt: "Discern homepage: Plan Better. Model Smarter. No Spreadsheets.",
+      w: 1490,
+      h: 646,
+    },
+    overview: [
+      "Discern's sales forecasting solution addresses the challenge of accurate predictions by offering a unique dual approach that provides both quantitative forecasting and qualitative forecasting. The platform stands out for its ability to achieve forecast accuracy within 5% consistently.",
+    ],
+    howHeading: "How the AI Works",
+    how: [
+      "Discern's AI incorporates all key data and AE-specific habits to provide the most accurate sales forecast, with daily snapshots to evaluate prediction accuracy. Machine learning models analyze historical patterns, current pipeline dynamics, and rep-specific behaviors to generate predictions.",
+    ],
+    features: [
+      {
+        label: "Dual Forecasting Approach",
+        text: "Combines AI predictions with bottom-up human insights.",
+      },
+      {
+        label: "Opportunity Scoring",
+        text: "AI evaluates likelihood of each deal closing in period.",
+      },
+      {
+        label: "Pipeline Analytics",
+        text: "Real-time visibility into pipeline changes and trends.",
+      },
+      {
+        label: "Accuracy Tracking",
+        text: "Continuous monitoring of forecast accuracy with improvement insights.",
+      },
+    ],
+    pros: [
+      "Industry-leading forecast accuracy (within 5% for most customers)",
+      "No per-user pricing means all stakeholders can access forecasts without added cost",
+      "Comprehensive pipeline intelligence beyond just forecasting",
+    ],
+    cons: ["Requires robust CRM data for optimal accuracy", "Higher price point for smaller teams"],
+    bestFor:
+      "B2B SaaS companies with complex sales cycles that need reliable revenue predictions for planning and investor communications.",
+    pricing: "Enterprise pricing available.",
+  },
+];
+
+const intro = [
+  "In today's hyper-competitive B2B sales landscape, artificial intelligence sales assistants have evolved from nice-to-have tools to essential components of modern sales stacks. But here's what most sales teams don't realize: AI sales assistants aren't just about automating repetitive tasks anymore. They're about intelligently optimizing specific parts of your sales workflow with specialized capabilities.",
+  "Unlike traditional sales automation tools that simply execute predefined triggers, AI sales assistants act as specialized team members who never sleep, continuously learn from your data, and can handle everything from enriching prospect information to predicting which deals will close.",
+  "The shift we're seeing in 2026 is remarkable: instead of investing in monolithic, one-size-fits-all platforms, leading sales teams are assembling collections of AI-powered specialists. Each assistant excels at a particular sales function, whether that's orchestrating complex data workflows, coaching reps through cold calls, or forecasting revenue with unprecedented accuracy. This specialized approach means you can optimize each stage of your sales process with best-in-class AI capabilities, rather than settling for generic automation.",
+  "This comprehensive guide explores the best AI sales assistant software for each critical sales function, helping you build a tech stack where artificial intelligence amplifies your team's strengths rather than replacing them. From opportunity management to sales forecasting, we'll show you exactly how these AI assistants work and which teams they serve best.",
+];
+
+const summary = [
+  "The era of AI sales assistants has arrived, and the winners won't be those with the most tools, but those who thoughtfully orchestrate specialized capabilities across their sales workflow. As we've seen, each assistant excels at solving specific challenges: from Clay's unmatched data orchestration to Trellus's real-time coaching, from Attio's intelligent CRM capabilities to Discern's precision forecasting.",
+  "The key to success lies in understanding that these AI assistants work best together in a modern sales stack. Start with Topiq as your central assistant for managing the entire opportunity lifecycle, then layer in specialized tools based on your team's specific needs. Need better data? Add Clay. Struggling with cold calling? Deploy Trellus. Forecasting challenges? Bring in Discern.",
+  "When selecting AI sales assistants, consider three critical criteria: First, does the AI actually learn and improve from your data, or is it just automation in disguise? Second, can it integrate seamlessly with your existing tech stack? Third, does it solve a specific, measurable problem in your sales process?",
+  "Looking ahead, the future of AI sales assistance will be defined by even deeper specialization and better orchestration between tools. We're moving toward sales stacks where AI agents communicate with each other, sharing insights and triggering workflows across platforms. The companies that embrace this AI-powered, specialized approach today will have a significant competitive advantage as these technologies mature.",
+  "The bottom line? AI is no longer optional for teams serious about scaling efficiently. Whether you're a startup looking to punch above your weight or an enterprise optimizing for growth, there's software designed specifically for your challenges. The question isn't whether to adopt AI sales assistants. It's which combination will transform your sales process first.",
+  "Start with Topiq to centralize your AI-powered opportunity management, then build out your specialized AI sales stack from there. Your future sales success depends not on working harder, but on working smarter with the right AI assistants by your side.",
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: canonicalUrl,
+  publisher: {
+    "@type": "Organization",
+    name: "Basiq",
+    url: SITE_URL,
+    logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+  },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: products.length,
+    itemListElement: products.map((p) => ({
+      "@type": "ListItem",
+      position: p.n,
+      name: `${p.name}: ${p.role}`,
+      url: `${canonicalUrl}#${p.id}`,
+    })),
+  },
+};
+
+const eyebrow = "font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest";
+const subhead = "font-display text-lg text-heading";
+const prose = "text-base leading-relaxed text-body";
+const card = "rounded-2xl border border-line bg-paper p-6 shadow-soft";
+const cardLabel = "font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-muted";
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} jsonLd={jsonLd}>
+  <header class="border-b border-line">
+    <div class="mx-auto max-w-5xl px-6 pb-16 pt-20 lg:pb-20 lg:pt-28">
+      <p class="mb-6 inline-block rounded-full border border-line bg-stone px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-forest">
+        2026 Buyer's Guide
+      </p>
+      <h1 class="font-display text-4xl leading-[1.1] text-heading md:text-5xl lg:text-6xl">
+        The 8 Best AI Assistants <span class="text-muted">For Every Stage of Your Sales Workflow</span>
+      </h1>
+      <div class="mt-10">
+        <img
+          src={img("hero-ai-sales-assistants", 1600)}
+          alt="AI Sales Assistants: Specialized Tools for Your Team"
+          width="1600"
+          height="679"
+          loading="eager"
+          class="w-full rounded-2xl border border-line"
+        />
+      </div>
+      <div class="mt-10 max-w-3xl space-y-5 text-base leading-relaxed text-body md:text-lg">
+        {intro.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </header>
+
+  <section class="border-b border-line bg-stone">
+    <div class="mx-auto max-w-5xl px-6 py-16 lg:py-20">
+      <p class={eyebrow}>In this guide</p>
+      <h2 class="mt-3 font-display text-2xl text-heading md:text-3xl">Top 8 Sales AI Assistants</h2>
+      <ol class="mt-8 grid gap-3 sm:grid-cols-2">
+        {
+          products.map((p) => (
+            <li>
+              <a
+                href={`#${p.id}`}
+                class="flex items-start gap-3 rounded-2xl border border-line bg-paper px-4 py-3 shadow-soft transition-shadow hover:shadow-lift"
+              >
+                <span class="pt-0.5 font-mono text-xs font-semibold text-gold">
+                  {String(p.n).padStart(2, "0")}
+                </span>
+                <span class="text-sm text-heading">
+                  <span class="font-semibold">{p.name}</span>
+                  <span class="text-muted">: {p.role}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {
+    products.map((p) => (
+      <section id={p.id} class="scroll-mt-24 border-b border-line">
+        <div class="mx-auto max-w-4xl px-6 py-20 lg:py-24">
+          <p class={eyebrow}>
+            {String(p.n).padStart(2, "0")}
+            {p.featured ? " Featured" : ""}
+          </p>
+          <h2 class="mt-3 font-display text-3xl text-heading md:text-4xl">
+            {p.name}: {p.role}
+          </h2>
+
+          <div class="mt-8 overflow-hidden rounded-2xl border border-line bg-stone">
+            <img
+              src={img(p.image.slug, p.image.w)}
+              alt={p.image.alt}
+              width={p.image.w}
+              height={p.image.h}
+              loading="lazy"
+              class="w-full"
+            />
+          </div>
+
+          <h3 class={`mt-10 ${subhead}`}>Overview</h3>
+          <div class={`mt-3 space-y-4 ${prose}`}>{p.overview.map((t) => <p>{t}</p>)}</div>
+
+          <h3 class={`mt-10 ${subhead}`}>{p.howHeading}</h3>
+          <div class={`mt-3 space-y-4 ${prose}`}>{p.how.map((t) => <p>{t}</p>)}</div>
+
+          <h3 class={`mt-10 ${subhead}`}>Key Features</h3>
+          <ul class={`mt-4 space-y-3 ${prose}`}>
+            {p.features.map((f) => (
+              <li>
+                <span class="font-semibold text-heading">{f.label}:</span> {f.text}
+              </li>
+            ))}
+          </ul>
+
+          {p.whyChoose && (
+            <>
+              <h3 class={`mt-10 ${subhead}`}>{p.whyChoose.heading}</h3>
+              <ul class={`mt-4 space-y-3 ${prose}`}>
+                {p.whyChoose.items.map((f) => (
+                  <li>
+                    <span class="font-semibold text-heading">{f.label}:</span> {f.text}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {p.whoBenefits && (
+            <>
+              <h3 class={`mt-10 ${subhead}`}>{p.whoBenefits.heading}</h3>
+              <div class={`mt-3 space-y-4 ${prose}`}>
+                {p.whoBenefits.paragraphs.map((t) => (
+                  <p>{t}</p>
+                ))}
+              </div>
+            </>
+          )}
+
+          {p.pros && p.cons && (
+            <div class="mt-10 grid gap-6 sm:grid-cols-2">
+              <div class={card}>
+                <h4 class={cardLabel}>Pros</h4>
+                <ul class="mt-3 space-y-2 text-sm leading-relaxed text-body">
+                  {p.pros.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class={card}>
+                <h4 class={cardLabel}>Cons</h4>
+                <ul class="mt-3 space-y-2 text-sm leading-relaxed text-body">
+                  {p.cons.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          <div class="mt-6 grid gap-6 sm:grid-cols-2">
+            <div class={card}>
+              <h4 class={cardLabel}>Best For</h4>
+              <p class="mt-3 text-base leading-relaxed text-body">{p.bestFor}</p>
+            </div>
+            <div class={card}>
+              <h4 class={cardLabel}>Pricing</h4>
+              <p class="mt-3 text-base leading-relaxed text-body">{p.pricing}</p>
+            </div>
+          </div>
+
+          {p.cta && (
+            <div class="mt-10">
+              <a
+                href={p.cta.href}
+                class="inline-block rounded-full bg-forest px-7 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-forest-hover"
+              >
+                {p.cta.label}
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="border-b border-line bg-stone">
+    <div class="mx-auto max-w-4xl px-6 py-20 lg:py-24">
+      <p class={eyebrow}>Summary</p>
+      <h2 class="mt-4 font-display text-3xl text-heading md:text-4xl">Building your AI sales stack</h2>
+      <div class="mt-8 space-y-5 text-base leading-relaxed text-body md:text-lg">
+        {summary.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-forest">
+    <div class="mx-auto max-w-4xl px-6 py-20 text-center lg:py-28">
+      <h2 class="font-display text-3xl text-on-dark md:text-4xl lg:text-5xl">
+        Take Your Sales Process to the Next Level
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-on-dark-muted">
+        Set the tone for your prospects and outclass your competition so they understand that your
+        company is going to provide world-class service throughout their journey with you.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={BOOKING_URL}
+          class="rounded-full bg-paper px-8 py-4 font-mono text-xs font-medium uppercase tracking-[0.12em] text-forest transition-colors hover:bg-stone"
+        >
+          Book a Call
+        </a>
+        <a
+          href="/products"
+          class="rounded-full border border-line-dark px-8 py-4 font-mono text-xs font-medium uppercase tracking-[0.12em] text-on-dark transition-colors hover:bg-forest-raised"
+        >
+          See Our Products
+        </a>
+      </div>
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/founders"
+          class="rounded-full border border-line-dark px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-on-dark-muted transition-colors hover:text-on-dark"
+        >
+          Founders and CEOs
+        </a>
+        <a
+          href="/revenue-leaders"
+          class="rounded-full border border-line-dark px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-on-dark-muted transition-colors hover:text-on-dark"
+        >
+          CROs and VPs of Sales
+        </a>
+        <a
+          href="/podcast"
+          class="rounded-full border border-line-dark px-4 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-on-dark-muted transition-colors hover:text-on-dark"
+        >
+          Selling AI Podcast
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
