@@ -1,0 +1,131 @@
+{
+  "_id": "episode-marvin-martinez",
+  "_type": "episode",
+  "episodeNumber": 23,
+  "title": "AI Just Accelerates Your Inconsistency",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-just-accelerates-your-inconsistency"
+  },
+  "publishedAt": "2026-06-17T14:00:00.000Z",
+  "duration": 29,
+  "summary": "Marvin J Martinez spent more than 13 years running operations at a business process outsourcing company, managing everything from recruitment and training to quality, IT and HR, and he only came to AI after the boom, which gives him an operator's read on it rather than an evangelist's. His argument in this episode is that AI amplifies whatever system it lands on, so a sales process that is not clear today does not get fixed by automation; it just produces inconsistency faster. He lays out the engagement he actually runs: ask the founder what is eating their time, make them walk through the manual version and time it, automate the easiest step first, and measure return in hours saved and errors removed rather than in booked meetings. Worth listening to if you are a founder or a sales leader deciding where automation belongs in your outbound motion and where a human still has to be the one who sends the message.",
+  "keyQuote": "If your sales process is not clear today, AI will not magically fix your issues. What it will do is just accelerate inconsistency.",
+  "guestName": "Marvin J Martinez",
+  "guestTitle": "Co-Founder, Bandsaw AI",
+  "guestBio": "Marvin J Martinez spent over 13 years in operations at a business process outsourcing company, ending up as general manager with recruitment, training, quality, operations, IT and HR all reporting into him. The job made him a process person first: mapping workflows, writing SOPs, and hunting for the repeated steps that ate his team's week. When LLMs became usable he realized how much of that repetition was automatable, and he co-founded Bandsaw AI, an automation consultancy that sells itself on being built by operators and on more than 1,000 hours of hands-on AI implementations. Today he helps small and mid-sized businesses plug AI into the sales, marketing and admin processes they already run, and he posts his less popular opinions on LinkedIn and at bandsaw.ai.",
+  "takeaways": [
+    "AI amplifies your system. A broken process just breaks faster.",
+    "Show me the manual version before you automate anything.",
+    "Start with the easiest process to automate, not the flashiest.",
+    "Call an inbound lead in five minutes or a competitor will.",
+    "Measure ROI in hours saved and errors cut, not booked meetings.",
+    "When everyone automates the same way, authenticity is the edge.",
+    "AI tools will evolve faster than buyer behavior does."
+  ],
+  "chapters": [
+    {
+      "_key": "c01",
+      "timestamp": "0:00",
+      "title": "Intro"
+    },
+    {
+      "_key": "c02",
+      "timestamp": "1:37",
+      "title": "Operations first, AI second"
+    },
+    {
+      "_key": "c03",
+      "timestamp": "2:05",
+      "title": "Thirteen years running a BPO, from recruiting to IT"
+    },
+    {
+      "_key": "c04",
+      "timestamp": "3:29",
+      "title": "Owners know the work but never mapped the process"
+    },
+    {
+      "_key": "c05",
+      "timestamp": "4:19",
+      "title": "Framing the business around the tool is backwards"
+    },
+    {
+      "_key": "c06",
+      "timestamp": "5:19",
+      "title": "AI amplifies whatever system you already have"
+    },
+    {
+      "_key": "c07",
+      "timestamp": "6:15",
+      "title": "Three things the companies getting results already know"
+    },
+    {
+      "_key": "c08",
+      "timestamp": "6:45",
+      "title": "Call an inbound lead in five minutes or lose it"
+    },
+    {
+      "_key": "c09",
+      "timestamp": "8:06",
+      "title": "Show me the manual version first"
+    },
+    {
+      "_key": "c10",
+      "timestamp": "9:38",
+      "title": "Fifty emails a day at two minutes each"
+    },
+    {
+      "_key": "c11",
+      "timestamp": "11:39",
+      "title": "Same tools, different results: the inputs decide"
+    },
+    {
+      "_key": "c12",
+      "timestamp": "14:50",
+      "title": "AI takes 70 to 90 percent of the repetition, not the judgment"
+    },
+    {
+      "_key": "c13",
+      "timestamp": "17:09",
+      "title": "The staffing firm that would not let AI talk to clients"
+    },
+    {
+      "_key": "c14",
+      "timestamp": "19:04",
+      "title": "Apollo, a Google Sheet, and no fancy tech stack"
+    },
+    {
+      "_key": "c15",
+      "timestamp": "20:23",
+      "title": "Automation is not removal: the hybrid systems win"
+    },
+    {
+      "_key": "c16",
+      "timestamp": "22:31",
+      "title": "How to spot an AI written LinkedIn post"
+    },
+    {
+      "_key": "c17",
+      "timestamp": "24:21",
+      "title": "The same reply rate in three fewer hours is a win"
+    },
+    {
+      "_key": "c18",
+      "timestamp": "26:12",
+      "title": "His own cold email flopped because the ICP was wrong"
+    },
+    {
+      "_key": "c19",
+      "timestamp": "27:21",
+      "title": "Tools will outrun buyer behavior"
+    },
+    {
+      "_key": "c20",
+      "timestamp": "28:21",
+      "title": "Winners pair AI efficiency with human positioning"
+    }
+  ],
+  "youtubeId": null,
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/ai-just-accelerates-your-inconsistency/id1866408000?i=1000773127181",
+  "spotifyUrl": "https://open.spotify.com/episode/6i8uvTZGCQZj3GvCfnRn2l"
+}

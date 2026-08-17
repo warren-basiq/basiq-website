@@ -1,0 +1,132 @@
+{
+  "_id": "episode-neha-gupta",
+  "_type": "episode",
+  "episodeNumber": 28,
+  "title": "A New Approach to Sales Roleplay",
+  "slug": {
+    "_type": "slug",
+    "current": "a-new-approach-to-sales-roleplay"
+  },
+  "publishedAt": "2026-07-29T14:30:00.000Z",
+  "duration": 32,
+  "summary": "Neha Gupta is the founder and CEO of Breakthrough AI, and she came to sales practice sideways: 25 years at Unilever, Clorox, and mission-driven brands taught her that the people who stall out are rarely the ones who lack technical skill, they are the ones who never learned to sell an idea. Her argument in this episode is that roleplay has always been the right answer and the wrong experience, because a human partner will not push back hard enough and an off-the-shelf LLM is built to agree with you. She walks through what Breakthrough does instead: 11 fine-tuned personas that hold character, a scenario library built on real objections (the buyer who loves everything and still wants 10% off), and a feedback agent that scores micro behaviors like whether you acknowledged the concern and whether you closed with a next step. Listen if you run a sales team, own enablement, or have ever assigned roleplay and quietly watched nobody do it.",
+  "keyQuote": "What's nice about AI now is that it can be pushy. It doesn't care about your feelings; it can say no.",
+  "guestName": "Neha Gupta",
+  "guestTitle": "Founder and CEO, Breakthrough AI",
+  "guestBio": "Neha Gupta is the founder and CEO of Breakthrough AI, a practice-first coaching platform where sales teams rehearse high-stakes conversations against AI personas that push back. She started her career in consulting, where she was put in front of skeptical clients early and had to learn corporate communication by watching other people do it. She spent years in consumer brands at Unilever and Clorox, then moved into mission-driven work with leadership roles at SaverLife and her own brand advisory practice, BellyFire Branding. She holds a BA from Stanford and an MBA from the Yale School of Management. As the daughter of immigrants and a first-generation corporate employee, she built Breakthrough around a conviction that executive presence is a learnable skill rather than a birthright.",
+  "takeaways": [
+    "AI roleplay works because the AI does not care about your feelings.",
+    "ChatGPT drops a demanding persona after one or two exchanges.",
+    "Colleagues are bad roleplay partners; they protect the relationship.",
+    "Sales is the only discipline that performs without practicing.",
+    "One rubric beats ten managers with ten grading scales.",
+    "Pilot users reported 40% less anxiety after practicing.",
+    "Run roleplay as a six week competition, not a forever assignment.",
+    "Discount talk is a value conversation, not a pricing one."
+  ],
+  "chapters": [
+    {
+      "_key": "c01",
+      "timestamp": "0:00",
+      "title": "Intro"
+    },
+    {
+      "_key": "c02",
+      "timestamp": "1:18",
+      "title": "Consulting: thrown in front of skeptical clients early"
+    },
+    {
+      "_key": "c03",
+      "timestamp": "2:05",
+      "title": "Unilever and Clorox: selling an idea inside a big company"
+    },
+    {
+      "_key": "c04",
+      "timestamp": "2:52",
+      "title": "Technically great, and still not getting promoted"
+    },
+    {
+      "_key": "c05",
+      "timestamp": "5:21",
+      "title": "Off-the-shelf LLMs are built to agree with you"
+    },
+    {
+      "_key": "c06",
+      "timestamp": "5:51",
+      "title": "Eleven personas and 12 months of fine-tuning"
+    },
+    {
+      "_key": "c07",
+      "timestamp": "6:37",
+      "title": "Users get emotionally invested in a fake conversation"
+    },
+    {
+      "_key": "c08",
+      "timestamp": "7:32",
+      "title": "Roleplay before AI: two people, one awkward classroom"
+    },
+    {
+      "_key": "c09",
+      "timestamp": "8:31",
+      "title": "Reps talk about the roleplay instead of doing it"
+    },
+    {
+      "_key": "c10",
+      "timestamp": "10:13",
+      "title": "Sales is a form of conflict, and most people avoid conflict"
+    },
+    {
+      "_key": "c11",
+      "timestamp": "11:42",
+      "title": "A scoring rubric pulled from academic communication research"
+    },
+    {
+      "_key": "c12",
+      "timestamp": "12:06",
+      "title": "Easy graders, hard graders, and the calibration meeting you skip"
+    },
+    {
+      "_key": "c13",
+      "timestamp": "12:42",
+      "title": "No other discipline one-shots the most important part of the job"
+    },
+    {
+      "_key": "c14",
+      "timestamp": "16:16",
+      "title": "Why a prompt is not a system: personas, consistency, trend data"
+    },
+    {
+      "_key": "c15",
+      "timestamp": "17:58",
+      "title": "Rollout that sticks: leaderboards, streaks, a six week window"
+    },
+    {
+      "_key": "c16",
+      "timestamp": "21:07",
+      "title": "The 10% discount scenario, walked through step by step"
+    },
+    {
+      "_key": "c17",
+      "timestamp": "23:18",
+      "title": "Micro behaviors: pushback, momentum, talking versus listening"
+    },
+    {
+      "_key": "c18",
+      "timestamp": "26:43",
+      "title": "Pilot users came out 40% less anxious"
+    },
+    {
+      "_key": "c19",
+      "timestamp": "27:21",
+      "title": "What her own scorecard told her: talk less, ask more"
+    },
+    {
+      "_key": "c20",
+      "timestamp": "29:38",
+      "title": "Next up is tone, not just words: an MIT experiment"
+    }
+  ],
+  "youtubeId": null,
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/a-new-approach-to-sales-roleplay/id1866408000?i=1000778917187",
+  "spotifyUrl": "https://open.spotify.com/episode/1Tp1i3DRgdahYIWpryTDFb"
+}

@@ -1,0 +1,131 @@
+{
+  "_id": "episode-eddie-reynolds",
+  "_type": "episode",
+  "episodeNumber": 21,
+  "title": "AI Can Finally Kill CRM Data Entry. That Might Be the Problem.",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-can-finally-kill-crm-data-entry"
+  },
+  "publishedAt": "2026-05-27T14:00:00.000Z",
+  "duration": 46,
+  "summary": "Eddie Reynolds has spent 15 years implementing Salesforce, first for relationship bankers on Wall Street and then as an account executive inside Salesforce itself, and he brings a finance operator's lens to go-to-market. His argument is that AI can finally take CRM data entry off reps, but if the rep never opens the record again, the company loses the thing the fields were actually for: forcing a rep to think about qualification, stakeholders, and what happens next. He lays out what good looks like in practice, from three or four required fields per deal instead of 40, to L1, L2, and L3 pain captured explicitly, to pipeline inspection running top down, to AI trained on the specific reasons your company wins and loses rather than a generic methodology. Listen if you run rev ops or a sales team and are deciding how much of the deal process to hand over to AI.",
+  "keyQuote": "If the AI does all of the work and the rep is never looking at Salesforce, then they're not thinking about the right questions to ask and the right steps to take during the sales process.",
+  "guestName": "Eddie Reynolds",
+  "guestTitle": "Founder and CEO, Union Square Consulting",
+  "guestBio": "Eddie Reynolds is the founder and CEO of Union Square Consulting, a go-to-market strategy, analytics, and AI engineering firm for B2B tech that he started in 2016. He has been selling since he was 16, paid his way through Indiana University's Kelley School of Business selling cars, and landed at Beverly Hills Porsche after graduating. He then moved into banking and institutional sales, picking up the CAIA designation along with Series 7 and 63 licenses, and first implemented Salesforce for relationship-driven bankers who refused to log in. He spent three years as an account executive at Salesforce selling into SMB and mid-market before founding his firm. He also hosts GTM Science, a podcast for go-to-market and rev ops leaders.",
+  "takeaways": [
+    "AI can fill the CRM. It cannot do the rep's thinking for them.",
+    "The rep decides the stage. That call sets where their time goes.",
+    "Every stage forward costs exponentially more of a rep's hours.",
+    "Sell to a junior stakeholder and you get a $15K deal, not $100K.",
+    "Give away the demo and the discount and you have no leverage left.",
+    "Salesforce asked for four fields. A CFO asked for 40 and got fired.",
+    "Sprinkle AI on a broken process and it just breaks faster."
+  ],
+  "chapters": [
+    {
+      "_key": "c01",
+      "timestamp": "0:00",
+      "title": "Intro"
+    },
+    {
+      "_key": "c02",
+      "timestamp": "1:54",
+      "title": "Beverly Hills Porsche: outrunning the 35 year olds"
+    },
+    {
+      "_key": "c03",
+      "timestamp": "4:06",
+      "title": "Wall Street bankers who voicemailed notes to an analyst"
+    },
+    {
+      "_key": "c04",
+      "timestamp": "5:02",
+      "title": "Salesforce asked for four fields and enforced them hourly"
+    },
+    {
+      "_key": "c05",
+      "timestamp": "5:58",
+      "title": "If AI fills it all in, the rep stops thinking"
+    },
+    {
+      "_key": "c06",
+      "timestamp": "7:32",
+      "title": "The SE who refused the invite until the fields were updated"
+    },
+    {
+      "_key": "c07",
+      "timestamp": "8:27",
+      "title": "The rep decides the stage, not the AI"
+    },
+    {
+      "_key": "c08",
+      "timestamp": "11:07",
+      "title": "Every stage forward costs exponentially more rep time"
+    },
+    {
+      "_key": "c09",
+      "timestamp": "13:15",
+      "title": "Junior stakeholders mean $15K deals instead of $100K"
+    },
+    {
+      "_key": "c10",
+      "timestamp": "14:14",
+      "title": "Give away the demo and the discount, lose your leverage"
+    },
+    {
+      "_key": "c11",
+      "timestamp": "16:10",
+      "title": "No senior sponsor means churn in six or twelve months"
+    },
+    {
+      "_key": "c12",
+      "timestamp": "17:19",
+      "title": "10 to 20% close rates against 3x coverage is half of goal"
+    },
+    {
+      "_key": "c13",
+      "timestamp": "20:20",
+      "title": "Where AI actually helps: coaching the next step in real time"
+    },
+    {
+      "_key": "c14",
+      "timestamp": "22:27",
+      "title": "L1, L2, and L3 pain written into Salesforce fields"
+    },
+    {
+      "_key": "c15",
+      "timestamp": "24:20",
+      "title": "Tony Rodoni inspecting the biggest deal in North America"
+    },
+    {
+      "_key": "c16",
+      "timestamp": "25:17",
+      "title": "The CFO who wanted 40 fields, and the team that revolted"
+    },
+    {
+      "_key": "c17",
+      "timestamp": "29:48",
+      "title": "CROs ask for more pipeline; the pipeline is a mess"
+    },
+    {
+      "_key": "c18",
+      "timestamp": "33:03",
+      "title": "A $5M McKinsey journey map versus one hour with the right people"
+    },
+    {
+      "_key": "c19",
+      "timestamp": "35:25",
+      "title": "The five minute demo video that beat 15 qualification calls"
+    },
+    {
+      "_key": "c20",
+      "timestamp": "40:12",
+      "title": "The AI crash, the tech-savvy CRO, and the F1 pit crew"
+    }
+  ],
+  "youtubeId": null,
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/ai-can-finally-kill-crm-data-entry-that-might-be-the-problem/id1866408000?i=1000769836550",
+  "spotifyUrl": "https://open.spotify.com/episode/3n2SVSbLpqSYoHXcZzoIGk"
+}

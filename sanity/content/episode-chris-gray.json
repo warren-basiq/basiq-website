@@ -1,7 +1,7 @@
 {
   "_id": "episode-chris-gray",
   "_type": "episode",
-  "episodeNumber": 29,
+  "episodeNumber": 30,
   "title": "Motivation Is the Gas Pedal. Logic Is Just the Steering Wheel",
   "slug": {
     "_type": "slug",
@@ -24,26 +24,106 @@
     "Information access stopped being an edge. Discernment replaced it."
   ],
   "chapters": [
-    { "_key": "c01", "timestamp": "0:00", "title": "Intro" },
-    { "_key": "c02", "timestamp": "1:05", "title": "From clinical psychology to the research side of marketing" },
-    { "_key": "c03", "timestamp": "4:16", "title": "Fifteen years at Saatchi & Saatchi, then going independent" },
-    { "_key": "c04", "timestamp": "6:54", "title": "Staying ahead of the playbook without getting academic" },
-    { "_key": "c05", "timestamp": "8:10", "title": "Why the motivation to buy traces back to an emotional need" },
-    { "_key": "c06", "timestamp": "11:25", "title": "The office manager buying for the office: competence, status, risk" },
-    { "_key": "c07", "timestamp": "13:29", "title": "Why B2B sellers stay stuck in the logical" },
-    { "_key": "c08", "timestamp": "14:03", "title": "Motivation is the gas pedal, logic is the steering wheel" },
-    { "_key": "c09", "timestamp": "14:59", "title": "Emotion-based is not the same as emotional" },
-    { "_key": "c10", "timestamp": "16:26", "title": "Finding your champion's real stake with the five whys" },
-    { "_key": "c11", "timestamp": "20:25", "title": "Differentiation when software floods the market" },
-    { "_key": "c12", "timestamp": "23:14", "title": "Kids brush 30% longer: a number doing emotional work" },
-    { "_key": "c13", "timestamp": "27:24", "title": "The Five Fs of a resilient buyer relationship" },
-    { "_key": "c14", "timestamp": "27:46", "title": "Psychological reactance and why manipulation has a shelf life" },
-    { "_key": "c15", "timestamp": "32:09", "title": "Stable psychology, moving behavior" },
-    { "_key": "c16", "timestamp": "33:50", "title": "From the record store to Spotify: same need, less friction" },
-    { "_key": "c17", "timestamp": "40:58", "title": "Dollar Shave Club and the parity problem coming for B2B" },
-    { "_key": "c18", "timestamp": "42:22", "title": "What AI changes about buyer behavior next" },
-    { "_key": "c19", "timestamp": "42:59", "title": "Access to information is not an edge. Discernment is." },
-    { "_key": "c20", "timestamp": "47:08", "title": "The book, the Substack, and where to find Chris" }
+    {
+      "_key": "c01",
+      "timestamp": "0:00",
+      "title": "Intro"
+    },
+    {
+      "_key": "c02",
+      "timestamp": "1:05",
+      "title": "From clinical psychology to the research side of marketing"
+    },
+    {
+      "_key": "c03",
+      "timestamp": "4:16",
+      "title": "Fifteen years at Saatchi & Saatchi, then going independent"
+    },
+    {
+      "_key": "c04",
+      "timestamp": "6:54",
+      "title": "Staying ahead of the playbook without getting academic"
+    },
+    {
+      "_key": "c05",
+      "timestamp": "8:10",
+      "title": "Why the motivation to buy traces back to an emotional need"
+    },
+    {
+      "_key": "c06",
+      "timestamp": "11:25",
+      "title": "The office manager buying for the office: competence, status, risk"
+    },
+    {
+      "_key": "c07",
+      "timestamp": "13:29",
+      "title": "Why B2B sellers stay stuck in the logical"
+    },
+    {
+      "_key": "c08",
+      "timestamp": "14:03",
+      "title": "Motivation is the gas pedal, logic is the steering wheel"
+    },
+    {
+      "_key": "c09",
+      "timestamp": "14:59",
+      "title": "Emotion-based is not the same as emotional"
+    },
+    {
+      "_key": "c10",
+      "timestamp": "16:26",
+      "title": "Finding your champion's real stake with the five whys"
+    },
+    {
+      "_key": "c11",
+      "timestamp": "20:25",
+      "title": "Differentiation when software floods the market"
+    },
+    {
+      "_key": "c12",
+      "timestamp": "23:14",
+      "title": "Kids brush 30% longer: a number doing emotional work"
+    },
+    {
+      "_key": "c13",
+      "timestamp": "27:24",
+      "title": "The Five Fs of a resilient buyer relationship"
+    },
+    {
+      "_key": "c14",
+      "timestamp": "27:46",
+      "title": "Psychological reactance and why manipulation has a shelf life"
+    },
+    {
+      "_key": "c15",
+      "timestamp": "32:09",
+      "title": "Stable psychology, moving behavior"
+    },
+    {
+      "_key": "c16",
+      "timestamp": "33:50",
+      "title": "From the record store to Spotify: same need, less friction"
+    },
+    {
+      "_key": "c17",
+      "timestamp": "40:58",
+      "title": "Dollar Shave Club and the parity problem coming for B2B"
+    },
+    {
+      "_key": "c18",
+      "timestamp": "42:22",
+      "title": "What AI changes about buyer behavior next"
+    },
+    {
+      "_key": "c19",
+      "timestamp": "42:59",
+      "title": "Access to information is not an edge. Discernment is."
+    },
+    {
+      "_key": "c20",
+      "timestamp": "47:08",
+      "title": "The book, the Substack, and where to find Chris"
+    }
   ],
   "youtubeId": null,
   "applePodcastsUrl": null,
