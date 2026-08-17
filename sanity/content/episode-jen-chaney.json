@@ -1,0 +1,41 @@
+{
+  "_id": "episode-jen-chaney",
+  "_type": "episode",
+  "episodeNumber": 14,
+  "title": "Great Marketing Should Reduce Your Sales Calls",
+  "slug": {
+    "_type": "slug",
+    "current": "great-marketing-should-reduce-your-sales-calls"
+  },
+  "publishedAt": "2026-04-01T00:00:00Z",
+  "duration": 32,
+  "summary": "This episode explores how AI influences demand generation strategies, examining contemporary approaches to buyer research and the transition from pursuing lead volume toward accelerating pipeline velocity. The discussion covers AI's contributions to content creation, individualized outreach sequences, and the integration of marketing and sales functions for revenue growth.",
+  "keyQuote": "Great marketing should reduce the number of sales calls you need to take, not just fill the top of the funnel with more noise.",
+  "guestName": "Jen Chaney",
+  "guestTitle": null,
+  "guestBio": "Head of Marketing and BD at Integrity, the global leader in crowdsourced security, recognized as a clear thinker on contemporary demand generation practices.",
+  "takeaways": [
+    "AI's role in demand generation",
+    "Shift from lead volume to pipeline velocity"
+  ],
+  "chapters": [
+    {
+      "_key": "ch1",
+      "timestamp": "00:00",
+      "title": "The Modern Demand-Gen Philosophy"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "10:12",
+      "title": "The Impact of AI on Demand Generation"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "29:46",
+      "title": "Operational Efficiency with AI"
+    }
+  ],
+  "youtubeId": "MJoau1gFABU",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/great-marketing-should-reduce-your-sales-calls/id1866408000?i=1000758666445",
+  "spotifyUrl": "https://open.spotify.com/episode/3FB4ZgKdIWDbohl51hnAAs"
+}

@@ -1,0 +1,14 @@
+{
+  "_id": "podcast",
+  "_type": "podcast",
+  "title": "Selling AI",
+  "tagline": null,
+  "description": "Join us as we explore the intersection of artificial intelligence and sales, delving into the strategies, tools, and stories from professionals who are leveraging AI to sell smarter and selling AI products that are reshaping the future of go-to-market.",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/selling-ai/id1866408000",
+  "spotifyUrl": "https://open.spotify.com/show/4YKfcQzrtyfuxUahc5AHX2",
+  "youtubeUrl": "https://www.youtube.com/playlist?list=PLwp557Pg7NhfMZ_9KwG3FajKI3wvB4ny0",
+  "artworkUrl": null,
+  "hostName": "Warren Kucker",
+  "hostBio": "A revenue leader and entrepreneur who founded Basiq.work, focusing on conversational AI for sales teams. Previously served as VP of Sales and CRO at Series B companies, scaling revenue to $2M+ quarterly bookings. His exits include Shelly.ai (ML email automation) and Boxton (digital freight platform). Started his career at Apple managing a $100M shipping efficiency program.",
+  "hostImageUrl": null
+}

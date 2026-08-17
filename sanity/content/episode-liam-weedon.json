@@ -1,0 +1,54 @@
+{
+  "_id": "episode-liam-weedon",
+  "_type": "episode",
+  "episodeNumber": 10,
+  "title": "\"No Decision\" Is Not a Close-Loss Reason: Why Your CRM Data Is Lying to You",
+  "slug": {
+    "_type": "slug",
+    "current": "no-decision-is-not-a-close-loss-reason"
+  },
+  "publishedAt": "2026-03-03T00:00:00Z",
+  "duration": 41,
+  "summary": "The episode examines RevOps evolution and conversational intelligence underutilization. It discusses shifting from traditional CRM data tooling toward genuine buyer signals, targeted outreach importance, and how conversation analysis might reduce CRM data dependency.",
+  "keyQuote": "Why rolling up meeting transcripts across your pipeline reveals insights your CRM never will.",
+  "guestName": "Liam Weedon",
+  "guestTitle": null,
+  "guestBio": "Founder of RevOps consultancy GTM Layer.",
+  "takeaways": [
+    "RevOps evolution",
+    "Conversational intelligence applications",
+    "Data-driven insights through AI",
+    "AI and automation's role in sales operations",
+    "Context and value emphasis in sales processes"
+  ],
+  "chapters": [
+    {
+      "_key": "ch1",
+      "timestamp": "00:00",
+      "title": "The Evolution of RevOps"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "13:07",
+      "title": "Access to Conversations in Sales and Marketing"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "22:21",
+      "title": "Rethinking CRM and Conversation Stages"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "27:38",
+      "title": "Effective Signal Identification and Utilization"
+    },
+    {
+      "_key": "ch5",
+      "timestamp": "33:24",
+      "title": "Adoption and Usage of Sales Systems and Processes"
+    }
+  ],
+  "youtubeId": "xNPuw3az07o",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/id1866408000?i=1000753060783",
+  "spotifyUrl": "https://open.spotify.com/episode/7mI58CM6qSbFQT1sHtMnMI"
+}

@@ -1,0 +1,60 @@
+{
+  "_id": "episode-david-weiss",
+  "_type": "episode",
+  "episodeNumber": 13,
+  "title": "A Champion Isn't a Person: It's a Behavior That Shows Up When There's Good Friction",
+  "slug": {
+    "_type": "slug",
+    "current": "a-champion-isnt-a-person"
+  },
+  "publishedAt": "2026-03-26T00:00:00Z",
+  "duration": 42,
+  "summary": "David Weiss challenges conventional sales approaches by distinguishing deal management as a separate discipline from sales methodologies. He reframes champions as behavioral patterns rather than individual contributors and examines how behavioral shifts manifest across sales cycles.",
+  "keyQuote": "Deal management and sales methodology are two separate disciplines that almost everyone treats as the same thing.",
+  "guestName": "David Weiss",
+  "guestTitle": null,
+  "guestBio": "Former Chief Revenue Officer at Outreach and Seismic sales leader; forthcoming book author on deal management.",
+  "takeaways": [
+    "Champion represents a behavior, not a person",
+    "Functional roles differ from behavioral signals",
+    "Deal management requires separate methodology from sales approaches",
+    "Leadership enablement should drive sales enablement focus",
+    "Amygdala activation creates sales urgency",
+    "Salespeople provide sense-making and domain expertise"
+  ],
+  "chapters": [
+    {
+      "_key": "ch1",
+      "timestamp": "00:00",
+      "title": "Redefining Deal Management"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "07:06",
+      "title": "Identifying and Developing Champions"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "14:23",
+      "title": "Behavioral Shifts Throughout the Sales Cycle"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "21:10",
+      "title": "The Purpose of Sales Methodologies and Tech"
+    },
+    {
+      "_key": "ch5",
+      "timestamp": "27:45",
+      "title": "Ineffective Leadership Structure"
+    },
+    {
+      "_key": "ch6",
+      "timestamp": "34:50",
+      "title": "Neuroscience in Sales and Triggering the Amygdala"
+    }
+  ],
+  "youtubeId": "8yCg6rwqRyU",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/a-champion-isnt-a-person-its-a-behavior-that/id1866408000?i=1000757538017",
+  "spotifyUrl": "https://open.spotify.com/episode/2spNmneLT47w8frhxuZ0kY"
+}

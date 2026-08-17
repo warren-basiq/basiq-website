@@ -1,0 +1,48 @@
+{
+  "_id": "episode-richard-strom",
+  "_type": "episode",
+  "episodeNumber": 6,
+  "title": "The Tools Changed, The Job Didn't: An Enterprise AE's Take on AI in Sales",
+  "slug": {
+    "_type": "slug",
+    "current": "the-tools-changed-the-job-didnt"
+  },
+  "publishedAt": "2026-02-04T00:00:00Z",
+  "duration": 36,
+  "summary": "The episode explores how enterprise sales has evolved over 15+ years, particularly through the lens of AI's impact on sales workflows. Rich Strom discusses his journey from cold calling to closing six-figure maritime deals, examining how sales tools have historically burdened rather than empowered reps.",
+  "keyQuote": "The tools changed. The job didn't.",
+  "guestName": "Richard Strom",
+  "guestTitle": null,
+  "guestBio": "Enterprise SaaS sales professional with 15+ years of experience, progressing from cold calling to closing six-figure deals in maritime shipping at Sedna. Recently transitioned from sales management back to an individual contributor role.",
+  "takeaways": [
+    "Sales Reps as Conductors",
+    "The Evolution of Enterprise Sales",
+    "The Impact of AI on Sales",
+    "The Role of AI in Maritime Industry"
+  ],
+  "chapters": [
+    {
+      "_key": "ch1",
+      "timestamp": "00:00",
+      "title": "Introduction to Enterprise Sales Evolution"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "06:32",
+      "title": "Evolution of Sales Techniques"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "19:44",
+      "title": "Buyer Behavior and AI in Maritime Industry"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "30:52",
+      "title": "The Future of AI in Sales"
+    }
+  ],
+  "youtubeId": "8NjL5OyXD3k",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/id1866408000?i=1000748271069",
+  "spotifyUrl": "https://open.spotify.com/episode/2ZEYsGpZJCoXI1tVebkyZS"
+}

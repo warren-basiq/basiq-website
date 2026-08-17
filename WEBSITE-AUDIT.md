@@ -383,13 +383,20 @@ testimonial on the homepage. Keep the two consistent if either changes.
 - **Content:** Sanity `podcast` and `episode` documents; the page ships with real Selling AI
   defaults so it is complete before anything is entered in the studio
 - **JSON-LD:** `PodcastSeries` on the index, `PodcastEpisode` on each episode
-- **Canonical:** points at `gettopiq.ai`, which published the show first. Excluded from the
-  sitemap for the same reason. See the Podcast section of `CLAUDE.md` to flip it.
+- **Canonical:** `basiq.work` as of 2026-08-17. Both pages are now in the sitemap.
 
-**Last Reviewed:** 2026-08-12
-**Review Notes:** No episodes exist in Basiq's Sanity dataset yet, so the index renders its
-empty state and no episode pages are generated. Needs episodes entered, or a migration from
-the Topiq dataset.
+**Last Reviewed:** 2026-08-17
+**Review Notes:** Canonical flipped from `gettopiq.ai` to `basiq.work` and the sitemap
+exclusion removed. Episode meta descriptions are now truncated to 155 characters by
+`metaDescription()` rather than emitting the full summary paragraph.
+
+**Open item:** episodes 1 to 28 are still live on `gettopiq.ai/selling-ai-podcast` with
+their own canonical tags. Any of those republished here will duplicate against Topiq until
+the canonical is dropped on that side. Ep. 29 (Dr. Chris Gray) is Basiq-only, so it is not
+affected.
+
+**Open item:** ep. 29 ships with `publishedAt`, `youtubeId`, and the platform URLs null
+because the episode has not aired. Fill them in when it drops.
 
 ---
 

@@ -5,7 +5,10 @@ import {
   getEpisode,
   getShow,
   episodeMeta,
+  metaDescription,
+  episodeCanonical,
   PODCAST_CANONICAL_ORIGIN,
+  PODCAST_CANONICAL_PATH,
 } from "../../lib/podcast";
 
 export async function getStaticPaths() {
@@ -25,8 +28,9 @@ const showTitle = show?.title || "Selling AI";
 const hostName = show?.hostName || "Warren Kucker";
 
 const seoTitle = `${episode.title} | ${showTitle}`;
-const seoDescription =
+const summary =
   episode.summary || `Episode ${episode.episodeNumber} of ${showTitle} with ${hostName}.`;
+const seoDescription = metaDescription(summary);
 
 const platforms = [
   { label: "Apple Podcasts", href: episode.applePodcastsUrl || show?.applePodcastsUrl },
@@ -42,12 +46,12 @@ const jsonLd = {
   "@type": "PodcastEpisode",
   name: episode.title,
   episodeNumber: episode.episodeNumber,
-  description: seoDescription,
+  description: summary,
   datePublished: episode.publishedAt ?? undefined,
   partOfSeries: {
     "@type": "PodcastSeries",
     name: showTitle,
-    url: `${PODCAST_CANONICAL_ORIGIN}/selling-ai-podcast`,
+    url: `${PODCAST_CANONICAL_ORIGIN}${PODCAST_CANONICAL_PATH}`,
   },
 };
 
@@ -58,7 +62,7 @@ const heading = "font-display text-2xl text-heading";
 <Layout
   title={seoTitle}
   description={seoDescription}
-  canonical={`${PODCAST_CANONICAL_ORIGIN}/episode/${episode.slug}`}
+  canonical={episodeCanonical(episode.slug)}
   jsonLd={jsonLd}
 >
   <article class="mx-auto max-w-3xl px-6 pb-20 pt-16">
@@ -82,8 +86,7 @@ const heading = "font-display text-2xl text-heading";
     {
       episode.guestName && (
         <p class="mt-4 text-lg italic text-forest">
-          with {episode.guestName}
-          {episode.guestTitle && `, ${episode.guestTitle}`}
+          {`with ${episode.guestName}${episode.guestTitle ? `, ${episode.guestTitle}` : ""}`}
         </p>
       )
     }

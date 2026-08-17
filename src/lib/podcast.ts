@@ -5,17 +5,28 @@
  * degrades to null/[] when Sanity is unreachable so a build never fails on it.
  */
 import { sanityClient } from "./sanity";
+import { SITE_URL } from "./site-pages";
 
 /**
- * Selling AI also lives on gettopiq.ai, which published it first. Both copies
- * canonical there so the two sites don't compete for the same episode queries.
- * To make basiq.work the primary home instead, set this to SITE_URL and drop
- * the equivalent tags on gettopiq.ai.
+ * basiq.work is the primary home for Selling AI. Episodes 1 to 28 were first
+ * published on gettopiq.ai at /selling-ai-podcast; any episode that exists in
+ * both places must have its canonical dropped on gettopiq.ai, or the two sites
+ * compete for the same episode queries.
  */
-export const PODCAST_CANONICAL_ORIGIN = "https://www.gettopiq.ai";
+export const PODCAST_CANONICAL_ORIGIN = SITE_URL;
 
-/** Path for the show on gettopiq.ai, which does not match ours. */
-export const PODCAST_CANONICAL_PATH = "/selling-ai-podcast";
+/**
+ * Path for the show index on this site. The trailing slash is load bearing:
+ * every other canonical on the site carries one and @astrojs/sitemap emits
+ * trailing-slash URLs, so dropping it here makes the sitemap and the canonical
+ * disagree, which Search Console reports as a duplicate.
+ */
+export const PODCAST_CANONICAL_PATH = "/podcast/";
+
+/** Canonical URL for one episode, matching the site's trailing slash convention. */
+export function episodeCanonical(slug: string): string {
+  return `${PODCAST_CANONICAL_ORIGIN}/episode/${slug}/`;
+}
 
 export interface Show {
   title: string;
@@ -111,4 +122,15 @@ export function episodeMeta(episode: Episode): string[] {
     );
   }
   return parts;
+}
+
+/**
+ * Meta descriptions get truncated by search engines around 155 characters, and
+ * an episode summary is a full paragraph. Cut on a word boundary instead.
+ */
+export function metaDescription(text: string, max = 155): string {
+  const clean = text.trim().replace(/\s+/g, " ");
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" "))}...`;
 }

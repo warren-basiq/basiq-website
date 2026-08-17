@@ -1,0 +1,46 @@
+{
+  "_id": "episode-rich-lane",
+  "_type": "episode",
+  "episodeNumber": 4,
+  "title": "Building a Custom GPT for Every Rep on Your Team",
+  "slug": {
+    "_type": "slug",
+    "current": "building-a-custom-gpt-for-every-rep-on-your-team"
+  },
+  "publishedAt": "2026-01-20T00:00:00Z",
+  "duration": 27,
+  "summary": "This episode explores innovative AI applications in sales coaching, examining both opportunities and challenges. The discussion covers how custom GPT tools can enhance coaching effectiveness, the distinction between coaching, training, and feedback, and critical implementation considerations for sales leaders.",
+  "keyQuote": "AI Will Expose the Managers Who Were Never Actually Coaching",
+  "guestName": "Rich Lane",
+  "guestTitle": null,
+  "guestBio": "Head of Commercial at Kepler, specializing in leveraging AI to enhance sales coaching practices and rep development.",
+  "takeaways": [
+    "Sales coaching with AI",
+    "Differentiating coaching, training, and feedback"
+  ],
+  "chapters": [
+    {
+      "_key": "ch1",
+      "timestamp": "00:00",
+      "title": "Transition into Sales and Coaching"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "06:36",
+      "title": "Custom GPT for Sales Coaching"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "15:05",
+      "title": "Impact of AI on Sales Coaching"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "23:41",
+      "title": "Mistakes to Avoid in Implementing AI in Sales Coaching"
+    }
+  ],
+  "youtubeId": "RaUSRkjh7XY",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/building-a-custom-gpt-for-every-rep-on-your-team/id1866408000?i=1000746064440",
+  "spotifyUrl": "https://open.spotify.com/episode/1rL3zR6vfmoD1LyEAOZi3v"
+}

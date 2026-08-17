@@ -1,0 +1,89 @@
+{
+  "_id": "episode-kristie-jones",
+  "_type": "episode",
+  "episodeNumber": 16,
+  "title": "What Got You Here Won't Get You There: From Founder-Led Sales to Scale",
+  "slug": {
+    "_type": "slug",
+    "current": "what-got-you-here-wont-get-you-there-from-founder-led-sales-to-scale"
+  },
+  "publishedAt": null,
+  "duration": null,
+  "summary": "Kristie Jones, sales coach and founder of the Sales Acceleration Group, breaks down the hard transition from founder-led sales to building a scalable revenue team. Over two decades, she's hired and trained nearly 1,000 B2B SaaS reps and now coaches early-stage founders right before they try to scale. In this episode, we explore the specific mistakes founders make when hiring their first reps, how to identify true top 10% performers, and why the buyer's journey has fundamentally shifted, forcing sellers to build trust and credibility in a fraction of the time. If you're a founder moving from doing all the selling yourself to leading a team of reps, or a sales leader trying to figure out what actually separates great performers from the rest, this conversation is essential.",
+  "keyQuote": "What got you here won't get you there. And so, and that includes the people, right? The people that you built the $1 million company on will probably not be there when you get to five. They just won't, right? They're not the right, you needed this skill set for zero to one, but you're gonna need a different skill set from one to five.",
+  "guestName": "Kristie Jones",
+  "guestTitle": null,
+  "guestBio": "",
+  "takeaways": [
+    "Narrow your ICP ruthlessly before hiring your first reps. Find the 3-5 objective traits your early customers share, then scale within that lane, not across your entire TAM. Most founders try to sell to everyone; top performers own their backyard first.",
+    "Don't hire your first reps until you've documented your playbook in a workshop. Kristie refuses to hire a sales professional without a fully built playbook done collaboratively with the founder, because what worked via the founder's Rolodex won't scale.",
+    "The second million in revenue needs to come from cold business, not friends and family. Your first million proves nothing about product-market fit if it all came from your network. Cold revenue from strangers is the real test.",
+    "Top 10% performers optimize everything in their life, not just their sales process. They exercise, eat well, meditate, build a tight circle, seek mentors, and mentor others. If you're sitting next to a rep outselling you all day but don't know what they do after hours, you'll never understand why.",
+    "Founders must become sales leaders during the first hire phase, not micromanagers or ghost partners. Don't hand off entirely or hover constantly. Run pipeline reviews, do one-on-ones, and coach, but let reps own the execution. Build trust through structure, not surveillance."
+  ],
+  "chapters": [
+    {
+      "_key": "ch0",
+      "timestamp": "00:00",
+      "title": "Intro: What Makes a Top 10% Salesperson"
+    },
+    {
+      "_key": "ch1",
+      "timestamp": "02:00",
+      "title": "Kristie's Journey: From Corporate to Startup to Building a Coaching Practice"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "10:08",
+      "title": "Founder-Led Sales to Scale: The Three Core Lessons"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "12:51",
+      "title": "Why Founders Overestimate Their TAM (And How to Fix It)"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "20:51",
+      "title": "The Playbook Requirement: How to Avoid Cloning the Founder"
+    },
+    {
+      "_key": "ch5",
+      "timestamp": "23:15",
+      "title": "The Founder's Role: Sales Leader vs. Micromanager"
+    },
+    {
+      "_key": "ch6",
+      "timestamp": "26:33",
+      "title": "What Actually Makes a Top 10% Salesperson (It's Not What You Think)"
+    },
+    {
+      "_key": "ch7",
+      "timestamp": "30:37",
+      "title": "The Discipline Angle: Why the Best Reps Treat Their Body Like a Temple"
+    },
+    {
+      "_key": "ch8",
+      "timestamp": "34:13",
+      "title": "The Three-Year Commitment: Why Reps Leave Too Soon"
+    },
+    {
+      "_key": "ch9",
+      "timestamp": "40:36",
+      "title": "Leveling Up: How to Choose Your Next Role as a Rep"
+    },
+    {
+      "_key": "ch10",
+      "timestamp": "44:38",
+      "title": "The Buyer's Journey Has Changed (And Sellers Are Way Behind)"
+    },
+    {
+      "_key": "ch11",
+      "timestamp": "51:15",
+      "title": "Where to Find Kristie + Final Thoughts"
+    }
+  ],
+  "youtubeId": "CudP6YKE5eU",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/what-got-you-here-wont-get-you-there-from-founder-led/id1866408000?i=1000763072641",
+  "spotifyUrl": "https://open.spotify.com/episode/2WXpqRS8nwVgFfNsn355Dr?si=a058308b64994ec6"
+}

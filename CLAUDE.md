@@ -129,11 +129,35 @@ product.** `public/mocks/README.md` lists what each slot should eventually show.
 Selling AI lives at `/podcast` with episode pages at `/episode/[slug]`, both fed by the
 `podcast` and `episode` Sanity schemas.
 
-**The show also lives on gettopiq.ai, which published it first.** Both pages canonical
-there, and the sitemap filter in `astro.config.mjs` excludes them, because listing a page
-that canonicals elsewhere is exactly what Search Console flags. To make basiq.work the
-primary home instead, change `PODCAST_CANONICAL_ORIGIN` in `src/lib/podcast.ts` to
-`SITE_URL`, drop the sitemap exclusion, and remove the equivalent tags on gettopiq.ai.
+**basiq.work is the canonical home for the show.** `PODCAST_CANONICAL_ORIGIN` in
+`src/lib/podcast.ts` is `SITE_URL`, and both pages are in the sitemap. Episodes 1 to 28
+were first published on gettopiq.ai at `/selling-ai-podcast`. **Any episode republished
+here must have its canonical dropped on gettopiq.ai**, or the two sites compete for the
+same episode queries and Search Console flags the duplicate.
+
+### Publishing an episode
+
+Episodes are Sanity documents, not files. The repeatable path:
+
+1. Draft the document as `sanity/content/episode-<guest-slug>.json` (see
+   `episode-chris-gray.json` for the shape). The **copy rules below apply to Sanity
+   content too**, and `npm run check:copy` cannot see it.
+2. Import it: `npx sanity documents create sanity/content/episode-<guest-slug>.json --replace`
+3. `npm run build` to confirm the page generates at `/episode/<slug>`.
+
+Field notes that are easy to get wrong:
+
+- `takeaways` render twice: as a bullet list on the episode page **and** as small pills on
+  `/podcast` (first three only). Keep each one under about 70 characters or the pills wrap
+  badly.
+- `summary` is a full paragraph. `metaDescription()` in `src/lib/podcast.ts` truncates it
+  for the `<meta>` tag, so do not pre-shorten it.
+- `chapters` entries need a `_key`. Sanity array items without one break the studio editor.
+- Leave `youtubeId`, `applePodcastsUrl`, and `spotifyUrl` null until the episode is live.
+  The page falls back to the show-level platform links.
+- To stage an episode instead of publishing it, prefix `_id` with `drafts.`. Draft
+  documents are invisible to the build, so no page is generated until you publish in the
+  studio.
 
 ## Discoverability files (llms.txt) — generated, registry-driven
 

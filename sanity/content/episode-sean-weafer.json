@@ -1,0 +1,89 @@
+{
+  "_id": "episode-sean-weafer",
+  "_type": "episode",
+  "episodeNumber": 15,
+  "title": "\"95% of Buying Decisions Are Emotional\": Why Your Sales Team Is Still Selling Logic",
+  "slug": {
+    "_type": "slug",
+    "current": "95-of-buying-decisions-are-emotional-why-your-sales-team-is-still-selling-logic"
+  },
+  "publishedAt": null,
+  "duration": null,
+  "summary": "Sean Weafer is a sales coach, psychotherapist, and former marine engineer who's spent 30 years coaching sales teams on the behavioral side of selling. In this episode, we explore why companies claim to develop their reps, but win rates stay flat, and why the answer isn't more sales methodology training. We dig into how to identify what actually motivates your team, why promoting your best rep into management often fails, and how to shift from positioning as an expert to becoming a trusted advisor. If you manage a sales team, this conversation will challenge how you think about coaching, compensation, and what \"development\" actually means.",
+  "keyQuote": "95% of that decision was based on emotional resonance. 95%. And yet even today we still try to sell stuff because it makes sense or because it's logical. Instead of understanding what's the triggers driving the individual, how do I relate to those?",
+  "guestName": "Sean Weafer",
+  "guestTitle": null,
+  "guestBio": "",
+  "takeaways": [
+    "Use a three-question framework to uncover what actually motivates your team members: \"What's most important to you in the next 12 months?\" then \"What else?\" then \"One more thing?\" This reveals their core values, and most people have never articulated them before.",
+    "Stop promoting your best rep into management. Promoting high quota attainers assumes the skills that made them successful in sales (closing deals) are the same skills needed to develop others. They're different. Look for people who connect deeply with prospects, not just hit numbers.",
+    "Remove your sales manager's own quota if you want them to actually coach. You can't expect someone to develop their team AND hit their own number. Choose one. If you want coaching, hire a sales manager to coach. Hire someone else to carry a number.",
+    "Use soft language and modal operators to de-threaten prospects. Replace \"must,\" \"have to,\" \"need to\" with \"might,\" \"perhaps,\" \"if,\" \"suppose.\" These shift from threat to invitation and dramatically change how prospects respond.",
+    "Coaching is not shadowing a call and telling someone what they did wrong. Real coaching requires assessing competency levels, identifying specific weaknesses, creating a lesson plan, and raising all boats together. It takes time and trust, and almost no one does it."
+  ],
+  "chapters": [
+    {
+      "_key": "ch0",
+      "timestamp": "00:00",
+      "title": "Intro & Warren's Thesis: Win Rate Over Pipeline"
+    },
+    {
+      "_key": "ch1",
+      "timestamp": "01:09",
+      "title": "Sean's Journey: Marine Engineer to Sales Coach"
+    },
+    {
+      "_key": "ch2",
+      "timestamp": "02:35",
+      "title": "Psychotherapy, NLP, and What Motivates Salespeople"
+    },
+    {
+      "_key": "ch3",
+      "timestamp": "04:58",
+      "title": "How to Uncover What Really Drives Your Team"
+    },
+    {
+      "_key": "ch4",
+      "timestamp": "09:16",
+      "title": "The 95% Emotional Decision Rule & Why Sales Still Leads with Logic"
+    },
+    {
+      "_key": "ch5",
+      "timestamp": "13:47",
+      "title": "The Broken Promotion Process: Why Your Best Rep Becomes Your Worst Manager"
+    },
+    {
+      "_key": "ch6",
+      "timestamp": "17:15",
+      "title": "Structural Problem: Sales Managers Carrying Their Own Quota"
+    },
+    {
+      "_key": "ch7",
+      "timestamp": "20:04",
+      "title": "Reframing the VP's Job: Develop Team or Hit Number, Not Both"
+    },
+    {
+      "_key": "ch8",
+      "timestamp": "26:52",
+      "title": "How AI Frees Up Time for Real Relationship Building"
+    },
+    {
+      "_key": "ch9",
+      "timestamp": "29:10",
+      "title": "Hire for Attitude, Train for Aptitude"
+    },
+    {
+      "_key": "ch10",
+      "timestamp": "31:41",
+      "title": "Expert vs. Advisor: Why Expertise Doesn't Matter Anymore"
+    },
+    {
+      "_key": "ch11",
+      "timestamp": "36:08",
+      "title": "NLP, Language, and the Power of Soft Words"
+    }
+  ],
+  "youtubeId": "7CLaVecooRo",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/95-of-buying-decisions-are-emotional-why-your-sales/id1866408000?i=1000761551636",
+  "spotifyUrl": "https://open.spotify.com/episode/6TloVQJNtROZ9Id0cJTukT?si=KhNugWHJR02Vk8E_83PKFw"
+}

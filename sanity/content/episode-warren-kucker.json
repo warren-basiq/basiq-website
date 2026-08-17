@@ -1,0 +1,26 @@
+{
+  "_id": "episode-warren-kucker",
+  "_type": "episode",
+  "episodeNumber": 1,
+  "title": "The Kickoff",
+  "slug": {
+    "_type": "slug",
+    "current": "the-kickoff"
+  },
+  "publishedAt": "2026-01-07T00:00:00Z",
+  "duration": 2,
+  "summary": "The Selling AI Podcast focuses on generating revenue with AI tools and simplifying decisions for buyers, as well as adapting sales strategies to navigate the AI shift in real time.",
+  "keyQuote": null,
+  "guestName": "Warren Kucker",
+  "guestTitle": null,
+  "guestBio": null,
+  "takeaways": [
+    "Focus on revenue generation through AI tools",
+    "Simplify buying decisions for customers",
+    "Adapt sales strategies for the AI era"
+  ],
+  "chapters": [],
+  "youtubeId": "xz81NJZJEPg",
+  "applePodcastsUrl": "https://podcasts.apple.com/us/podcast/id1866408000?i=1000743722680",
+  "spotifyUrl": null
+}
