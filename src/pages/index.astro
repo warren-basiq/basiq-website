@@ -5,64 +5,69 @@ import { personas } from "../lib/personas";
 import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
 
 /*
-  Every `visual` below points at public/mocks/. The hero and the two persona
-  panels show Qindle, a Basiq product; the problem and step visuals are still
-  Musal placeholders. See public/mocks/README.md for what each slot should
-  eventually show.
+  Copy on this page is written from `context/basiq-positioning.md` (Kalibrate slug
+  positioning_ws1_basiq) plus the founder/CEO and CRO persona docs. Do not edit a
+  claim here without reading those first; see .claude/skills/kalibrate-context.
+
+  Every `visual` points at public/mocks/. The hero, one step, and both persona
+  panels show Qindle; step 03 shows Musal's approve loop. The three problem
+  visuals are still Musal placeholders standing in for the wrong product. See
+  public/mocks/README.md.
 */
 const problems = [
   {
-    title: "The pilot worked. Then it sat there.",
+    title: "Your reps spend the first hour of the day deciding what to do next.",
     description:
-      "The demo impressed the room and the proof of concept did what it promised. Then it needed the last twenty percent: error handling, access, someone to own it on a Tuesday. Nobody had room for that, so it never shipped. Six months later it is a Slack channel with three people in it.",
-    visual: "/mocks/problem-load-bearing.html",
-    visualTitle: "A pilot that never reached production",
-  },
-  {
-    title: "You paid for a roadmap. You needed the thing running.",
-    description:
-      "Most AI consulting ends at the recommendation. You get a prioritized list, a maturity model, and a set of slides that are genuinely well argued. None of it is running in your stack, on your data, and the gap between the deck and a working system is the entire job.",
+      "Before a seller can act, they reconstruct context across the CRM, the call recorder, the sequencer and two documents. That reconstruction is not selling, it is not tracked, and it happens again before every single touch. The stack assumes a rep who self-navigates five tools, which is a job nobody set out to design.",
     visual: "/mocks/problem-tab-chaos.html",
-    visualTitle: "A strategy deck with no working system behind it",
+    visualTitle: "Context scattered across the tools a rep opens before every touch",
   },
   {
-    title: "Your engineers are already full.",
+    title: "The playbook runs about a third of the time, and nobody can see which third.",
     description:
-      "The roadmap has no room for an AI side quest. Pulling two engineers onto one costs a quarter of product velocity you do not get back, and hiring people who have actually shipped AI in production is a nine month bet you cannot evaluate if nobody on your team has done it before.",
+      "Industry research puts playbook adoption near 30 percent, with reps following the designed process roughly a third of the time. So a missed quarter produces a debate rather than a diagnosis. Orgs coach reps for playbook problems and rewrite playbooks for skill problems, because activity scattered across four systems cannot tell anyone whether the plan was actually run.",
     visual: "/mocks/problem-tea-leaves.html",
-    visualTitle: "An engineering roadmap with no capacity for AI work",
+    visualTitle: "A pipeline review argued from data nobody in the room believes",
+  },
+  {
+    title: "Revenue leaks at the handoffs, and no point solution can reach them.",
+    description:
+      "Prospecting context dies at deal creation. Deal context dies at the handoff to customer success. Every tool in the stack is excellent at its own slice and blind at the seam between slices, and the seam is where the revenue goes. Closing it takes one system on both sides of it, which is the one thing a best-of-breed stack cannot be.",
+    visual: "/mocks/problem-load-bearing.html",
+    visualTitle: "Deal context dropped at the handoff between stages",
   },
 ];
 
 const steps = [
   {
     num: "01",
-    title: "Free assessment",
-    time: "5 to 15 hours",
+    title: "The meeting becomes the record",
+    time: "Every call, automatically",
     description:
-      "We identify where AI moves the needle in your specific business and deliver working prototypes to prove it. Not a deck, not a recommendation. You keep whatever we build in this phase whether or not we work together after it.",
-    visual: "/mocks/prompty-wizard-results.html",
-    visualTitle: "Assessment output: ranked opportunities with working prototypes",
-    mockHeight: 880,
-  },
-  {
-    num: "02",
-    title: "Build together",
-    time: "Weeks, not months",
-    description:
-      "We embed with your team and build the production systems: engineering workflows, sales automation, process tools, operational infrastructure. Your engineers review every line and own the repo from the first commit, so the knowledge transfers while the work happens rather than in a handover meeting at the end.",
+      "Basiq treats the transcript as the source of truth. The CRM fields, the MEDDIC movement, the follow-ups owed and the forecast inputs are downstream artifacts that fan out from what was actually said. Nobody retypes a conversation into a field so that somebody else can read it later. Salesforce and HubSpot stay exactly where they are: Basiq is not competing for the record, it changes what feeds it.",
     visual: "/mocks/prompty-workbench-hero.html",
-    visualTitle: "Building alongside the client's engineering team",
+    visualTitle: "A conversation turned into structured deal state",
     mockHeight: 760,
   },
   {
-    num: "03",
-    title: "You own it",
-    time: "Permanent handoff",
+    num: "02",
+    title: "Tomorrow arrives as a served queue",
+    time: "In priority order, every morning",
     description:
-      "We document, train, and hand off the keys. Your team owns everything we build, in infrastructure you control. No retainer, no dependency, no phone call six months later asking for help.",
+      "Every task needed to generate pipeline, progress deals and grow customers is served to the seller in priority order, each one carrying the context of every prior conversation. Prep, post game, multithreading, the cold call, the follow-up, the customer agenda, the upsell. The rep acts instead of researching, and the queue runs across AEs, AMs and CSMs, so it does not stop at closed won.",
+    visual: "/mocks/qindle-deals.html",
+    visualTitle: "Qindle: every open deal with the one move that advances it",
+    mockWidth: 1060,
+    mockHeight: 1010,
+  },
+  {
+    num: "03",
+    title: "Your messaging updates itself, with a human gate",
+    time: "After every meeting",
+    description:
+      "On a slower clock, Basiq compares each transcript against your persona and value proposition documents and proposes specific edits. Revops or enablement approves or declines each one, and the approved version is what every prompt reads from on the next run. Enablement stops being an annual refresh and becomes a live read on what buyers are actually saying.",
     visual: "/mocks/version-history.html",
-    visualTitle: "Handoff: repository, documentation, and access transferred",
+    visualTitle: "Proposed document edits waiting on a human approval",
     mockWidth: 1140,
     mockHeight: 765,
   },
@@ -80,22 +85,22 @@ const personaTabs = [
     label: "Founders and CEOs",
     mobileLabel: "Founders",
     cta: "See the founder's case",
-    headline: "You do not need an AI team. You need the thing to work.",
+    headline: "Stop funding a sales motion you cannot verify.",
     description:
-      "Hiring for AI takes nine months and a budget you would rather spend on the product. Basiq gives you working systems in weeks, built by a team that has shipped five of its own, in a repo your engineers own from the first commit.",
-    visual: "/mocks/qindle-customers.html",
-    visualTitle: "Qindle: renewal risk read off what buyers said on the calls",
+      "You approve the hiring plan and the GTM budget against a motion that might be improvisation in disguise, and the efficiency math tells your board the truth months after the money is spent. Basiq serves the playbook as each seller's next task and records whether it ran, so a missed quarter produces a diagnosis instead of a debate.",
+    visual: "/mocks/qindle-focus.html",
+    visualTitle: "Qindle: the ranked day a seller works from",
   },
   {
     ...personas[1],
     label: "CROs and VPs of Sales",
     mobileLabel: "Revenue",
     cta: "See the revenue case",
-    headline: "Your reps do not need another tool. They need the work to already be done.",
+    headline: "Three revenue streams, one evidence standard.",
     description:
-      "Most AI in the sales stack adds a tab, and adoption dies in week three because anything that adds a step loses to the thing that removes one. We build the systems that remove steps: research written before the call, replies handled without a rep, forecasts built on signal.",
-    visual: "/mocks/qindle-deals.html",
-    visualTitle: "Qindle: every open deal with the one move that advances it",
+      "New logo, expansion and retention each run on a different stack, and you are the only person who owns both sides of every handoff. Basiq serves all three from one queue, so the data under your forecast is complete because it is the exhaust of the work rather than a Friday reporting tax reps quietly skip.",
+    visual: "/mocks/qindle-customers.html",
+    visualTitle: "Qindle: renewal risk read off what buyers said on the calls",
   },
 ];
 
@@ -135,7 +140,7 @@ const testimonials = [
 const clients = ["Authentic", "Knak", "Discern", "Vado", "TricoStar"];
 
 const description =
-  "Basiq is an AI execution partner for companies that need working systems, not slide decks. We embed with your team, build production systems, then hand off ownership.";
+  "Basiq is a revenue execution platform that runs off meeting transcripts instead of CRM data entry. Every task a seller needs, served in priority order from full context.";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -156,7 +161,7 @@ const secondaryBtn =
   "rounded-full border border-forest bg-transparent px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest transition-all hover:bg-stone";
 ---
 
-<Layout title="Basiq | AI Execution Partner" description={description} jsonLd={jsonLd}>
+<Layout title="Basiq | Revenue Execution Platform" description={description} jsonLd={jsonLd}>
   <style>
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -213,20 +218,20 @@ const secondaryBtn =
   <header class="pb-20 pt-24 lg:pt-32">
     <div class="mx-auto max-w-7xl px-6 text-center lg:px-12">
       <span class="fade-up inline-block rounded-full bg-forest px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
-        AI execution partner
+        Revenue execution platform
       </span>
       <h1 class="fade-up fade-up-2 mx-auto mt-8 max-w-5xl font-display text-4xl font-normal leading-[1.1] tracking-[-0.025em] text-heading md:text-5xl lg:text-[4rem]">
-        AI everywhere. Nothing shipping.
+        Your revenue process runs on data entry. It should run on the conversation.
       </h1>
       <p class="fade-up fade-up-3 mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-body md:text-xl">
-        Experiments that never become systems. Tools that never become workflows. Pilots that never reach production. Basiq embeds with your team, builds the infrastructure that turns AI into how your company operates, then hands you the keys.
+        Basiq is a revenue execution platform for teams running multi-meeting sales cycles. The meeting transcript is the source of truth. The task list, the CRM record, the forecast and the enablement docs all fan out from what was actually said, so sellers get every task needed to generate pipeline, close deals and grow customers, served in priority order.
       </p>
       <div class="fade-up fade-up-4 mt-12 flex flex-wrap justify-center gap-4">
-        <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
+        <a href={BOOKING_URL} class={primaryBtn}>See it run on a real transcript</a>
         <a href="#how-it-works" class={secondaryBtn}>See how it works</a>
       </div>
       <p class="fade-up fade-up-4 mt-5 font-mono text-[11px] uppercase tracking-[0.15em] text-body">
-        The assessment is free. You keep what we build in it.
+        Works alongside Salesforce and HubSpot, not instead of them.
       </p>
     </div>
 
@@ -251,13 +256,14 @@ const secondaryBtn =
   <section class="border-t border-line">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <p class={eyebrow}><span class="mr-2">&#9679;</span>The problem</p>
-      <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>AI projects don't fail. They stall.</h2>
+      <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>The record is downstream of the conversation. Your process has it backwards.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
-        Getting AI to work stopped being the hard part. The hard part is everything after the demo: the distance between something that runs on a laptop and something your company depends on.
+        Every revenue process in use today is built around extracting information from meetings and typing it into fields. The conversation is where the truth is; the CRM is a lossy copy of it, maintained by the people with the least time to maintain it.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-relaxed text-body">
-        There is <strong class="font-semibold text-heading">no failure event</strong> for a pilot that quietly stops. It just never gets the last twenty percent, and the budget shows up next year as
-        <strong class="font-semibold text-heading">a line nobody wants to defend</strong>.
+        That single inversion produces three problems that look unrelated and are
+        <strong class="font-semibold text-heading">the same problem</strong>: the seller navigates, the playbook goes unrun, and the context
+        <strong class="font-semibold text-heading">dies at every handoff</strong>.
       </p>
 
       <div class="mt-16 flex flex-col gap-12 lg:gap-20">
@@ -290,9 +296,9 @@ const secondaryBtn =
   <section id="how-it-works" class="bg-stone">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <p class={eyebrow}><span class="mr-2">&#9679;</span>How it works</p>
-      <h2 class={`mt-4 max-w-4xl ${displayH2}`}>Three steps. No mystery.</h2>
+      <h2 class={`mt-4 max-w-4xl ${displayH2}`}>One loop, running off every conversation.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
-        We prove the opportunity before you commit a quarter to it, build the system alongside the people who will run it, and leave when it works rather than when the contract ends.
+        Context produces the right tasks. Right tasks get done because they are served rather than remembered. Done tasks produce complete data, and complete data is what makes tomorrow's tasks right. The loop is the product, and data quality stops being a discipline problem because completeness is the exhaust of working the queue.
       </p>
 
       <div class="mt-16 flex flex-col gap-8 lg:gap-12">
@@ -331,10 +337,10 @@ const secondaryBtn =
           <span class="mr-2 text-gold">&#9679;</span>Products
         </p>
         <h2 class="mx-auto mt-4 max-w-3xl font-display text-4xl font-normal leading-tight tracking-[-0.02em] text-on-dark md:text-5xl">
-          We build for ourselves before we build for you
+          One platform. Four surfaces.
         </h2>
         <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-on-dark-muted">
-          Every product here came out of a real engagement. All four are in production today.
+          Qindle, Topiq and Fabriq are where the work gets served: the seller's day, outbound at volume, and customer growth. Musal holds the prompts and the context documents all three read from, so your messaging cannot be current in one app and stale in the others. All four are in production today.
         </p>
       </div>
 
@@ -390,9 +396,9 @@ const secondaryBtn =
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <div class="mx-auto max-w-3xl text-center">
         <p class={eyebrow}><span class="mr-2">&#9679;</span>Built for your role</p>
-        <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>Two seats. The same stalled project.</h2>
+        <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>Two seats. The same missing evidence.</h2>
         <p class="mt-6 text-base leading-relaxed text-body">
-          The founder watches a pilot the board was excited about go quiet, and cannot free the engineers to finish it. The revenue leader buys the tool, watches adoption die in week three, and still has the number to hit.
+          The founder commits capital to a motion nobody can verify and finds out how it went from the efficiency math, months later. The revenue leader carries new logo, expansion and retention on three different stacks and owns both sides of every handoff between them.
         </p>
       </div>
 
@@ -469,9 +475,22 @@ const secondaryBtn =
     </div>
   </section>
 
-  <!-- SOCIAL PROOF -->
+  <!--
+    SOCIAL PROOF: operator credibility, not product results. Basiq has one paying
+    customer and roughly six trial users, so these quotes are about revenue motions
+    the team built and ran for clients. Framing them as platform outcomes would be
+    a claim the positioning doc explicitly says cannot be made yet.
+  -->
   <section id="work" class="border-t border-line bg-stone">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto mb-16 max-w-3xl text-center">
+        <p class={eyebrow}><span class="mr-2">&#9679;</span>Who builds it</p>
+        <h2 class={`mt-4 ${displayH2}`}>Built by people who run revenue motions for a living.</h2>
+        <p class="mt-6 text-base leading-relaxed text-body">
+          Basiq came out of building and operating go-to-market systems inside other people's companies. The platform is the motion we kept rebuilding by hand. These are the operators we built it with.
+        </p>
+      </div>
+
       <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-6">
         {clients.map((name) => <span class="font-mono text-sm uppercase tracking-[0.15em] text-sage">{name}</span>)}
       </div>
@@ -496,16 +515,16 @@ const secondaryBtn =
   <section id="get-started" class="border-t border-line">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class={`${displayH2} lg:text-6xl`}>Not sure where AI moves the needle?</h2>
+        <h2 class={`${displayH2} lg:text-6xl`}>Bring a real call. Watch the day build itself.</h2>
         <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">
-          We will show you in a week. The assessment is free, and you walk away with a clear picture of your highest-leverage opportunities and a working prototype to prove one of them.
+          The fastest way to judge this is to see the mechanism run. A transcript from one of your own deals goes in, and the task queue, the record updates, the forecast inputs and the proposed document edits come out while you watch.
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a href={BOOKING_URL} class={primaryBtn}>Book a free assessment</a>
+          <a href={BOOKING_URL} class={primaryBtn}>See it run on a real transcript</a>
           <a href={PRODUCTS_HREF} class={secondaryBtn}>See the products</a>
         </div>
         <p class="mt-5 font-mono text-[11px] uppercase tracking-[0.15em] text-body">
-          You keep whatever we build in the assessment.
+          Early stage, and we will say so plainly on the call.
         </p>
       </div>
     </div>

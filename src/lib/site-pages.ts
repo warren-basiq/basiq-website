@@ -42,7 +42,7 @@ export const sitePages: SitePage[] = [
     path: "/",
     title: "Basiq",
     description:
-      "An AI execution partner for companies that need working systems, not slide decks. Basiq embeds with your team, builds production systems, then hands off ownership.",
+      "A revenue execution platform that runs off meeting transcripts instead of CRM data entry. Sellers get every task needed to generate pipeline, close deals and grow customers, served in priority order.",
     section: "Core",
     sitemap: true,
     llms: true,
@@ -55,7 +55,7 @@ export const sitePages: SitePage[] = [
     path: "/founders",
     title: "For Founders and CEOs",
     description:
-      "Basiq is the AI execution partner for founders and CEOs who need production systems, not a strategy deck. We embed, build in weeks, and hand off ownership.",
+      "Basiq is the revenue execution platform for founders and CEOs who need production systems, not a strategy deck. We embed, build in weeks, and hand off ownership.",
     section: "Solutions",
     sitemap: true,
     llms: true,

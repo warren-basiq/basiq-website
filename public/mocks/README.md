@@ -14,18 +14,18 @@ and `iframe.fluid-frame` measures the mock's real height and grows the frame to 
 | File | Used for | Should eventually show |
 |---|---|---|
 | `qindle-focus.html` | Hero | **Done.** Qindle's ranked day |
-| `problem-load-bearing.html` | Problem 1 | A pilot that stalled before production |
-| `problem-tab-chaos.html` | Problem 2 | A deck-shaped deliverable with no running system |
-| `problem-tea-leaves.html` | Problem 3 | An engineering team with no room for an AI side quest |
-| `prompty-wizard-results.html` | Step 01, free assessment | The assessment output: ranked opportunities |
-| `prompty-workbench-hero.html` | Step 02, build together | Work in progress alongside the client's team |
-| `version-history.html` | Step 03, you own it | The handoff: repo, docs, and access transferred |
-| `qindle-customers.html` | Founders persona tab | **Done.** Renewal risk read off the calls |
-| `qindle-deals.html` | Revenue leaders persona tab | **Done.** Open deals with the next move |
+| `problem-tab-chaos.html` | Problem 1 | A rep reconstructing context across five tools |
+| `problem-tea-leaves.html` | Problem 2 | A pipeline review argued from data nobody believes |
+| `problem-load-bearing.html` | Problem 3 | Deal context dropped at the handoff between stages |
+| `prompty-workbench-hero.html` | Step 01, the meeting becomes the record | A conversation turned into structured deal state |
+| `qindle-deals.html` | Step 02, the day is served | **Done.** Deals with the next move on each |
+| `version-history.html` | Step 03, the approve loop | Musal's own screen, so close enough to keep |
+| `qindle-focus.html` | Founders persona tab | **Done.** The served day (same file as the hero) |
+| `qindle-customers.html` | Revenue leaders persona tab | **Done.** Renewal risk read off the calls |
 
-`prompt-editor.html`, `role-founder.html`, `role-revops.html`, `role-senior-pm.html`,
-`role-engineering-leaders.html`, and `role-gtm-engineer.html` are unused today and are kept
-only as spare layouts if more personas get added.
+`prompt-editor.html`, `prompty-wizard-results.html`, `role-founder.html`, `role-revops.html`,
+`role-senior-pm.html`, `role-engineering-leaders.html`, and `role-gtm-engineer.html` are
+unused today and are kept only as spare layouts if more slots or personas get added.
 
 To replace one, write a self-contained HTML file at the same path with a `.stage` wrapper as
 its root element; the auto-height script measures that element. Keep to the Deep Forest
