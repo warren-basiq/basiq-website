@@ -220,19 +220,32 @@ const secondaryBtn =
       <span class="fade-up inline-block rounded-full bg-forest px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
         Revenue execution platform
       </span>
-      <h1 class="fade-up fade-up-2 mx-auto mt-8 max-w-5xl font-display text-4xl font-normal leading-[1.1] tracking-[-0.025em] text-heading md:text-5xl lg:text-[4rem]">
-        Your revenue process runs on data entry. It should run on the conversation.
+      <h1 class="fade-up fade-up-2 mx-auto mt-8 max-w-4xl font-display text-5xl font-normal leading-[1.05] tracking-[-0.025em] text-heading md:text-6xl lg:text-[4.5rem]">
+        Your reps never decide what to do next.
       </h1>
       <p class="fade-up fade-up-3 mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-body md:text-xl">
-        Basiq is a revenue execution platform for teams running multi-meeting sales cycles. The transcript is the source of truth, so every task a seller needs to build pipeline, close deals and grow customers arrives in priority order.
+        Basiq turns every meeting transcript into each seller's ranked task list, so pipeline, deals and renewals keep moving without anyone updating a CRM field.
       </p>
       <div class="fade-up fade-up-4 mt-12 flex flex-wrap justify-center gap-4">
         <a href={BOOKING_URL} class={primaryBtn}>See it run on a real transcript</a>
         <a href="#how-it-works" class={secondaryBtn}>See how it works</a>
       </div>
+      {/* A qualifier only earns its place if it excludes somebody. This one names
+          who it is for and who it is not, which "teams running multi-meeting sales
+          cycles" did not: that described a process, not a person the reader is. */}
       <p class="fade-up fade-up-4 mt-5 font-mono text-[11px] uppercase tracking-[0.15em] text-body">
-        Works alongside Salesforce and HubSpot, not instead of them.
+        For mid-market and enterprise sales teams. Not for one-call closes.
       </p>
+
+      {/* Trust signal above the fold rather than only in the social proof band.
+          Same claim that section makes, worded the same way: these are operators
+          Basiq built revenue systems with, not platform customers. */}
+      <div class="fade-up fade-up-4 mt-14">
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">Revenue systems built with</p>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+          {clients.map((name) => <span class="font-mono text-sm uppercase tracking-[0.15em] text-sage">{name}</span>)}
+        </div>
+      </div>
     </div>
 
     <div class="mx-auto mt-20 max-w-6xl px-6 lg:px-8">
