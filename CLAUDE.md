@@ -114,15 +114,18 @@ currently ships without the stats band for exactly that reason. Both components 
 the CTA for page-specific sections (LaneScout uses it for its audiences and comparison
 table).
 
-## Homepage visuals
+## Product visuals
 
-Every visual on the homepage is a same-origin static HTML file in `public/mocks/`, rendered
-in an `<iframe>` and sized by two scripts in `index.astro`: `.mock-frame` scales a
+Every visual on the homepage and `/products/qindle` is a same-origin static HTML file in
+`public/mocks/`, rendered in an `<iframe>` and sized by two scripts in `index.astro`
+(`/products/qindle` carries its own copy of the scaling one): `.mock-frame` scales a
 fixed-width mock into its column, and `iframe.fluid-frame` measures the mock's `.stage`
 element and grows the frame to fit.
 
-**They are currently Musal's product mocks, used as placeholders, and show the wrong
-product.** `public/mocks/README.md` lists what each slot should eventually show.
+The homepage hero and both persona panels show **Qindle**, in `qindle-focus.html`,
+`qindle-deals.html`, and `qindle-customers.html`. The problem and step visuals are **still
+Musal's mocks, used as placeholders, and show the wrong product.** `public/mocks/README.md`
+lists what each remaining slot should eventually show.
 
 ## Podcast
 

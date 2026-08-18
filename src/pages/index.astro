@@ -5,9 +5,10 @@ import { personas } from "../lib/personas";
 import { SITE_URL, BOOKING_URL } from "../lib/site-pages";
 
 /*
-  Every `visual` below points at public/mocks/, which currently holds Musal's
-  product mocks as placeholders. See public/mocks/README.md for what each slot
-  should eventually show.
+  Every `visual` below points at public/mocks/. The hero and the two persona
+  panels show Qindle, a Basiq product; the problem and step visuals are still
+  Musal placeholders. See public/mocks/README.md for what each slot should
+  eventually show.
 */
 const problems = [
   {
@@ -82,8 +83,8 @@ const personaTabs = [
     headline: "You do not need an AI team. You need the thing to work.",
     description:
       "Hiring for AI takes nine months and a budget you would rather spend on the product. Basiq gives you working systems in weeks, built by a team that has shipped five of its own, in a repo your engineers own from the first commit.",
-    visual: "/mocks/role-founder.html",
-    visualTitle: "A working system handed to the founder's own team",
+    visual: "/mocks/qindle-customers.html",
+    visualTitle: "Qindle: renewal risk read off what buyers said on the calls",
   },
   {
     ...personas[1],
@@ -93,8 +94,8 @@ const personaTabs = [
     headline: "Your reps do not need another tool. They need the work to already be done.",
     description:
       "Most AI in the sales stack adds a tab, and adoption dies in week three because anything that adds a step loses to the thing that removes one. We build the systems that remove steps: research written before the call, replies handled without a rep, forecasts built on signal.",
-    visual: "/mocks/role-revops.html",
-    visualTitle: "Pipeline and reply signal tracked per play",
+    visual: "/mocks/qindle-deals.html",
+    visualTitle: "Qindle: every open deal with the one move that advances it",
   },
 ];
 
@@ -187,7 +188,7 @@ const secondaryBtn =
       aspect-ratio: var(--mock-w, 1180) / var(--mock-h, 720);
       overflow: hidden;
       border-radius: 0.5rem;
-      background: #192F27;
+      background: #FCFBF8;
     }
     .mock-frame iframe {
       position: absolute;
@@ -234,12 +235,12 @@ const secondaryBtn =
         class="relative overflow-hidden rounded-2xl"
         style="animation: heroFloat 6s ease-in-out infinite; box-shadow: 0 0 0 0.5px rgba(26,22,19,0.08), 0 4px 8px -2px rgba(26,22,19,0.08), 0 16px 32px -8px rgba(26,22,19,0.12), 0 32px 64px -16px rgba(26,22,19,0.08);"
       >
-        <div class="mock-frame" style="--mock-w: 1180; --mock-h: 810; border-radius: 1rem;">
+        <div class="mock-frame" style="--mock-w: 1060; --mock-h: 900; border-radius: 1rem;">
           <iframe
-            src="/mocks/prompt-editor.html"
+            src="/mocks/qindle-focus.html"
             loading="lazy"
             scrolling="no"
-            title="A Basiq-built system running in production"
+            title="Qindle: the ranked day a rep works from"
             tabindex="-1"></iframe>
         </div>
       </div>
@@ -518,6 +519,16 @@ const secondaryBtn =
         if (!iframe) return;
         var width = frame.clientWidth;
         if (!width) return;
+        /* The --mock-h in the markup is a first guess only; the mock itself is
+           the authority on how tall it is. */
+        try {
+          var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
+          var stage = doc && doc.querySelector(".stage");
+          if (stage) {
+            var h = Math.ceil(stage.getBoundingClientRect().height);
+            if (h > 0) frame.style.setProperty("--mock-h", String(h));
+          }
+        } catch (e) {}
         var nativeW = parseFloat(getComputedStyle(frame).getPropertyValue("--mock-w")) || 1180;
         iframe.style.transform = "scale(" + width / nativeW + ")";
       }
@@ -532,6 +543,12 @@ const secondaryBtn =
           });
           document.querySelectorAll(".mock-frame").forEach(function (frame) { observer.observe(frame); });
         }
+        document.querySelectorAll(".mock-frame iframe").forEach(function (iframe) {
+          iframe.addEventListener("load", function () {
+            rescaleFrame(iframe.parentElement);
+            setTimeout(function () { rescaleFrame(iframe.parentElement); }, 600);
+          });
+        });
         window.addEventListener("resize", rescaleAll);
         window.addEventListener("load", rescaleAll);
       }
