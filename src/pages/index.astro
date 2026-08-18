@@ -276,7 +276,7 @@ const secondaryBtn =
         {
           problems.map((problem, i) => (
             <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-              <div class={`overflow-hidden rounded-2xl border border-line shadow-soft ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div class={`overflow-hidden rounded-2xl border border-line shadow-soft lg:mx-auto lg:w-4/5 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
                 <iframe
                   src={problem.visual}
                   title={problem.visualTitle}
@@ -318,11 +318,13 @@ const secondaryBtn =
                   <p class="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-sage">{step.time}</p>
                   <p class="mt-5 text-base leading-relaxed text-body">{step.description}</p>
                 </div>
-                <div
-                  class="mock-frame"
-                  style={`--mock-h: ${step.mockHeight};${step.mockWidth ? ` --mock-w: ${step.mockWidth};` : ""}`}
-                >
-                  <iframe src={step.visual} loading="lazy" scrolling="no" title={step.visualTitle} tabindex="-1" />
+                <div class="lg:mx-auto lg:w-4/5">
+                  <div
+                    class="mock-frame"
+                    style={`--mock-h: ${step.mockHeight};${step.mockWidth ? ` --mock-w: ${step.mockWidth};` : ""}`}
+                  >
+                    <iframe src={step.visual} loading="lazy" scrolling="no" title={step.visualTitle} tabindex="-1" />
+                  </div>
                 </div>
               </div>
             </div>
