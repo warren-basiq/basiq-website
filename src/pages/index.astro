@@ -18,21 +18,21 @@ const problems = [
   {
     title: "Your reps spend the first hour of the day deciding what to do next.",
     description:
-      "Before a seller can act, they reconstruct context across the CRM, the call recorder, the sequencer and two documents. That reconstruction is not selling, it is not tracked, and it happens again before every single touch. The stack assumes a rep who self-navigates five tools, which is a job nobody set out to design.",
+      "Before a seller can act, they rebuild context across the CRM, the call recorder, the sequencer and two documents. That is not selling, it is not tracked, and it happens again before every touch.",
     visual: "/mocks/problem-tab-chaos.html",
     visualTitle: "Context scattered across the tools a rep opens before every touch",
   },
   {
     title: "The playbook runs about a third of the time, and nobody can see which third.",
     description:
-      "Industry research puts playbook adoption near 30 percent, with reps following the designed process roughly a third of the time. So a missed quarter produces a debate rather than a diagnosis. Orgs coach reps for playbook problems and rewrite playbooks for skill problems, because activity scattered across four systems cannot tell anyone whether the plan was actually run.",
+      "Industry research puts playbook adoption near 30 percent. So a missed quarter produces a debate rather than a diagnosis. Activity scattered across four systems cannot tell anyone whether the plan was actually run.",
     visual: "/mocks/problem-tea-leaves.html",
     visualTitle: "A pipeline review argued from data nobody in the room believes",
   },
   {
     title: "Revenue leaks at the handoffs, and no point solution can reach them.",
     description:
-      "Prospecting context dies at deal creation. Deal context dies at the handoff to customer success. Every tool in the stack is excellent at its own slice and blind at the seam between slices, and the seam is where the revenue goes. Closing it takes one system on both sides of it, which is the one thing a best-of-breed stack cannot be.",
+      "Prospecting context dies at deal creation. Deal context dies at the handoff to customer success. Every tool is sharp inside its own slice and blind at the seam between them, and the seam is where revenue goes.",
     visual: "/mocks/problem-load-bearing.html",
     visualTitle: "Deal context dropped at the handoff between stages",
   },
@@ -44,7 +44,7 @@ const steps = [
     title: "The meeting becomes the record",
     time: "Every call, automatically",
     description:
-      "Basiq treats the transcript as the source of truth. The CRM fields, the MEDDIC movement, the follow-ups owed and the forecast inputs are downstream artifacts that fan out from what was actually said. Nobody retypes a conversation into a field so that somebody else can read it later. Salesforce and HubSpot stay exactly where they are: Basiq is not competing for the record, it changes what feeds it.",
+      "The transcript is the input. CRM fields, deal movement, follow-ups and forecast inputs all fan out from what was said, so nobody retypes a conversation into a field. Salesforce and HubSpot stay put. Basiq is not competing for the record, it changes what feeds it.",
     visual: "/mocks/prompty-workbench-hero.html",
     visualTitle: "A conversation turned into structured deal state",
     mockHeight: 760,
@@ -54,7 +54,7 @@ const steps = [
     title: "Tomorrow arrives as a served queue",
     time: "In priority order, every morning",
     description:
-      "Every task needed to generate pipeline, progress deals and grow customers is served to the seller in priority order, each one carrying the context of every prior conversation. Prep, post game, multithreading, the cold call, the follow-up, the customer agenda, the upsell. The rep acts instead of researching, and the queue runs across AEs, AMs and CSMs, so it does not stop at closed won.",
+      "Every task needed to build pipeline, progress deals and grow customers arrives in priority order, carrying the context of every prior conversation. The rep acts instead of researching, and the queue covers AMs and CSMs too, so it does not stop at closed won.",
     visual: "/mocks/qindle-deals.html",
     visualTitle: "Qindle: every open deal with the one move that advances it",
     mockWidth: 1060,
@@ -65,7 +65,7 @@ const steps = [
     title: "Your messaging updates itself, with a human gate",
     time: "After every meeting",
     description:
-      "On a slower clock, Basiq compares each transcript against your persona and value proposition documents and proposes specific edits. Revops or enablement approves or declines each one, and the approved version is what every prompt reads from on the next run. Enablement stops being an annual refresh and becomes a live read on what buyers are actually saying.",
+      "On a slower clock, Basiq reads each transcript against your persona and value proposition docs and proposes edits. Revops approves or declines each one, and the approved version is what every prompt reads next run.",
     visual: "/mocks/version-history.html",
     visualTitle: "Proposed document edits waiting on a human approval",
     mockWidth: 1140,
@@ -87,7 +87,7 @@ const personaTabs = [
     cta: "See the founder's case",
     headline: "Stop funding a sales motion you cannot verify.",
     description:
-      "You approve the hiring plan and the GTM budget against a motion that might be improvisation in disguise, and the efficiency math tells your board the truth months after the money is spent. Basiq serves the playbook as each seller's next task and records whether it ran, so a missed quarter produces a diagnosis instead of a debate.",
+      "You fund the hiring plan and the GTM budget against a motion you cannot verify. Basiq serves the playbook as each seller's next task and records whether it ran, so a missed quarter produces a diagnosis instead of a debate.",
     visual: "/mocks/qindle-focus.html",
     visualTitle: "Qindle: the ranked day a seller works from",
   },
@@ -98,7 +98,7 @@ const personaTabs = [
     cta: "See the revenue case",
     headline: "Three revenue streams, one evidence standard.",
     description:
-      "New logo, expansion and retention each run on a different stack, and you are the only person who owns both sides of every handoff. Basiq serves all three from one queue, so the data under your forecast is complete because it is the exhaust of the work rather than a Friday reporting tax reps quietly skip.",
+      "New logo, expansion and retention each run on a different stack, and you own both sides of every handoff between them. Basiq serves all three from one queue, so the data under your forecast is complete by default.",
     visual: "/mocks/qindle-customers.html",
     visualTitle: "Qindle: renewal risk read off what buyers said on the calls",
   },
@@ -224,7 +224,7 @@ const secondaryBtn =
         Your revenue process runs on data entry. It should run on the conversation.
       </h1>
       <p class="fade-up fade-up-3 mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-body md:text-xl">
-        Basiq is a revenue execution platform for teams running multi-meeting sales cycles. The meeting transcript is the source of truth. The task list, the CRM record, the forecast and the enablement docs all fan out from what was actually said, so sellers get every task needed to generate pipeline, close deals and grow customers, served in priority order.
+        Basiq is a revenue execution platform for teams running multi-meeting sales cycles. The transcript is the source of truth, so every task a seller needs to build pipeline, close deals and grow customers arrives in priority order.
       </p>
       <div class="fade-up fade-up-4 mt-12 flex flex-wrap justify-center gap-4">
         <a href={BOOKING_URL} class={primaryBtn}>See it run on a real transcript</a>
@@ -258,11 +258,10 @@ const secondaryBtn =
       <p class={eyebrow}><span class="mr-2">&#9679;</span>The problem</p>
       <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>The record is downstream of the conversation. Your process has it backwards.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
-        Every revenue process in use today is built around extracting information from meetings and typing it into fields. The conversation is where the truth is; the CRM is a lossy copy of it, maintained by the people with the least time to maintain it.
+        Every revenue process today runs on people extracting information from meetings and typing it into fields. The conversation holds the truth. The CRM is a lossy copy of it.
       </p>
       <p class="mt-5 max-w-3xl text-lg leading-relaxed text-body">
-        That single inversion produces three problems that look unrelated and are
-        <strong class="font-semibold text-heading">the same problem</strong>: the seller navigates, the playbook goes unrun, and the context
+        That one inversion causes <strong class="font-semibold text-heading">three problems that look unrelated</strong>. The seller navigates, the playbook goes unrun, and context
         <strong class="font-semibold text-heading">dies at every handoff</strong>.
       </p>
 
@@ -298,7 +297,7 @@ const secondaryBtn =
       <p class={eyebrow}><span class="mr-2">&#9679;</span>How it works</p>
       <h2 class={`mt-4 max-w-4xl ${displayH2}`}>One loop, running off every conversation.</h2>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">
-        Context produces the right tasks. Right tasks get done because they are served rather than remembered. Done tasks produce complete data, and complete data is what makes tomorrow's tasks right. The loop is the product, and data quality stops being a discipline problem because completeness is the exhaust of working the queue.
+        Context produces the right tasks. Served tasks get done. Done tasks produce complete data, and complete data is what makes tomorrow's tasks right. Data quality stops being a discipline problem.
       </p>
 
       <div class="mt-16 flex flex-col gap-8 lg:gap-12">
@@ -340,7 +339,7 @@ const secondaryBtn =
           One platform. Four surfaces.
         </h2>
         <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-on-dark-muted">
-          Qindle, Topiq and Fabriq are where the work gets served: pipeline generation, deal management, and customer growth. Musal holds the prompts and the context documents all three read from, so your messaging cannot be current in one app and stale in the others. All four are in production today.
+          Qindle generates the pipeline, Topiq manages the deals, Fabriq grows the customers. Musal holds the prompts and context documents all three read from. All four are in production today.
         </p>
       </div>
 
@@ -385,7 +384,7 @@ const secondaryBtn =
         <p class={eyebrow}><span class="mr-2">&#9679;</span>Built for your role</p>
         <h2 class={`mt-4 ${displayH2} lg:text-6xl`}>Two seats. The same missing evidence.</h2>
         <p class="mt-6 text-base leading-relaxed text-body">
-          The founder commits capital to a motion nobody can verify and finds out how it went from the efficiency math, months later. The revenue leader carries new logo, expansion and retention on three different stacks and owns both sides of every handoff between them.
+          The founder funds a motion nobody can verify. The revenue leader carries new logo, expansion and retention on three different stacks, and owns both sides of every handoff between them.
         </p>
       </div>
 
@@ -474,7 +473,7 @@ const secondaryBtn =
         <p class={eyebrow}><span class="mr-2">&#9679;</span>Who builds it</p>
         <h2 class={`mt-4 ${displayH2}`}>Built by people who run revenue motions for a living.</h2>
         <p class="mt-6 text-base leading-relaxed text-body">
-          Basiq came out of building and operating go-to-market systems inside other people's companies. The platform is the motion we kept rebuilding by hand. These are the operators we built it with.
+          Basiq came out of running go-to-market systems inside other people's companies. The platform is the motion we kept rebuilding by hand.
         </p>
       </div>
 
@@ -504,7 +503,7 @@ const secondaryBtn =
       <div class="mx-auto max-w-3xl text-center">
         <h2 class={`${displayH2} lg:text-6xl`}>Bring a real call. Watch the day build itself.</h2>
         <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-body">
-          The fastest way to judge this is to see the mechanism run. A transcript from one of your own deals goes in, and the task queue, the record updates, the forecast inputs and the proposed document edits come out while you watch.
+          Put in a transcript from one of your own deals. Watch the task queue, the record updates and the proposed document edits come out of it.
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a href={BOOKING_URL} class={primaryBtn}>See it run on a real transcript</a>
