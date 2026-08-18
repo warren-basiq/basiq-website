@@ -1,5 +1,38 @@
 ---
 import ProductPage from "../../components/ProductPage.astro";
+
+/*
+  Product visuals live in public/mocks/ as same-origin static HTML and render in
+  iframes. Unlike the homepage's placeholders these are Qindle's own screens,
+  redrawn in the Deep Forest palette with invented accounts and people: the
+  product shows a rep's real book of business, which cannot go on a public page.
+*/
+const shots = [
+  {
+    eyebrow: "Prospecting",
+    title: "One screen tells a rep where to start.",
+    body:
+      "Every account, contact and signal in the workspace is ranked into one ordered day. The rep opens the top card and works down, instead of deciding for an hour what to work on.",
+    src: "/mocks/qindle-focus.html",
+    height: 900,
+  },
+  {
+    eyebrow: "Deal management",
+    title: "Every open deal carries the one move that advances it.",
+    body:
+      "Qindle scores each deal against MEDDIC from what was actually said on the calls, names the weakest pillar, and turns that gap into the next task. A deal with no next step is flagged rather than quietly forgotten.",
+    src: "/mocks/qindle-deals.html",
+    height: 1010,
+  },
+  {
+    eyebrow: "Customer management",
+    title: "Renewals stop being a surprise.",
+    body:
+      "After the deal closes the same engine watches the account: which parts of your offering have come up on a call and which never have, how each stakeholder came across and why, and the follow-ups you owe before the renewal window opens.",
+    src: "/mocks/qindle-customers.html",
+    height: 880,
+  },
+];
 ---
 
 <ProductPage
@@ -65,4 +98,131 @@ import ProductPage from "../../components/ProductPage.astro";
   ]}
   ctaHeadline="Give your reps their selling hours back."
   ctaDescription="We'll show you Qindle on your own accounts and your own ICP, so you can see what a rep's day looks like when the research is already done."
-/>
+>
+  <!-- Prospecting: the focus screen, directly under the hero. -->
+  <Fragment slot="after-hero">
+    <section class="border-t border-line bg-stone">
+      <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+        <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
+          <span class="mr-2">&#9679;</span>{shots[0].eyebrow}
+        </p>
+        <h2 class="mt-4 max-w-3xl font-display text-3xl font-normal leading-[1.15] tracking-[-0.02em] text-heading md:text-4xl">
+          {shots[0].title}
+        </h2>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-body">{shots[0].body}</p>
+
+        <div class="mt-14 overflow-hidden rounded-2xl border border-line bg-paper shadow-lift">
+          <div class="mock-frame" style={`--mock-h: ${shots[0].height};`}>
+            <iframe src={shots[0].src} title="Qindle: the focus screen a rep works from" loading="lazy" tabindex="-1"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Fragment>
+
+  <!-- Deal and customer management, after the features grid. -->
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
+        <span class="mr-2">&#9679;</span>After the first meeting
+      </p>
+      <h2 class="mt-4 max-w-3xl font-display text-3xl font-normal leading-[1.15] tracking-[-0.02em] text-heading md:text-4xl">
+        The same day view carries the deal, then the customer.
+      </h2>
+
+      <div class="mt-16 flex flex-col gap-20">
+        {
+          shots.slice(1).map((shot) => (
+            <div>
+              <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-sage">{shot.eyebrow}</p>
+              <h3 class="mt-3 max-w-3xl font-display text-2xl leading-tight text-heading md:text-3xl">{shot.title}</h3>
+              <p class="mt-4 max-w-3xl text-base leading-relaxed text-body md:text-lg">{shot.body}</p>
+              <div class="mt-10 overflow-hidden rounded-2xl border border-line bg-paper shadow-lift">
+                <div class="mock-frame" style={`--mock-h: ${shot.height};`}>
+                  <iframe src={shot.src} title={`Qindle: ${shot.eyebrow.toLowerCase()}`} loading="lazy" tabindex="-1" />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</ProductPage>
+
+<style>
+  /* Scales a fixed-width mock down to whatever column it lands in. The height
+     is a first guess only: the script below measures the mock and corrects it. */
+  .mock-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--mock-w, 1060) / var(--mock-h, 900);
+    overflow: hidden;
+    background: #fcfbf8;
+  }
+  .mock-frame iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--mock-w, 1060) * 1px);
+    height: calc(var(--mock-h, 900) * 1px);
+    border: 0;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    /* Each mock is a fixed 1060px-wide document. Read its real height from the
+       same-origin .stage element so the frame never crops or leaves a gap, then
+       scale the whole thing to the column width. */
+    function nativeWidth(frame) {
+      return parseFloat(getComputedStyle(frame).getPropertyValue("--mock-w")) || 1060;
+    }
+    function measure(frame) {
+      var iframe = frame.querySelector("iframe");
+      var doc;
+      try { doc = iframe && (iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document)); }
+      catch (e) { return; }
+      var stage = doc && doc.querySelector(".stage");
+      if (!stage) return;
+      var h = Math.ceil(stage.getBoundingClientRect().height);
+      if (h > 0) frame.style.setProperty("--mock-h", String(h));
+    }
+    function scale(frame) {
+      var iframe = frame.querySelector("iframe");
+      if (!iframe || !frame.clientWidth) return;
+      iframe.style.transform = "scale(" + frame.clientWidth / nativeWidth(frame) + ")";
+    }
+    function refresh(frame) { measure(frame); scale(frame); }
+    function all(fn) { document.querySelectorAll(".mock-frame").forEach(fn); }
+
+    function init() {
+      all(function (frame) {
+        var iframe = frame.querySelector("iframe");
+        refresh(frame);
+        if (iframe) {
+          iframe.addEventListener("load", function () {
+            refresh(frame);
+            /* Fonts land after load and change the height. */
+            try {
+              var doc = iframe.contentDocument;
+              if (doc && doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function () { refresh(frame); });
+            } catch (e) {}
+            setTimeout(function () { refresh(frame); }, 600);
+          });
+        }
+      });
+      if (typeof ResizeObserver !== "undefined") {
+        var observer = new ResizeObserver(function (entries) {
+          entries.forEach(function (entry) { scale(entry.target); });
+        });
+        all(function (frame) { observer.observe(frame); });
+      }
+      window.addEventListener("resize", function () { all(scale); });
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+</script>
