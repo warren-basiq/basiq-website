@@ -74,17 +74,6 @@ export const products: Product[] = [
     external: false,
     status: "live",
   },
-  {
-    slug: "lanescout",
-    name: "LaneScout",
-    category: "Logistics",
-    tagline: "Negotiation coaching for carrier desks",
-    description:
-      "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers.",
-    href: "/products/lanescout",
-    external: false,
-    status: "coming-soon",
-  },
 ];
 
 export const PRODUCTS_HREF = "/products";

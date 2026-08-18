@@ -9,7 +9,8 @@
 
     { "source": "/fabriq", "destination": "/products/fabriq", "permanent": true },
     { "source": "/qindle", "destination": "/products/qindle", "permanent": true },
-    { "source": "/lanescout", "destination": "/products/lanescout", "permanent": true },
+    { "source": "/lanescout", "destination": "/products", "permanent": true },
+    { "source": "/products/lanescout", "destination": "/products", "permanent": true },
 
     { "source": "/ai-strategy", "destination": "/", "permanent": true },
     { "source": "/engineering", "destination": "/", "permanent": true },

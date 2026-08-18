@@ -19,7 +19,7 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 | Products (hub) | `/products` | `src/pages/products/index.astro` | 2026-07-12 | New — full product suite |
 | Fabriq | `/products/fabriq` | `src/pages/products/fabriq.astro` | 2026-07-12 | New — copy from Topiq VP-CS persona page |
 | Qindle | `/products/qindle` | `src/pages/products/qindle.astro` | 2026-07-12 | New — ported from Qenerate, now badged Live |
-| LaneScout | `/products/lanescout` | `src/pages/products/lanescout.astro` | 2026-07-12 | New — Coming soon |
+| LaneScout | ~~`/products/lanescout`~~ | ~~`src/pages/products/lanescout.astro`~~ | 2026-08-18 | **Retired** — LaneScout dropped as a product line, 301 to `/products` |
 | Founders and CEOs | `/founders` | `src/pages/founders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
 | CROs and VPs of Sales | `/revenue-leaders` | `src/pages/revenue-leaders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
 | Selling AI Podcast | `/podcast` | `src/pages/podcast.astro`, `src/pages/episode/[slug].astro` | 2026-08-12 | New, canonicals to gettopiq.ai |
@@ -61,8 +61,7 @@ This file tracks the audit status of every page on the Basiq Consulting website.
   - Fabriq — Customer intelligence for CS leaders (Live, → /products/fabriq)
   - Musal — The prompt workshop for AI teams (Live, → musal.ai). Was Kalibrate.
   - Qindle — The prospecting CRM built for AEs (Live, → /products/qindle). Was Qenerate.
-  - LaneScout — Negotiation coaching for carrier desks (Coming soon, → /products/lanescout)
-  - All five now render from the `src/lib/products.ts` registry, which also drives the
+  - All render from the `src/lib/products.ts` registry, which also drives the
     nav dropdown, the footer column, the `/products` hub, and llms-full.txt. The old dead
     `#` link on Kalibrate and the "More coming soon" placeholders are gone.
 - **Footer CTA:** Not sure where to start? That's what the assessment is for.
@@ -284,9 +283,13 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 ---
 
-### LaneScout (`/products/lanescout`)
+### LaneScout (`/products/lanescout`) — RETIRED 2026-08-18
 
-**Source:** `src/pages/products/lanescout.astro`
+Dropped as a product line. The page is deleted and both `/lanescout` and
+`/products/lanescout` 301 to `/products`. The copy below is kept as a record of what
+was published, not as live content.
+
+**Source:** ~~`src/pages/products/lanescout.astro`~~
 
 **Extracted Copy:**
 
@@ -301,7 +304,7 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 - **Business case:** 500 loads/day × $2,000 → a 1% negotiation improvement is $10k/day (~$3.6M/yr)
 - **CTA section:** Every call is a chance to protect your margin — or give it away. / Get Early Access
 
-**Last Reviewed:** 2026-07-12
+**Last Reviewed:** 2026-08-18
 **Review Notes:** Built from `~/Documents1/knowledge_base/LaneScout/value-proposition.md`. The dollar figures are illustrative models from that doc, not customer results — keep them framed as scenarios, not claims. Six persona docs sit alongside the value prop in the knowledge base and haven't been mined yet; a persona-alignment pass is worth doing before launch.
 
 ---

@@ -8,7 +8,7 @@ const SUMMARY =
   "Basiq is an AI execution partner for companies that need working systems, not slide decks. We embed with your team and build production systems: engineering workflows, sales automation, process tools, operational infrastructure. Then we document, train, and hand off ownership. No retainer, no dependency.";
 
 const INTRO =
-  "Engagement model: map the highest-leverage entry points, prove them with working prototypes, build the infrastructure in production, then hand off the keys. Basiq also ships its own products (Topiq, Fabriq, Musal, Qindle, and LaneScout) and runs hands-on AI masterclasses.";
+  "Engagement model: map the highest-leverage entry points, prove them with working prototypes, build the infrastructure in production, then hand off the keys. Basiq also ships its own products (Topiq, Fabriq, Musal, and Qindle) and runs hands-on AI masterclasses.";
 
 export const GET: APIRoute = async () => {
   const lines: string[] = [];

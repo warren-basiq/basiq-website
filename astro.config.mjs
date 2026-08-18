@@ -23,7 +23,11 @@ export default defineConfig({
     // Vanity paths, so a bare product name in a deck or an email resolves.
     '/fabriq': { status: 301, destination: '/products/fabriq' },
     '/qindle': { status: 301, destination: '/products/qindle' },
-    '/lanescout': { status: 301, destination: '/products/lanescout' },
+
+    // LaneScout was retired as a product line. Both its vanity path and its
+    // product page point at the hub; nothing in the suite replaces it.
+    '/lanescout': { status: 301, destination: '/products' },
+    '/products/lanescout': { status: 301, destination: '/products' },
 
     // The five "What we do" pages were retired when Solutions became a set of
     // persona pages. Nothing in the new IA maps to them one-to-one.

@@ -77,7 +77,7 @@ export const sitePages: SitePage[] = [
     path: "/products",
     title: "Products",
     description:
-      "The Basiq product suite: Topiq, Fabriq, Musal, Qindle, and LaneScout. AI systems for sales, customer success, prompt operations, prospecting, and freight.",
+      "The Basiq product suite: Topiq, Fabriq, Musal, and Qindle. AI systems for sales, customer success, prompt operations, and prospecting.",
     section: "Products",
     sitemap: true,
     llms: true,
@@ -96,15 +96,6 @@ export const sitePages: SitePage[] = [
     title: "Qindle",
     description:
       "The only prospecting CRM built for Account Executives to focus on account and prospect discovery and the human parts of pipe gen: cold calling and video.",
-    section: "Products",
-    sitemap: true,
-    llms: true,
-  },
-  {
-    path: "/products/lanescout",
-    title: "LaneScout",
-    description:
-      "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers. Coming soon from Basiq.",
     section: "Products",
     sitemap: true,
     llms: true,

@@ -111,8 +111,8 @@ change one and consider the other. Their problem illustrations come from the sha
 `ProductPage` takes `stats` as optional. Omit it rather than inventing numbers: Qindle
 currently ships without the stats band for exactly that reason. Both components expose an
 `after-hero` slot for a video or screenshots, and `ProductPage` has a default slot before
-the CTA for page-specific sections (LaneScout uses it for its audiences and comparison
-table).
+the CTA for page-specific sections. `/products/qindle` uses both: the focus-screen mock
+sits in `after-hero`, and the deal and customer screens in the default slot.
 
 ## Product visuals
 
