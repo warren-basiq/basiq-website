@@ -77,7 +77,7 @@ export const sitePages: SitePage[] = [
     path: "/products",
     title: "Products",
     description:
-      "The Basiq product suite: Topiq, Fabriq, Musal, and Qindle. AI systems for sales, customer success, prompt operations, and prospecting.",
+      "The Basiq product suite: Qindle, Topiq, Fabriq, and Musal. Pipeline generation, deal management, customer success, and the shared prompt and context layer.",
     section: "Products",
     sitemap: true,
     llms: true,

@@ -29,9 +29,20 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    slug: "qindle",
+    name: "Qindle",
+    category: "Pipegen",
+    tagline: "The prospecting CRM built for AEs",
+    description:
+      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery, and the human parts of pipe gen: cold calling and video.",
+    href: "/products/qindle",
+    external: false,
+    status: "live",
+  },
+  {
     slug: "topiq",
     name: "Topiq",
-    category: "Sales",
+    category: "Deal Management",
     tagline: "AI sales inbox for outbound teams",
     description:
       "Manages replies, books meetings, and keeps your pipeline moving. The AI sales inbox for teams running outbound at volume.",
@@ -61,17 +72,6 @@ export const products: Product[] = [
     href: "https://www.musal.ai",
     external: true,
     host: "musal.ai",
-    status: "live",
-  },
-  {
-    slug: "qindle",
-    name: "Qindle",
-    category: "CRM",
-    tagline: "The prospecting CRM built for AEs",
-    description:
-      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery, and the human parts of pipe gen: cold calling and video.",
-    href: "/products/qindle",
-    external: false,
     status: "live",
   },
 ];
