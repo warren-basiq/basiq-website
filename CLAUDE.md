@@ -59,6 +59,23 @@ class exists.
 **This overrides the global CLAUDE.md typography rule** (Plus Jakarta Sans + Inter for SaaS
 marketing sites). Basiq is deliberately in the Musal family instead. Do not "fix" it back.
 
+## Positioning and personas — Kalibrate is the source of truth
+
+Basiq's positioning, buyer personas, and sequence briefs live in **Kalibrate**, versioned, not
+in this repo. `context/*.md` is a local mirror of the WS1 documents; Kalibrate holds the
+authoritative version.
+
+**Before writing or changing any page copy, headline, meta description, or persona page, invoke
+the `kalibrate-context` skill** (`.claude/skills/kalibrate-context/`). It pulls the current
+documents, maps each one to the part of the site it backs, and covers publishing a new version
+when the material changes. Do not write positioning from memory or from the existing pages: some
+pages still carry the older portfolio-era story.
+
+Two things the source documents get wrong for this repo, and the skill repeats: they are full of
+em dashes, which `src/` must never contain, and the positioning doc is an explicit hypothesis
+(one paying customer, roughly six trial users), so its proof points must not become a stats
+band.
+
 ## Copy rules
 
 **No em dashes. Ever.** The `—` character must not appear anywhere in `src/`: not in page

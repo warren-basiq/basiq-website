@@ -1,0 +1,81 @@
+{
+  "workstream": "ws1",
+  "note": "Kalibrate is the source of truth. context/*.md is a local mirror kept in sync by kalibrate.py.",
+  "documents": [
+    {
+      "file": "context/basiq-positioning.md",
+      "slug": "positioning_ws1_basiq",
+      "type": "positioning",
+      "covers": "whole site",
+      "use_for": "Any claim about what Basiq is, who it is for, what it replaces, and why. Read this before writing or changing hero copy, the homepage narrative, product positioning, or meta descriptions."
+    },
+    {
+      "file": "context/basiq-revenue-persona-founder-ceo.md",
+      "slug": "persona_ws1_founder",
+      "also_publishes_to": "persona_ws1_chief_executive_officer",
+      "type": "persona",
+      "covers": "src/lib/personas.ts slug \"founders\" (nav: Founders and CEOs)",
+      "use_for": "Pains, goals, objections and vocabulary for the /solutions founders page."
+    },
+    {
+      "file": "context/basiq-sequence-brief-founder-ceo.md",
+      "slug": "persona_brief_ws1_founder",
+      "also_publishes_to": "persona_brief_ws1_chief_executive_officer",
+      "type": "persona_brief",
+      "covers": "src/lib/personas.ts slug \"founders\"",
+      "use_for": "Triggers and proof points. Source for problem-card headlines and stat bands on the founders page.",
+      "reserved_word": "Proof"
+    },
+    {
+      "file": "context/basiq-revenue-persona-chief-revenue-officer.md",
+      "slug": "persona_ws1_chief_revenue_officer",
+      "type": "persona",
+      "covers": "src/lib/personas.ts slug \"revenue-leaders\" (nav: CROs and VPs of Sales)",
+      "use_for": "CRO half of the revenue-leaders page."
+    },
+    {
+      "file": "context/basiq-sequence-brief-chief-revenue-officer.md",
+      "slug": "persona_brief_ws1_chief_revenue_officer",
+      "type": "persona_brief",
+      "covers": "src/lib/personas.ts slug \"revenue-leaders\"",
+      "use_for": "CRO triggers and proof points.",
+      "reserved_word": "Predictability"
+    },
+    {
+      "file": "context/basiq-revenue-persona-vp-sales.md",
+      "slug": "persona_ws1_vice_president_of_sales",
+      "type": "persona",
+      "covers": "src/lib/personas.ts slug \"revenue-leaders\"",
+      "use_for": "VP Sales half of the revenue-leaders page."
+    },
+    {
+      "file": "context/basiq-sequence-brief-vp-sales.md",
+      "slug": "persona_brief_ws1_vice_president_of_sales",
+      "type": "persona_brief",
+      "covers": "src/lib/personas.ts slug \"revenue-leaders\"",
+      "use_for": "VP Sales triggers and proof points.",
+      "reserved_word": "Attainment"
+    },
+    {
+      "file": "context/basiq-revenue-persona-vp-revenue-operations.md",
+      "slug": "persona_ws1_vice_president_of_revenue_operations",
+      "type": "persona",
+      "covers": "no persona page yet",
+      "use_for": "The RevOps buyer. Source material if a RevOps persona page is added to personas.ts."
+    },
+    {
+      "file": "context/basiq-sequence-brief-vp-revenue-operations.md",
+      "slug": "persona_brief_ws1_vice_president_of_revenue_operations",
+      "type": "persona_brief",
+      "covers": "no persona page yet",
+      "use_for": "RevOps triggers and proof points.",
+      "reserved_word": "Control"
+    }
+  ],
+  "related_slugs_not_mirrored_here": {
+    "proof_points_ws1_topiq": "Cleared proof points. Pull before publishing any customer result or metric on the site.",
+    "voice_ws1_user1": "Warren's writing voice. Not the Basiq site voice; the Deep Forest copy rules in CLAUDE.md win for page copy.",
+    "persona_ws1_director_of_revenue_operations": "Despite the name this holds a GTM Engineer doc. Not a RevOps variant.",
+    "persona_ws1_sales_director": "A separate, older doc. Not a VP Sales variant."
+  }
+}
