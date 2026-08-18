@@ -121,12 +121,6 @@ const testimonials = [
   },
   {
     quote:
-      "Our outbound pipeline doubled in 6 weeks. The tools they built are still running daily. Zero maintenance on our end.",
-    name: "Greg LeNeveu",
-    title: "CRO, Knak",
-  },
-  {
-    quote:
       "We saw measurable impact in weeks, not months. What stood out was how quickly they turned ideas into a meaningful business outcome.",
     name: "Jonathan Barnes",
     title: "CEO, Authentic",
@@ -486,7 +480,7 @@ const secondaryBtn =
         {clients.map((name) => <span class="font-mono text-sm uppercase tracking-[0.15em] text-sage">{name}</span>)}
       </div>
 
-      <div class="mt-16 grid gap-6 md:grid-cols-3">
+      <div class="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2">
         {
           testimonials.map((t) => (
             <figure class="flex h-full flex-col rounded-2xl border border-line bg-paper p-8 shadow-soft">
