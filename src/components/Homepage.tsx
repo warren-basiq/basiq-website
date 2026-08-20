@@ -471,8 +471,8 @@ export default function Homepage() {
 
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {steps.map((step, i) => (
-              <FadeUp key={step.num} delay={i * 0.12}>
-                <div className="group relative rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8">
+              <FadeUp key={step.num} delay={i * 0.12} className="h-full">
+                <div className="group relative flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8">
                   <span className="font-mono text-6xl font-bold text-white/[0.04] transition-colors duration-300 group-hover:text-amber-400/[0.08]">
                     {step.num}
                   </span>
