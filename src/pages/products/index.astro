@@ -1,11 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { products, statusLabel, ctaLabel } from "../../lib/products";
-import { SITE_URL, BOOKING_URL } from "../../lib/site-pages";
+import { SITE_URL } from "../../lib/site-pages";
 
-const title = "Products: AI Systems for Sales, CS, and Ops";
+const title = "Products — AI Systems for Sales, CS & Ops";
 const description =
-  "The Basiq product suite: Qindle, Topiq, Fabriq, and Musal. Pipeline generation, deal management, customer success, and the shared prompt and context layer.";
+  "The Basiq product suite — Topiq, Fabriq, Musal, Qindle, and LaneScout. AI systems for sales, customer success, prompt operations, prospecting, and freight.";
 
 /**
  * CollectionPage + ItemList of SoftwareApplications. No `offers` block: per the
@@ -43,21 +43,30 @@ const liveCount = products.filter((p) => p.status === "live").length;
 
 <Layout title={title} description={description} jsonLd={jsonLd}>
   <!-- Hero -->
-  <section class="mx-auto max-w-7xl px-6 pb-16 pt-20 lg:px-12 lg:pt-28">
-    <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">Products</p>
-    <h1 class="mt-6 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight text-heading sm:text-5xl lg:text-6xl">
-      The Basiq product suite
-    </h1>
-    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-body">
-      We do not just build AI systems for clients, we ship them as products.
-      {liveCount} in production, one on the way. Each one started as a problem we
-      hit ourselves or watched a client bleed on, and each one runs in the real
-      world before it ever gets a landing page.
-    </p>
-  </section>
+  <header class="relative pt-24 pb-16">
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 80px 80px;"
+    >
+    </div>
+    <div class="relative mx-auto max-w-7xl px-6 lg:px-12">
+      <p class="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+        Products
+      </p>
+      <h1 class="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+        The Basiq product suite
+      </h1>
+      <p class="mt-6 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl">
+        We don't just build AI systems for clients — we ship them as products.
+        {liveCount} in production, one on the way. Each one started as a problem we
+        hit ourselves or watched a client bleed on, and each one runs in the real
+        world before it ever gets a landing page.
+      </p>
+    </div>
+  </header>
 
   <!-- Product rows -->
-  <section class="border-t border-line bg-stone">
+  <section class="border-t border-white/[0.06]">
     <div class="mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-28">
       <div class="flex flex-col gap-6">
         {
@@ -66,29 +75,31 @@ const liveCount = products.filter((p) => p.status === "live").length;
               href={p.href}
               target={p.external ? "_blank" : undefined}
               rel={p.external ? "noopener noreferrer" : undefined}
-              class="grid gap-6 rounded-2xl border border-line bg-paper p-8 shadow-soft transition-shadow hover:shadow-lift sm:p-10 md:grid-cols-[1fr_2fr]"
+              class="group grid gap-6 rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-10 md:grid-cols-[1fr_2fr]"
             >
               <div>
                 <div class="flex items-center gap-3">
-                  <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-sage">
+                  <p class="font-mono text-xs font-medium uppercase tracking-wider text-amber-400/60">
                     {p.category}
-                  </span>
+                  </p>
                   <span
-                    class={
+                    class={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
                       p.status === "live"
-                        ? "rounded-full border border-line bg-stone px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-forest"
-                        : "rounded-full border border-control px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.14em] text-muted"
-                    }
+                        ? "bg-emerald-400/10 text-emerald-400"
+                        : "bg-white/[0.06] text-[#a09d97]"
+                    }`}
                   >
                     {statusLabel(p.status)}
                   </span>
                 </div>
-                <h2 class="mt-4 font-display text-3xl text-heading">{p.name}</h2>
-                <p class="mt-2 text-base italic text-forest">{p.tagline}</p>
+                <h2 class="mt-4 text-2xl font-bold text-white md:text-3xl">{p.name}</h2>
+                <p class="mt-2 text-base text-[#c8c5bf]">{p.tagline}</p>
               </div>
               <div class="flex flex-col justify-center">
-                <p class="text-base leading-relaxed text-body">{p.description}</p>
-                <span class="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-forest">
+                <p class="font-body text-base leading-relaxed text-[#a09d97]">
+                  {p.description}
+                </p>
+                <span class="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
                   {ctaLabel(p)}
                 </span>
               </div>
@@ -100,35 +111,40 @@ const liveCount = products.filter((p) => p.status === "live").length;
   </section>
 
   <!-- Positioning -->
-  <section class="border-t border-line">
+  <section class="border-t border-white/[0.06]">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-      <p class="max-w-4xl font-display text-2xl leading-snug text-heading md:text-3xl lg:text-4xl">
+      <p class="max-w-4xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:leading-snug">
         Every product here exists because we built it for a real problem, ran it in
-        production, and found it was too useful to keep to ourselves. That is the same
-        way we work with clients: build the thing, prove it works, hand over the keys.
+        production, and found it was too useful to keep to ourselves. That's the same
+        way we work with clients — build the thing, prove it works, hand over the keys.
       </p>
-      <a href="/founders" class="mt-10 inline-block font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-forest">
-        See how we work with clients &#8594;
+      <a
+        href="/#services"
+        class="mt-10 inline-block text-sm text-amber-400/70 transition-colors hover:text-amber-400"
+      >
+        See how we work with clients →
       </a>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="border-t border-line bg-stone">
-    <div class="mx-auto max-w-3xl px-6 py-24 text-center lg:py-32">
-      <h2 class="font-display text-3xl leading-tight tracking-tight text-heading md:text-4xl lg:text-5xl">
-        Want something like this for your business?
-      </h2>
-      <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-body">
-        The assessment is free. You will walk away with a clear picture of your
-        highest-leverage AI opportunities and a working prototype to prove it.
-      </p>
-      <a
-        href={BOOKING_URL}
-        class="mt-10 inline-block rounded-full bg-forest px-7 py-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-forest-hover"
-      >
-        Book a free assessment
-      </a>
+  <section class="border-t border-white/[0.06]">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+          Want something like this for your business?
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
+          The assessment is free. You'll walk away with a clear picture of your
+          highest-leverage AI opportunities and a working prototype to prove it.
+        </p>
+        <a
+          href="https://booking.akiflow.com/basiq-consulting"
+          class="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+        >
+          Book a Free Assessment
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

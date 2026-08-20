@@ -10,10 +10,10 @@
     "studio": "sanity dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "check:copy": "! grep -rn '—' src/ || (echo '\\nEm dashes found. See the Copy rules in CLAUDE.md: rewrite the sentence, do not swap the glyph.' && exit 1)"
+    "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.2",
     "@astrojs/sitemap": "^3.7.2",
     "@sanity/client": "^7.20.0",
     "@tailwindcss/vite": "^4.2.2",
@@ -21,10 +21,13 @@
     "@types/react-dom": "^19.2.3",
     "astro": "^6.1.3",
     "cloudinary": "^2.9.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "sanity": "^5.19.0",
     "styled-components": "^6.3.12",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.2"
   }
 }

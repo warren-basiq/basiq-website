@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { SITE_URL, sitePages, absUrl, type Section } from "../lib/site-pages";
+import { SITE_URL } from "../lib/site-pages";
 import { products, statusLabel } from "../lib/products";
 import { getBlogPosts } from "../lib/site-dynamic";
 
@@ -10,55 +10,41 @@ const PRODUCT_LINES = products
   .map((p) => {
     const url = p.external ? p.href : `${SITE_URL}${p.href}`;
     const status = p.status === "live" ? "" : ` (${statusLabel(p.status)})`;
-    return `- **${p.name}**${status}: ${p.description} ${url}`;
+    return `- **${p.name}**${status} — ${p.description} ${url}`;
   })
   .join("\n");
 
-/** Page bullets for one registry section, so a new page shows up here for free. */
-function sectionLines(section: Section): string {
-  return sitePages
-    .filter((p) => p.llms && p.section === section)
-    .map((p) => `- **${p.title}**: ${p.description} ${absUrl(p.path)}`)
-    .join("\n");
-}
-
 /**
- * Long-form overview of Basiq for LLMs. The narrative prose is hand-written and
- * should be updated when positioning changes; the page and product lists below
- * are generated from the registries, and blog posts come from Sanity at build.
+ * Long-form, hand-curated overview of Basiq for LLMs. All copy below is drawn
+ * from the live site. Update this prose when the positioning or offerings
+ * change. Dynamic content (blog posts) is appended from Sanity at the bottom.
  */
-const BODY = `# Basiq, full overview for LLMs
+const BODY = `# Basiq — Full Overview for LLMs
 
-> Basiq is a revenue execution platform for mid-market and enterprise teams running multi-meeting sales cycles. It runs off meeting transcripts instead of CRM data entry: the transcript is the source of truth, and the task list, the CRM record, the forecast and the enablement docs are downstream artifacts that fan out from it. Basiq integrates with Salesforce and HubSpot rather than replacing them.
+> Basiq is an AI execution partner for companies that need working systems, not slide decks. We embed with your team, build production systems, then document, train, and hand off ownership.
 
 Live site: ${SITE_URL}
 
 ## What Basiq is
 
-Revenue organizations run on the CRM opportunity record, and every process is built around extracting information from meetings and typing it into fields. Basiq inverts that. The meeting transcript is the source of truth, and the CRM record, the seller's task list, the forecast and the enablement documents are all downstream artifacts that fan out from what actually happened in the conversation.
+Most AI efforts stall: experiments that never become systems, tools that never become workflows, pilots that never reach production — "AI everywhere, nothing shipping." Basiq exists to fix that. We identify where AI moves the needle in your specific business and deliver working prototypes to prove it — not a deck, not a recommendation. Then we embed with your team and build the production systems: engineering workflows, sales automation, process tools, operational infrastructure.
 
-The end state: the seller's day is a served queue. Every task needed to generate pipeline, progress deals and grow customers sits in front of them in priority order, generated from the full context of every meeting they have ever had. The rep never decides what to do next and never reconstructs context before acting. Because reps work the queue, the data underneath is complete as a byproduct rather than as a discipline, and complete data is what makes the next day's queue right.
+When the work is done we document, train, and hand off the keys. Your team owns everything we build. No retainer, no dependency, no phone call six months later asking for help.
 
-Basiq is not competing for the system of record. It integrates with Salesforce and HubSpot; it changes what feeds them.
+## How an engagement runs
 
-## How it works
+1. **Map** your highest-leverage entry points.
+2. **Prove** it with working prototypes.
+3. **Build** the production systems, embedded with your team.
+4. **Hand off** — document, train, and transfer ownership.
 
-1. **The meeting becomes the record.** The transcript is the input. CRM fields, MEDDIC movement, follow-ups owed and forecast inputs fan out from it.
-2. **The day is served.** Each seller gets their tasks in priority order, each carrying the context of every prior conversation. The queue runs across AEs, AMs and CSMs, so it spans pre-sale and post-sale.
-3. **The documents update themselves, with a human gate.** Each transcript is compared against the persona and value proposition docs, and specific edits are proposed. Revops or enablement approves or declines each one, and the approved version is what every prompt reads from next run.
-4. **Execution becomes a controlled variable.** Because tasks are served and completion is tracked, a leader can tell whether the playbook was actually run, which narrows a missed quarter to a short list of causes instead of a debate.
+## What we do
 
-## Who it is for
-
-Mid-market and enterprise revenue teams running multi-meeting sales cycles, who are actively working on revenue efficiency or growth. Poor fit: one-call closes, inbound-only motions with no interest in outbound, and orgs with no customer success motion. The buying committee is typically a CRO, VP RevOps or VP Sales signing, AEs and sales leaders using it daily.
-
-**Status, stated plainly:** the positioning above is a hypothesis. Basiq has one paying customer and roughly six trial users, all recent. Claims here are design arguments and third-party research, not customer evidence at scale.
-
-## Solutions
-
-Basiq organizes its case by who is buying.
-
-${sectionLines("Solutions")}
+- **AI Strategy** — Where to start, what to build, how to sequence it. From diagnostic to fully AI-enabled. ${SITE_URL}/ai-strategy
+- **Engineering** — Go from AI-curious to AI-native; build an engineering org that runs AI end-to-end. ${SITE_URL}/engineering
+- **Go-to-Market** — AI-powered sales, CS, and marketing: automated prospecting, signal-based forecasting, call intelligence. A GTM motion that runs on signal, not instinct. ${SITE_URL}/go-to-market
+- **Operations** — AI as a default for every employee, not just the tech team: writing, research, and intelligence across the org. ${SITE_URL}/operations
+- **Business Applications** — Turn process experts into builders. Internal apps built by the people who need them, with engineers supervising. ${SITE_URL}/business-applications
 
 ## Products
 
@@ -68,11 +54,12 @@ ${PRODUCT_LINES}
 
 ## Masterclass
 
-${sectionLines("Masterclass")}
+- **Claude Code 101** — A hands-on introduction for non-technical teams: install Claude Code, learn command-line basics, and start building real apps and automations in plain English. ${SITE_URL}/masterclass/claude-code-101
+- **Build a Website with Claude Code** — Step-by-step: build and deploy a professional website using Claude Code, no coding experience required. ${SITE_URL}/masterclass/claude-code-website
 
 ## Resources
 
-${sectionLines("Resources")}
+- **Blog** — Insights and updates from the Basiq team. ${SITE_URL}/blog
 `;
 
 export const GET: APIRoute = async () => {
@@ -82,7 +69,7 @@ export const GET: APIRoute = async () => {
   if (posts.length > 0) {
     out += `\n## Latest blog posts\n\n`;
     out += posts
-      .map((p) => `- ${p.title}: ${SITE_URL}/blog/${p.slug}${p.excerpt ? `\n    ${p.excerpt}` : ""}`)
+      .map((p) => `- ${p.title} — ${SITE_URL}/blog/${p.slug}${p.excerpt ? `\n    ${p.excerpt}` : ""}`)
       .join("\n");
     out += "\n";
   }

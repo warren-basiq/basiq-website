@@ -6,7 +6,7 @@
  * Add a product here once and every surface picks it up.
  *
  * Products with `external: true` live on their own domain and have no page on
- * basiq.work and link out. The rest have a detail page under /products/<slug>.
+ * basiq.work — they link out. The rest have a detail page under /products/<slug>.
  */
 
 export type ProductStatus = "live" | "coming-soon";
@@ -16,9 +16,9 @@ export interface Product {
   name: string;
   /** Short market category, shown as a label on cards. */
   category: string;
-  /** One line, used in the nav dropdown and as a card kicker. */
+  /** One line — used in the nav dropdown and as a card kicker. */
   tagline: string;
-  /** One to two sentences, used on the homepage grid and the /products hub. */
+  /** One to two sentences — used on the homepage grid and the /products hub. */
   description: string;
   href: string;
   external: boolean;
@@ -29,20 +29,9 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    slug: "qindle",
-    name: "Qindle",
-    category: "Pipegen",
-    tagline: "The prospecting CRM built for AEs",
-    description:
-      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery, and the human parts of pipe gen: cold calling and video.",
-    href: "/products/qindle",
-    external: false,
-    status: "live",
-  },
-  {
     slug: "topiq",
     name: "Topiq",
-    category: "Deal Management",
+    category: "Sales",
     tagline: "AI sales inbox for outbound teams",
     description:
       "Manages replies, books meetings, and keeps your pipeline moving. The AI sales inbox for teams running outbound at volume.",
@@ -73,6 +62,28 @@ export const products: Product[] = [
     external: true,
     host: "musal.ai",
     status: "live",
+  },
+  {
+    slug: "qindle",
+    name: "Qindle",
+    category: "CRM",
+    tagline: "The prospecting CRM built for AEs",
+    description:
+      "The only prospecting CRM built for Account Executives to focus on account and prospect discovery — and the human parts of pipe gen: cold calling and video.",
+    href: "/products/qindle",
+    external: false,
+    status: "live",
+  },
+  {
+    slug: "lanescout",
+    name: "LaneScout",
+    category: "Logistics",
+    tagline: "Negotiation coaching for carrier desks",
+    description:
+      "AI-powered negotiation coaching that turns your carrier desk into a margin engine. Built for US freight brokers.",
+    href: "/products/lanescout",
+    external: false,
+    status: "coming-soon",
   },
 ];
 

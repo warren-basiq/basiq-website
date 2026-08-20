@@ -1,44 +1,29 @@
 @import "tailwindcss";
 
-/* Deep Forest, shared with musal.ai. Keep the two palettes in sync; if a token
-   changes here it should change in kalibrate-website/src/styles/global.css too. */
 @theme inline {
-  --font-sans: "Fraunces", ui-serif, Georgia, serif;
-  --font-display: "DM Serif Display", ui-serif, Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Light surfaces: ivory is the page canvas, stone insets, white lifts */
-  --color-ivory: #FCFBF8;
-  --color-stone: #F5F1EA;
-  --color-paper: #FFFFFF;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
 
-  /* Brand */
-  --color-forest: #234136;
-  --color-forest-hover: #1C352D;
-  --color-forest-dark: #192F27;
-  --color-forest-raised: #2D5145;
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
 
-  /* Text */
-  --color-heading: #252525;
-  --color-charcoal: #2E2E2E;
-  --color-body: #57554F;
-  --color-muted: #6F6C65;
-  --color-on-dark: #F5F1EA;
-  --color-on-dark-muted: #C9D1CB;
-
-  /* Accents: secondary and quiet. Never equal-weight with forest. */
-  --color-sage: #899083;
-  --color-gold: #D4A83F;
-
-  /* Boundaries. `line` is decorative (1.29:1 on ivory), never the sole
-     boundary of a control; `control` is the 3:1 outline for real controls. */
-  --color-line: #E3DED5;
-  --color-control: #918D84;
-  --color-line-dark: #668277;
-
-  --shadow-soft: 0 4px 24px rgb(46 46 46 / 5%);
-  --shadow-lift: 0 16px 40px rgb(46 46 46 / 7%);
-  --shadow-deep: 0 24px 80px rgb(46 46 46 / 10%);
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
 }
 
 html {
@@ -47,20 +32,6 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
-  font-optical-sizing: auto;
+  font-family: var(--font-body);
   overscroll-behavior: none;
-  background-color: var(--color-ivory);
-  color: var(--color-charcoal);
-}
-
-/* Keyboard focus is visible on both surface families. */
-:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--color-ivory), 0 0 0 5px var(--color-forest);
-  border-radius: 4px;
-}
-
-.on-forest :focus-visible {
-  box-shadow: 0 0 0 3px var(--color-forest), 0 0 0 5px var(--color-on-dark);
 }

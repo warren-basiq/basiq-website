@@ -8,21 +8,18 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 | Page | Route | Source File(s) | Last Reviewed | Status |
 |------|-------|---------------|---------------|--------|
-| Homepage | `/` | `src/pages/index.astro` | 2026-08-12 | Rebuilt in Deep Forest, React island removed |
-| Engineering | `/engineering` | ~~src/pages/engineering.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
-| Business Applications | `/business-applications` | ~~src/pages/business-applications.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
-| Go-to-Market | `/go-to-market` | ~~src/pages/go-to-market.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
-| Operations | `/operations` | ~~src/pages/operations.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
-| AI Strategy | `/ai-strategy` | ~~src/pages/ai-strategy.astro~~ | 2026-08-12 | **Removed** — retired in the Deep Forest redesign, 301 to `/` |
+| Homepage | `/` | `src/pages/index.astro`, `src/components/Homepage.tsx` | 2026-04-11 | Reviewed — 13 changes drafted |
+| Engineering | `/engineering` | `src/pages/engineering.astro` | 2026-04-11 | Reviewed — 5 changes drafted |
+| Business Applications | `/business-applications` | `src/pages/business-applications.astro` | 2026-04-11 | Reviewed — 4 changes drafted |
+| Go-to-Market | `/go-to-market` | `src/pages/go-to-market.astro` | 2026-04-11 | Reviewed — 6 changes drafted |
+| Operations | `/operations` | `src/pages/operations.astro` | 2026-04-11 | Reviewed — 5 changes drafted |
+| AI Strategy | `/ai-strategy` | `src/pages/ai-strategy.astro` | 2026-04-11 | Reviewed — 4 changes drafted |
 | Pricing | `/pricing` | ~~`src/pages/pricing.astro`~~ | 2026-04-23 | **Removed** — page deleted, nav link removed |
 | Qenerate | `/qenerate` | ~~`src/pages/qenerate.astro`~~ | 2026-07-12 | **Renamed** — now Qindle at `/products/qindle`, 301 in place |
 | Products (hub) | `/products` | `src/pages/products/index.astro` | 2026-07-12 | New — full product suite |
 | Fabriq | `/products/fabriq` | `src/pages/products/fabriq.astro` | 2026-07-12 | New — copy from Topiq VP-CS persona page |
 | Qindle | `/products/qindle` | `src/pages/products/qindle.astro` | 2026-07-12 | New — ported from Qenerate, now badged Live |
-| LaneScout | ~~`/products/lanescout`~~ | ~~`src/pages/products/lanescout.astro`~~ | 2026-08-18 | **Retired** — LaneScout dropped as a product line, 301 to `/products` |
-| Founders and CEOs | `/founders` | `src/pages/founders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
-| CROs and VPs of Sales | `/revenue-leaders` | `src/pages/revenue-leaders.astro`, `src/components/RolePage.astro` | 2026-08-12 | New persona page |
-| Selling AI Podcast | `/podcast` | `src/pages/podcast.astro`, `src/pages/episode/[slug].astro` | 2026-08-12 | New, canonicals to gettopiq.ai |
+| LaneScout | `/products/lanescout` | `src/pages/products/lanescout.astro` | 2026-07-12 | New — Coming soon |
 | Blog Index | `/blog` | `src/pages/blog/index.astro` | 2026-04-11 | CMS-managed, no static copy changes |
 
 ---
@@ -61,7 +58,8 @@ This file tracks the audit status of every page on the Basiq Consulting website.
   - Fabriq — Customer intelligence for CS leaders (Live, → /products/fabriq)
   - Musal — The prompt workshop for AI teams (Live, → musal.ai). Was Kalibrate.
   - Qindle — The prospecting CRM built for AEs (Live, → /products/qindle). Was Qenerate.
-  - All render from the `src/lib/products.ts` registry, which also drives the
+  - LaneScout — Negotiation coaching for carrier desks (Coming soon, → /products/lanescout)
+  - All five now render from the `src/lib/products.ts` registry, which also drives the
     nav dropdown, the footer column, the `/products` hub, and llms-full.txt. The old dead
     `#` link on Kalibrate and the "More coming soon" placeholders are gone.
 - **Footer CTA:** Not sure where to start? That's what the assessment is for.
@@ -283,13 +281,9 @@ This file tracks the audit status of every page on the Basiq Consulting website.
 
 ---
 
-### LaneScout (`/products/lanescout`) — RETIRED 2026-08-18
+### LaneScout (`/products/lanescout`)
 
-Dropped as a product line. The page is deleted and both `/lanescout` and
-`/products/lanescout` 301 to `/products`. The copy below is kept as a record of what
-was published, not as live content.
-
-**Source:** ~~`src/pages/products/lanescout.astro`~~
+**Source:** `src/pages/products/lanescout.astro`
 
 **Extracted Copy:**
 
@@ -304,7 +298,7 @@ was published, not as live content.
 - **Business case:** 500 loads/day × $2,000 → a 1% negotiation improvement is $10k/day (~$3.6M/yr)
 - **CTA section:** Every call is a chance to protect your margin — or give it away. / Get Early Access
 
-**Last Reviewed:** 2026-08-18
+**Last Reviewed:** 2026-07-12
 **Review Notes:** Built from `~/Documents1/knowledge_base/LaneScout/value-proposition.md`. The dollar figures are illustrative models from that doc, not customer results — keep them framed as scenarios, not claims. Six persona docs sit alongside the value prop in the knowledge base and haven't been mined yet; a persona-alignment pass is worth doing before launch.
 
 ---
@@ -317,138 +311,6 @@ was published, not as live content.
 
 **Last Reviewed:** _Not yet reviewed_
 **Review Notes:** —
-
----
-
-## 2026-08-12 — Deep Forest redesign
-
-The site moved from the dark amber theme onto the **Deep Forest** design system shared with
-musal.ai (Fraunces + DM Serif Display + JetBrains Mono on warm ivory). Full token reference
-is in `CLAUDE.md`.
-
-**Information architecture changed.** Solutions is now a persona menu rather than a service
-menu:
-
-- Removed `/ai-strategy`, `/engineering`, `/go-to-market`, `/operations`, and
-  `/business-applications`. All five 301 to `/` in both `astro.config.mjs` and `vercel.json`.
-  Nothing in the new IA mapped to them one-to-one, so a nearest-match redirect would have
-  been worse than the root.
-- Added `/founders` and `/revenue-leaders`, both rendering through `RolePage.astro`.
-- Added `/podcast` and `/episode/[slug]` for Selling AI.
-- `/products`, `/blog`, and both `/masterclass` pages were restyled with no content change.
-
-**Other fixes made along the way:**
-
-- The homepage had no canonical, Open Graph, Twitter, or JSON-LD tags at all. It renders
-  through `Layout` now, so it has all four.
-- The two masterclass pages were hand-rolled documents with their own head, nav, and footer.
-  They now use `Layout`. Their Course schema still pointed at `basiqconsulting.com`.
-- Blog posts gained `BlogPosting` structured data.
-- `llms-full.txt` had the retired service pages hardcoded. It derives its sections from the
-  page registry now.
-- The `font-body` utility referenced a token that no longer exists; 43 dead uses removed.
-- Adopted the no-em-dash copy rule from musal.ai as `npm run check:copy`, and cleared the 36
-  existing occurrences by rewriting sentences.
-
-### Founders and CEOs (`/founders`)
-
-**Source:** `src/pages/founders.astro` via `src/components/RolePage.astro`
-
-- **Eyebrow:** For founders and CEOs
-- **H1:** You do not need an AI team. You need the thing to work.
-- **SEO title:** AI for Founders and CEOs | Basiq
-- **Structure:** hero, four problems, forest stats band (5 products / 6 wks / 100%), four
-  "what you actually get" cards, cross-link to the other persona, closing CTA
-- **JSON-LD:** `WebPage`
-
-**Last Reviewed:** 2026-08-12
-**Review Notes:** Copy written fresh for the redesign. Stats are directional and should be
-confirmed before any paid traffic points here.
-
-### CROs and VPs of Sales (`/revenue-leaders`)
-
-**Source:** `src/pages/revenue-leaders.astro` via `src/components/RolePage.astro`
-
-- **Eyebrow:** For CROs and VPs of Sales
-- **H1:** Your reps do not need another tool. They need the work to already be done.
-- **SEO title:** AI for CROs and VPs of Sales | Basiq
-- **Structure:** same as `/founders`; features reference Topiq and Fabriq by name
-- **JSON-LD:** `WebPage`
-
-**Last Reviewed:** 2026-08-12
-**Review Notes:** The "2x outbound pipeline in 6 weeks" stat comes from the Knak
-testimonial on the homepage. Keep the two consistent if either changes.
-
-### Selling AI Podcast (`/podcast`, `/episode/[slug]`)
-
-**Source:** `src/pages/podcast.astro`, `src/pages/episode/[slug].astro`, `src/lib/podcast.ts`
-
-- **Content:** Sanity `podcast` and `episode` documents; the page ships with real Selling AI
-  defaults so it is complete before anything is entered in the studio
-- **JSON-LD:** `PodcastSeries` on the index, `PodcastEpisode` on each episode
-- **Canonical:** `basiq.work` as of 2026-08-17. Both pages are now in the sitemap.
-
-**Last Reviewed:** 2026-08-17
-**Review Notes:** Canonical flipped from `gettopiq.ai` to `basiq.work` and the sitemap
-exclusion removed. Episode meta descriptions are now truncated to 155 characters by
-`metaDescription()` rather than emitting the full summary paragraph.
-
-**Resolved 2026-08-17:** the duplication against Topiq is closed. `gettopiq.ai` now 301s
-`/selling-ai-podcast` and every `/episode/:slug` to the matching URL here, and the episodes
-are out of Topiq's sitemap and both llms endpoints. Slugs were preserved through the
-migration, so the redirects map one to one.
-
-**Open item:** ep. 30 (Dr. Chris Gray) ships with `publishedAt`, `youtubeId`, and the
-platform URLs null because the episode has not aired. Fill them in when it drops.
-
-**Open item, `youtubeId`:** filled for eps 1 to 18, which carried a `youtubeUrl` on Topiq
-that the migration reduced to the bare video id. Eps 19, 20 and 29 are still null and fall
-back to the show-level playlist link instead of the embedded player.
-
-**Open item, eps 1 to 20:** these documents predate the ep. 21 to 30 batch and are
-noticeably thinner. Specifically:
-
-- `guestTitle` is empty on all twenty, so the "with {guest}" byline shows a bare name and
-  the guest card has no role line.
-- `takeaways` run far over the ~70 character budget: up to 298 characters on eps 15 to 20.
-  They render as small pills on `/podcast`, so these wrap badly and break that layout.
-- Eps 1, 2, 3 and 8 have no `chapters`.
-- Eps 15 to 20 have no `publishedAt`, so no date renders on the index or the episode page.
-- Ep 17's `title` is the guest's name ("Jack Siney") rather than an episode title.
-
-Eps 21 to 30 were built to the field rules in the Publishing an episode section of
-CLAUDE.md and do not have these problems. Bringing 1 to 20 up to the same standard is a
-separate pass.
-
-### 8 Best AI Sales Assistant Tools for 2026 (`/best-ai-sales-assistant-software-2026`)
-
-**Source:** `src/pages/best-ai-sales-assistant-software-2026.astro`
-
-- **Content:** buyer's guide ranking 8 AI sales assistants (Topiq, Clay, Trellus, Claude,
-  Heyreach, Attio, Instantly, Discern.io). Ported from `gettopiq.ai` on 2026-08-17.
-- **Structure:** the 8 entries are a `products[]` array rendered through one loop rather
-  than the 8 hand-repeated blocks the original used. Topiq is the featured entry and is the
-  only one with the "Why Choose" and "Who Benefits" sections, both optional fields.
-- **Images:** 9 Cloudinary assets under `topiq/best-ai-sales-assistants-2026`. Basiq and
-  Topiq share the `drelly3f1` cloud, so the paths carried over unchanged and all 9 verify 200.
-- **JSON-LD:** `WebPage` with a nested `ItemList` of the 8 products, publisher Basiq
-- **Canonical:** `https://www.basiq.work/best-ai-sales-assistant-software-2026/`
-
-**Last Reviewed:** 2026-08-17
-**Review Notes:** Restyled from Topiq's palette into Deep Forest: hardcoded hex values
-(`#363726`, `#e1e2da`, `#f2f3eb`, `#fff781`) replaced with semantic tokens, `font-bold`
-headings replaced with `font-display`, cards moved to `rounded-2xl border-line bg-paper`,
-and the closing CTA moved onto a forest band. The old page's 5 persona pills pointed at
-Topiq routes that do not exist here and now link to `/founders`, `/revenue-leaders`, and
-`/podcast`. The final CTA points at `BOOKING_URL`; the Topiq section CTA still points at
-Topiq's own booking link, which is not on the `gettopiq.ai` domain.
-
-**Copy:** every em dash was rewritten, including the 8 product headings, which now use a
-colon between name and role. The same change was applied to the JSON-LD `ItemList` names
-and the image alt text.
-
-**Old URL:** `gettopiq.ai/best-ai-sales-assistant-software-2026` 301s here, and the page is
-out of Topiq's sitemap and llms endpoints.
 
 ---
 

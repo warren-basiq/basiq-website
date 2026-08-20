@@ -1,0 +1,676 @@
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { Spotlight } from "./ui/spotlight";
+import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
+import { BackgroundBeams } from "./ui/background-beams";
+import FluidAnimation from "./FluidAnimation";
+import BasiqLogo from "./BasiqLogo";
+import { products, statusLabel, ctaLabel, PRODUCTS_HREF } from "../lib/products";
+
+/* ─── Animation helpers ──────────────────────────────────────────── */
+
+function Section({
+  children,
+  className = "",
+  delay = 0,
+  id,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  id?: string;
+}) {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.section
+      ref={ref}
+      id={id}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+}
+
+function FadeUp({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ─── Data ───────────────────────────────────────────────────────── */
+
+const services = [
+  {
+    icon: <span className="text-2xl text-amber-400/80">⚙</span>,
+    title: "Engineering",
+    description: "AI-native workflows, agents that ship, production infrastructure.",
+    link: "/engineering",
+    className: "md:col-span-1",
+    header: (
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/[0.06] to-transparent">
+        <div className="grid grid-cols-3 gap-2 opacity-40">
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className="h-3 w-3 rounded-sm bg-amber-400/30" />
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <span className="text-2xl text-amber-400/80">◧</span>,
+    title: "Business Applications",
+    description: "Process experts build their own tools. Engineers supervise.",
+    link: "/business-applications",
+    className: "md:col-span-1",
+    header: (
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
+        <div className="flex gap-1 opacity-40">
+          {[40, 64, 28, 52, 36].map((h, i) => (
+            <div key={i} className="w-4 rounded-sm bg-amber-400/30" style={{ height: h }} />
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <span className="text-2xl text-amber-400/80">◎</span>,
+    title: "Go-to-Market",
+    description: "Automated prospecting, signal-based forecasting, call intelligence.",
+    link: "/go-to-market",
+    className: "md:col-span-1",
+    header: (
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent">
+        <div className="flex items-center gap-2 opacity-40">
+          <div className="h-8 w-8 rounded-full border-2 border-amber-400/40" />
+          <div className="h-0.5 w-8 bg-amber-400/30" />
+          <div className="h-8 w-8 rounded-full border-2 border-amber-400/40" />
+          <div className="h-0.5 w-8 bg-amber-400/30" />
+          <div className="h-8 w-8 rounded-full border-2 border-amber-400/40" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <span className="text-2xl text-amber-400/80">▦</span>,
+    title: "Operations",
+    description: "AI as default: writing, research, and intelligence for every employee.",
+    link: "/operations",
+    className: "md:col-span-2",
+    header: (
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-white/[0.04] to-transparent px-2">
+        <div className="flex items-center gap-1.5 opacity-40 sm:gap-3">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-1.5 sm:gap-3">
+              <div className="h-6 w-8 rounded bg-amber-400/20 sm:w-16" />
+              {i < 3 && <span className="text-amber-400/40">→</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    icon: <span className="text-2xl text-amber-400/80">△</span>,
+    title: "AI Strategy",
+    description: "Map your highest-leverage entry points. Prove it with working prototypes.",
+    link: "/ai-strategy",
+    className: "md:col-span-1",
+    header: (
+      <div className="flex h-full min-h-[6rem] w-full items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/[0.06] to-transparent">
+        <div className="opacity-40">
+          <div className="mx-auto h-3 w-3 rounded-sm bg-amber-400/40" />
+          <div className="mx-auto mt-1 h-3 w-8 rounded-sm bg-amber-400/30" />
+          <div className="mx-auto mt-1 h-3 w-14 rounded-sm bg-amber-400/20" />
+        </div>
+      </div>
+    ),
+  },
+];
+
+const steps = [
+  {
+    num: "01",
+    title: "Free Assessment",
+    time: "5 - 15 hours",
+    description:
+      "We identify where AI moves the needle in your specific business and deliver working prototypes to prove it. Not a deck. Not a recommendation.",
+  },
+  {
+    num: "02",
+    title: "Build Together",
+    time: "Weeks, not months",
+    description:
+      "We embed with your team and build production systems. Engineering workflows, sales automation, process tools, operational infrastructure. Whatever your highest-leverage entry point is.",
+  },
+  {
+    num: "03",
+    title: "You Own It",
+    time: "Permanent handoff",
+    description:
+      "We document, train, and hand off the keys. Your team owns everything we build. No retainer. No dependency. No phone call six months later asking for help.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "They didn't just tell us where to use AI. They built it, trained the team, and it was running in production before the contract ended. That never happens.",
+    name: "James Lawler",
+    title: "Director, TricoStar",
+  },
+  {
+    quote:
+      "We had three failed AI projects before Basiq. The difference was they actually shipped working software, not a roadmap with question marks.",
+    name: "Helen Lin",
+    title: "CEO, Discern",
+  },
+  {
+    quote:
+      "Our outbound pipeline doubled in 6 weeks. The tools they built are still running daily. Zero maintenance on our end.",
+    name: "Greg LeNeveu",
+    title: "CRO, Knak",
+  },
+  {
+    quote:
+      "We saw measurable impact in weeks, not months. What stood out was how quickly they turned ideas into a meaningful business outcome.",
+    name: "Jonathan Barnes",
+    title: "CEO, Authentic",
+  },
+  {
+    quote:
+      "They embedded with our engineering team for four weeks and left us with three production tools we use every single day.",
+    name: "Ed Seymour",
+    title: "CEO, Vado",
+  },
+];
+
+/* ─── Component ──────────────────────────────────────────────────── */
+
+export default function Homepage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  return (
+    <div className="relative min-h-screen bg-[#0a0a0a] text-[#e8e5e0] antialiased selection:bg-amber-400/20 selection:text-amber-200">
+      {/* Grain overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 z-50 opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "256px 256px",
+        }}
+      />
+
+      {/* ─── NAV ─────────────────────────────────────────────── */}
+      <nav className="fixed top-0 z-40 w-full border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+          <a href="/" aria-label="Basiq home">
+            <BasiqLogo />
+          </a>
+          <div className="hidden items-center gap-8 md:flex">
+            <a href="#services" className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
+              Services
+            </a>
+            <a href="#work" className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
+              Work
+            </a>
+            <div className="group relative">
+              <a href={PRODUCTS_HREF} className="text-sm tracking-wide text-[#a09d97] transition-colors hover:text-white">
+                Products
+              </a>
+              <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                <div className="rounded-lg border border-white/[0.08] bg-[#141414] p-2 shadow-2xl">
+                  {products.map((p) => (
+                    <a
+                      key={p.slug}
+                      href={p.href}
+                      target={p.external ? "_blank" : undefined}
+                      rel={p.external ? "noopener noreferrer" : undefined}
+                      className="block rounded-md px-3 py-2.5 transition-colors hover:bg-white/[0.04]"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-[#e8e5e0]">{p.name}</span>
+                        {p.external && <span className="text-xs text-amber-400/70">{p.host} ↗</span>}
+                        {p.status === "coming-soon" && (
+                          <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
+                            Soon
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-[#706d67]">{p.tagline}</span>
+                    </a>
+                  ))}
+                  <a
+                    href={PRODUCTS_HREF}
+                    className="mt-1 block rounded-md border-t border-white/[0.06] px-3 pb-2 pt-3 text-sm text-amber-400/70 transition-colors hover:text-amber-400"
+                  >
+                    All products →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://booking.akiflow.com/basiq-consulting"
+              className="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300"
+            >
+              Book a Call
+            </a>
+            <button
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="border-t border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-xl md:hidden">
+            <div className="flex flex-col gap-1 px-6 py-4">
+              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
+                Services
+              </a>
+              <a href="#work" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm tracking-wide text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white">
+                Work
+              </a>
+              <div className="my-2 border-t border-white/[0.06]" />
+              <a
+                href={PRODUCTS_HREF}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]/60"
+              >
+                Products
+              </a>
+              {products.map((p) => (
+                <a
+                  key={p.slug}
+                  href={p.href}
+                  target={p.external ? "_blank" : undefined}
+                  rel={p.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm text-[#a09d97] transition-colors hover:bg-white/[0.04] hover:text-white"
+                >
+                  {p.name}
+                  {p.external && <span className="text-xs text-amber-400/70">{p.host} ↗</span>}
+                  {p.status === "coming-soon" && (
+                    <span className="rounded-full bg-white/[0.06] px-2 py-0.5 text-[10px] font-medium text-[#a09d97]">
+                      Soon
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* ─── HERO ────────────────────────────────────────────── */}
+      <header className="relative flex items-center overflow-hidden pt-32 pb-12">
+        {/* Spotlight effect */}
+        <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="#F59E0B" />
+
+        {/* Grid lines background */}
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
+              backgroundSize: "80px 80px",
+            }}
+          />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+              AI Execution Partner
+            </p>
+          </motion.div>
+
+          <TextGenerateEffect
+            words="AI everywhere. Nothing shipping."
+            className="max-w-4xl text-3xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            duration={0.4}
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
+            className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-[#a09d97] md:text-xl"
+          >
+            Experiments that never become systems. Tools that never become workflows. Pilots that never reach production. We build the infrastructure that turns AI from a side project into how your company operates.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 1.5 }}
+            className="mt-12 flex flex-wrap gap-4"
+          >
+            <a
+              href="https://booking.akiflow.com/basiq-consulting"
+              className="rounded-lg bg-amber-400 px-7 py-3.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+            >
+              Book a Free Assessment
+            </a>
+            <a
+              href="#work"
+              className="rounded-lg border border-white/[0.12] px-7 py-3.5 text-sm font-medium text-[#e8e5e0] transition-all hover:border-white/[0.25] hover:bg-white/[0.04]"
+            >
+              See Our Work
+            </a>
+          </motion.div>
+        </div>
+      </header>
+
+      {/* ─── FLUID ANIMATION ─────────────────────────────────── */}
+      <div>
+        <div className="mx-auto max-w-7xl px-6 pb-20 lg:px-12">
+          <FadeUp>
+            <div className="overflow-hidden rounded-2xl border border-white/[0.06] bg-[#0a0a0a]">
+              <FluidAnimation className="h-[400px] w-full md:h-[500px]" />
+            </div>
+          </FadeUp>
+        </div>
+      </div>
+
+      {/* ─── POSITIONING STATEMENT ───────────────────────────── */}
+      <Section className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <FadeUp>
+            <p className="max-w-4xl font-body text-2xl font-medium leading-relaxed text-[#c8c5bf] md:text-3xl lg:text-4xl lg:leading-snug">
+              Most AI consultants leave you with a strategy deck and a list of recommendations. We leave you with production systems your team uses on Monday. We embed with your engineers, sales teams, and operators. We ship real things. And we hand off ownership when it works, not before.
+            </p>
+          </FadeUp>
+        </div>
+      </Section>
+
+      {/* ─── SERVICE PILLARS (Bento Grid) ────────────────────── */}
+      <Section className="border-t border-white/[0.06]" id="services">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <FadeUp>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+              What we do
+            </p>
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+              Five ways we deploy AI
+            </h2>
+          </FadeUp>
+
+          <FadeUp delay={0.15} className="mt-16">
+            <BentoGrid className="md:auto-rows-[20rem]">
+              {services.map((item) => (
+                <BentoGridItem
+                  key={item.title}
+                  title={item.title}
+                  description={item.description}
+                  header={item.header}
+                  icon={item.icon}
+                  link={item.link}
+                  className={item.className}
+                />
+              ))}
+            </BentoGrid>
+          </FadeUp>
+        </div>
+      </Section>
+
+      {/* ─── HOW IT STARTS ───────────────────────────────────── */}
+      <Section className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <FadeUp>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+              How it works
+            </p>
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+              Three steps. No mystery.
+            </h2>
+          </FadeUp>
+
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {steps.map((step, i) => (
+              <FadeUp key={step.num} delay={i * 0.12}>
+                <div className="group relative rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8">
+                  <span className="font-mono text-6xl font-bold text-white/[0.04] transition-colors duration-300 group-hover:text-amber-400/[0.08]">
+                    {step.num}
+                  </span>
+                  <div className="mt-4">
+                    <h3 className="text-lg font-semibold text-white">{step.title}</h3>
+                    <p className="mt-1 font-mono text-xs font-medium uppercase tracking-wider text-amber-400/60">
+                      {step.time}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-[#a09d97]">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── PRODUCT SUITE ───────────────────────────────────── */}
+      <Section className="border-t border-white/[0.06]" id="products">
+        <div className="mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <FadeUp>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-amber-400/80">
+              Products
+            </p>
+            <h2 className="mt-4 text-3xl font-bold text-white md:text-4xl">
+              Five products. Four already in production.
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-[#a09d97]">
+              We build tools we use ourselves. The products we've shipped are the same systems we bring to clients.
+            </p>
+          </FadeUp>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {products.map((p, i) => (
+              <FadeUp key={p.slug} delay={i * 0.1} className="h-full">
+                <a
+                  href={p.href}
+                  target={p.external ? "_blank" : undefined}
+                  rel={p.external ? "noopener noreferrer" : undefined}
+                  className="group flex h-full flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-all duration-300 hover:border-amber-400/20 hover:bg-white/[0.04] sm:p-8"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="font-mono text-xs font-medium uppercase tracking-wider text-amber-400/60">
+                      {p.category}
+                    </p>
+                    <span
+                      className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        p.status === "live"
+                          ? "bg-emerald-400/10 text-emerald-400"
+                          : "bg-white/[0.06] text-[#a09d97]"
+                      }`}
+                    >
+                      {statusLabel(p.status)}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold text-white">{p.name}</h3>
+                  <p className="mt-1 text-sm text-[#c8c5bf]">{p.tagline}</p>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-[#a09d97]">{p.description}</p>
+                  <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
+                    {ctaLabel(p)}
+                  </span>
+                </a>
+              </FadeUp>
+            ))}
+
+            <FadeUp delay={products.length * 0.1} className="h-full">
+              <a
+                href={PRODUCTS_HREF}
+                className="group flex h-full flex-col justify-center rounded-xl border border-dashed border-white/[0.08] bg-transparent p-5 transition-all duration-300 hover:border-amber-400/25 hover:bg-white/[0.02] sm:p-8"
+              >
+                <h3 className="text-lg font-semibold text-white">The full suite</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#a09d97]">
+                  Sales, customer success, prompt ops, CRM, and freight. See how the five fit together.
+                </p>
+                <span className="mt-6 inline-block text-sm text-amber-400/70 transition-colors group-hover:text-amber-400">
+                  View all products →
+                </span>
+              </a>
+            </FadeUp>
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── SOCIAL PROOF (Infinite Moving Cards) ────────────── */}
+      <Section className="border-t border-white/[0.06]" id="work">
+        <div className="py-28 lg:py-36">
+          {/* Logo row */}
+          <FadeUp>
+            <div className="mx-auto max-w-7xl px-6 lg:px-12">
+              <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8 opacity-30">
+                {["Authentic", "Knak", "Discern", "Vado", "TricoStar"].map((name) => (
+                  <span key={name} className="font-mono text-sm uppercase tracking-[0.15em] text-[#a09d97]">
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+
+          {/* Scrolling testimonials */}
+          <FadeUp delay={0.15} className="mt-16">
+            <div className="mx-auto flex justify-center">
+              <InfiniteMovingCards items={testimonials} direction="left" speed="slow" />
+            </div>
+          </FadeUp>
+        </div>
+      </Section>
+
+      {/* ─── CTA FOOTER SECTION (with Background Beams) ──────── */}
+      <Section className="relative border-t border-white/[0.06] overflow-hidden" id="book-call">
+        <BackgroundBeams className="opacity-40" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-28 lg:px-12 lg:py-36">
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeUp>
+              <h2 className="text-3xl font-bold text-white md:text-4xl lg:text-5xl">
+                Not sure where AI moves the needle?
+                <br />
+                We'll show you in a week.
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#a09d97]">
+                The assessment is free. You'll walk away with a clear picture of your highest-leverage AI opportunities and a working prototype to prove it.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <a
+                href="https://booking.akiflow.com/basiq-consulting"
+                className="mt-10 inline-block rounded-lg bg-amber-400 px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-amber-300 hover:shadow-lg hover:shadow-amber-400/20"
+              >
+                Book Your Free Assessment
+              </a>
+            </FadeUp>
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── FOOTER ──────────────────────────────────────────── */}
+      <footer className="border-t border-white/[0.06]">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
+          <div className="grid gap-12 md:grid-cols-4">
+            <div className="md:col-span-1">
+              <a href="/" aria-label="Basiq home">
+                <BasiqLogo size="small" />
+              </a>
+              <p className="mt-3 text-sm text-[#a09d97]">
+                AI execution partner.
+                <br />
+                Working systems, not slide decks.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Company</h4>
+              <ul className="mt-4 space-y-3">
+                <li><a href="#services" className="text-sm text-[#706d67] transition-colors hover:text-white">Services</a></li>
+                <li><a href="#work" className="text-sm text-[#706d67] transition-colors hover:text-white">Work</a></li>
+                <li><a href="/blog" className="text-sm text-[#706d67] transition-colors hover:text-white">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Products</h4>
+              <ul className="mt-4 space-y-3">
+                {products.map((p) => (
+                  <li key={p.slug}>
+                    <a
+                      href={p.href}
+                      target={p.external ? "_blank" : undefined}
+                      rel={p.external ? "noopener noreferrer" : undefined}
+                      className="text-sm text-[#706d67] transition-colors hover:text-white"
+                    >
+                      {p.name}
+                      {p.status === "coming-soon" && (
+                        <span className="ml-2 text-xs text-[#706d67]/70">{statusLabel(p.status)}</span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#a09d97]">Connect</h4>
+              <ul className="mt-4 space-y-3">
+                <li><a href="https://booking.akiflow.com/basiq-consulting" className="text-sm text-[#706d67] transition-colors hover:text-white">Book a Call</a></li>
+                <li><span className="text-sm text-[#706d67]">basiq.work</span></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-[#706d67] md:flex-row">
+            <p>&copy; 2025 Basiq. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="#" className="transition-colors hover:text-white">Privacy</a>
+              <a href="#" className="transition-colors hover:text-white">Terms</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
