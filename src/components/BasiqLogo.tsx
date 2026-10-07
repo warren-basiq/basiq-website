@@ -13,14 +13,14 @@ export default function BasiqLogo({ className = "", size = "default" }: { classN
       >
         <path
           d="M8 6L14 12L8 18" transform="rotate(-45 12 12)"
-          stroke="#4ADE80"
+          stroke="var(--color-amber-400)"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
         <path
           d="M14 6L20 12L14 18" transform="rotate(-45 12 12)"
-          stroke="#4ADE80"
+          stroke="var(--color-amber-400)"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
